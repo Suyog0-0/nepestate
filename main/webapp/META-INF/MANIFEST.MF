@@ -1,2 +1,7 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Class-Path: 
+=======
+Class-Path: 
+
+>>>>>>> branch 'master' of https://github.com/Suyog0-0/nepestate.git
