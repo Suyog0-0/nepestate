@@ -1,0 +1,161 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+.footerContainer {
+    height: 270px;
+    background: linear-gradient(180deg, #001220, #004075);
+    display: flex;
+    border-radius: 15px 15px 0 0; 
+    width: 100%;
+    margin: 0;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+        
+}
+
+
+.quicklinksContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 40px;
+    padding-left: 50px;
+    margin-top: 30px;
+    overflow: hidden;
+}
+.quicklinksContainer h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.quicklinksContainer ul{
+    text-decoration: none;
+    list-style: none;    
+}
+
+.quicklinksContainer ul li{
+    padding-top: 20px;
+
+}
+.contactusTextFooter{
+    margin-bottom: 40px;
+}
+.quicklinksContainer ul li:hover{
+    color: #00A3FF;
+    cursor: pointer;
+}
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+.categoriesContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 100px;
+    padding-left: 50px;
+    overflow: hidden;
+    margin-top: 13px;
+}
+.categoriesContainer h1{
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 0px;
+}
+.categoriesContainer ul li{
+    text-decoration: none;
+    list-style: none;    
+}
+.colonyTextFooter{
+    margin-bottom: 40px;
+}
+.categoriesContainer ul li{
+    padding-top: 20px;
+}
+.categoriesContainer ul li a{
+    color: white;
+}
+.categoriesContainer ul li:hover{
+    color: #00A3FF;
+    cursor: pointer;
+}
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+.qrcodeContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 100px;
+    padding-left: 50px;
+    overflow: hidden;
+
+}
+
+.qrcodeIcon{
+    width: 170px;
+    height: 170px;
+    margin-top: 15px;
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+.socialsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-left: 60px;
+    padding-left: 50px;
+    overflow: hidden;
+    margin-bottom: 105px;
+}
+.socialsContainer h1{
+    font-size: 30px;
+    font-weight: 700;
+
+}
+
+.facebookIcon,.instagramIcon,.twitterIcon,.linkedinIcon{
+    width: 55px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 20px;
+}
+.twitterIcon{
+    width: 70px;
+}
+
+.facebookIcon:hover, 
+.instagramIcon:hover, 
+.twitterIcon:hover, 
+.linkedinIcon:hover {
+    filter: brightness(1.2);
+    cursor: pointer;
+    background-color: #0077b5;
+    border-radius: 5px;
+}
+
+
+/* ________________________________________________________________________________________________________________________*/
