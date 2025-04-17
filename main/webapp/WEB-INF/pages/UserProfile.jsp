@@ -24,7 +24,7 @@
         <img src="Screenshot 2024-07-10 083255.png" alt="Profile Picture" class="profile-pic" />
         <div class="user-info">
             <h3>Durgesh Thapa</h3>
-            <p>+977 9841222694</p>
+            <p>+977 9841222690</p>
             <p>durgeshthapa@gmail.com</p>
         </div>
         <nav class="nav-menu">
