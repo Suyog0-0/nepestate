@@ -1,4 +1,4 @@
-package Controller;
+package com.nepestate.controller;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
