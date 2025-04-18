@@ -1,5 +1,4 @@
 package com.nepestate.controller;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -8,16 +7,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class NavBarController
+ * Servlet implementation class Product
  */
-@WebServlet("/NavBarController")
-public class NavBarController extends HttpServlet {
+@WebServlet("/Product")
+public class ProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NavBarController() {
+    public ProductController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +26,7 @@ public class NavBarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/AboutUs.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/Product.jsp").forward(request, response);
 	}
 
 	/**
@@ -38,4 +37,4 @@ public class NavBarController extends HttpServlet {
 		doGet(request, response);
 	}
 
-} 
+}

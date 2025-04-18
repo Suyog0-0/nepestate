@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class NavBarController
+ * Servlet implementation class AboutUsController
  */
-@WebServlet("/NavBarController")
-public class NavBarController extends HttpServlet {
+@WebServlet("/AboutUsController")
+public class AboutUsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NavBarController() {
+    public AboutUsController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,4 +38,4 @@ public class NavBarController extends HttpServlet {
 		doGet(request, response);
 	}
 
-} 
+}
