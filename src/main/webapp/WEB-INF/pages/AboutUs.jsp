@@ -24,7 +24,7 @@ href="${pageContext.request.contextPath}/css/navbar.css">
             </p>c
         </div>
         <div class="image">
-            <img src="../Images/figma.jpg" height="480px">
+            <img src="${pageContext.request.contextPath}/images/figma.jpg" height="480px">
         </div>
     </div>
 </body>
