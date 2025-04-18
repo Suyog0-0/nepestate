@@ -1,0 +1,176 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-image: url('Background.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 150px;
+    height: auto;
+}
+
+.register-box {
+    background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+    color: white;
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    font-size: 1.5rem;
+}
+
+h2::before, h2::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 25%;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+h2::before {
+    left: 0;
+}
+
+h2::after {
+    right: 0;
+}
+
+.input-group {
+    margin-bottom: 12px;
+}
+
+.name-row {
+    display: flex;
+    gap: 10px;
+}
+
+.name-row .input-group {
+    flex: 1;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.9rem;
+}
+
+.required {
+    color: #ff6b6b;
+}
+
+input[type="text"], 
+input[type="password"],
+input[type="email"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+}
+
+.date-selectors {
+    display: flex;
+    gap: 8px;
+}
+
+.date-selectors select {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 6px center;
+    background-size: 16px;
+    cursor: pointer;
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    width: 24px; /* Increased from 16px */
+    height: 24px; /* Increased from 16px */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.toggle-password img {
+    width: 100%;
+    height: auto;
+}
+
+.register-btn {
+    width: 100%;
+    max-width: 150px;
+    padding: 8px;
+    background-color: #2b6cb0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin: 15px auto 0;
+}
+
+.register-btn:hover {
+    background-color: #2c5282;
+}
+
+.already-account {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.already-account a {
+    color: #ff66c4;
+    text-decoration: none;
+}
