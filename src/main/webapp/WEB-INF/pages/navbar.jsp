@@ -28,12 +28,12 @@ href="${pageContext.request.contextPath}/css/navbar.css">
         </div>
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div class="rightSection">
-            <ul class="navItems">	
+            <ul class="navItems">
                 <li><a href="#">Home</a></li>
                 <li><a href="#">Properties</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">About Us </a></li>
-                <li><a href="#">|</a></li>
+                <li><a href="#">| </a></li>
                 <li>
                     <div class="registerContainer">
                         <button class="registerButton">Register/SignUp</button>
