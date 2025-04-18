@@ -42,7 +42,6 @@ href="${pageContext.request.contextPath}/css/Footer.css">
                 <h1>SCAN QR CODE</h1>
                 <img src="/Images/qrcode.png" class="qrcodeIcon">
 
-
             </div>
 
             <div class="socialsContainer">
