@@ -14,7 +14,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
 
         <div class="footerContainer">
             <div class="logo">
-                <img src="/Images/whitelogo.png" class="whitelogoIcon">
+                <img src="${pageContext.request.contextPath}/images/whitelogo.png" class="whitelogoIcon">
             </div>
 
              <div class="quicklinksContainer">
@@ -40,7 +40,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
 
             <div class="qrcodeContainer">
                 <h1>SCAN QR CODE</h1>
-                <img src="/Images/qrcode.png" class="qrcodeIcon">
+                <img src="${pageContext.request.contextPath}/images/qrcode.png" class="qrcodeIcon">
 
 
             </div>
@@ -48,10 +48,10 @@ href="${pageContext.request.contextPath}/css/Footer.css">
             <div class="socialsContainer">
                 <h1>FOLLOW US</h1>
                 <div class="socialsimagesContainer">
-                    <img src="/Images/facebook.png" class="facebookIcon">
-                    <img src="/Images/instagram.png" class="instagramIcon">
-                    <img src="/Images/twitterwhite.png" class="twitterIcon">
-                    <img src="/Images/linkedin.png" class="linkedinIcon">
+                    <img src="${pageContext.request.contextPath}/images/facebook.png" class="facebookIcon">
+                    <img src="${pageContext.request.contextPath}/images/instagram.png" class="instagramIcon">
+                    <img src="${pageContext.request.contextPath}/images/twitterwhite.png" class="twitterIcon">
+                    <img src="${pageContext.request.contextPath}/images/linkedin.png" class="linkedinIcon">
                 </div>
 
             </div>

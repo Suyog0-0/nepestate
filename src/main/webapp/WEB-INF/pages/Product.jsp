@@ -63,7 +63,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
         <div class="listing">
             <a href="#">
                 <div class="card" >
-                    <img src="../Images/house.jpeg">
+                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
                     <div class="card-content">
                       <h3>Rs.5,00,00,000</h3>
                       <span class="tag">Home</span>
@@ -76,7 +76,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
             
             <a href="#">
                 <div class="card" >
-                    <img src="../Images/house.jpeg">
+                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
                     <div class="card-content">
                       <h3>Rs.5,00,00,000</h3>
                       <span class="tag">Home</span>
@@ -89,7 +89,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
 
             <a href="#">
                 <div class="card" >
-                    <img src="../Images/house.jpeg">
+                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
                     <div class="card-content">
                       <h3>Rs.5,00,00,000</h3>
                       <span class="tag">Home</span>
@@ -102,7 +102,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
 
             <a href="#">
                 <div class="card" >
-                    <img src="../Images/house.jpeg">
+                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
                     <div class="card-content">
                       <h3>Rs.5,00,00,000</h3>
                       <span class="tag">Home</span>
@@ -115,7 +115,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
 
             <a href="#">
                 <div class="card" >
-                    <img src="../Images/house.jpeg">
+                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
                     <div class="card-content">
                       <h3>Rs.5,00,00,000</h3>
                       <span class="tag">Home</span>
