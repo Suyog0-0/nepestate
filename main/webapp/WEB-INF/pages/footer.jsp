@@ -8,10 +8,10 @@
     <div class="footer-section">
         <h1>QUICK LINKS</h1>
         <ul>
-            <li>Home</li>
-            <li>Category</li>
-            <li>About Us</li>
-            <li>Contact Us</li>
+			<li><a href="${pageContext.request.contextPath}/HomepageController">Home</a></li>            
+			<li><a href="${pageContext.request.contextPath}/ProductController">Properties</a></li>
+            <li><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
+            <li><a href="${pageContext.request.contextPath}AboutUsController">About Us</a></li>
         </ul>
     </div>
 
