@@ -8,9 +8,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin: 20px 15px 0px 30px;
+    margin: 30px 15px 0px 30px;
     border-radius: 10px;
-    height: 650px;
+    height: 700px;
   }
   
   .sidebar-top {

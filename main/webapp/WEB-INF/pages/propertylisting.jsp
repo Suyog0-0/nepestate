@@ -44,41 +44,41 @@ href="${pageContext.request.contextPath}/css/propertylisting.css">
         <tbody>
           <tr>
             <td><input type="checkbox" /></td>
-            <td><img src="/images/house1.webp" class="property-img" /></td>
+            <td><img src="${pageContext.request.contextPath}/images/house1.webp" class="property-img" /></td>
             <td>Thamel</td>
             <td>House</td>
             <td>1 crore</td>
             <td><span class="status available">✔ Available</span></td>
             <td class="actions">
-              <img src="/images/edit-246.png" />
-              <img src="/images/view-icon-614x460.png" />
-              <img src="/images/delete-icon.png" />
+              <img src="${pageContext.request.contextPath}/images/edit-246.png" />
+              <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
+              <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
             </td>
           </tr>
           <tr>
             <td><input type="checkbox" /></td>
-            <td><img src="/images/house2.webp" class="property-img" /></td>
+            <td><img src="${pageContext.request.contextPath}/images/house2.webp" class="property-img" /></td>
             <td>Baneshwor</td>
             <td>House</td>
             <td>2 crore</td>
             <td><span class="status not-available">✖ Not Available</span></td>
             <td class="actions">
-              <img src="/images/edit-246.png" />
-              <img src="/images/view-icon-614x460.png" />
-              <img src="/images/delete-icon.png" />
+              <img src="${pageContext.request.contextPath}/images/edit-246.png" />
+              <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
+              <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
             </td>
           </tr>
           <tr>
             <td><input type="checkbox" /></td>
-            <td><img src="/images/house3.webp" class="property-img" /></td>
+            <td><img src="${pageContext.request.contextPath}/images/house3.webp" class="property-img" /></td>
             <td>Jamal</td>
             <td>Apartment</td>
             <td>3 crore</td>
             <td><span class="status available">✔ Available</span></td>
             <td class="actions">
-              <img src="/images/edit-246.png" />
-              <img src="/images/view-icon-614x460.png" />
-              <img src="/images/delete-icon.png" />
+              <img src="${pageContext.request.contextPath}/images/edit-246.png" />
+              <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
+              <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
             </td>
           </tr>
  
