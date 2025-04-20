@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+.filter {
+    width: 300px;
+    height: 460px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-left: 15px;
+    
+  }
+
+.filter h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.filter_button{
+    text-align: justify;
+    display:flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.filter button, .sidebar select {
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color:white;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    margin-right: 25px;
+  }
+
+.combobox{
+    height: 28px;
+    width: 265px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    /* border-radius: 8px;
+    border: none; */
+}
+
+.listing{
+    height: fit-content;
+    /* width: 265px; */
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    margin-left: 25px;
+}
+
+.card{
+    background-color: white;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+.card img {
+    width: 250px;
+    height: 220px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  
+
+.card-content {
+    padding: 20px;
+    flex: 1;
+  }
+
+  .card-content h3 {
+    margin: 0;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .tag {
+    background-color: #007bff;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .location {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
+  }
+
+  .description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+  }
+
+  .status {
+    color: green;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    padding-top: 20px;
+  }
