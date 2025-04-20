@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Property Listing</title>
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/propertylisting.css">
 </head>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>userdashboard</title>
+<title>User Dashboard</title>
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/userdashboard.css">
 </head>

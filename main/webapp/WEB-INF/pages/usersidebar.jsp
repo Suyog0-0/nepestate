@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>UserSideBar</title>
+<title>User SideBar</title>
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/usersidebar.css">
 </head>
@@ -23,7 +23,7 @@ href="${pageContext.request.contextPath}/css/usersidebar.css">
           <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon" />
           Dashboard
         </a>
-        <a href="propertylist.html" class="nav-link">
+        <a href="${pageContext.request.contextPath}/propertylisting" class="nav-link">
           <img src="${pageContext.request.contextPath}/images/properties.png" class="icon" />
           Properties
         </a>
