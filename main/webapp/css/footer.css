@@ -55,6 +55,7 @@
 
 .footer-section ul li:hover {
     color: #00A3FF;
+    font-weight: bold; 
 }
 
 /* QR Code */
@@ -84,10 +85,7 @@
     cursor: pointer;
 }
 
-.footer-highlight {
-    font-weight: bold;
-    color: #00A3FF;
-}
+
 
 /* Responsive */
 @media (max-width: 768px) {

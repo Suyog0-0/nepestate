@@ -11,7 +11,7 @@
             <li>Home</li>
             <li>Category</li>
             <li>About Us</li>
-            <li class="footer-highlight">Contact Us</li>
+            <li>Contact Us</li>
         </ul>
     </div>
 
@@ -21,7 +21,7 @@
             <li>Flat</li>
             <li>Apartment</li>
             <li>Residencial</li>
-            <li class="footer-highlight">Colony</li>
+            <li>Colony</li>
         </ul>
     </div>
 
