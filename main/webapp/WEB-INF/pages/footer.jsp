@@ -11,7 +11,7 @@
 			<li><a href="${pageContext.request.contextPath}/HomepageController">Home</a></li>            
 			<li><a href="${pageContext.request.contextPath}/ProductController">Properties</a></li>
             <li><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
-            <li><a href="${pageContext.request.contextPath}AboutUsController">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/AboutUsController">About Us</a></li>
         </ul>
     </div>
 
