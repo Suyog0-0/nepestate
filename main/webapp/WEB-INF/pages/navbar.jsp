@@ -16,8 +16,7 @@
 
     <div class="navbar-right">
         <ul class="navbar-items">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Properties</a></li>
+			<li><a href="${pageContext.request.contextPath}/FavouriteController">Home</a></li>            <li><a href="#">Properties</a></li>
             <li><a href="#">Contact Us</a></li>
             <li><a href="#">About Us</a></li>
             <li><a href="#">|</a></li>
