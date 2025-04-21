@@ -67,7 +67,7 @@ public class Register extends HttpServlet {
 						}
 					}
 		// TODO Auto-generated method stub
-		private String validateRegistrationForm(HttpServletRequest req) {
+		private String validateRegistrationForm(HttpServletRequest req){
 			String firstName = req.getParameter("firstName");
 			String lastName = req.getParameter("lastName");
 			String username = req.getParameter("username");
