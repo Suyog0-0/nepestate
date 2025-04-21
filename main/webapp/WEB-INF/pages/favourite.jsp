@@ -8,7 +8,6 @@
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/favourite.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
-    <link rel="stylesheet" href="../css/favourite.css">
 </head>
 <body>
     <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
