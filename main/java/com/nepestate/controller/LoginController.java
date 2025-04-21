@@ -14,7 +14,7 @@ import com.nepestate.util.ValidationUtil;
  * Servlet implementation class loginController
  */
 @WebServlet("/loginController")
-public class loginController extends HttpServlet {
+public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ValidationUtil validationUtil;
 	private RedirectionUtil redirectionUtil;
@@ -32,7 +32,7 @@ public class loginController extends HttpServlet {
 	}
 
 	
-    public loginController() {
+    public LoginController() {
         super();
         // TODO Auto-generated constructor stub
     }
