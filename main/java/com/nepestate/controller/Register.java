@@ -51,7 +51,7 @@ public class Register extends HttpServlet {
 		try {
 			System.out.println("Received firstName: " + req.getParameter("firstName"));
 			String validationMessage = validateRegistrationForm(req);
-			if (validationMessage != null) {
+			if (validationMessage != null){
 				handleError(req, resp, validationMessage);
 				return;
 				}
