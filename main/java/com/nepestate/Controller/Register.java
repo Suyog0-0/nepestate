@@ -7,14 +7,23 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.nepestate.util.RedirectionUtil;
 import com.nepestate.util.ValidationUtil;
 
 /**
  * Servlet implementation class Register
  */
-@WebServlet(asyncSupported = true, urlPatterns = {"/Register", "/"})
+@WebServlet(asyncSupported = true, urlPatterns = {"/Register"})
 public class Register extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private RedirectionUtil redirectionUtil;
+	
+	
+	@Override
+	public void init() throws ServletException {
+		this.redirectionUtil = new RedirectionUtil();
+	}
+	
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,8 +38,11 @@ public class Register extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(request, response);
+		redirectionUtil.redirectToPage(request, response, RedirectionUtil.registerUrl);
 	}
+		
+	/** request.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(request, response);
+	}**/
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
