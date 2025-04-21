@@ -15,7 +15,7 @@ href="${pageContext.request.contextPath}/css/admindashboard.css">
   <!-- Main Layout -->
   <div class="main-container">
     <!-- Sidebar -->
-      <jsp:include page="adminsidebar.jsp"/>
+      <jsp:include page="adminSidebar.jsp"/>
 
     <!-- Dashboard Content -->
     <main class="dashboard">

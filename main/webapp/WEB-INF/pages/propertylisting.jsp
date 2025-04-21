@@ -17,7 +17,7 @@ href="${pageContext.request.contextPath}/css/propertylisting.css">
   <div class="main-container">
     
     <!-- Sidebar -->
-    <jsp:include page="adminsidebar.jsp"/>
+    <jsp:include page="adminSidebar.jsp"/>
 
     <!-- Content -->
     <main class="property-list">
