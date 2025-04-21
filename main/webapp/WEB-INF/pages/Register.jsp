@@ -14,7 +14,7 @@
         <div class="form-container">
             <div class="form-header">
                 <div class="line"></div>
-                <h2>CREATE ACCOUNT</h2>
+                <h2>CREATE ACCOUNT </h2>
                 <div class="line"></div>
             </div>	
 	
