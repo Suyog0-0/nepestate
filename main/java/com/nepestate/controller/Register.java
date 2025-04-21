@@ -47,7 +47,7 @@ public class Register extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 		try {
 			System.out.println("Received firstName: " + req.getParameter("firstName"));
 			String validationMessage = validateRegistrationForm(req);
