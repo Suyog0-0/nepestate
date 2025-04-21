@@ -10,8 +10,15 @@ href="${pageContext.request.contextPath}/css/admindashboard.css">
 </head>
 <body>
 
- <jsp:include page="navbar.jsp"/>
-  
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    
+    <div class="navbarSection">
+        <!-- Code for Including the navbar -->
+        <jsp:include page="navbar.jsp" />
+    </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
   <!-- Main Layout -->
   <div class="main-container">
     <!-- Sidebar -->
