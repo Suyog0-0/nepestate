@@ -22,7 +22,7 @@
             </div>	
 	
 		<c:if test="${not empty error}">
-			<p class="error-message">${error} </p>
+			<p class="error-message">${error}</p>
 		</c:if>
 		
 		<c:if test="${not empty success}" >
