@@ -20,7 +20,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
              <div class="quicklinksContainer">
                 <h1>QUICK LINKS</h1>
                 <ul>
-                    <li>Home</li>
+                    <li>Ho me</li>
                     <li>Category</li>
                     <li>About Us</li>
                     <li class="contactusTextFooter">Contact Us</li>
