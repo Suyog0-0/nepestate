@@ -9,8 +9,8 @@
 href="${pageContext.request.contextPath}/css/admindashboard.css">
 </head>
 <body>
-	
-  <jsp:include page="navbar.jsp"/>
+
+ <jsp:include page="navbar.jsp"/>
   
   <!-- Main Layout -->
   <div class="main-container">
@@ -56,5 +56,7 @@ href="${pageContext.request.contextPath}/css/admindashboard.css">
       </div>
     </main>
   </div>
+</body>
+</html>
 </body>
 </html>

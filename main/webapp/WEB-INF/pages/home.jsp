@@ -6,15 +6,14 @@
 <meta charset="UTF-8">
 <title>NepeState - Find Your Dream Property</title>
  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
+
 <body>
 
- <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-    <div class="navbarSection">
         <!-- Code for Including the navbar -->
         <jsp:include page="navbar.jsp" />
-    </div>
     
     <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
