@@ -28,7 +28,7 @@
             <form action="${pageContext.request.contextPath}/RegisterController" method='post'>
                 <div class="name-row">
                     <div class="form-group half">
-                        <label for="firstName">First Name <span class="required">*</span></label>
+                        <label for="firstName">First Name<span class="required">*</span></label>
                         <input type="text" id="firstName" name="firstName" value="${firstName}" required>
                     </div>
                     <div class="form-group half">
