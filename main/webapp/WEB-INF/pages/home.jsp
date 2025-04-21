@@ -1,18 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NepeState - Find Your Dream Property</title>
-    <!-- Added CSS links -->
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
+<meta charset="UTF-8">
+<title>NepeState - Find Your Dream Property</title>
+ <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
 </head>
 <body>
-    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+ <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
     <div class="navbarSection">
         <!-- Code for Including the navbar -->
@@ -138,6 +135,5 @@
 </div>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-    
 </body>
 </html>

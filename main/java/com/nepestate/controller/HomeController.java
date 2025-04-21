@@ -7,10 +7,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.nepestate.util.RedirectionUtil;
+
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet("/HomeController")
+@WebServlet(asyncSupported = true, urlPatterns = { "/homecontroller","/" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +29,7 @@ public class HomeController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/home.jsp").forward(request, response);
+		request.getRequestDispatcher(RedirectionUtil.homeUrl).forward(request, response);
 	}
 
 	/**

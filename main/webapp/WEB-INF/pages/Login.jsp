@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/Login.css" />
+	href="${pageContext.request.contextPath}/css/login.css" />
 <body>
     <div class="container">
         <div class="form-container">
