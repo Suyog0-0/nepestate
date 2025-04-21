@@ -12,7 +12,7 @@ import com.nepestate.util.RedirectionUtil;
 /**
  * Servlet implementation class HomeController
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/homecontroller","/" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/HomeController","/" })
 public class HomeController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
