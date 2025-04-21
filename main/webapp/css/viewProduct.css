@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+}
+
+html, body {
+    height: auto;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.maindiv {
+    padding-bottom: 10px;
+    height: 80px;
+    outline: 0.5px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+.centerSectionWrapper{
+    padding-top: 100px;
+}
+.centerSection{
+
+    display: flex;
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+.productContainer{
+
+    margin-left: 40px;
+    padding-left: 50px;
+    padding-top: 20px;
+    box-shadow: 0 0 10px black;
+    overflow: hidden;
+    height: 570px;
+    width: 72%;
+    box-shadow: 0 0 15px #d0d0d0d0;
+    border-radius:25px; 
+}
+
+.productContent{
+}
+
+
+
+.price{
+    margin-top: 30px;
+    
+    font-size: 32px;
+    font-weight: 700;
+
+}
+
+.status{
+    display:flex;
+    gap:8px;
+}
+
+.tickIcon{
+    width: 25px;
+    height: 25px;
+}
+
+.statusText{
+    align-items: center;
+    color: #10C610;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.price,.status,.location,.tickIcon,.statusText{
+    margin-bottom: 10px;
+}
+
+.location{
+color: #808080;
+font-size: 16px;
+font-weight: 500;
+}
+
+.imageContainer{
+    display: flex;
+    width: 100px;
+    height: 100px;
+}
+
+.house1,.house2,.house3,.house4,.house5{
+    width: 220px;
+    height: 270px;
+    border-radius: 5px;
+    margin-left: 33px;}
+
+
+.housingDetails{
+    padding: 20px;
+    display: flex;
+    margin-top: 150px;
+    gap:200px;
+    margin-left: 290px;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+.typeHeading,.areaHeading,.totalUnitsHeading{
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.typeText,.areaText,.totalUnitsText{
+    font-size: 13px;
+    color: #939393;
+    font-weight: 500;
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+.profileContainer{
+    margin-left: 35px;
+    box-shadow: 0 0 15px #d0d0d0d0;
+    padding-top: 30px;
+    border-radius:25px; 
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.profileImage{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+
+}
+
+.profileDetails{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.profileDetailsContainer{
+    display: flex;
+
+}
+
+.profileEmail,.profileNumber{
+    font-size: 12px;
+
+}
+.phoneIcon,.mailIcon{
+    height: 17px;
+    margin-top: 5px;
+}
+
+
+.profileName{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profileButtonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 20px;
+}
+
+.buyNowButton{
+    background: linear-gradient(180deg, #356A95, #6B92B1);
+    color: white;
+    border :1px white;
+    font-weight: 16px;
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+}
+.bookmarkButton{
+    color:linear-gradient(180deg, #356A95, #6B92B1); 
+    background-color: white;
+    border: 1px solid #6B92B1;
+    font-weight: 16px;
+    border-radius: 5px;
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+.bottomSection{
+    display: flex;
+    margin-bottom: 70px;
+}
+
+.aboutContainer{
+    margin-left: 40px;
+    padding-left: 50px;
+    margin-top: 30px;
+    padding-top: 20px;
+    box-shadow: 0 0 10px black;
+    overflow: hidden;
+    height: 160px;
+    width: 55%;
+    box-shadow: 0 0 15px #d0d0d0d0;
+    border-radius:25px; 
+}
+
+.aboutHeading{
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.aboutText{
+    color: #939393;
+    font-size: 13px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.featureContainer{
+    margin-left: 40px;
+    padding-left: 50px;
+    margin-top: 30px;
+    padding-top: 20px;
+    box-shadow: 0 0 10px black;
+    overflow: hidden;
+    height: 160px;
+    width: 31%;
+    box-shadow: 0 0 15px #d0d0d0d0;
+    border-radius:25px; 
+;
+}
+
+.featureHeading{
+    margin-top: 5px;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.featureImages{
+    display: flex;
+    gap: 30px;
+    margin-top: 10px;
+}
+.featureImage1,.featureImage2,.featureImage3{
+    width: 100px;
+    height: 100px;
+}
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/
+
+
+/* ________________________________________________________________________________________________________________________*/

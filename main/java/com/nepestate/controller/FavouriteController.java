@@ -8,16 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class ProductAdmin
+ * Servlet implementation class FavouriteController
  */
-@WebServlet("/ProductAdmin")
-public class ProductAdminController extends HttpServlet {
+@WebServlet("/FavouriteController")
+public class FavouriteController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductAdminController() {
+    public FavouriteController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class ProductAdminController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/ProductAdmin.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/favourite.jsp").forward(request, response);
 	}
 
 	/**
@@ -36,6 +36,7 @@ public class ProductAdminController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		
 	}
 
 }
