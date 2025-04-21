@@ -35,7 +35,7 @@ href="${pageContext.request.contextPath}/css/propertylisting.css">
             <th><input type="checkbox"></th>
             <th>Property Image</th>
             <th>Address</th>
-            <th>Type</th>
+            <th>Type </th>
             <th>Price</th>
             <th>Status</th>
             <th>Actions</th>
