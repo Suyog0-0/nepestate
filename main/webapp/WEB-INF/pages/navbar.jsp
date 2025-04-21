@@ -21,6 +21,7 @@
                 <li><a href="#">Contact Us</a></li>
                 <li><a href="#">About Us </a></li>
                 <li><a href="#">|</a></li>
+
                 <li>
                     <div class="registerContainer">
                         <button class="registerButton">Register/SignUp</button>
