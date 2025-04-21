@@ -13,7 +13,9 @@ href="${pageContext.request.contextPath}/css/adminSidebar.css">
 <body>
 	<div class="sidebar">
     <div class="sidebar-top">
-      <img src="Screenshot 2024-07-10 083255.png" alt="Profile Picture" class="profile-pic" />
+
+      <img src="${pageContext.request.contextPath}/images/profile.png" alt="Profile Picture" class="profile-pic" />
+
       <div class="user-info">
         <h3  class="roleName">( Admin )</h3>
         <h3>Durgesh Thapa</h3>
