@@ -17,7 +17,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div style="display:flex;">
-		<jsp:include page="adminSidebar.jsp" />
+		<jsp:include page="adminsidebar.jsp" />
 		<div class="rightbox">
             <div style="margin-left: 7%;">
                 <div>
