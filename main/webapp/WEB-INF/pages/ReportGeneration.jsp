@@ -8,8 +8,6 @@
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/navbar.css">
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/adminSidebar.css">
-<link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/ReportGeneration.css">
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/footer.css">
@@ -17,7 +15,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
 <body>
 	<jsp:include page="navbar.jsp" />
 	<div style="display:flex;">
-		<jsp:include page="adminSidebar.jsp" />
+		<jsp:include page="adminsidebar.jsp" />
 		<div class="rightbox">
             <div style="margin-left: 7%;">
                 <div>
@@ -29,9 +27,9 @@ href="${pageContext.request.contextPath}/css/footer.css">
                     <div>
                         <input list="report-generaiton" id="reportGeneration" name="reportGeneraiton" class="combobox">
                         <datalist id="report-generaiton">
-                            <option value="a">
-                            <option value="b">
-                            <option value="c">
+                            <option value="Payment Report">
+                            <option value="Purchase Report">
+                            <option value="Sales Report">
                         </datalist>
                     </div>
                 <div>

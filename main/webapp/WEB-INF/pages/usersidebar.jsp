@@ -19,7 +19,7 @@ href="${pageContext.request.contextPath}/css/usersidebar.css">
         <p>durgeshthapa@gmail.com</p>
       </div>
       <nav class="nav-menu">
-        <a href="#" class="nav-link active">
+        <a href="${pageContext.request.contextPath}/userdashboard" class="nav-link active">
           <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon" />
           Dashboard
         </a>
@@ -27,15 +27,15 @@ href="${pageContext.request.contextPath}/css/usersidebar.css">
           <img src="${pageContext.request.contextPath}/images/properties.png" class="icon" />
           Properties
         </a>
-        <a href="#" class="nav-link">
+        <a href="${pageContext.request.contextPath}/ProductAdmin" class="nav-link">
           <img src="${pageContext.request.contextPath}/images/users.png" class="icon" />
           Users
         </a>
-        <a href="#" class="nav-link">
+        <a href="${pageContext.request.contextPath}/ReportGeneration" class="nav-link">
           <img src="${pageContext.request.contextPath}/images/report.png" class="icon" />
           Report
         </a>
-        <a href="#" class="nav-link">
+        <a href="${pageContext.request.contextPath}/ProductAdmin" class="nav-link">
           <img src="${pageContext.request.contextPath}/images/contact.png" class="icon" />
           Contact
         </a>

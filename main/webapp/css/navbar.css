@@ -1,118 +1,92 @@
 @charset "UTF-8";
 
-/* ________________________________________________________________________________________________________________________*/
-
+/* Reset */
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     text-decoration: none;
     font-family: Arial, sans-serif;
 }
 
-.maindiv {
-    padding-bottom: 10px;
+/* Navbar Main Container */
+.navbar-container {
+    padding: 0 15px 10px 15px;
     height: 80px;
     outline: 0.5px solid black;
-    padding-left: 15px;
-    padding-right: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ;
+    flex-shrink: 0;
 }
 
-/* ________________________________________________________________________________________________________________________*/
-
-
-.logo {
-    font-size: 20px;
-    font-weight: bold;
-    margin-left: 20px;
-}
-
-.logoImage{
+/* Left Section */
+.navbar-left .navbar-logo-image {
     margin-top: 10px;
     width: 145px;
     height: 70px;
     cursor: pointer;
 }
 
-/* ________________________________________________________________________________________________________________________*/
-
-.centerSection{
+/* Center Section */
+.navbar-center {
+    flex: 2;
     display: flex;
     justify-content: center;
-    flex: 2;
-    
 }
 
-
-
-.searchContainer {
-    position: relative; 
+.navbar-search-container {
+    position: relative;
     width: 100%;
     max-width: 700px;
 }
 
-.searchIcon {
+.navbar-search-icon {
     position: absolute;
-    top: 55%; 
-    left: 10px; 
+    top: 50%;
+    left: 10px;
     transform: translateY(-50%);
-    width: 40px; 
+    width: 40px;
     height: 40px;
     pointer-events: none;
 }
 
-.searchbar {
+.navbar-search-bar {
     margin-top: 10px;
-    box-shadow: 4px 0px 15px lightgrey;
     width: 100%;
     height: 50px;
     padding-left: 60px;
-    border-radius: 5px;;
-    border: 0px;
+    border-radius: 5px;
+    border: 0;
     outline: none;
     font-size: 16px;
     font-style: italic;
     color: lightgrey;
+    box-shadow: 4px 0px 15px lightgrey;
 }
 
-/* ________________________________________________________________________________________________________________________*/
-
-.navItems {
+/* Right Section */
+.navbar-items {
     display: flex;
     gap: 15px;
-    padding-top: 5px;
-}
-ul{
-    align-items: center;
-    
-}
-
-li {
-
     list-style: none;
-    display: inline-block;
+    align-items: center;
 }
 
-li a {
-    text-decoration: none;
+.navbar-items li a {
     color: black;
     font-size: 17px;
     font-weight: 500;
     letter-spacing: 0.5px;
     padding: 10px;
-
 }
 
-
-.registerContainer {
+.navbar-register-container {
     position: relative;
     display: inline-block;
 }
 
-.registerButton {
+.navbar-register-button {
     font-weight: bold;
     letter-spacing: 0.5px;
     padding: 10px 80px 10px 30px;
@@ -128,15 +102,12 @@ li a {
     justify-content: center;
 }
 
-.registerIcon {
-    top: 50%;
+.navbar-register-icon {
     position: absolute;
+    top: 50%;
     right: 15px;
     transform: translateY(-50%);
     width: 60px;
     height: 60px;
     pointer-events: none;
 }
-
-
-/* ________________________________________________________________________________________________________________________*/
