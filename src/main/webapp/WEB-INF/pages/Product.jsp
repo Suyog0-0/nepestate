@@ -21,7 +21,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
                     <div class="filter_button">
                         <div>
                             <h4 style="margin-bottom: 10px;">Properties By</h4>
-                            <button>By Nepestate</button>
+                            <button>By Nepestatee</button>
                             <button>By Owners</button>
                         </div>
                     </div>
