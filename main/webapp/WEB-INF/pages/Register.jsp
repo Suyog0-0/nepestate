@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,16 +16,24 @@
                 <div class="line"></div>
                 <h2>CREATE ACCOUNT</h2>
                 <div class="line"></div>
-            </div>
-            <form>
+            </div>	
+	
+		<c:if test="${not empty error}">
+			<p class="error-message">${error} </p>
+		</c:if>
+		
+		<c:if test="${not empty success}" >
+			<p class="success-message">${success}</p>
+		</c:if>
+            <form action="${pageContext.request.contextPath}/RegisterController" method='post'>
                 <div class="name-row">
                     <div class="form-group half">
                         <label for="firstName">First Name <span class="required">*</span></label>
-                        <input type="text" id="firstName" name="firstName" required>
+                        <input type="text" id="firstName" name="firstName" value="${firstName}" required>
                     </div>
                     <div class="form-group half">
                         <label for="lastName">Last Name <span class="required">*</span></label>
-                        <input type="text" id="lastName" name="lastName" required>
+                        <input type="text" id="lastName" name="lastName" value="${lastName}" required>
                     </div>
                 </div>
                 
@@ -48,12 +57,12 @@
                 
                 <div class="form-group">
                     <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                    <input type="email" id="email" name="email" value="${email}" placeholder="example@mail.com" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="username">Username <span class="required">*</span></label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" value="${username}"required>
                 </div>
                 
                 <div class="form-group">
@@ -69,8 +78,8 @@
                 <div class="form-group">
                     <label for="confirmPassword">Retype-Password <span class="required">*</span></label>
                     <div class="password-field">
-                        <input type="password" id="confirmPassword" name="confirmPassword" required>
-                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">
+                        <input type="password" id="reTypePassword" name="reTypePassword" required>
+                        <button type="button" class="toggle-password" onclick="togglePasswordVisibility('reTypePassword')">
                             <img src="eye-icon.png" alt="Show/Hide Password">
                         </button>
                     </div>
