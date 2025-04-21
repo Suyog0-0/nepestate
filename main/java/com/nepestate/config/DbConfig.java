@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Dbconfig {
+public class DbConfig {
 
 	// Database configuration information
 		private static final String DB_NAME = "nepestate";

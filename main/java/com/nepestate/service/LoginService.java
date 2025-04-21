@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.nepestate.config.Dbconfig;
+import com.nepestate.config.DbConfig;
 import com.nepestate.model.CustomerModel;
 
 public class LoginService {
@@ -14,7 +14,7 @@ public class LoginService {
 	
 	public LoginService() {
 		try {
-			dbConn = Dbconfig.getDbConnection();
+			dbConn = DbConfig.getDbConnection();
 		} catch (SQLException | ClassNotFoundException ex) {
 			ex.printStackTrace();
 			isConnectionError = true;
