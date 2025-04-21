@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/Register.css" />
 <body>
-<div class="container">
+	<div class="container">
         <div class="form-container">
             <div class="form-header">
                 <div class="line"></div>

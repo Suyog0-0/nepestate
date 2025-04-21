@@ -7,17 +7,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.nepestate.util.RedirectionUtil;
+
 /**
- * Servlet implementation class NavBarController
+ * Servlet implementation class homecontroller
  */
-@WebServlet("/NavBarController")
-public class NavBarController extends HttpServlet {
+@WebServlet(asyncSupported = true, urlPatterns = { "/homecontroller","/" })
+public class homecontroller extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public NavBarController() {
+    public homecontroller() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +29,7 @@ public class NavBarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/navbar.jsp").forward(request, response);
+		request.getRequestDispatcher(RedirectionUtil.homeUrl).forward(request, response);
 	}
 
 	/**
@@ -38,4 +40,4 @@ public class NavBarController extends HttpServlet {
 		doGet(request, response);
 	}
 
-} 
+}

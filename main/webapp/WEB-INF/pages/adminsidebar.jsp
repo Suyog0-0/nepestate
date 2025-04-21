@@ -4,18 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<title>Admin Sidebar</title>
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/adminSidebar.css">
-
-
+href="${pageContext.request.contextPath}/css/adminsidebar.css">
+</head>
 <body>
 	<div class="sidebar">
     <div class="sidebar-top">
-
-      <img src="${pageContext.request.contextPath}/images/profile.png" alt="Profile Picture" class="profile-pic" />
-
+      <img src="${pageContext.request.contextPath}/images/profilepicture.png" alt="Profile Picture" class="profile-pic" />
       <div class="user-info">
         <h3  class="roleName">( Admin )</h3>
         <h3>Durgesh Thapa</h3>
@@ -24,31 +20,31 @@ href="${pageContext.request.contextPath}/css/adminSidebar.css">
       </div>
       <nav class="nav-menu">
         <a href="#" class="nav-link active">
-          <img src="1530975-200.png" class="icon" />
+          <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon" />
           Dashboard
         </a>
-        <a href="propertylist.html" class="nav-link">
-          <img src="1413908.png" class="icon" />
+        <a href="${pageContext.request.contextPath}/propertylisting" class="nav-link">
+          <img src="${pageContext.request.contextPath}/images/properties.png" class="icon" />
           Properties
         </a>
         <a href="#" class="nav-link">
-          <img src="free-users-icon-267-thumb.png" class="icon" />
+          <img src="${pageContext.request.contextPath}/images/users.png" class="icon" />
           Users
         </a>
         <a href="#" class="nav-link">
-          <img src="3093748.png" class="icon" />
+          <img src="${pageContext.request.contextPath}/images/report.png" class="icon" />
           Report
         </a>
         <a href="#" class="nav-link">
-          <img src="455705.png" class="icon" />
+          <img src="${pageContext.request.contextPath}/images/contact.png" class="icon" />
           Contact
         </a>
       </nav>
     </div>
     <button class="logout-btn">
-      <img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" class="icon" />
+      <img src="${pageContext.request.contextPath}/images/logout.png" class="icon" />
       Logout
     </button>
   </div>
-  </body>
+</body>
 </html>

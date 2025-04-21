@@ -8,17 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class NavBarController
+ * Servlet implementation class usersidebar
  */
-@WebServlet("/NavBarController")
-public class NavBarController extends HttpServlet {
+@WebServlet("/usersidebar")
+public class usersidebar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Default constructor. 
      */
-    public NavBarController() {
-        super();
+    public usersidebar() {
         // TODO Auto-generated constructor stub
     }
 
@@ -27,7 +26,7 @@ public class NavBarController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/navbar.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/usersidebar.jsp").forward(request, response);
 	}
 
 	/**
@@ -38,4 +37,4 @@ public class NavBarController extends HttpServlet {
 		doGet(request, response);
 	}
 
-} 
+}

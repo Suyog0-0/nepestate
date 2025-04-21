@@ -1,24 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>navbar</title>
-<link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/navbar.css">
-	</head>
-<body>
-<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-    <div class="maindiv">
-<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div class="leftSection">
-            <div class="logo">
-                <img src="${pageContext.request.contextPath}/images/logo.png" class="logoImage">
-            </div>
+<div class="navbar-container">
+    <div class="navbar-left">
+        <div class="navbar-logo">
+            <img src="${pageContext.request.contextPath}/images/logo.png" class="navbar-logo-image">
         </div>
+
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
         <div class="centerSection">
             <div class="searchContainer">
@@ -44,8 +31,30 @@ href="${pageContext.request.contextPath}/css/navbar.css">
             </ul>
         </div>
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-    </div>
-<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
-</body>
-</html>
+
+    </div>
+
+    <div class="navbar-center">
+        <div class="navbar-search-container">
+            <img src="${pageContext.request.contextPath}/images/searchIcon.png" class="navbar-search-icon">
+            <input type="text" class="navbar-search-bar" placeholder="What are you looking for?">
+        </div>
+    </div>
+
+    <div class="navbar-right">
+        <ul class="navbar-items">
+			<li><a href="${pageContext.request.contextPath}/HomeController">Home</a></li>            
+			<li><a href="${pageContext.request.contextPath}/ProductController">Properties</a></li>
+            <li><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
+            <li><a href="${pageContext.request.contextPath}AboutUsController">About Us</a></li>
+            <li><a href="#">|</a></li>
+            <li>
+                <div class="navbar-register-container">
+                    <button class="navbar-register-button">Register/SignUp</button>
+                    <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon">
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
