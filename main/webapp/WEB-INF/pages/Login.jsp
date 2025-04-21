@@ -16,10 +16,18 @@
                 <h2>LOGIN</h2>
                 <div class="line"></div>
             </div>
-            <form>
+           
+            <form action="${pageContext.request.contextPath}/LoginController" method="post">
+             <div class="user-type-dropdown">
+                    <label for="userType">Login as <span class="required">*</span></label>
+                    <select id="userType" name="userType" required>
+                        <option value="Customer">Customer</option>
+                        <option value="Administrator">Administrator</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="username">Username <span class="required">*</span></label>
-                    <input type="text" id="username" name="username" required>
+                    <input type="text" id="username" name="username" value required>
                 </div>
                 
                 <div class="form-group">
@@ -41,7 +49,7 @@
                 </div>
                 
                 <div class="button-container">
-                    <button type="submit" class="submit-btn">Register</button>
+                    <button type="submit" class="submit-btn">Login</button>
                 </div>
                 
                 <div class="form-footer">

@@ -7,6 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import com.nepestate.model.CustomerModel;
+import com.nepestate.model.AdminModel;
+import com.nepestate.service.LoginService;
+
 /**
  * Servlet implementation class LoginController
  */
@@ -35,7 +39,51 @@ public class LoginController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String username = request.getParameter("username");
+		System.out.println(username);
+		String password = request.getParameter("password");
+		System.out.println(password);
+		String userType = request.getParameter("userType");
+		LoginService loginObject=new LoginService();
+		System.out.println(userType);
+		
+		if ("Administrator".equals(userType))
+		{
+			AdminModel adminModel = new AdminModel(username, password);
+			Boolean loginStatus = loginObject.loginAdmin(adminModel);
+			if (loginStatus != null && loginStatus) {
+				System.out.println("Successfully Login");
+				request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
+			}else {
+				System.out.println("Error at Login Controller");
+				System.out.println(loginStatus);
+				handleLoginFailure(request, response, loginStatus);
+			}
+		}
+	else {
+		CustomerModel customerModel = new CustomerModel(username, password);
+		Boolean loginStatus = loginObject.loginUser(customerModel);
+		if (loginStatus != null && loginStatus) {
+			System.out.println("Successfully Login");
+			request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
+		}else {
+			System.out.println("Error at Login Controller");
+			System.out.println(loginStatus);
+			handleLoginFailure(request, response, loginStatus);
+		}
+	}
+}
+		
+	private void handleLoginFailure(HttpServletRequest request, HttpServletResponse response, Boolean loginStatus)
+			throws ServletException, IOException {
+		String errorMessage;
+		if (loginStatus == null) {
+			errorMessage = "Our server is under maintenance. Please try again later!";
+		} else {
+			errorMessage = "User credential mismatch. Please try again!";
+		}
+		request.setAttribute("error", errorMessage);
+		request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
 	}
 
 }
