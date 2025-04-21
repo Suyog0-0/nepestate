@@ -63,6 +63,7 @@ public class RegisterController extends HttpServlet {
 			String username = req.getParameter("username");
 //			String gender = req.getParameter("gender");
 			String email = req.getParameter("email");
+			@SuppressWarnings("unused")
 			String number = req.getParameter("phoneNumber");
 			String password = req.getParameter("password");
 			String retypePassword = req.getParameter("reTypePassword");

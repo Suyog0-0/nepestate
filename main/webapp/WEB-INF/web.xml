@@ -9,16 +9,12 @@
     <welcome-file>default.jsp</welcome-file>
     <welcome-file>default.htm</welcome-file>
     </welcome-file-list>
-    
     <servlet-mapping>
-    <servlet-name> default </servlet-name>
+    <servlet-name> default</servlet-name>
     <url-pattern>/css/*</url-pattern>
     </servlet-mapping>
-    
     <servlet-mapping>
     <servlet-name>default</servlet-name>
-       <url-pattern>/images/*</url-pattern>
-    
+    <url-pattern>/images/*</url-pattern>
     </servlet-mapping>
-
 </web-app> 

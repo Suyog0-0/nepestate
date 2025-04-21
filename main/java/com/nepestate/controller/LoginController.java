@@ -16,7 +16,9 @@ import com.nepestate.util.ValidationUtil;
 @WebServlet("/loginController")
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private ValidationUtil validationUtil;
+	@SuppressWarnings("unused")
 	private RedirectionUtil redirectionUtil;
 	
 	@Override
