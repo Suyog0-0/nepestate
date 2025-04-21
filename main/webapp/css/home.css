@@ -16,7 +16,7 @@
 	.heroSection {
 	    position: relative;
 	    height: 500px;
-  		background-image: url('../images/homepageBackground.jpg');
+		background-image: url('${pageContext.request.contextPath}/images/homepageBackground.jpg');
 	    background-size: cover;
 	    background-position: center;
 	    display: flex;
