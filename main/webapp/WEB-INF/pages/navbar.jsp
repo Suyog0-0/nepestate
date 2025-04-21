@@ -1,42 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<head>
-<link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/navbar.css">
-</head>
-<body>
+
 <div class="navbar-container">
     <div class="navbar-left">
         <div class="navbar-logo">
             <img src="${pageContext.request.contextPath}/images/logo.png" class="navbar-logo-image">
         </div>
-
-<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div class="centerSection">
-            <div class="searchContainer">
-                <img src="${pageContext.request.contextPath}/images/searchIcon.png" class="searchIcon">
-                <input type="text" class="searchbar" placeholder="What are you looking for?">
-            </div>
-        </div>
-<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-        <div class="rightSection">
-            <ul class="navItems">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Properties</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">About Us </a></li>
-                <li><a href="#">|</a></li>
-
-                <li>
-                    <div class="registerContainer">
-                        <button class="registerButton">Register/SignUp</button>
-                        <img src="${pageContext.request.contextPath}/images/register.png" class="registerIcon">
-                    </div>
-                </li>
-            </ul>
-        </div>
-<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
-
     </div>
 
     <div class="navbar-center">
@@ -62,4 +30,3 @@ href="${pageContext.request.contextPath}/css/navbar.css">
         </ul>
     </div>
 </div>
-</body>

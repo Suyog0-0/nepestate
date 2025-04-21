@@ -11,8 +11,15 @@ href="${pageContext.request.contextPath}/css/AboutUs.css">
 href="${pageContext.request.contextPath}/css/navbar.css">
 </head>
 <body>
-<jsp:include page="navbar.jsp" />
-</div>
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    
+    <div class="navbarSection">
+        <!-- Code for Including the navbar -->
+        <jsp:include page="navbar.jsp" />
+    </div>
+
+<!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
     <div class="container">
         <div class="leftbox">
             <h2>About Us</h2>
