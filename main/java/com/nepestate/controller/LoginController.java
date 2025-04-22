@@ -61,7 +61,7 @@ public class LoginController extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
 			}else {
 				SessionUtil.setAttribute(request, "username", username);
-				CookieUtil.addCookie(response, "role", "student", 5 * 30);
+				CookieUtil.addCookie(response, "role", "student", 5 * 1);
 				System.out.println("Error at Login Controller");
 				System.out.println(loginStatus);
 				handleLoginFailure(request, response, loginStatus);

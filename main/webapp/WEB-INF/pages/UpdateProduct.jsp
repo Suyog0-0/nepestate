@@ -17,7 +17,7 @@
       color: #8b8b8b;
     }
     .image-preview img {
-      max-width: 300px;
+      max-width: 200px;
       border-radius: 10px;
     }
     .subColumn {
@@ -38,14 +38,15 @@
     </div>
 
     <!-- Property Info + Image Row -->
-    <div style="display: flex; gap: 450px;  ">
+    <div style="display: flex; gap: 200px;margin-top:20px; ">
       <div>
         <div class="subColumn">
           <label class="form-label">Title</label>
-          <div class="underline-long">House for Sale At Tripureshwor</div>
+          <input type="text" class="underline-long">
+
         </div>
 
-        <div style="display: flex; gap: 180px;">
+        <div style="display: flex; gap: 180px;margin-top:30px;">
           <div class="subColumn">
             <label class="form-label">Property Type</label>
             <div class="button-group">
@@ -57,36 +58,36 @@
 
           <div class="subColumn">
             <label class="form-label">Price</label>
-            <div class="underline-short">Rs 1,50,00,000</div>
+            <input type="text" class="underline-short">
           </div>
         </div>
 
         <div class="subRowDetails">
           <div class="subColumn">
             <label class="form-label">Address</label>
-            <div class="underline-short">Tripureshwor</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">City</label>
-            <div class="underline-short">Kathmandu</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">Area</label>
-            <div class="underline-short">2000 sq ft</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">Municipality</label>
-            <div class="underline-short">Kathmandu</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">Ward No.</label>
-            <div class="underline-short">24</div>
+            <input type ="text" class="underline-short">
           </div>
         </div>
       </div>
 
       <div class="image-preview">
-        <img src="updateImage.png" alt="Property Image" />
+        <img src="${pageContext.request.contextPath}/images/updateImage.png" alt="Background Image">
       </div>
     </div>
 
@@ -94,14 +95,10 @@
     <div class="subRow">
       <div class="subColumn">
         <label class="form-label">Description</label>
-        <div class="property-description">
-          This beautiful house at Tripureshwor is located at a prime location which is very decently priced at Rs 1,50,00,000.
-          The house is found right next to the road but is found to be very quiet and peaceful.
+        <input type="text" class="property-description">
         </div>
       </div>
-    </div>
-
-    <!-- Amenities -->
+       <!-- Amenities -->
     <div class="subRow">
       <div class="subColumn">
         <label class="form-label">Amenities</label>
@@ -136,7 +133,8 @@
     <div class="subRow">
       <button class="update-button">UPDATE PROPERTY</button>
     </div>
+    </div>
 
-  </div>
+ 
 </body>
 </html>

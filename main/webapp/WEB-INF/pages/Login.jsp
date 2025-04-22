@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,6 +17,13 @@
                 <h2>LOGIN</h2>
                 <div class="line"></div>
             </div>
+            <c:if test="${not empty error}">
+                <p class="error-message">${error}</p>
+            </c:if>
+            
+            <c:if test="${not empty success}">
+                <p class="success-message">${success}</p>
+            </c:if>
            
             <form action="${pageContext.request.contextPath}/LoginController" method="post">
              <div class="user-type-dropdown">

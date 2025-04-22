@@ -24,17 +24,20 @@
 }
 
 .user-description {
-    max-width: 752px;
     margin-top: 4px;
     height: 69px;
+    width: 1000px;
     font-family: Arial, sans-serif;
-    border: 2px solid black;
-    padding: 12px;
     color: #333;
     line-height: 1.5;
     font-size: 18px;
     text-align: justify;
-  }
+    padding: 15px 0;
+      border: none;
+      border-bottom: 2px solid black;
+      background: transparent;
+}
+
 
 .productBox{
     display: flex;

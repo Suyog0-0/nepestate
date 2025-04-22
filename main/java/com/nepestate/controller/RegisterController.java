@@ -74,7 +74,7 @@ public class RegisterController extends HttpServlet {
 			String username = req.getParameter("username");
 //			String gender = req.getParameter("gender");
 			String email = req.getParameter("email");
-			String number = req.getParameter("phoneNumber");
+			String number = req.getParameter("phone");
 			String password = req.getParameter("password");
 			String retypePassword = req.getParameter("reTypePassword");
 			
@@ -93,8 +93,8 @@ public class RegisterController extends HttpServlet {
 //				return "Gender is required.";
 			if (ValidationUtil.isNullOrEmpty(email))
 				return "Email is required.";
-//			if (ValidationUtil.isNullOrEmpty(number))
-//				return "Phone number is required.";
+			if (ValidationUtil.isNullOrEmpty(number))
+				return "Phone number is required.";
 			if (ValidationUtil.isNullOrEmpty(password))
 				return "Password is required.";
 			if (ValidationUtil.isNullOrEmpty(retypePassword))
@@ -115,8 +115,8 @@ public class RegisterController extends HttpServlet {
 //				return "Gender must be 'male' or 'female'.";
 			if (!ValidationUtil.isValidEmail(email))
 				return "Invalid email format.";
-//			if (!ValidationUtil.isValidPhoneNumber(number))
-//				return "Phone number must be 10 digits and start with 98.";
+			if (!ValidationUtil.isValidPhoneNumber(number))
+				return "Phone number must be 10 digits and start with 98.";
 			if (!ValidationUtil.isValidPassword(password))
 				return "Password must be at least 8 characters long, with 1 uppercase letter, 1 number, and 1 symbol.";
 			if (!ValidationUtil.doPasswordsMatch(password, retypePassword))
@@ -155,7 +155,7 @@ public class RegisterController extends HttpServlet {
 				customer.setCust_Username(req.getParameter("username"));
 				customer.setCust_EmailAddress(req.getParameter("email"));
 				customer.setCust_Password(req.getParameter("password"));
-				customer.setCust_PhoneNumber("9848682001");
+				customer.setCust_PhoneNumber(req.getParameter("phone"));
 				
 				// Set default profile picture path or handle file upload
 				customer.setCust_ProfilePicture("defaul.jpg");
