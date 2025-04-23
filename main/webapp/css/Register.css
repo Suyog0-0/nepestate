@@ -28,7 +28,7 @@ body {
 }
 
 .form-container {
-    width: 380px;
+    width: 420px;
     background: linear-gradient(to bottom, #356A95, #001B34);
     padding: 30px;
     border-radius: 10px;
@@ -54,6 +54,12 @@ body {
     to {
         transform: translateY(0);
     }
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: #cccccc;
 }
 
 .form-header {

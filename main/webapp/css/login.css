@@ -144,6 +144,12 @@ input[type="email"]:focus {
     transform: translateY(-2px);
 }
 
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: #cccccc;
+}
+
 .password-field {
     position: relative;
 }

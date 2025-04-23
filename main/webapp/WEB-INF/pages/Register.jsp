@@ -28,11 +28,11 @@
                 <div class="name-row">
                     <div class="form-group half">
                         <label for="firstName">First Name<span class="required">*</span></label>
-                        <input type="text" id="firstName" name="firstName" value="${firstName}" required>
+                        <input type="text" id="firstName" name="firstName" value="${firstName}" placeholder="e.g.Anthony" required>
                     </div>
                     <div class="form-group half">
                         <label for="lastName">Last Name <span class="required">*</span></label>
-                        <input type="text" id="lastName" name="lastName" value="${lastName}" required>
+                        <input type="text" id="lastName" name="lastName" value="${lastName}" placeholder="e.g.Adhikari" required>
                     </div>
                 </div>
                 
