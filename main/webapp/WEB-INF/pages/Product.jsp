@@ -137,5 +137,5 @@ href="${pageContext.request.contextPath}/css/footer.css">
         </div>
     </div>
 </body>
-<jsp:include page="footer.jsp" />
+<jsp:include page="Footer.jsp" />
 </html>
