@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('Background.png') no-repeat center center;
+    background-image: url('../images/backgroundregisterlogin.jpeg');
     background-size: cover;
 }
 
@@ -28,10 +28,10 @@ body {
 
 .form-container {
     width: 380px;
-    background: linear-gradient(to bottom, #356a95, #001b34);
+    background: linear-gradient(to bottom, #356A95, #001B34);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 40px 5px rgba(0, 0, 0, 0.8);
     color: white;
 }
 
@@ -76,6 +76,15 @@ input[type="email"] {
     border: none;
     border-radius: 5px;
     font-size: 15px;
+    transition: border 0.1s ease, box-shadow 0.1s ease;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border: 2px solid #66b3ff;
+    box-shadow: 0 0 8px #66b3ff;
 }
 
 .password-field {

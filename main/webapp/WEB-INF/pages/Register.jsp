@@ -61,8 +61,13 @@
                 </div>
                 
                 <div class="form-group">
+    				<label for="phone">Phone Number <span class="required">*</span></label>
+    				<input type="text" id="phone" name="phone" value="${phone}" placeholder="e.g +977 9800000000" required>
+				</div>
+                
+                <div class="form-group">
                     <label for="username">Username <span class="required">*</span></label>
-                    <input type="text" id="username" name="username" value="${username}"required>
+                    <input type="text" id="username" name="username" value="${username}"placeholder="Anthony Adhikari" required>
                 </div>
                 
                 <div class="form-group">

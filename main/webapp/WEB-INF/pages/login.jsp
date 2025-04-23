@@ -27,7 +27,7 @@
                     <div class="password-field">
                         <input type="password" id="password" name="password" required>
                         <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
-                            <img src="eye-icon.png" alt="Show/Hide Password">
+							<img src="${pageContext.request.contextPath}/images/showhidepassword.svg" alt="Show/Hide Password">
                         </button>
                     </div>
                 </div>

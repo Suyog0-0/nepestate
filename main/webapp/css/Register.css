@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('Background.png') no-repeat center center;
+    background-image: url('../images/backgroundregisterlogin.jpeg');
     background-size: cover;
 }
 
@@ -27,11 +27,11 @@ body {
 }
 
 .form-container {
-    width: 420px;
-    background: linear-gradient(to bottom, #1a5888, #093e6a);
+    width: 380px;
+    background: linear-gradient(to bottom, #356A95, #001B34);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 40px 5px rgba(0, 0, 0, 0.8);
     color: white;
 }
 
@@ -55,16 +55,7 @@ body {
 }
 
 .form-group {
-    margin-bottom: 15px;
-}
-
-.name-row {
-    display: flex;
-    gap: 15px;
-}
-
-.half {
-    flex: 1;
+    margin-bottom: 20px;
 }
 
 .form-group label {
@@ -86,6 +77,15 @@ select {
     border: none;
     border-radius: 5px;
     font-size: 15px;
+    transition: border 0.1s ease, box-shadow 0.1s ease;
+    outline: none;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus {
+    border: 2px solid #66b3ff;
+    box-shadow: 0 0 8px #66b3ff;
 }
 
 .date-selects {
@@ -134,9 +134,8 @@ select {
 
 .submit-btn {
     width: 100%;
-    max-width: 200px;
-    padding: 12px 25px;
-    background-color: rgba(42, 87, 131, 0.7);
+    padding: 12px;
+    background-color: transparent;
     color: white;
     border: none;
     border-radius: 5px;
@@ -146,7 +145,7 @@ select {
 }
 
 .submit-btn:hover {
-    background-color: rgba(42, 87, 131, 0.9);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .form-footer {
@@ -161,4 +160,16 @@ select {
 
 .highlight-link:hover {
     text-decoration: underline;
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.success-message {
+    color: #80ffaa;
+    text-align: center;
+    margin-bottom: 15px;
 }
