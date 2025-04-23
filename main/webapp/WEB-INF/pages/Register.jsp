@@ -1,28 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Create Account</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Register.css" />
 </head>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/Register.css" />
 <body>
 <div class="container">
         <div class="form-container">
             <div class="form-header">
                 <div class="line"></div>
-                <h2>CREATE ACCOUNT </h2>
+                <h2>CREATE ACCOUNT</h2>
                 <div class="line"></div>
             </div>	
 	
 		<c:if test="${not empty error}">
-			<p class="error-message">${error} </p>
+			<p class="error-message">${error}</p>
 		</c:if>
 		
-		<c:if test="${not empty success}" >
+		<c:if test="${not empty success}">
 			<p class="success-message">${success}</p>
 		</c:if>
             <form action="${pageContext.request.contextPath}/RegisterController" method='post'>
@@ -57,17 +56,17 @@
                 
                 <div class="form-group">
                     <label for="email">Email Address <span class="required">*</span></label>
-                    <input type="email" id="email" name="email" value="${email}" placeholder="example@mail.com" required>
+                    <input type="email" id="email" name="email" value="${email}" placeholder="e.g.example@mail.com" required>
                 </div>
                 
                 <div class="form-group">
     				<label for="phone">Phone Number <span class="required">*</span></label>
-    				<input type="text" id="phone" name="phone" value="${phone}" placeholder="e.g +977 9800000000" required>
+    				<input type="text" id="phone" name="phone" value="${phone}" placeholder="e.g.+977 9800000000" required>
 				</div>
                 
                 <div class="form-group">
                     <label for="username">Username <span class="required">*</span></label>
-                    <input type="text" id="username" name="username" value="${username}"placeholder="Anthony Adhikari" required>
+                    <input type="text" id="username" name="username" value="${username}" placeholder="e.g.Anthony Adhikari" required>
                 </div>
                 
                 <div class="form-group">
@@ -75,7 +74,7 @@
                     <div class="password-field">
                         <input type="password" id="password" name="password" required>
                         <button type="button" class="toggle-password" onclick="togglePasswordVisibility('password')">
-                            <img src="eye-icon.png" alt="Show/Hide Password">
+							<img src="${pageContext.request.contextPath}/images/showhidepassword.svg" alt="Show/Hide Password">
                         </button>
                     </div>
                 </div>
@@ -85,7 +84,7 @@
                     <div class="password-field">
                         <input type="password" id="reTypePassword" name="reTypePassword" required>
                         <button type="button" class="toggle-password" onclick="togglePasswordVisibility('reTypePassword')">
-                            <img src="eye-icon.png" alt="Show/Hide Password">
+							<img src="${pageContext.request.contextPath}/images/showhidepassword.svg" alt="Show/Hide Password">
                         </button>
                     </div>
                 </div>
