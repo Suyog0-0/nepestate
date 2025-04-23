@@ -1,161 +1,109 @@
 @charset "UTF-8";
-*{
+
+* {
     margin: 0;
     padding: 0;
-    text-decoration: none;
+    box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
-/* ________________________________________________________________________________________________________________________*/
-
-.footerContainer {
-    height: 270px;
+.footer-container {
     background: linear-gradient(180deg, #001220, #004075);
-    display: flex;
-    border-radius: 15px 15px 0 0; 
+    padding: 30px 40px;
+    border-radius: 15px 15px 0 0;
     width: 100%;
-    margin: 0;
-    width: 100%;
-    padding-top: 30px;
-    padding-bottom: 30px;
-        
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    color: white;
+    margin-top: auto;
 }
 
-
-.quicklinksContainer{
+/* Logo */
+.footer-logo {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
-    margin-left: 40px;
-    padding-left: 50px;
-    margin-top: 30px;
-    overflow: hidden;
-}
-.quicklinksContainer h1{
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 20px;
-}
-.quicklinksContainer ul{
-    text-decoration: none;
-    list-style: none;    
 }
 
-.quicklinksContainer ul li{
-    padding-top: 20px;
+.footer-logo-img {
+    width: 350px;
+    height: auto;
+}
 
+/* Sections */
+.footer-section {
+    text-align: center;
+    margin: 10px 20px;
 }
-.contactusTextFooter{
-    margin-bottom: 40px;
+
+.footer-section h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
 }
-.quicklinksContainer ul li:hover{
-    color: #00A3FF;
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    padding: 5px 0;
     cursor: pointer;
+    transition: 0.3s ease;
 }
 
-
-/* ________________________________________________________________________________________________________________________*/
-
-.categoriesContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    margin-left: 100px;
-    padding-left: 50px;
-    overflow: hidden;
-    margin-top: 13px;
-}
-.categoriesContainer h1{
-    font-size: 30px;
-    font-weight: 700;
-    margin-bottom: 0px;
-}
-.categoriesContainer ul li{
-    text-decoration: none;
-    list-style: none;    
-}
-.colonyTextFooter{
-    margin-bottom: 40px;
-}
-.categoriesContainer ul li{
-    padding-top: 20px;
-}
-.categoriesContainer ul li a{
-    color: white;
-}
-.categoriesContainer ul li:hover{
+.footer-section ul li:hover {
     color: #00A3FF;
-    cursor: pointer;
+    font-weight: bold; 
+}
+
+.footer-section ul li a {
+    color: white; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
+}
+
+.footer-section ul li a:hover {
+    font-weight: bold; 
+    color: #00A3FF;
 }
 
 
-/* ________________________________________________________________________________________________________________________*/
+/* QR Code */
+.footer-qrcode {
+    width: 130px;
+    height: 130px;
+}
 
-.qrcodeContainer{
+/* Socials */
+.footer-socials {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
-    margin-left: 100px;
-    padding-left: 50px;
-    overflow: hidden;
-
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-.qrcodeIcon{
-    width: 170px;
-    height: 170px;
-    margin-top: 15px;
+.footer-social-icon {
+    width: 40px;
+    height: 40px;
+    transition: 0.3s ease;
 }
 
-/* ________________________________________________________________________________________________________________________*/
-
-.socialsContainer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    margin-left: 60px;
-    padding-left: 50px;
-    overflow: hidden;
-    margin-bottom: 105px;
-}
-.socialsContainer h1{
-    font-size: 30px;
-    font-weight: 700;
-
-}
-
-.facebookIcon,.instagramIcon,.twitterIcon,.linkedinIcon{
-    width: 55px;
-    height: 50px;
-    margin-top: 15px;
-    margin-left: 20px;
-}
-.twitterIcon{
-    width: 70px;
-}
-
-.facebookIcon:hover, 
-.instagramIcon:hover, 
-.twitterIcon:hover, 
-.linkedinIcon:hover {
+.footer-social-icon:hover {
     filter: brightness(1.2);
+    transform: scale(1.1);
     cursor: pointer;
-    background-color: #0077b5;
-    border-radius: 5px;
 }
 
 
-/* ________________________________________________________________________________________________________________________*/
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+        text-align: center;
+    }
+}

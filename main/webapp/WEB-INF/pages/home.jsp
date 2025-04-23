@@ -1,21 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>NepeState - Find Your Dream Property</title>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NepeState - Find Your Dream Property</title>
+    <!-- Added CSS links -->
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/home.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/footer.css">
 </head>
-
 <body>
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
     <div class="navbarSection">
         <!-- Code for Including the navbar -->
         <jsp:include page="navbar.jsp" />
     </div>
+    
+    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+    
 
     <!-- Hero Section -->
     <div class="heroSection">
@@ -128,9 +134,10 @@
     <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
 <div class="footerSection">
-    <jsp:include page="footer.jsp" />
+	<jsp:include page="/WEB-INF/pages/footer.jsp" />
 </div>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    
 </body>
 </html>
