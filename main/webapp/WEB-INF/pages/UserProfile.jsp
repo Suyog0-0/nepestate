@@ -68,7 +68,7 @@
                                 <div class="subRow">
                                     <div class="subColumn">
                                         <label class="form-label">Description</label>
-                                        <input type="text" class="user-description" style="border: none;border-bottom: 2px solid black; "> 
+                                        <input type="text" class="user-description"> 
                                     </div>
                                 </div>
                                 <div class="subRow">
