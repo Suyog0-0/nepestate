@@ -118,7 +118,7 @@
                 <button class="button-active">Fencing</button>
                 <button class="button">TV Cable</button>
                 <button class="button">Electricity Backup</button>
-                <button class="button-active">Conditionings</button>
+                <button class="button-active">Conditioning</button>
                 <button class="button-active">Fire Alarm</button>
                 <button class="button">Fire Place</button>
                 <button class="button">Solar Water</button>
