@@ -9,13 +9,13 @@ public class CustomerModel {
 	private String Cust_EmailAddress;
 	private String Cust_Password;
 	private String Cust_ProfilePicture;
-	private Date Cust_DoB;
+	private String Cust_DoB;
 	private String Cust_PhoneNumber;
 	
 	public CustomerModel() {}
 	
 	public CustomerModel(String cust_FirstName, String cust_LastName, String cust_Username, String cust_EmailAddress,
-			String cust_Password, String cust_ProfilePicture, Date cust_DoB, String cust_PhoneNumber) {
+			String cust_Password, String cust_ProfilePicture, String cust_DoB, String cust_PhoneNumber) {
 		super();
 		Cust_FirstName = cust_FirstName;
 		Cust_LastName = cust_LastName;
@@ -75,11 +75,11 @@ public class CustomerModel {
 		Cust_ProfilePicture = cust_ProfilePicture;
 	}
 
-	public Date getCust_DoB() {
+	public String getCust_DoB() {
 		return Cust_DoB;
 	}
 
-	public void setCust_DoB(Date cust_DoB) {
+	public void setCust_DoB(String cust_DoB) {
 		Cust_DoB = cust_DoB;
 	}
 
@@ -92,5 +92,10 @@ public class CustomerModel {
 	}
 	
 	
+	public CustomerModel(String username,String password) 
+	{
+		this.Cust_Username=username;
+		this.Cust_Password=password;
+	}
 	
 }

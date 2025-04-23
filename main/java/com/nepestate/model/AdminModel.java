@@ -65,5 +65,9 @@ public class AdminModel {
 		Admin_PhoneNumber = admin_PhoneNumber;
 	}
 	
-	
+	public AdminModel(String username, String password) {
+		this.Admin_Username = username;
+		this.Admin_Password = password;
+	}
+
 }

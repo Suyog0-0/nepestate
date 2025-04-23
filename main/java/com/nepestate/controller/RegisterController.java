@@ -1,5 +1,7 @@
 package com.nepestate.controller;
 
+import com.nepestate.model.CustomerModel;
+import com.nepestate.service.RegisterService;
 import com.nepestate.util.ValidationUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -17,6 +19,7 @@ import java.io.IOException;
 @WebServlet(asyncSupported = true, urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private RegisterService registerService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -24,6 +27,7 @@ public class RegisterController extends HttpServlet {
     public RegisterController() {
         super();
         // TODO Auto-generated constructor stub
+        registerService = new RegisterService();
     }
 
 	/**
@@ -46,8 +50,15 @@ public class RegisterController extends HttpServlet {
 				return;
 				}
 			else {
-				req.setAttribute("success", "Registration successful!");
-				req.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(req, resp);
+				CustomerModel customer = createCustomerFromRequest(req);
+				Boolean result = registerService.addCustomer(customer);
+				
+				if (result != null && result) {
+					req.setAttribute("success", "Registration successful!");
+					req.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(req, resp);
+				} else {
+					handleError(req, resp, "Failed to register. Please try again.");
+				}
 			}
 		}
 			catch (Exception e) {
@@ -63,7 +74,7 @@ public class RegisterController extends HttpServlet {
 			String username = req.getParameter("username");
 //			String gender = req.getParameter("gender");
 			String email = req.getParameter("email");
-			String number = req.getParameter("phoneNumber");
+			String number = req.getParameter("phone");
 			String password = req.getParameter("password");
 			String retypePassword = req.getParameter("reTypePassword");
 			
@@ -82,8 +93,8 @@ public class RegisterController extends HttpServlet {
 //				return "Gender is required.";
 			if (ValidationUtil.isNullOrEmpty(email))
 				return "Email is required.";
-//			if (ValidationUtil.isNullOrEmpty(number))
-//				return "Phone number is required.";
+			if (ValidationUtil.isNullOrEmpty(number))
+				return "Phone number is required.";
 			if (ValidationUtil.isNullOrEmpty(password))
 				return "Password is required.";
 			if (ValidationUtil.isNullOrEmpty(retypePassword))
@@ -104,8 +115,8 @@ public class RegisterController extends HttpServlet {
 //				return "Gender must be 'male' or 'female'.";
 			if (!ValidationUtil.isValidEmail(email))
 				return "Invalid email format.";
-//			if (!ValidationUtil.isValidPhoneNumber(number))
-//				return "Phone number must be 10 digits and start with 98.";
+			if (!ValidationUtil.isValidPhoneNumber(number))
+				return "Phone number must be 10 digits and start with 98.";
 			if (!ValidationUtil.isValidPassword(password))
 				return "Password must be at least 8 characters long, with 1 uppercase letter, 1 number, and 1 symbol.";
 			if (!ValidationUtil.doPasswordsMatch(password, retypePassword))
@@ -136,6 +147,24 @@ public class RegisterController extends HttpServlet {
 				req.setAttribute("subject", req.getParameter("subject"));
 				req.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(req, resp);
 			}
+			
+			private CustomerModel createCustomerFromRequest(HttpServletRequest req) {
+				CustomerModel customer = new CustomerModel();
+				customer.setCust_FirstName(req.getParameter("firstName"));
+				customer.setCust_LastName(req.getParameter("lastName"));
+				customer.setCust_Username(req.getParameter("username"));
+				customer.setCust_EmailAddress(req.getParameter("email"));
+				customer.setCust_Password(req.getParameter("password"));
+				customer.setCust_PhoneNumber(req.getParameter("phone"));
+				
+				// Set default profile picture path or handle file upload
+				customer.setCust_ProfilePicture("defaul.jpg");
+				customer.setCust_DoB("21-07-2006");
+				
+				return customer;
+			}
+			
+		
 	}
 
 
