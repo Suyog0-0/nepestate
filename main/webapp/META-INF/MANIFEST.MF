@@ -1,3 +1,7 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
+Class-Path:
+=======
 Class-Path: 
 
+>>>>>>> refs/heads/Inabranch
