@@ -9,14 +9,14 @@
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UserProfile.css" />
 	<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/Navbar.css" />
+	href="${pageContext.request.contextPath}/css/navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/SideBar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
 <body>
 
-<jsp:include page="Navbar.jsp"/>
+<jsp:include page="navbar.jsp"/>
 
 <div style="display:flex"> 
     <div class="sidebar">

@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/Navbar.css" />
+	href="${pageContext.request.contextPath}/css/navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
 	<style>
@@ -25,7 +25,7 @@
     }
   </style>
 <body>
-<jsp:include page="Navbar.jsp"/>
+<jsp:include page="navbar.jsp"/>
 <!-- Main Form -->
   <div class="mainSquare">
 

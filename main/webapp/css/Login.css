@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('${pageContext.request.contextPath}/images/BackgroundRegister.jpeg');
+    background: url('Background.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -26,11 +26,11 @@ body {
 }
 
 .form-container {
-    width: 420px;
-    background: linear-gradient(to bottom, #1a5888, #093e6a);
+    width: 380px;
+    background: linear-gradient(to bottom, #356a95, #001b34);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
     color: white;
 }
 
@@ -54,19 +54,7 @@ body {
 }
 
 .form-group {
-    margin-bottom: 15px;
-    width: 100%;
-}
-
-.name-row {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-}
-
-.half { 
-    flex: 1;
-    min-width: 0; /* Prevent flex overflow */
+    margin-bottom: 20px;
 }
 
 .form-group label {
@@ -81,48 +69,16 @@ body {
 
 input[type="text"],
 input[type="password"],
-input[type="email"],
-select {
+input[type="email"] {
     width: 100%;
     padding: 12px;
     border: none;
     border-radius: 5px;
-    font-size: 15px;
-    background-color: white;
-    color: #333;
-}
-input[type="tel"] {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 15px;
-}
-
-.date-selects {
-    display: flex;
-    gap: 10px;
-    width: 100%;
-}
-
-.date-selects select {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 8px center;
-    background-size: 20px;
-    padding-right: 30px;
-    cursor: pointer;
     font-size: 15px;
 }
 
 .password-field {
     position: relative;
-    width: 100%;
 }
 
 .toggle-password {
@@ -141,16 +97,42 @@ input[type="tel"] {
     opacity: 0.7;
 }
 
+.remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 5px;
+}
+
+.forgot-link,
+.highlight-link {
+    color: #ff8df3;
+    text-decoration: none;
+}
+
+.forgot-link:hover,
+.highlight-link:hover {
+    text-decoration: underline;
+}
+
 .button-container {
     text-align: center;
-    margin: 25px 0 15px;
+    margin-bottom: 20px;
 }
 
 .submit-btn {
     width: 100%;
-    max-width: 200px;
-    padding: 12px 25px;
-    background-color: rgba(42,87,131,0.7);
+    padding: 12px;
+    background-color: transparent;
     color: white;
     border: none;
     border-radius: 5px;
@@ -160,7 +142,7 @@ input[type="tel"] {
 }
 
 .submit-btn:hover {
-    background-color: rgba(42,87,131,0.9);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .form-footer {
@@ -168,23 +150,14 @@ input[type="tel"] {
     font-size: 14px;
 }
 
-.highlight-link {
-    color: #ff8df3;
-    text-decoration: none;
-}
+ .user-type-dropdown {
+            margin-bottom: 20px;
+        }
 
-.highlight-link:hover {
-    text-decoration: underline;
-}
-
-.error-message {
-    color: #ff6b6b;
-    text-align: center;
-    margin-bottom: 15px;
-}
-
-.success-message {
-    color: #6bff6b;
-    text-align: center;
-    margin-bottom: 15px;
-}
+.user-type-dropdown select {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+        }
