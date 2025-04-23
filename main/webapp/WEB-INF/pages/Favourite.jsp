@@ -14,7 +14,7 @@
     
     <div class="navbarSection">
         <!-- Code for Including the navbar -->
-		<jsp:include page="../pages/Navbar.jsp" />    
+		<jsp:include page="Navbar.jsp" />    
 	</div>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

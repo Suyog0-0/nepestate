@@ -26,7 +26,7 @@
   </style>
 
 <body>
-<jsp:include page="Navbar.jsp"/>
+<jsp:include page="Navbar.jsp" />
 <div class="mainSquare">
 
     <div class="subRow">
