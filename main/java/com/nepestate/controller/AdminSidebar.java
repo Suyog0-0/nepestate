@@ -16,14 +16,14 @@ import com.nepestate.util.SessionUtil;
 /**
  * Servlet implementation class adminsidebar
  */
-@WebServlet("/adminsidebar")
-public class adminsidebar extends HttpServlet {
+@WebServlet("/AdminSidebar")
+public class AdminSidebar extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public adminsidebar() {
+    public AdminSidebar() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +33,7 @@ public class adminsidebar extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/adminsidebar.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/AdminSidebar.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
+ 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
 <div class="footer-container">
     <div class="footer-logo">
         <img src="${pageContext.request.contextPath}/images/whitelogo.png" class="footer-logo-img">

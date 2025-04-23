@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Dashboard</title>
-<link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/admindashboard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/AdminDashboard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Navbar.css">
 </head>
 <body>
 
@@ -14,7 +14,7 @@ href="${pageContext.request.contextPath}/css/admindashboard.css">
     
     <div class="navbarSection">
         <!-- Code for Including the navbar -->
-        <jsp:include page="navbar.jsp" />
+        <jsp:include page="Navbar.jsp" />
     </div>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
@@ -22,7 +22,7 @@ href="${pageContext.request.contextPath}/css/admindashboard.css">
   <!-- Main Layout -->
   <div class="main-container">
     <!-- Sidebar -->
-      <jsp:include page="adminsidebar.jsp"/>
+      <jsp:include page="AdminSidebar.jsp"/>
 
     <!-- Dashboard Content -->
     <main class="dashboard">

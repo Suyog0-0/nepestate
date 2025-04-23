@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/Navbar.css">
+
 <div class="navbar-container">
     <div class="navbar-left">
         <div class="navbar-logo">
@@ -18,7 +20,7 @@
         <ul class="navbar-items">
 			<li><a href="${pageContext.request.contextPath}/home">Home</a></li>            
 			<li><a href="${pageContext.request.contextPath}/">Properties</a></li>
-            <li><a href="${pageContext.request.contextPath}/ContactUs">Contact Us</a></li>
+			<li><a href="${pageContext.request.contextPath}/ContactUs">Contact Us</a></li>
             <li><a href="${pageContext.request.contextPath}AboutUs">About Us</a></li>
             <li><a href="#">|</a></li>
             <li>

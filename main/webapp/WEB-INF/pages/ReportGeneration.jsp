@@ -13,9 +13,9 @@ href="${pageContext.request.contextPath}/css/ReportGeneration.css">
 href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
+	<jsp:include page="Navbar.jsp" />
 	<div style="display:flex;">
-		<jsp:include page="adminsidebar.jsp" />
+		<jsp:include page="AdminSidebar.jsp" />
 		<div class="rightbox">
             <div style="margin-left: 7%;">
                 <div>

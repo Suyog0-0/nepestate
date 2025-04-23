@@ -6,14 +6,14 @@
 <meta charset="UTF-8">
 <title>Product</title>
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/navbar.css">
+href="${pageContext.request.contextPath}/css/Navbar.css">
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/Product.css">
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
+	<jsp:include page="Navbar.jsp" />
 	<div style="display: flex;">
         <div class="filter">
             <div>

@@ -11,7 +11,7 @@
 	    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">    
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/navbar.css" />	
+	href="${pageContext.request.contextPath}/css/Navbar.css" />	
 	
 <body>
     <header>
@@ -20,7 +20,7 @@
     
     <div class="navbarSection">
         <!-- Code for Including the navbar -->
-        <jsp:include page="navbar.jsp" />
+        <jsp:include page="Navbar.jsp" />
     </div>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->

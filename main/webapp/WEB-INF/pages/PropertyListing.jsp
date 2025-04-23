@@ -11,13 +11,13 @@ href="${pageContext.request.contextPath}/css/propertylisting.css">
 <body>
 
 	<!-- Taskbar -->
-  <jsp:include page="navbar.jsp"/>
+  <jsp:include page="Navbar.jsp"/>
 
   <!-- Main Layout -->
   <div class="main-container">
     
     <!-- Sidebar -->
-    <jsp:include page="adminsidebar.jsp"/>
+    <jsp:include page="AdminSidebar.jsp"/>
 
     <!-- Content -->
     <main class="property-list">

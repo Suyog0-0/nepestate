@@ -10,12 +10,12 @@ href="${pageContext.request.contextPath}/css/userdashboard.css">
 </head>
 <body>
 
-  <jsp:include page="navbar.jsp"/>
+  <jsp:include page="Navbar.jsp"/>
 
   <!-- Main Layout -->
   <div class="main-container">
     
-    <jsp:include page="usersidebar.jsp"/>
+    <jsp:include page="UserSidebar.jsp"/>
    
     <!-- Dashboard -->
     <main class="dashboard">

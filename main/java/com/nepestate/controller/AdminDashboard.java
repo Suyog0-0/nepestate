@@ -10,14 +10,14 @@ import java.io.IOException;
 /**
  * Servlet implementation class admindashboard
  */
-@WebServlet("/admindashboard")
-public class admindashboard extends HttpServlet {
+@WebServlet("/AdminDashboard")
+public class AdminDashboard extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public admindashboard() {
+    public AdminDashboard() {
         // TODO Auto-generated constructor stub
     }
 
@@ -26,7 +26,7 @@ public class admindashboard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/admindashboard.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
 	}
 
 	/**

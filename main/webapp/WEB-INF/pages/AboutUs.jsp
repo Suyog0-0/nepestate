@@ -8,15 +8,13 @@
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/AboutUs.css">
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/navbar.css">
+href="${pageContext.request.contextPath}/css/Navbar.css">
 </head>
 <body>
     <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
     
-    <div class="navbarSection">
-        <!-- Code for Including the navbar -->
-        <jsp:include page="navbar.jsp" />
-    </div>
+
+        <jsp:include page="Navbar.jsp" />
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
 
