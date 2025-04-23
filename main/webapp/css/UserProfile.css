@@ -33,9 +33,9 @@
     font-size: 18px;
     text-align: justify;
     padding: 15px 0;
-      border: none;
-      border-bottom: 2px solid black;
-      background: transparent;
+    border: none;
+	border-bottom: 2px solid black;
+    background: transparent;
 }
 
 
@@ -60,3 +60,5 @@
     margin-top: 10px;
     /* margin-left: 10px; */
 }
+
+    
