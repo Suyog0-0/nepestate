@@ -143,23 +143,23 @@ public class RegisterController extends HttpServlet {
 //				req.setAttribute("dob", req.getParameter("dob"));
 //				req.setAttribute("gender", req.getParameter("gender"));
 				req.setAttribute("email", req.getParameter("email"));
-				req.setAttribute("phoneNumber", req.getParameter("phoneNumber"));
+				req.setAttribute("phoneNumber", req.getParameter("phone"));
 				req.setAttribute("subject", req.getParameter("subject"));
 				req.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(req, resp);
 			}
 			
 			private CustomerModel createCustomerFromRequest(HttpServletRequest req) {
 				CustomerModel customer = new CustomerModel();
-				customer.setCust_FirstName(req.getParameter("firstName"));
-				customer.setCust_LastName(req.getParameter("lastName"));
-				customer.setCust_Username(req.getParameter("username"));
-				customer.setCust_EmailAddress(req.getParameter("email"));
-				customer.setCust_Password(req.getParameter("password"));
-				customer.setCust_PhoneNumber(req.getParameter("phone"));
+				customer.setCustomer_FirstName(req.getParameter("firstName"));
+				customer.setCustomer_LastName(req.getParameter("lastName"));
+				customer.setCustomer_Username(req.getParameter("username"));
+				customer.setCustomer_EmailAddress(req.getParameter("email"));
+				customer.setCustomer_Password(req.getParameter("password"));
+				customer.setCustomer_PhoneNumber(req.getParameter("phone"));
 				
 				// Set default profile picture path or handle file upload
-				customer.setCust_ProfilePicture("defaul.jpg");
-				customer.setCust_DoB("21-07-2006");
+				customer.setCustomer_ProfilePicture("defaul.jpg");
+				customer.setCustomer_DoB("21-07-2006");
 				
 				return customer;
 			}
