@@ -10,6 +10,8 @@
 	href="${pageContext.request.contextPath}/css/navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	<link rel="stylesheet" type="text/css" 
+	href="${pageContext.request.contextPath}/css/Footer.css">
 <style>
     .form-label {
       font-family: Arial, sans-serif;
@@ -137,11 +139,10 @@
           
       </div>
 
-      <!-- <div class="image-preview">
-        <img src="updateImage.png" alt="Property Image" />
-      </div>
-    </div> -->
-    
-   
+<div class="footerSection">
+    <jsp:include page="Footer.jsp" />
+</div>
+<br>
+<br>
 </body>
 </html>

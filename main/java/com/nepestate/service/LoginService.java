@@ -89,8 +89,8 @@ private boolean validatePasswordForCustomer(ResultSet result, CustomerModel cust
 	String dbPassword = result.getString("Customer_Password");
 	System.out.println(dbPassword);
 
-	return dbUsername.equals(customerModel.getCustomer_Username()) &&
-	dbPassword.equals(customerModel.getCustomer_Password());
+	return dbUsername.equals(customerModel.getCustomer_Username()) 
+			&& PasswordUtil.decrypt(dbPassword, dbUsername).equals(customerModel.getCustomer_Password());
 	}        
 
 private boolean validatePasswordForAdmin(ResultSet result, AdminModel adminModel) throws SQLException {
