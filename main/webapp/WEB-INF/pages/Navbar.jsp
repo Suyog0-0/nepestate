@@ -21,7 +21,7 @@
 			<li><a href="${pageContext.request.contextPath}/HomeController">Home</a></li>            
 			<li><a href="${pageContext.request.contextPath}/ProductController">Properties</a></li>
 			<li><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
-            <li><a href="${pageContext.request.contextPath}AboutUsController">About Us</a></li>
+            <li><a href="${pageContext.request.contextPath}/AboutUsController">About Us</a></li>
             <li><a href="#">|</a></li>
             <li>
                 <div class="navbar-register-container">
