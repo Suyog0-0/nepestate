@@ -18,9 +18,9 @@
     flex-wrap: wrap;
     color: white;
     margin-top: auto;
+    position: relative;
 }
 
-/* Logo */
 .footer-logo {
     display: flex;
     justify-content: center;
@@ -32,7 +32,6 @@
     height: auto;
 }
 
-/* Sections */
 .footer-section {
     text-align: center;
     margin: 10px 20px;
@@ -69,14 +68,11 @@
     color: #00A3FF;
 }
 
-
-/* QR Code */
 .footer-qrcode {
     width: 130px;
     height: 130px;
 }
 
-/* Socials */
 .footer-socials {
     display: flex;
     justify-content: center;
@@ -97,9 +93,6 @@
     cursor: pointer;
 }
 
-
-
-/* Responsive */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
@@ -107,4 +100,14 @@
         gap: 30px;
         text-align: center;
     }
+}
+
+.footer-copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #ccc;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 15px;
 }

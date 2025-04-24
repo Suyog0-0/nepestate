@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
- 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
 <div class="footer-container">
     <div class="footer-logo">
@@ -39,5 +38,9 @@
             <img src="${pageContext.request.contextPath}/images/twitterwhite.png" class="footer-social-icon">
             <img src="${pageContext.request.contextPath}/images/linkedin.png" class="footer-social-icon">
         </div>
+    </div>
+
+    <div class="footer-copyright">
+        &copy; 2025 YourCompanyName. All rights reserved.
     </div>
 </div>
