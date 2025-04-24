@@ -13,7 +13,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('${pageContext.request.contextPath}/images/BackgroundRegister.jpeg');
+    background-image: url('../images/backgroundregisterlogin.jpeg');
     background-size: cover;
     overflow-x: hidden;
 }
@@ -32,20 +32,28 @@ body {
     background: linear-gradient(to bottom, #356A95, #001B34);
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 40px 5px rgba(0, 0, 0, 0.8);
     color: white;
     animation: fadeIn 0.8s ease-in-out, floatIn 0.8s ease-out;
     transform-origin: center;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes floatIn {
-    from { transform: translateY(20px); }
-    to { transform: translateY(0); }
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(0);
+    }
 }
 
 input[type="text"]::placeholder,
@@ -69,8 +77,12 @@ input[type="password"]::placeholder {
 }
 
 @keyframes glow {
-    from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
-    to { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(102, 179, 255, 0.6); }
+    from {
+        text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    }
+    to {
+        text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(102, 179, 255, 0.6);
+    }
 }
 
 .line {
@@ -82,8 +94,12 @@ input[type="password"]::placeholder {
 }
 
 @keyframes expandLine {
-    from { transform: scaleX(0); }
-    to { transform: scaleX(1); }
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
 }
 
 .form-group {
@@ -112,19 +128,6 @@ input[type="password"]::placeholder {
     }
 }
 
-.name-row {
-    display: flex;
-    gap: 15px;
-    width: 100%;
-}
-
-.half {
-    flex: 1;
-    min-width: 0;
-    background-color: white;
-    color: #333;
-}
-
 .form-group label {
     display: block;
     margin-bottom: 8px;
@@ -138,7 +141,6 @@ input[type="password"]::placeholder {
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="tel"],
 select {
     width: 100%;
     padding: 12px;
@@ -152,17 +154,24 @@ select {
 input[type="text"]:focus,
 input[type="password"]:focus,
 input[type="email"]:focus,
-input[type="tel"]:focus,
 select:focus {
     border: 2px solid #66b3ff;
     box-shadow: 0 0 8px rgba(102, 179, 255, 0.7);
     transform: translateY(-2px);
 }
 
+.name-row {
+    display: flex;
+    gap: 15px;
+}
+
+.half {
+    flex: 1;
+}
+
 .date-selects {
     display: flex;
     gap: 10px;
-    width: 100%;
 }
 
 .date-selects select {
@@ -170,7 +179,6 @@ select:focus {
     padding: 12px;
     border: none;
     border-radius: 5px;
-    font-size: 15px;
     appearance: none;
     background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
     background-repeat: no-repeat;
@@ -187,7 +195,6 @@ select:focus {
 
 .password-field {
     position: relative;
-    width: 100%;
 }
 
 .toggle-password {
@@ -223,9 +230,8 @@ select:focus {
 
 .submit-btn {
     width: 100%;
-    max-width: 200px;
-    padding: 12px 25px;
-    background-color: rgba(42,87,131,0.7);
+    padding: 12px;
+    background-color: transparent;
     color: white;
     border: 2px solid rgba(255, 255, 255, 0.5);
     border-radius: 5px;
@@ -248,7 +254,9 @@ select:focus {
 }
 
 .submit-btn:hover {
-    background-color: rgba(42,87,131,0.9);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .submit-btn:hover:before {
