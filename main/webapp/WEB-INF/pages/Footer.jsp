@@ -10,7 +10,7 @@
             <div class="footer-section">
                 <h1>QUICK LINKS</h1>
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/HomepageController">Home</a></li>
+                    <li><a href="${pageContext.request.contextPath}/HomeController">Home</a></li>
                     <li><a href="${pageContext.request.contextPath}/ProductController">Category</a></li>
                     <li><a href="${pageContext.request.contextPath}/AboutUsController">About Us</a></li>
                     <li><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
@@ -31,10 +31,10 @@
             <div class="footer-section">
                 <h1>SOCIALS</h1>
                 <div class="footer-socials">
-                    <a href="#"><img src="${pageContext.request.contextPath}/images/instagram.png" class="footer-social-icon"></a>
-                    <a href="#"><img src="${pageContext.request.contextPath}/images/facebook.png" class="footer-social-icon"></a>
-                    <a href="#"><img src="${pageContext.request.contextPath}/images/youtube.png" class="footer-social-icon"></a>
-                    <a href="#"><img src="${pageContext.request.contextPath}/images/linkedin.png" class="footer-social-icon"></a>
+                    <a href="www.instagram.com"><img src="${pageContext.request.contextPath}/images/instagram.png" class="footer-social-icon"></a>
+                    <a href="www.facebook.com"><img src="${pageContext.request.contextPath}/images/facebook.png" class="footer-social-icon"></a>
+                    <a href="www.youtube.com"><img src="${pageContext.request.contextPath}/images/youtube.png" class="footer-social-icon"></a>
+                    <a href="www.linkedin.com"><img src="${pageContext.request.contextPath}/images/linkedin.png" class="footer-social-icon"></a>
                 </div>
             </div>
         </div>

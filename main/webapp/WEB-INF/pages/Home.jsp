@@ -30,7 +30,7 @@
             <h1 class="heroTitle">Find the perfect home or investment property in Nepal with ease.</h1>
             <div class="heroSearchBar">
                 <div class="searchInputContainer">
-                    <div class="searchIconContainer">
+                    <div class="searchIconContainer">s
                         <img src="${pageContext.request.contextPath}/images/searchIcon.png" alt="Search Icon" class="searchIcon">
                     </div>
                     <input type="text" placeholder="What are you searching for?" class="searchInput">
