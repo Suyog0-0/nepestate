@@ -109,10 +109,37 @@
 
 .card{
     display: flex;
-    gap: 5%;
+    gap: 10%;
     padding: 15px;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;      /* remove double borders */
+  font-family: system-ui, sans-serif;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;               /* keep rounded corners */
+  box-shadow: 0 2px 6px rgba(0,0,0,.07);
+}
+
+thead {
+  background: #f5f7fa;
+}
+
+th, td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  border-top: 8px solid #eceff1;
+ }
+
+
+@media(max-width:700px){ /* turn table into a stacked card list on phones */
+  table, thead, tbody, th, td, tr { display: block; }
+
+}
+
   
