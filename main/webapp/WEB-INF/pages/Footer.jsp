@@ -41,6 +41,6 @@
     </div>
 
     <div class="footer-copyright">
-        &copy; 2025 YourCompanyName. All rights reserved.
+        &copy; 2025 YourCompanyName. All rights reserved. 
     </div>
 </div>
