@@ -62,38 +62,37 @@
                         <div class="subRow">
                             <div class="subColumn">
                                 <label class="form-label">Name</label>
-                                <text class="underline-long">Durgesh Thapa</text>
+                                <input type="text" class="underline-long">
                             </div>
                         </div>
                                 <div class="subRow">
                                     <div class="subColumn">
                                         <label class="form-label">Description</label>
-                                        <text class="user-description"> I have worked in property dealings for more than 25 years and thererfore, you 
-                                            won’t have any problems dealing with me. </text>
+                                        <input type="text" class="user-description"> 
                                     </div>
                                 </div>
                                 <div class="subRow">
                                 <div class="subColumn">
                                     <label class="form-label">Phone Number</label>
-                                <text class="underline-long">9803421026</text>
+                                <Input type="text" class="underline-long">
                                 </div>
                             </div>
                             <div class="subRow">
                                     <div class="subColumn">
                                         <label class="form-label">Email</label>
-                                        <text class="underline-long">durgesh.thapa@gmail.com</text>
+                                        <input type="text" class="underline-long">
                                     </div>
                                 </div>
                             <div class="subRow">
                                 <div class="subColumn">
                                     <label class="form-label">Date of Birth</label>
-                                    <text class="underline-long">23/04/1998</text>
+                                    <input type="text" class="underline-long">
                                 </div>
                             </div>    
                             <div class="subRow">
                                 <div class="subColumn">
                                     <label class="form-label">Location</label>
-                                    <text class="underline-long">Kathmandu, Nepal</text>
+                                    <input type="text" class="underline-long">
                                 </div>
                             </div>
                             <br>
@@ -104,7 +103,7 @@
                     </div> 
            
                 <div style="margin-top:50px;">
-                    <img src="updateIcon.png" alt="Property Image" />
+                    <img src="${pageContext.request.contextPath}/images/updateIcon.png" alt="Property Image" />
                 </div>
              
         </div>  
@@ -115,7 +114,7 @@
     </div>
 <div style="display:flex;gap:60px;margin-top:50px;margin-left:30px;">
     <div class="productbox">
-        <img src="ListedProperty.png"> 
+        <img src="${pageContext.request.contextPath}/images/ListedProperty.png"> 
         <div style="direction:flex;margin-left:12px;max-width:300px">
             <div class="tag"> Home </div>
             <h3 style="margin-bottom:10px;"> Rs 12,00,000<h3>
@@ -124,7 +123,7 @@
         </div> 
     </div>
     <div class="productbox">
-        <img src="ListedProperty1.png"> 
+        <img src="${pageContext.request.contextPath}/images/ListedProperty1.png"> 
         <div style="direction:flex;margin-left:12px;max-width:300px">
             <div class="tag"> Home </div>
             <h3 style="margin-bottom:10px;"> Rs 50,00,000<h3>
@@ -133,7 +132,7 @@
         </div> 
     </div>
     <div class="productbox">
-        <img src="ListedProperty2.png"> 
+        <img src="${pageContext.request.contextPath}/images/ListedProperty2.png"> 
         <div style="direction:flex;margin-left:12px;max-width:300px">
             <div class="tag"> Colony </div>
             <h3 style="margin-bottom:10px;"> Rs 1,75,00,000<h3>
@@ -142,7 +141,7 @@
         </div> 
     </div>
     <div class="productbox">
-        <img src="ListedProperty4.png"> 
+        <img src="${pageContext.request.contextPath}/images/ListedProperty4.png"> 
         <div style="direction:flex;margin-left:12px;max-width:300px">
             <div class="tag"> Apartment </div>
             <h3 style="margin-bottom:10px;"> Rs 3,20,00,000<h3>

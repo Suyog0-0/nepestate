@@ -10,6 +10,8 @@
 	href="${pageContext.request.contextPath}/css/navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	<link rel="stylesheet" type="text/css" 
+	href="${pageContext.request.contextPath}/css/Footer.css">
 <style>
     .form-label {
       font-family: Arial, sans-serif;
@@ -42,11 +44,11 @@
       <div class="subRow">
         <div class="subColumn">
           <label class="form-label">Title</label>
-          <div class="underline-long">House for Sale At Tripureshwor</div>
+          <input type="text" class="underline-long">
         </div>
           <div class="subColumn">
             <label class="form-label">Price</label>
-            <div class="underline-short">Rs 1,50,00,000</div>
+            <input type="text" class="underline-short">
           </div>
         
       </div>
@@ -65,42 +67,39 @@
         <div class="subRowDetails">
           <div class="subColumn">
             <label class="form-label">Address</label>
-            <div class="underline-short">Tripureshwor</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">City</label>
-            <div class="underline-short">Kathmandu</div>
+            <input type="text"class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">Area</label>
-            <div class="underline-short">2000 sq ft</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">Municipality</label>
-            <div class="underline-short">Kathmandu</div>
+            <input type="text" class="underline-short">
           </div>
           <div class="subColumn">
             <label class="form-label">Ward No.</label>
-            <div class="underline-short">24</div>
+            <input type="text" class="underline-short">
           </div>
         </div>
         <div class="subRow">
           <div class="subColumn">
             <label class="form-label">Upload Thumbnail</label>
-            <img src="uploadImage.png" style="max-width:36.48px;margin-left:35px;padding:10px" > 
+            <img src="${pageContext.request.contextPath}/images/uploadImage.png" style="max-width:36.48px;margin-left:35px;padding:10px" > 
           </div>
           <div class="subColumn">
             <label class="form-label">Upload Photos</label>
-            <img src="uploadImage.png" style="max-width:36.48px;margin-left:35px;padding:10px" >
+            <img src="${pageContext.request.contextPath}/images/uploadImage.png" style="max-width:36.48px;margin-left:35px;padding:10px" >
           </div>
         </div>
         <div class="subRow">
             <div class="subColumn">
               <label class="form-label">Description</label>
-              <div class="property-description">
-                This beautiful house at Tripureshwor is located at a prime location which is very decently priced at Rs 1,50,00,000.
-                The house is found right next to the road but is found to be very quiet and peaceful.
-              </div>
+              <input type="text"class="property-description">
             </div>
           </div>
       
@@ -140,11 +139,10 @@
           
       </div>
 
-      <!-- <div class="image-preview">
-        <img src="updateImage.png" alt="Property Image" />
-      </div>
-    </div> -->
-    
-   
+<div class="footerSection">
+    <jsp:include page="Footer.jsp" />
+</div>
+<br>
+<br>
 </body>
 </html>

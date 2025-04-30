@@ -10,6 +10,8 @@ import java.io.IOException;
 import com.nepestate.model.CustomerModel;
 import com.nepestate.model.AdminModel;
 import com.nepestate.service.LoginService;
+import com.nepestate.util.CookieUtil;
+import com.nepestate.util.SessionUtil;
 
 /**
  * Servlet implementation class LoginController
@@ -52,9 +54,14 @@ public class LoginController extends HttpServlet {
 			AdminModel adminModel = new AdminModel(username, password);
 			Boolean loginStatus = loginObject.loginAdmin(adminModel);
 			if (loginStatus != null && loginStatus) {
+				
 				System.out.println("Successfully Login");
+				SessionUtil.setAttribute(request, "username", username);
+				CookieUtil.addCookie(response, "role", "admin", 5 * 30);
 				request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
 			}else {
+				SessionUtil.setAttribute(request, "username", username);
+				CookieUtil.addCookie(response, "role", "student", 5 * 1);
 				System.out.println("Error at Login Controller");
 				System.out.println(loginStatus);
 				handleLoginFailure(request, response, loginStatus);

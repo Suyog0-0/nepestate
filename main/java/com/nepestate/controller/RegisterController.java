@@ -2,6 +2,7 @@ package com.nepestate.controller;
 
 import com.nepestate.model.CustomerModel;
 import com.nepestate.service.RegisterService;
+import com.nepestate.util.PasswordUtil;
 import com.nepestate.util.ValidationUtil;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -54,8 +55,9 @@ public class RegisterController extends HttpServlet {
 				Boolean result = registerService.addCustomer(customer);
 				
 				if (result != null && result) {
+					handleSuccess(req, resp, "Your account is successfully created!", "/WEB-INF/pages/Login.jsp");
 					req.setAttribute("success", "Registration successful!");
-					req.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(req, resp);
+//					req.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(req, resp);
 				} else {
 					handleError(req, resp, "Failed to register. Please try again.");
 				}
@@ -74,7 +76,7 @@ public class RegisterController extends HttpServlet {
 			String username = req.getParameter("username");
 //			String gender = req.getParameter("gender");
 			String email = req.getParameter("email");
-			String number = req.getParameter("phoneNumber");
+			String number = req.getParameter("phone");
 			String password = req.getParameter("password");
 			String retypePassword = req.getParameter("reTypePassword");
 			
@@ -93,8 +95,8 @@ public class RegisterController extends HttpServlet {
 //				return "Gender is required.";
 			if (ValidationUtil.isNullOrEmpty(email))
 				return "Email is required.";
-//			if (ValidationUtil.isNullOrEmpty(number))
-//				return "Phone number is required.";
+			if (ValidationUtil.isNullOrEmpty(number))
+				return "Phone number is required.";
 			if (ValidationUtil.isNullOrEmpty(password))
 				return "Password is required.";
 			if (ValidationUtil.isNullOrEmpty(retypePassword))
@@ -115,8 +117,8 @@ public class RegisterController extends HttpServlet {
 //				return "Gender must be 'male' or 'female'.";
 			if (!ValidationUtil.isValidEmail(email))
 				return "Invalid email format.";
-//			if (!ValidationUtil.isValidPhoneNumber(number))
-//				return "Phone number must be 10 digits and start with 98.";
+			if (!ValidationUtil.isValidPhoneNumber(number))
+				return "Phone number must be 10 digits and start with 98.";
 			if (!ValidationUtil.isValidPassword(password))
 				return "Password must be at least 8 characters long, with 1 uppercase letter, 1 number, and 1 symbol.";
 			if (!ValidationUtil.doPasswordsMatch(password, retypePassword))
@@ -134,6 +136,11 @@ public class RegisterController extends HttpServlet {
 //
 		return null; // All validations passed
 		}
+		private void handleSuccess(HttpServletRequest req, HttpServletResponse resp, String message, String redirectPage)
+				throws ServletException, IOException {
+			req.setAttribute("success", message);
+			req.getRequestDispatcher(redirectPage).forward(req, resp);
+		}
 			private void handleError(HttpServletRequest req, HttpServletResponse resp, String message)
 					throws ServletException, IOException {
 				req.setAttribute("error", message);
@@ -143,23 +150,26 @@ public class RegisterController extends HttpServlet {
 //				req.setAttribute("dob", req.getParameter("dob"));
 //				req.setAttribute("gender", req.getParameter("gender"));
 				req.setAttribute("email", req.getParameter("email"));
-				req.setAttribute("phoneNumber", req.getParameter("phoneNumber"));
-				req.setAttribute("subject", req.getParameter("subject"));
+				req.setAttribute("phone", req.getParameter("phone"));
 				req.getRequestDispatcher("/WEB-INF/pages/Register.jsp").forward(req, resp);
 			}
 			
 			private CustomerModel createCustomerFromRequest(HttpServletRequest req) {
 				CustomerModel customer = new CustomerModel();
-				customer.setCust_FirstName(req.getParameter("firstName"));
-				customer.setCust_LastName(req.getParameter("lastName"));
-				customer.setCust_Username(req.getParameter("username"));
-				customer.setCust_EmailAddress(req.getParameter("email"));
-				customer.setCust_Password(req.getParameter("password"));
-				customer.setCust_PhoneNumber("9848682001");
+				customer.setCustomer_FirstName(req.getParameter("firstName"));
+				customer.setCustomer_LastName(req.getParameter("lastName"));
+				String username=req.getParameter("username");
+				customer.setCustomer_Username(req.getParameter("username"));
+				customer.setCustomer_EmailAddress(req.getParameter("email"));
+				String password=req.getParameter("password");
+				customer.setCustomer_PhoneNumber(req.getParameter("phone"));
+				password=PasswordUtil.encrypt(username,password);
+				System.out.println(password);
+				customer.setCustomer_Password(password);
 				
 				// Set default profile picture path or handle file upload
-				customer.setCust_ProfilePicture("defaul.jpg");
-				customer.setCust_DoB("21-07-2006");
+				customer.setCustomer_ProfilePicture("defaul.jpg");
+				customer.setCustomer_DoB("21-07-2006");
 				
 				return customer;
 			}

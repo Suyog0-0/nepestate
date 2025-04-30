@@ -11,20 +11,33 @@
     margin-left: 40px;
     justify-content: space-between;
     padding-left: 30px;
+    margin-bottom:10px;
 }
 .underline-long{
   font-family: Arial, sans-serif;
   font-size: 18px;
-  border-bottom: 1.5px solid black;
-  padding-bottom: 5px; 
-  width:754px;           
+  width:754px;
+  padding: 4px 0;
+  background: transparent; 
+  border:none;
+  border-bottom: 1.5px solid black;       
 }
+
+.underline-long:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  border:none;
+}
+
 .underline-short{
   font-family: Arial, sans-serif;
   font-size: 18px;
-  border-bottom: 1.5px solid black;
-  padding-bottom: 5px; 
-  width:fit-content;           
+  width:fit-content;   
+   padding: 4px 0;
+  border: none;
+  border-bottom: 2px solid black;  
+  background: transparent;           
 }
 .subRow{
     display: flex;
@@ -40,7 +53,7 @@
 .subRowDetails{
   display: flex;
   flex-direction: row;
-  padding-top: 15px;
+  padding-top: 50px;
   gap: 5%;
 }
 .subColumn{
@@ -81,13 +94,16 @@
   max-width: 750px;
   margin-top: 20px;
   height: 117px;
+  width: 800px;
   font-family: Arial, sans-serif;
-  border: 2px solid black;
-  padding: 15px;
   color: #333;
   line-height: 1.5;
   font-size: 18px;
   text-align: justify;
+  padding: 15px 0;
+  border: 1px solid black;
+  border-bottom: 2px solid black;  
+  background: transparent; 
 }
 
 .update-button {
