@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: white;
+}
+
+.sidebar {
+  width: 250px;
+  height: 840px;
+  background: linear-gradient(to bottom, #2c3e50, #0f2027);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin: 50px 0px 20px 50px;
+  padding: 40px 25px;
+}
+
+.profile-section {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-top: 30px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+
+.role {
+  font-style: italic;
+  font-size: 15px;
+  color: #ddd;
+  margin-top: 15px;
+}
+
+.profile-section h2 {
+  margin: 10px 0 5px 0;
+  font-size: 20px;
+}
+
+.phone, .email {
+  font-size: 15px;
+  color: #bbb;
+}
+
+/* Menu Styles */
+.menu
+{
+	padding: 0;
+}
+.menu ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  padding: 12px 0 12px 0px; /* Aligns main menu items */
+}
+.arrow {
+    font-size: 14px;
+    margin-left: -33px; /* Moves it outside the usual padding zone */
+    margin-right: 10px;
+  }
+
+  .arrow img
+  {
+    width: 17px;
+  }
+  
+.dashboard-images
+{
+    width: 25px;
+}
+
+.dashboard-toggle {
+  padding: 15px 0 15px 20px;
+}
+
+.submenu {
+  display: none;
+  flex-direction: column;
+  padding-left: 40px; /* Indent submenu items */
+}
+
+.submenu li {
+  padding: 10px 0 15px 30px;
+}
+
+.submenu.active {
+  display: flex;
+}
+
+/* Special spacing between last submenu item and logout */
+.submenu .contact {
+  margin-bottom: 30px;
+}
+
+.logout {
+  padding-left: 20px; /* Align with dashboard */
+}
+.logout-img
+{
+    width: 30px;
+}
+
+/* Hover Effect */
+.menu li:hover {
+  background-color: #032648;
+  border: 1px solid white;
+  border-radius: 10px;
+}
