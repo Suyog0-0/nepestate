@@ -134,7 +134,6 @@ href="${pageContext.request.contextPath}/css/adminSidebar.css">
         <td data-label="Email">itsmizu@gmail.com</td>
         <td data-label="Listings">2</td>
       </tr>
-      
     </tbody>
   </table>
           
