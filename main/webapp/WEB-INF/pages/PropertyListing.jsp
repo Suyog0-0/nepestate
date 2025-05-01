@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Property Listing</title>
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/propertylisting.css">
+href="${pageContext.request.contextPath}/css/PropertyListing.css">
 </head>
 <body>
 
