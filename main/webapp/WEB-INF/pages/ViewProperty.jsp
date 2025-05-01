@@ -8,9 +8,9 @@
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/Navbar.css">
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/Product.css">
+href="${pageContext.request.contextPath}/css/ViewProperty.css">
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/footer.css">
+href="${pageContext.request.contextPath}/css/Footer.css">
 </head>
 <body>
 	<jsp:include page="Navbar.jsp" />
