@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/Navbar.css" />
 	<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	href="${pageContext.request.contextPath}/css/UpdateProperty.css" />
 	<link rel="stylesheet" type="text/css" 
 	href="${pageContext.request.contextPath}/css/Footer.css">
 <style>

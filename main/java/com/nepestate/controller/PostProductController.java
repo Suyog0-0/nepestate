@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class PostProductController
  */
-@WebServlet("/PostProductController")
+@WebServlet("/PostPropertyController")
 public class PostProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,7 +27,7 @@ public class PostProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/PostProduct.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/PostProperty.jsp").forward(request, response);
 	}
 
 	/**
