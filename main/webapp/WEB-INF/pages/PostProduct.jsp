@@ -10,6 +10,8 @@
 	href="${pageContext.request.contextPath}/css/Navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	<link rel="stylesheet" type="text/css" 
+	href="${pageContext.request.contextPath}/css/Footer.css">
 <style>
     .form-label {
       font-family: Arial, sans-serif;
@@ -25,13 +27,8 @@
   </style>
 
 <body>
-
-<jsp:include page="Navbar.jsp" />
-<div class="mainSquare">
-
 <jsp:include page="Navbar.jsp"/>
 <div class="mainSquare mainSquareHeight">
-
 
     <div class="subRow">
       <span style="font-family: Arial, sans-serif; font-size: 30px; font-weight:700;">POST PROPERTY</span>
@@ -184,7 +181,6 @@
 <div class="footerSection">
     <jsp:include page="Footer.jsp" />
 </div>
-
 
 </body>
 </html>
