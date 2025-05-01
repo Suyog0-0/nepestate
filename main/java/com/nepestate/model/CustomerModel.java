@@ -2,6 +2,7 @@ package com.nepestate.model;
 
 import java.util.Date;
 
+@SuppressWarnings("unused")
 public class CustomerModel {
 	private String Cust_FirstName;
 	private String Cust_LastName;
