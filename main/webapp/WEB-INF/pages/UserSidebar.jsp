@@ -33,6 +33,7 @@ href="${pageContext.request.contextPath}/css/UserSidebar.css">
         <li><img src="${pageContext.request.contextPath}/images/logout.png" class="logout-img">  Log Out</li>
       </ul>
     </nav>
+
   </div>
   <script>
     const toggle = document.querySelector('.dashboard-toggle');
