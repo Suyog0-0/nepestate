@@ -34,7 +34,7 @@ public Boolean loginAdmin(AdminModel adminModel) {
 		return null;
 	}
 	 System.out.println("Attempting to login with username: " + adminModel.getAdmin_Username());
-	String query = "SELECT Admin_Username, Admin_Password FROM admins WHERE Admin_Username = ?";
+	String query = "SELECT Admin_Username, Admin_Password FROM admintable WHERE Admin_Username = ?";
 	try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
 		stmt.setString(1, adminModel.getAdmin_Username());
 		ResultSet resultAdmin = stmt.executeQuery();
@@ -60,10 +60,10 @@ public Boolean loginUser(CustomerModel customerModel) {
 		System.out.println("Connection Error!");
 		return null;
 	}
-	 System.out.println("Attempting to login with username: " + customerModel.getCustomer_Username());
-	String query = "SELECT Customer_Username, Customer_Password FROM customers WHERE Customer_Username = ?";
+	 System.out.println("Attempting to login with username: " + customerModel.getCust_Username());
+	String query = "SELECT Cust_Username, Cust_Password FROM customers WHERE Cust_Username = ?";
 	try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
-		stmt.setString(1, customerModel.getCustomer_Username());
+		stmt.setString(1, customerModel.getCust_Username());
 		ResultSet result = stmt.executeQuery();
 
 
@@ -71,7 +71,7 @@ public Boolean loginUser(CustomerModel customerModel) {
 			System.out.println("User found in the database");
 			return validatePasswordForCustomer(result, customerModel);
 		}else {
-            System.out.println("No user found with username in customer table: " + customerModel.getCustomer_Username());
+            System.out.println("No user found with username in customer table: " + customerModel.getCust_Username());
         }
 	} catch (SQLException e) {
 		System.out.println("SQL Exception occurred: " + e.getMessage());
@@ -84,13 +84,13 @@ public Boolean loginUser(CustomerModel customerModel) {
 	}
 
 private boolean validatePasswordForCustomer(ResultSet result, CustomerModel customerModel) throws SQLException {
-	String dbUsername = result.getString("Customer_Username");
+	String dbUsername = result.getString("Cust_Username");
 	System.out.println(dbUsername);
-	String dbPassword = result.getString("Customer_Password");
+	String dbPassword = result.getString("Cust_Password");
 	System.out.println(dbPassword);
 
-	return dbUsername.equals(customerModel.getCustomer_Username()) 
-			&& PasswordUtil.decrypt(dbPassword, dbUsername).equals(customerModel.getCustomer_Password());
+	return dbUsername.equals(customerModel.getCust_Username()) &&
+	dbPassword.equals(customerModel.getCust_Password());
 	}        
 
 private boolean validatePasswordForAdmin(ResultSet result, AdminModel adminModel) throws SQLException {

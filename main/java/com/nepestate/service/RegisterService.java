@@ -29,18 +29,18 @@ public class RegisterService {
 			System.err.println("Database connection is not available.");
 			return null;
 		}
-		String insertQuery = "INSERT INTO customers (Customer_FirstName,Customer_LastName,Customer_ProfilePicture,Customer_DoB,Customer_Username,Customer_EmailAddress,Customer_Password,Customer_PhoneNumber) "
+		String insertQuery = "INSERT INTO customers (Cust_FirstName,Cust_LastName,Cust_ProfilePicture,Cust_DOB,Cust_Username,Cust_EmailAddress,Cust_Password,Cust_PhoneNumber) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement insertStmt = dbConn.prepareStatement(insertQuery)) {
             // Insert student details
-            insertStmt.setString(1, customerModel.getCustomer_FirstName());
-            insertStmt.setString(2,  customerModel.getCustomer_LastName());
-            insertStmt.setString(3,  customerModel.getCustomer_ProfilePicture());
-            insertStmt.setString(4,  customerModel.getCustomer_DoB());
-            insertStmt.setString(5,  customerModel.getCustomer_Username());
-            insertStmt.setString(6,  customerModel.getCustomer_EmailAddress());
-            insertStmt.setString(7,  customerModel.getCustomer_Password());
-            insertStmt.setString(8,  customerModel.getCustomer_PhoneNumber());
+            insertStmt.setString(1, customerModel.getCust_FirstName());
+            insertStmt.setString(2,  customerModel.getCust_LastName());
+            insertStmt.setString(3,  customerModel.getCust_ProfilePicture());
+            insertStmt.setString(4,  customerModel.getCust_DoB());
+            insertStmt.setString(5,  customerModel.getCust_Username());
+            insertStmt.setString(6,  customerModel.getCust_EmailAddress());
+            insertStmt.setString(7,  customerModel.getCust_Password());
+            insertStmt.setString(8,  customerModel.getCust_PhoneNumber());
             
             System.out.println("Executing insert statement");
             int rowsAffected = insertStmt.executeUpdate();

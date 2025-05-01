@@ -1,100 +1,101 @@
 package com.nepestate.model;
 
+import java.util.Date;
 
 public class CustomerModel {
-	private String Customer_FirstName;
-	private String Customer_LastName;
-	private String Customer_Username;
-	private String Customer_EmailAddress;
-	private String Customer_Password;
-	private String Customer_ProfilePicture;
-	private String Customer_DoB;
-	private String Customer_PhoneNumber;
+	private String Cust_FirstName;
+	private String Cust_LastName;
+	private String Cust_Username;
+	private String Cust_EmailAddress;
+	private String Cust_Password;
+	private String Cust_ProfilePicture;
+	private String Cust_DoB;
+	private String Cust_PhoneNumber;
 	
 	public CustomerModel() {}
 	
 	public CustomerModel(String cust_FirstName, String cust_LastName, String cust_Username, String cust_EmailAddress,
 			String cust_Password, String cust_ProfilePicture, String cust_DoB, String cust_PhoneNumber) {
 		super();
-		Customer_FirstName = cust_FirstName;
-		Customer_LastName = cust_LastName;
-		Customer_Username = cust_Username;
-		Customer_EmailAddress = cust_EmailAddress;
-		Customer_Password = cust_Password;
-		Customer_ProfilePicture = cust_ProfilePicture;
-		Customer_DoB = cust_DoB;
-		Customer_PhoneNumber = cust_PhoneNumber;
+		Cust_FirstName = cust_FirstName;
+		Cust_LastName = cust_LastName;
+		Cust_Username = cust_Username;
+		Cust_EmailAddress = cust_EmailAddress;
+		Cust_Password = cust_Password;
+		Cust_ProfilePicture = cust_ProfilePicture;
+		Cust_DoB = cust_DoB;
+		Cust_PhoneNumber = cust_PhoneNumber;
 	}
 
-	public String getCustomer_FirstName() {
-		return Customer_FirstName;
+	public String getCust_FirstName() {
+		return Cust_FirstName;
 	}
 
-	public void setCustomer_FirstName(String cust_FirstName) {
-		Customer_FirstName = cust_FirstName;
+	public void setCust_FirstName(String cust_FirstName) {
+		Cust_FirstName = cust_FirstName;
 	}
 
-	public String getCustomer_LastName() {
-		return Customer_LastName;
+	public String getCust_LastName() {
+		return Cust_LastName;
 	}
 
-	public void setCustomer_LastName(String cust_LastName) {
-		Customer_LastName = cust_LastName;
+	public void setCust_LastName(String cust_LastName) {
+		Cust_LastName = cust_LastName;
 	}
 
-	public String getCustomer_Username() {
-		return Customer_Username;
+	public String getCust_Username() {
+		return Cust_Username;
 	}
 
-	public void setCustomer_Username(String cust_Username) {
-		Customer_Username = cust_Username;
+	public void setCust_Username(String cust_Username) {
+		Cust_Username = cust_Username;
 	}
 
-	public String getCustomer_EmailAddress() {
-		return Customer_EmailAddress;
+	public String getCust_EmailAddress() {
+		return Cust_EmailAddress;
 	}
 
-	public void setCustomer_EmailAddress(String cust_EmailAddress) {
-		Customer_EmailAddress = cust_EmailAddress;
+	public void setCust_EmailAddress(String cust_EmailAddress) {
+		Cust_EmailAddress = cust_EmailAddress;
 	}
 
-	public String getCustomer_Password() {
-		return Customer_Password;
+	public String getCust_Password() {
+		return Cust_Password;
 	}
 
-	public void setCustomer_Password(String cust_Password) {
-		Customer_Password = cust_Password;
+	public void setCust_Password(String cust_Password) {
+		Cust_Password = cust_Password;
 	}
 
-	public String getCustomer_ProfilePicture() {
-		return Customer_ProfilePicture;
+	public String getCust_ProfilePicture() {
+		return Cust_ProfilePicture;
 	}
 
-	public void setCustomer_ProfilePicture(String cust_ProfilePicture) {
-		Customer_ProfilePicture = cust_ProfilePicture;
+	public void setCust_ProfilePicture(String cust_ProfilePicture) {
+		Cust_ProfilePicture = cust_ProfilePicture;
 	}
 
-	public String getCustomer_DoB() {
-		return Customer_DoB;
+	public String getCust_DoB() {
+		return Cust_DoB;
 	}
 
-	public void setCustomer_DoB(String cust_DoB) {
-		Customer_DoB = cust_DoB;
+	public void setCust_DoB(String cust_DoB) {
+		Cust_DoB = cust_DoB;
 	}
 
-	public String getCustomer_PhoneNumber() {
-		return Customer_PhoneNumber;
+	public String getCust_PhoneNumber() {
+		return Cust_PhoneNumber;
 	}
 
-	public void setCustomer_PhoneNumber(String cust_PhoneNumber) {
-		Customer_PhoneNumber = cust_PhoneNumber;
+	public void setCust_PhoneNumber(String cust_PhoneNumber) {
+		Cust_PhoneNumber = cust_PhoneNumber;
 	}
 	
 	
 	public CustomerModel(String username,String password) 
 	{
-		this.Customer_Username=username;
-		this.Customer_Password=password;
+		this.Cust_Username=username;
+		this.Cust_Password=password;
 	}
 	
 }
