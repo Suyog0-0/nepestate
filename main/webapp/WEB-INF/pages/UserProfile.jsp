@@ -35,57 +35,7 @@
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UserProfile.css" />
-
 <body>
-
-<jsp:include page="Navbar.jsp"/>
-
-<div style="display:flex"> 
-    <div class="sidebar">
-        <div class="sidebar-top">
-        <img src="Screenshot 2024-07-10 083255.png" alt="Profile Picture" class="profile-pic" />
-        <div class="user-info">
-            <h3>Durgesh Thapa</h3>
-            <p>+977 9841222690</p>
-            <p>durgeshthapa@gmail.com</p>
-        </div>
-        <nav class="nav-menu">
-            <a href="#" class="nav-link active">
-            <img src="1530975-200.png" class="icon" />
-            My Profile
-            </a>
-            <a href="#" class="nav-link">
-            <img src="1413908.png" class="icon" />
-            Dashboard
-            </a>
-            <a href="#" class="nav-link">
-            <img src="free-users-icon-267-thumb.png" class="icon" />
-            Favorites
-            </a>
-            <!-- <a href="#" class="nav-link">
-            <img src="3093748.png" class="icon" />
-            Report
-            </a>
-            <a href="#" class="nav-link">
-            <img src="455705.png" class="icon" />
-            Contact
-            </a> -->
-        </nav>
-        </div>
-        <button class="logout-btn">
-        <img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" class="icon" />
-        Logout
-        </button>
-    </div>
-    <div class="mainBox">
-            <div class="contentBox">
-                <div> 
-                    <div style="display: flex;flex-direction:column">
-                        <div class="subRow">
-                            <div class="subColumn">
-                                <label class="form-label">Name</label>
-                                <input type="text" class="underline-long">
-
 	<div>
 <jsp:include page="Navbar.jsp"/>
 	</div>
