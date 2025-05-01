@@ -97,7 +97,7 @@
 .property-description:focus {
   outline: none;
   border:none;
-  border: 1.5px solid black;  
+  border: 0.5px solid black;  
 }
 
 .update-button {

@@ -26,13 +26,12 @@
         border-bottom: 1.5px solid #7C7C7C;      
     }
 </style>
-<!-- Changed order to load UserProfile.css last -->
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/Navbar.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UserSidebar.css" />
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	href="${pageContext.request.contextPath}/css/UpdateProperty.css" />
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UserProfile.css" />
 <body>
@@ -97,10 +96,10 @@
         </div>
  	</div>
 
-    <div style="font-family:Arial,sans-serif;font-size:40px;margin-left:30px;margin-top:30px;display:block;">
+    <div style="font-family:Arial,sans-serif;font-size:40px;margin-left:125px;margin-top:50px;display:block;">
             Listed Properties (12)
         </div>
-    <div style="display:flex;gap:60px;margin-top:50px;margin-left:30px;">
+    <div style="display:flex;gap:60px;margin-top:50px;margin-left:120px;">
         <div class="productBox">
             <img src="${pageContext.request.contextPath}/images/ListedProperty.png"> 
             <div style="direction:flex;margin-left:12px;max-width:300px;margin-top:10px;">
