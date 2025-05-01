@@ -10,14 +10,14 @@ import java.io.IOException;
 /**
  * Servlet implementation class UpdateProductController
  */
-@WebServlet("/UpdateProductController")
-public class UpdateProductController extends HttpServlet {
+@WebServlet("/UpdateProController")
+public class UpdatePropertyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateProductController() {
+    public UpdatePropertyController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -27,7 +27,7 @@ public class UpdateProductController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/UpdateProduct.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/UpdateProperty.jsp").forward(request, response);
 	}
 
 	/**
