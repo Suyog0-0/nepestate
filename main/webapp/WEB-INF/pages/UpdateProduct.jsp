@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
 	<link rel="stylesheet" type="text/css" 
-	href="${pageContext.request.contextPath}/css/Footer.css"> 
+	href="${pageContext.request.contextPath}/css/Footer.css">
 	<style>
     .form-label {
       font-family: Arial, sans-serif;
@@ -50,7 +50,7 @@
 
         <div style="display: flex; gap: 180px;margin-top:30px;">
           <div class="subColumn">
-            <label class="form-label">Property Type </label>
+            <label class="form-label">Property Type</label>
             <div class="button-group">
               <button class="button-active">Colony</button>
               <button class="button">House</button>
