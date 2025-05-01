@@ -10,41 +10,37 @@ href="${pageContext.request.contextPath}/css/UserSidebar.css">
 </head>
 <body>
 	<div class="sidebar">
-    <div class="sidebar-top">
-      <img src="${pageContext.request.contextPath}/images/profilepicture.png" alt="Profile Picture" class="profile-pic" />
-      <div class="user-info">
-        <h3  class="roleName">( User )</h3>
-        <h3>Durgesh Thapa</h3>
-        <p>+977 9841222694</p>
-        <p>durgeshthapa@gmail.com</p>
-      </div>
-      <nav class="nav-menu">
-        <a href="${pageContext.request.contextPath}/userdashboard" class="nav-link active">
-          <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon" />
-          Dashboard
-        </a>
-        <a href="${pageContext.request.contextPath}/propertylisting" class="nav-link">
-          <img src="${pageContext.request.contextPath}/images/properties.png" class="icon" />
-          Properties
-        </a>
-        <a href="${pageContext.request.contextPath}/ProductAdmin" class="nav-link">
-          <img src="${pageContext.request.contextPath}/images/users.png" class="icon" />
-          Users
-        </a>
-        <a href="${pageContext.request.contextPath}/ReportGeneration" class="nav-link">
-          <img src="${pageContext.request.contextPath}/images/report.png" class="icon" />
-          Report
-        </a>
-        <a href="${pageContext.request.contextPath}/ProductAdmin" class="nav-link">
-          <img src="${pageContext.request.contextPath}/images/contact.png" class="icon" />
-          Contact
-        </a>
-      </nav>
+    <div class="profile-section">
+      <img src="${pageContext.request.contextPath}/images/profilepicture.jpg" alt="Profile" class="profile-img"/>
+      <p class="role">( Admin )</p>
+      <h2>Durgesh Thapa</h2>
+      <p class="phone">+977 9841222694</p>
+      <p class="email">durgeshthapa@gmail.com</p>
     </div>
-    <button class="logout-btn">
-      <img src="${pageContext.request.contextPath}/images/logout.png" class="icon" />
-      Logout
-    </button>
+    
+    <nav class="menu">
+      <ul>
+        <li><img src="${pageContext.request.contextPath}/images/users.png" class="dashboard-images">  My profile</li>
+        <li class="dashboard-toggle">
+            <span class="arrow"><img src="${pageContext.request.contextPath}/images/downward-icon.png"></span>
+            <img src="${pageContext.request.contextPath}/images/dashboard.png" class="dashboard-images"> Dashboard </li>
+        <ul class="submenu">
+          <li><img src="${pageContext.request.contextPath}/images/properties.png" class="dashboard-images"> Properties</li>
+          <li><img src="${pageContext.request.contextPath}/images/users.png" class="dashboard-images"> Users</li>
+          <li><img src="${pageContext.request.contextPath}/images/report.png" class="dashboard-images">  Reports</li>
+          <li><img src="${pageContext.request.contextPath}/images/contact.png" class="dashboard-images">  Contact</li>
+        </ul>
+        <li><img src="${pageContext.request.contextPath}/images/logout.png" class="logout-img">  Log Out</li>
+      </ul>
+    </nav>
   </div>
+  <script>
+    const toggle = document.querySelector('.dashboard-toggle');
+    const submenu = document.querySelector('.submenu');
+
+    toggle.addEventListener('click', () => {
+      submenu.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
