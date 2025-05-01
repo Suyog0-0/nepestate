@@ -13,7 +13,7 @@ href="${pageContext.request.contextPath}/css/navbar.css">
 href="${pageContext.request.contextPath}/css/footer.css">
 </head>
 <body>
-<jsp:include page="navbar.jsp" />
+<jsp:include page="Navbar.jsp" />
 </div>
     <div class="container">
         <div class="leftbox">
@@ -29,6 +29,6 @@ href="${pageContext.request.contextPath}/css/footer.css">
             <img src="${pageContext.request.contextPath}/images/figma.jpg" height="480px">
         </div>
     </div>
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="Footer.jsp" />
 </body>
 </html>

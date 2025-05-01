@@ -15,10 +15,10 @@ href="${pageContext.request.contextPath}/css/footer.css">
 href="${pageContext.request.contextPath}/css/adminSidebar.css">
 </head>
 <body>
-	<jsp:include page="navbar.jsp" />
+	<jsp:include page="Navbar.jsp" />
 	
 	<div style="display: flex;">
-		<jsp:include page="adminSidebar.jsp" />
+		<jsp:include page="AdminSidebar.jsp" />
     
         	
           <div class="users"> 
@@ -141,6 +141,6 @@ href="${pageContext.request.contextPath}/css/adminSidebar.css">
             
           </div>
     </div>
-    <jsp:include page="footer.jsp" />
+    <jsp:include page="Footer.jsp" />
 </body>
 </html>
