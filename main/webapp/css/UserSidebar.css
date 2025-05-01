@@ -49,6 +49,7 @@ body {
   font-size: 15px;
   color: #bbb;
 }
+
 /* Menu Styles */
 .menu ul {
   list-style: none;
@@ -104,13 +105,27 @@ body {
   margin-bottom: 30px;
 }
 
-.logout {
-  padding-left: 20px; /* Align with dashboard */
+.logout-btn {
+  width: 100%;
+  font-weight: bold;
+  font-size: 17px;
+  color: #0b2341;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
 }
-.logout-img
-{
-    width: 30px;
+
+.logout-btn img {
+  width: 30px;
+  object-fit: contain;
 }
+
 
 /* Hover Effect */
 .menu li:hover {

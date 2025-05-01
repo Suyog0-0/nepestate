@@ -12,7 +12,7 @@ href="${pageContext.request.contextPath}/css/UserSidebar.css">
 	<div class="sidebar">
     <div class="profile-section">
       <img src="${pageContext.request.contextPath}/images/profilepicture.jpg" alt="Profile" class="profile-img"/>
-      <p class="role">( Admin )</p>
+      <p class="role">(User)</p>
       <h2>Durgesh Thapa</h2>
       <p class="phone">+977 9841222694</p>
       <p class="email">durgeshthapa@gmail.com</p>
@@ -26,11 +26,13 @@ href="${pageContext.request.contextPath}/css/UserSidebar.css">
             <img src="${pageContext.request.contextPath}/images/dashboard.png" class="dashboard-images"> Dashboard </li>
         <ul class="submenu">
           <li><img src="${pageContext.request.contextPath}/images/properties.png" class="dashboard-images"> Properties</li>
-          <li><img src="${pageContext.request.contextPath}/images/users.png" class="dashboard-images"> Users</li>
           <li><img src="${pageContext.request.contextPath}/images/report.png" class="dashboard-images">  Reports</li>
           <li><img src="${pageContext.request.contextPath}/images/contact.png" class="dashboard-images">  Contact</li>
         </ul>
-        <li><img src="${pageContext.request.contextPath}/images/logout.png" class="logout-img">  Log Out</li>
+       <button class="logout-btn">
+          <img src="${pageContext.request.contextPath}/images/logout.webp" class="icon" />
+          Logout
+        </button>
       </ul>
     </nav>
 

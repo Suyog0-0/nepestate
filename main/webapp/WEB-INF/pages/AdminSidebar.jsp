@@ -35,10 +35,6 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
           <img src="${pageContext.request.contextPath}/images/report.png" class="icon" />
           Report
         </a>
-        <a href="${pageContext.request.contextPath}/ProductAdmin" class="nav-link">
-          <img src="${pageContext.request.contextPath}/images/contact.png" class="icon" />
-          Contact
-        </a>
       </nav>
     </div>
     <button class="logout-btn">

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>User Dashboard</title>
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/userdashboard.css">
+href="${pageContext.request.contextPath}/css/UserDashboard.css">
 </head>
 <body>
 
