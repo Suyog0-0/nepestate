@@ -23,7 +23,6 @@
 
     <div class="maindiv">
 
-
             <!-- Code for Including the sidebar -->
             <jsp:include page="UserSidebar.jsp" />
    
