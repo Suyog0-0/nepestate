@@ -33,6 +33,7 @@ href="${pageContext.request.contextPath}/css/footer.css">
                         </datalist>
                     </div>
                 <div>
+                <button class="generate-button">Generate</button>
 
                 </div>
             </div>

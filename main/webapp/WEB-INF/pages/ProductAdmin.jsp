@@ -11,255 +11,133 @@ href="${pageContext.request.contextPath}/css/Navbar.css">
 href="${pageContext.request.contextPath}/css/ProductAdmin.css">
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/footer.css">
+<link rel="stylesheet" type="text/css" 
+href="${pageContext.request.contextPath}/css/adminSidebar.css">
 </head>
 <body>
 	<jsp:include page="Navbar.jsp" />
+
 	<div style="display: flex;">
-        <div class="sidebar">
-            <div class="sidebar-top">
-              <img src="Screenshot 2024-07-10 083255.png" alt="Profile Picture" class="profile-pic" />
-              <div class="user-info">
-                <h3>Durgesh Thapa</h3>
-                <p>+977 9841222694</p>
-                <p>durgeshthapa@gmail.com</p>
-              </div>
-              <nav class="nav-menu">
-                <a href="#" class="nav-link active">
-                  <img src="1530975-200.png" class="icon" />
-                  Dashboard
-                </a>
-                <a href="#" class="nav-link">
-                  <img src="1413908.png" class="icon" />
-                  Properties
-                </a>
-                <a href="#" class="nav-link">
-                  <img src="free-users-icon-267-thumb.png" class="icon" />
-                  Users
-                </a>
-                <a href="#" class="nav-link">
-                  <img src="3093748.png" class="icon" />
-                  Report
-                </a>
-                <a href="#" class="nav-link">
-                  <img src="455705.png" class="icon" />
-                  Contact
-                </a>
-              </nav>
-            </div>
-            <button class="logout-btn">
-              <img src="https://cdn-icons-png.flaticon.com/512/660/660252.png" class="icon" />
-              Logout
-            </button>
-          </div>
-        
+		<jsp:include page="AdminSidebar.jsp" />
+    
+        	
           <div class="users"> 
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
+          <table>
+    <thead>
+      <tr>
+        <th>S.N</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Phone Number</th>
+        <th>Email</th>
+        <th>Total Listings</th>
+      </tr>
+    </thead>
 
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
+    <tbody>
+      <tr>
+        <td data-label="S.N">1</td>
+        <td data-label="Name">Sachhyam Nyachhyon</td>
+        <td data-label="Age">20</td>
+        <td data-label="Phone">9848682001</td>
+        <td data-label="Email">sachhyamnyachhyon@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
 
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
-
-            <div>
-                <ul class="card">
-                    <li>S.N</li>
-                    <li>|</li>
-                    <li>Name</li>
-                    <li>|</li>
-                    <li>Age</li>
-                    <li>|</li>
-                    <li>Phone Number</li>
-                    <li>|</li>
-                    <li>Email</li>
-                    <li>|</li>
-                    <li>Total Number of Listings</li>
-                </ul>
-            </div>
+      <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+       <tr>
+        <td data-label="S.N">2</td>
+        <td data-label="Name">Sansraya Pradhanang</td>
+        <td data-label="Age">21</td>
+        <td data-label="Phone">9900909009</td>
+        <td data-label="Email">itsmizu@gmail.com</td>
+        <td data-label="Listings">2</td>
+      </tr>
+      
+    </tbody>
+  </table>
+          
             
           </div>
     </div>

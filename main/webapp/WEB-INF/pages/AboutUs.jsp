@@ -7,16 +7,20 @@
 <title>About Us</title>
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/AboutUs.css">
-<link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/Navbar.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Navbar.css">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
+
 </head>
 <body>
     <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
     
-
+<div>
         <jsp:include page="Navbar.jsp" />
-
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
+
+<jsp:include page="Navbar.jsp" />
+</div>
 
     <div class="container">
         <div class="leftbox">
@@ -26,12 +30,13 @@ href="${pageContext.request.contextPath}/css/Navbar.css">
             </p>
             <p style="padding-top:30px ;">
             NepEestate provides a verified listing platform that connects agents and sellers alongside buyers through a single system which delivers expert guidance and current market trends throughout Nepal. NepEstate stands dedicated to help you uncover properties which will become your future home.
-            </p>c
+            </p>
         </div>
         <div class="image">
 
             <img src="${pageContext.request.contextPath}/images/figma.jpg" height="480px">
         </div>
     </div>
+    <jsp:include page="Footer.jsp" />
 </body>
 </html>
