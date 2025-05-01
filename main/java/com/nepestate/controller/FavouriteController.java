@@ -38,5 +38,4 @@ public class FavouriteController extends HttpServlet {
 		doGet(request, response);
 		
 	}
-
 }

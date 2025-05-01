@@ -40,4 +40,4 @@ href="${pageContext.request.contextPath}/css/AboutUs.css">
     </div>
     <jsp:include page="Footer.jsp" />
 </body>
-</html>
+</html> 

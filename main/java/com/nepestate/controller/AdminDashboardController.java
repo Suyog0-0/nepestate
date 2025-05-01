@@ -8,17 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class propertylisting
+ * Servlet implementation class admindashboard
  */
-@WebServlet("/propertylisting")
-public class PropertyListing extends HttpServlet {
+@WebServlet("/AdminDashboardController")
+public class AdminDashboardController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Default constructor. 
      */
-    public PropertyListing() {
-        super();
+    public AdminDashboardController() {
         // TODO Auto-generated constructor stub
     }
 
@@ -27,7 +26,7 @@ public class PropertyListing extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
 	}
 
 	/**

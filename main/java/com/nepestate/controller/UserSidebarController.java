@@ -8,17 +8,16 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class userdashboard
+ * Servlet implementation class usersidebar
  */
-@WebServlet("/UserDashboard")
-public class UserDashboard extends HttpServlet {
+@WebServlet("/usersidebar")
+public class UserSidebarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
     /**
-     * @see HttpServlet#HttpServlet()
+     * Default constructor. 
      */
-    public UserDashboard() {
-        super();
+    public UserSidebarController() {
         // TODO Auto-generated constructor stub
     }
 
@@ -27,7 +26,7 @@ public class UserDashboard extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/UserDashboard.jsp").forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/pages/UserSidebar.jsp").forward(request, response);
 	}
 
 	/**

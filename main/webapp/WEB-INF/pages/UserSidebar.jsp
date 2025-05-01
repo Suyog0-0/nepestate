@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>User SideBar</title>
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/usersidebar.css">
+href="${pageContext.request.contextPath}/css/UserSidebar.css">
 </head>
 <body>
 	<div class="sidebar">
