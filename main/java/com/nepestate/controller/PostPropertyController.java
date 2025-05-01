@@ -11,13 +11,13 @@ import java.io.IOException;
  * Servlet implementation class PostProductController
  */
 @WebServlet("/PostPropertyController")
-public class PostProductController extends HttpServlet {
+public class PostPropertyController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PostProductController() {
+    public PostPropertyController() {
         super();
         // TODO Auto-generated constructor stub
     }
