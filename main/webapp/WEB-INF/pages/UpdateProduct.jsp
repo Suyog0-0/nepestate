@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/Navbar.css" />
+	href="${pageContext.request.contextPath}/css/navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	<link rel="stylesheet" type="text/css" 
+	href="${pageContext.request.contextPath}/css/Footer.css">
 	<style>
     .form-label {
       font-family: Arial, sans-serif;
@@ -135,6 +137,11 @@
     </div>
     </div>
 
+<br>
+<br>
+ <div class="footerSection">
+    <jsp:include page="Footer.jsp" />
+</div>
  
 </body>
 </html>

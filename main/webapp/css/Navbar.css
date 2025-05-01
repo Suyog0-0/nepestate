@@ -1,92 +1,118 @@
 @charset "UTF-8";
 
-/* Reset */
+/* ________________________________________________________________________________________________________________________*/
+
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
     text-decoration: none;
     font-family: Arial, sans-serif;
 }
 
-/* Navbar Main Container */
-.navbar-container {
-    padding: 0 15px 10px 15px;
+.maindiv {
+    padding-bottom: 10px;
     height: 80px;
-    box-shadow: 4px 0px 15px lightgrey;
-	display: flex;
+    outline: 0.5px solid black;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-shrink: 0;
+    ;
 }
 
-/* Left Section */
-.navbar-left .navbar-logo-image {
+/* ________________________________________________________________________________________________________________________*/
+
+
+.logo {
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.logoImage{
     margin-top: 10px;
     width: 145px;
     height: 70px;
     cursor: pointer;
 }
 
-/* Center Section */
-.navbar-center {
-    flex: 2;
+/* ________________________________________________________________________________________________________________________*/
+
+.centerSection{
     display: flex;
     justify-content: center;
+    flex: 2;
+    
 }
 
-.navbar-search-container {
-    position: relative;
+
+
+.searchContainer {
+    position: relative; 
     width: 100%;
     max-width: 700px;
 }
 
-.navbar-search-icon {
+.searchIcon {
     position: absolute;
-    top: 50%;
-    left: 10px;
+    top: 55%; 
+    left: 10px; 
     transform: translateY(-50%);
-    width: 40px;
+    width: 40px; 
     height: 40px;
     pointer-events: none;
 }
 
-.navbar-search-bar {
+.searchbar {
     margin-top: 10px;
+    box-shadow: 4px 0px 15px lightgrey;
     width: 100%;
     height: 50px;
     padding-left: 60px;
-    border-radius: 5px;
-    border: 0;
+    border-radius: 5px;;
+    border: 0px;
     outline: none;
     font-size: 16px;
     font-style: italic;
     color: lightgrey;
-	outline: 1px solid #e2e2e2;
 }
 
-/* Right Section */
-.navbar-items {
+/* ________________________________________________________________________________________________________________________*/
+
+.navItems {
     display: flex;
     gap: 15px;
-    list-style: none;
+    padding-top: 5px;
+}
+ul{
     align-items: center;
+    
 }
 
-.navbar-items li a {
+li {
+
+    list-style: none;
+    display: inline-block;
+}
+
+li a {
+    text-decoration: none;
     color: black;
     font-size: 17px;
     font-weight: 500;
     letter-spacing: 0.5px;
     padding: 10px;
+
 }
 
-.navbar-register-container {
+
+.registerContainer {
     position: relative;
     display: inline-block;
 }
 
-.navbar-register-button {
+.registerButton {
     font-weight: bold;
     letter-spacing: 0.5px;
     padding: 10px 80px 10px 30px;
@@ -102,12 +128,15 @@
     justify-content: center;
 }
 
-.navbar-register-icon {
-    position: absolute;
+.registerIcon {
     top: 50%;
+    position: absolute;
     right: 15px;
     transform: translateY(-50%);
     width: 60px;
     height: 60px;
     pointer-events: none;
 }
+
+
+/* ________________________________________________________________________________________________________________________*/

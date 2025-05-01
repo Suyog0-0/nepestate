@@ -11,17 +11,25 @@
     margin-left: 40px;
     justify-content: space-between;
     padding-left: 30px;
+    margin-bottom:10px;
 }
 .underline-long{
   font-family: Arial, sans-serif;
   font-size: 18px;
-  border-bottom: 1.5px solid black;
   width:754px;
   padding: 4px 0;
-  border: none;
-  border-bottom: 2px solid black;  
-  background: transparent;         
+  background: transparent; 
+  border:none;
+  border-bottom: 1.5px solid black;       
 }
+
+.underline-long:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: transparent;
+  border:none;
+}
+
 .underline-short{
   font-family: Arial, sans-serif;
   font-size: 18px;

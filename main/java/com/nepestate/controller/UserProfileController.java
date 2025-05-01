@@ -39,4 +39,3 @@ public class UserProfileController extends HttpServlet {
 	}
 
 }
-

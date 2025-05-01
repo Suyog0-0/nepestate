@@ -69,5 +69,4 @@ public class AdminModel {
 		this.Admin_Username = username;
 		this.Admin_Password = password;
 	}
-
 }

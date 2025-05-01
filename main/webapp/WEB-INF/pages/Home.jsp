@@ -8,7 +8,7 @@
     <title>NepeState - Find Your Dream Property</title>
     <!-- Added CSS links -->
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Home.css">
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Navbar.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/navbar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
 </head>
 <body>

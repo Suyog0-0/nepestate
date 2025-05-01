@@ -4,12 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Post Property</title>
 </head>
 	<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/css/Navbar.css" />
+	href="${pageContext.request.contextPath}/css/navbar.css" />
 	<link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/UpdateProduct.css" />
+	<link rel="stylesheet" type="text/css" 
+	href="${pageContext.request.contextPath}/css/Footer.css">
 <style>
     .form-label {
       font-family: Arial, sans-serif;
@@ -26,7 +28,9 @@
   </style>
 
 <body>
+
 <jsp:include page="Navbar.jsp" />
+
 <div class="mainSquare">
 
     <div class="subRow">
@@ -137,11 +141,10 @@
           
       </div>
 
-      <!-- <div class="image-preview">
-        <img src="updateImage.png" alt="Property Image" />
-      </div>
-    </div> -->
-    
-   
+<div class="footerSection">
+    <jsp:include page="Footer.jsp" />
+</div>
+<br>
+<br>
 </body>
 </html>
