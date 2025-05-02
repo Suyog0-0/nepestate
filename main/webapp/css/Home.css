@@ -1,240 +1,308 @@
-@charset "UTF-8";
-	
-	* {
-	    margin: 0;
-	    padding: 0;
-	    text-decoration: none;
-	    font-family: Arial, sans-serif;
-	    box-sizing: border-box;
-	}
-	
-	body {
-	    background-color: #f9f9f9;
-	}
-	
-	/* Hero Section Styles */
-	.heroSection {
-	    position: relative;
-	    height: 500px;
-  		background-image: url('../images/homepageBackground.jpg');
-	    background-size: cover;
-	    background-position: center;
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	}
-	
-	.heroOverlay {
-	    position: absolute;
-	    top: 0;
-	    left: 0;
-	    width: 100%;
-	    height: 100%;
-	    background-color: rgba(0, 0, 0, 0.4);
-	}
-	
-	.heroContent {
-	    position: relative;
-	    z-index: 10;
-	    text-align: center;
-	    max-width: 800px;
-	    padding: 0 20px;
-	    width: 100%;
-	}
-	
-	.heroTitle {
-	    color: #fff;
-	    font-size: 36px;
-	    margin-bottom: 30px;
-	    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-	}
-	
-	/* New search bar styles */
-	.heroSearchBar {
-	    width: 100%;
-	    max-width: 650px;
-	    margin: 0 auto;
-	}
-	
-	.searchInputContainer {
-	    display: flex;
-	    align-items: center;
-	    background-color: #ffffff;
-	    border-radius: 50px;
-	    padding: 10px 20px;
-	    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-	}
-	
-	.searchIconContainer {
-	    display: flex;
-	    align-items: center;
-	    justify-content: center;
-	    margin-right: 10px;
-	}
-	
-	.searchIcon {
-	    width: 24px;
-	    height: 24px;
-	}
-	
-	.searchInput {
-	    border: none;
-	    outline: none;
-	    width: 100%;
-	    font-size: 16px;
-	    color: #777;
-	    background: transparent;
-	    padding: 8px 0;
-	}
-	
-	/* Featured Section Styles */
-	.featuredSection {
-	    padding: 60px;
-	    background-color: #fff;
-	}
-	
-	.sectionTitle {
-	    text-align: center;
-	    font-size: 32px;
-	    font-weight: 700;
-	    margin-bottom: 40px;
-	    color: #333;
-	}
-	
-	.propertyContainer {
-	    display: flex;
-	    flex-wrap: wrap;
-	    gap: 20px;
-	    justify-content: center;
-	}
-	
-	.propertyCard {
-	    width: 280px;
-	    background-color: #fff;
-	    border-radius: 10px;
-	    overflow: hidden;
-	    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-	    transition: transform 0.3s ease;
-	}
-	
-	.propertyCard:hover {
-	    transform: translateY(-5px);
-	}
-	
-	.propertyImageContainer {
-	    position: relative;
-	    height: 180px;
-	}
-	
-	.propertyImage {
-	    width: 100%;
-	    height: 100%;
-	    object-fit: cover;
-	}
-	
-	.saleTag {
-	    position: absolute;
-	    top: 15px;
-	    right: 15px;
-	    background-color: #f13a3a;
-	    color: white;
-	    padding: 5px 10px;
-	    font-size: 12px;
-	    font-weight: bold;
-	    border-radius: 3px;
-	}
-	
-	.propertyDetails {
-	    padding: 15px;
-	}
-	
-	.propertyType {
-	    display: inline-block;
-	    background-color: #356A95;
-	    color: white;
-	    padding: 5px 15px;
-	    font-size: 12px;
-	    font-weight: bold;
-	    border-radius: 3px;
-	    margin-bottom: 10px;
-	}
-	
-	.propertyPrice {
-	    font-size: 22px;
-	    font-weight: 700;
-	    color: #333;
-	    margin-bottom: 10px;
-	}
-	
-	.propertyDescription {
-	    display: flex;
-	    align-items: flex-start;
-	    margin-bottom: 10px;
-	}
-	
-	.descIcon {
-	    width: 16px;
-	    height: 16px;
-	    margin-right: 8px;
-	    margin-top: 3px;
-	}
-	
-	.propertyDescription p {
-	    font-size: 14px;
-	    color: #666;
-	    line-height: 1.4;
-	}
-	
-	.propertyLocation {
-	    font-size: 12px;
-	    color: #999;
-	    text-align: right;
-	    font-style: italic;
-	}
-	
-	/* Responsive Styles */
-	@media screen and (max-width: 1024px) {
-	    .featuredSection {
-	        padding: 40px;
-	    }
-	    
-	    .propertyContainer {
-	        gap: 15px;
-	    }
-	}
-	
-	@media screen and (max-width: 768px) {
-	    .heroTitle {
-	        font-size: 28px;
-	    }
-	    
-	    .featuredSection {
-	        padding: 40px 20px;
-	    }
-	    
-	    .propertyCard {
-	        width: 45%;
-	    }
-	}
-	
-	@media screen and (max-width: 480px) {
-	    .heroTitle {
-	        font-size: 24px;
-	    }
-	    
-	    .propertyCard {
-	        width: 100%;
-	    }
-	    
-	    .featuredSection {
-	        padding: 30px 15px;
-	    }
-	    
-	    .heroSearchBar {
-	        max-width: 100%;
-	    }
-	    
-	    .searchInputContainer {
-	        padding: 8px 15px;
-	    }
-	}
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f9f9f9;
+}
+
+.heroSection {
+    position: relative;
+    height: 500px;
+    background-image: linear-gradient(rgba(17, 67, 116, 0.3), rgba(17, 67, 116, 0.3)), url('../images/homepageBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 1s ease-in-out;
+    overflow: hidden;
+}
+
+.heroSection::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: inherit;
+    filter: blur(4.5px) brightness(0.9);
+    transform: scale(1.1);
+    z-index: 0;
+}
+
+.heroOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    backdrop-filter: blur(2px);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    width: 100%;
+    animation: slideUp 0.8s ease-out;
+}
+
+.heroTitle {
+    color: #fff;
+    font-size: 36px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.heroSearchBar {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.searchInputContainer {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 50px;
+    padding: 10px 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.searchInputContainer:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.searchIconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.searchIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.searchInput {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    color: #777;
+    background: transparent;
+    padding: 8px 0;
+}
+
+.featuredSection {
+    padding: 60px;
+    background-color: #fff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #333;
+    position: relative;
+}
+
+.sectionTitle::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 4px;
+    background: linear-gradient(90deg, #356A95, #2a5475);
+}
+
+.propertyContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.propertyCard {
+    width: 280px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 0.8s ease-out;
+    animation-fill-mode: both;
+}
+
+.propertyCard:nth-child(1) { animation-delay: 0.1s; }
+.propertyCard:nth-child(2) { animation-delay: 0.2s; }
+.propertyCard:nth-child(3) { animation-delay: 0.3s; }
+.propertyCard:nth-child(4) { animation-delay: 0.4s; }
+.propertyCard:nth-child(5) { animation-delay: 0.5s; }
+
+.propertyCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.propertyImageContainer {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.propertyImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.propertyCard:hover .propertyImage {
+    transform: scale(1.05);
+}
+
+.saleTag {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: #f13a3a;
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    transition: transform 0.3s ease;
+}
+
+.propertyDetails {
+    padding: 15px;
+}
+
+.propertyType {
+    display: inline-block;
+    background-image: linear-gradient(90deg, #356A95, #2a5475);
+    color: white;
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    transition: 0.3s ease;
+}
+
+.propertyCard:hover .propertyType {
+    background-image: linear-gradient(90deg, #2a5475, #1a3a52);
+}
+
+.propertyPrice {
+    font-size: 22px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.propertyDescription p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.propertyLocation {
+    font-size: 12px;
+    color: #999;
+    text-align: right;
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+}
+
+@media(max-width: 1024px) {
+    .featuredSection {
+        padding: 40px;
+    }
+    
+    .propertyContainer {
+        gap: 15px;
+    }
+}
+
+@media(max-width: 768px) {
+    .heroTitle {
+        font-size: 28px;
+    }
+    
+    .featuredSection {
+        padding: 40px 20px;
+    }
+    
+    .propertyCard {
+        width: 45%;
+    }
+}
+
+@media(max-width: 480px) {
+    .heroTitle {
+        font-size: 24px;
+    }
+    
+    .propertyCard {
+        width: 100%;
+    }
+    
+    .featuredSection {
+        padding: 30px 15px;
+    }
+    
+    .heroSearchBar {
+        max-width: 100%;
+    }
+    
+    .searchInputContainer {
+        padding: 8px 15px;
+    }
+}
