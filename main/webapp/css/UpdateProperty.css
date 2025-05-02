@@ -1,132 +1,123 @@
 @charset "UTF-8";
 
-.body {
+
+.body{
   background-color: #f5f5f5; 
   margin: 0;
   padding: 0;
 }
-
-.mainSquare {
+.mainSquare{
     gap: 10px;
     background-color: white;
-    height: auto; /* Changed from fixed height to auto */
-    width: 90%; /* Increased from 80% to 90% */
-    max-width: 1600px; /* Increased from 1400px to 1600px */
+    height: 1090px;
+    width: 1606px;
     border-radius: 10px;
-    box-shadow: 0px 0px 50px 0px #7C7C7C; /* Reduced shadow size */
+    box-shadow: 0px 0px 69.6px 0px #7C7C7C;
     padding: 30px;
-    margin-top: 40px; /* Reduced top margin */
-    margin-left: auto; /* Centered the container */
-    margin-right: auto; /* Centered the container */
+    margin-top: 32px;
+    margin-left: 125px;
     justify-content: space-between;
     padding-left: 50px;
-    margin-bottom: 10px;
-    min-height: 950px; /* Set minimum height instead of fixed height */
+    margin-bottom:10px;
 }
-
-.mainSquareHeight {
-  min-height: 950px; /* Changed from fixed height to min-height */
+.mainSquareHeight{
+  height: 1130px;
 }
-
-.underline-long {
+.underline-long{
   font-family: Arial, sans-serif;
   font-size: 18px;
-  width: 650px; /* Increased width for better proportion */
+  width:754px;
   padding: 4px 0;
   background: transparent; 
-  border: none;
+  border:none;
   border-bottom: 1.5px solid black;       
 }
 
-.underline-long:focus, .underline-short:focus {
+.underline-long:focus , .underline-short:focus {
   outline: none;
-  border: none;
+  border:none;
   border-bottom: 1.5px solid black;  
 }
 
-.underline-short {
+.underline-short{
   font-family: Arial, sans-serif;
   font-size: 18px;
-  width: fit-content;   
-  padding: 4px 0;
+  width:fit-content;   
+   padding: 4px 0;
   border: none;
   border-bottom: 1.5px solid black;  
   background: transparent;           
 }
 
-.underline-short-price {
+.underline-short-price{
   margin-top: 25px;
 }
-
-.subRow {
+.subRow{
     display: flex;
-    margin-top: 30px; /* Reduced margin */
-    gap: 10%; /* Reduced gap */
+    margin-top: 40px;
+    gap: 15%;
 }
-
-.subRowFirst {
+.subRowFirst{
   display: flex;
-  margin-top: 25px; /* Reduced margin */
-  gap: 50%; /* Adjusted gap */
+  margin-top: 30px;
+  gap: 60%;
 }
-
-.subRowDetails {
+.subRowDetails{
   display: flex;
   flex-direction: row;
-  margin-top: 40px; /* Reduced margin */
-  gap: 12%; /* Increased gap slightly */
+  margin-top: 50px;
+  gap: 15%;
 }
 
-.button-group {
+.button-group{
     display: flex;
-    gap: 15px; /* Reduced gap */
-    padding-top: 20px; /* Reduced padding */
+    gap: 20px;
+    padding-top: 25px;
     flex-wrap: wrap;
 }
 
 .property-description {
-  max-width: 700px; /* Increased max-width */
+  max-width: 750px;
   margin-top: 20px;
-  height: 100px; /* Reduced height */
-  width: 700px; /* Increased width */
+  height: 117px;
+  width: 800px;
   font-family: Arial, sans-serif;
   color: #333;
   line-height: 1.5;
-  font-size: 16px; /* Reduced font size */
+  font-size: 18px;
   padding: 15px;
-  border: 0.5px solid #7c7c7c;
+  border: 0.5px solid 7c7c7c;
   background: transparent;
   resize: none;
-  overflow: auto;
-  white-space: pre-wrap;
-  word-wrap: break-word;
+  overflow: auto;                     /* Allow scrolling if content overflows */
+  white-space: pre-wrap;      /* Preserve whitespace and line breaks */
+  word-wrap: break-word;      /* Break long words to fit the container */
+  
 }
-
 .property-description:focus {
   outline: none;
-  border: none;
-  border: 0.5px solid black;  
+  border:none;
+  border: 1.5px solid black;  
 }
 
 .update-button {
-  background: linear-gradient(to right, #274B6C, #05111A); /* Fixed typo in gradient */
+  background: linear-gradient(to right, #274B6C, #05111A);
   border: none;
   color: white;
-  padding: 18px; /* Reduced padding */
+  padding: 22px;
   text-align: center;
   text-decoration: none;
-  font-size: 18px; /* Reduced font size */
+  font-size: 19px;
   cursor: pointer;
   border-radius: 6px;
   box-shadow: 1px 5px 15px #7C7C7C;
   transition: all 0.3s ease;
   letter-spacing: 0.5px;
-  width: 200px; /* Added a width */
 }
-
 .update-button:hover {
   transform: scale(1.02);
 }
+
 
 /* Hide the actual checkbox input */
 .feature-checkbox {
@@ -137,92 +128,70 @@
 .feature-label {
   display: inline-block;
   border: 0.5px solid #7c7c7c;
-  padding: 7px 16px; /* Reduced padding */
-  font-size: 13px; /* Reduced font size */
+  padding: 8px 20px;
+  font-size: 14px;
   cursor: pointer;
   background-color: white;
   transition: background-color 0.2s;
   transition: all 0.3s ease;
   border-radius: 20px;
-}
 
+}
 .feature-label:hover {
   transform: scale(1.02);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
+
 /* Change background when checkbox is checked */
 .feature-checkbox:checked + .feature-label {
-  background-color: #DAE8FC;
-  border: 1px solid #6C8EBF;
+  background-color: #DAE8FC  ;
+  border:1px solid#6C8EBF;
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* 1920x1080 resolution */
-@media screen and (max-width: 1920px) {
+/* Larger screens and small desktops */
+@media screen and (max-width: 1650px) {
     .mainSquare {
         width: 90%;
-        max-width: 1600px;
+        margin-left: 5%;
         padding: 25px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    
-    div[style*="display: flex; gap:170px"] {
-        gap: 120px !important; /* Adjusted gap for title and price */
-    }
-    
-    div[style*="display: flex; margin-top: 50px; gap: 19.5%"] {
-        gap: 15% !important; /* Adjusted gap for upload sections */
-    }
-}
-
-/* Smaller screens */
-@media screen and (max-width: 1600px) {
-    .mainSquare {
-        width: 85%;
-        padding: 20px;
     }
     
     .underline-long {
-        width: 500px;
+        width: 600px;
     }
     
     .property-description {
-        width: 500px;
-    }
-    
-    div[style*="display: flex; gap:170px"] {
-        gap: 80px !important;
+        width: 600px;
     }
 }
 
 /* Tablets and smaller desktops */
 @media screen and (max-width: 1200px) {
     .mainSquare {
-        width: 90%;
+        height: auto;
         padding: 20px;
     }
     
-    div[style*="display: flex; gap:170px"] {
+    div[style*="display: flex; gap: 290px"] {
         flex-direction: column;
-        gap: 30px !important;
+        gap: 40px !important;
     }
     
-    div[style*="display: flex; margin-top: 50px; gap: 19.5%"] {
-        flex-direction: column;
-        gap: 30px !important;
+    .image-preview img {
+        max-width: 300px;
     }
     
     .underline-long {
         width: 90%;
-        max-width: 500px;
+        max-width: 600px;
     }
     
     .property-description {
         width: 90%;
-        max-width: 500px;
+        max-width: 600px;
     }
     
     .subRowDetails {
@@ -235,34 +204,63 @@
 @media screen and (max-width: 767px) {
     .mainSquare {
         width: 95%;
+        margin-left: 2.5%;
         padding: 15px;
         border-radius: 5px;
     }
     
     span[style*="font-size: 30px"] {
-        font-size: 22px !important;
+        font-size: 24px !important;
     }
     
     span[style*="font-size: 24px"] {
-        font-size: 18px !important;
+        font-size: 20px !important;
     }
     
     .subRowFirst {
         gap: 20%;
     }
     
+    div[style*="display: flex; gap: 200px"] {
+        flex-direction: column;
+        gap: 20px !important;
+    }
+    
     .button-group {
-        gap: 8px;
+        gap: 10px;
     }
     
     .feature-label {
-        padding: 5px 10px;
+        padding: 6px 12px;
         font-size: 12px;
     }
     
     .update-button {
         width: 100%;
-        max-width: 200px;
-        padding: 12px;
+        padding: 15px;
+    }
+    
+    .property-description {
+        height: 100px;
+    }
+    
+    .form-label {
+        font-size: 16px;
+    }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+    .mainSquare {
+        padding: 10px;
+    }
+    
+    .button-group {
+        gap: 5px;
+    }
+    
+    .feature-label {
+        padding: 5px 10px;
+        font-size: 11px;
     }
 }
