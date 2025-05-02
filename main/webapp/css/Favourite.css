@@ -39,8 +39,8 @@
 .firstFavourite, .secondFavourite, .thirdFavourite {
     border: 1px solid #d0d0d0d0;
     border-radius: 5px;
-    padding: 30px;  /* Increased padding */
-    width: 100%;    /* Full width */
+    padding: 30px; 
+    width: 100%;   
     margin-top: 20px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -55,8 +55,8 @@
 }
 
 .house1 {
-    width: 200px;  /* Increased size */
-    height: 160px; /* Increased size */
+    width: 200px;  
+    height: 160px; 
 }
 
 .priceandlocation {
