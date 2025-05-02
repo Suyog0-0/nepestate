@@ -12,23 +12,16 @@
 </head>
 <body>
 
-    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-    
     <div class="navbarSection">
-        <!-- Code for Including the navbar -->
         <jsp:include page="Navbar.jsp" />    
     </div>
-
-    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
+    
     <div class="maindiv">
-
-            <!-- Code for Including the sidebar -->
-            <jsp:include page="UserSidebar.jsp" />
+        <jsp:include page="UserSidebar.jsp" />
    
-
         <div class="favouriteContainer">
             <div class="favouriteText">My Favourites</div>
+            <div class="favouriteUnderline"></div> <!-- Added underline -->
 
             <div class="firstFavourite">
                 <div class="imageaAndDetailsContainer">
@@ -98,18 +91,11 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 
-    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
     <div class="footerSection">
-        <!-- Code for Including the footer -->
         <jsp:include page="Footer.jsp" />
     </div>
-
-    <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
 </body>
 </html>
