@@ -9,7 +9,7 @@
 href="${pageContext.request.contextPath}/css/AdminSidebar.css">
 </head>
 <body>
-    <div class="sidebar">
+     <div class="sidebar">
         <div class="profile-section">
             <img src="${pageContext.request.contextPath}/images/profilepicture.jpg" 
                  alt="Profile" class="profile-pic">
