@@ -5,11 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>User Dashboard</title>
-<link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/UserDashboard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/UserDashboard.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Navbar.css">
 </head>
 <body>
-
   <jsp:include page="Navbar.jsp"/>
 
   <!-- Main Layout -->
@@ -43,8 +43,6 @@ href="${pageContext.request.contextPath}/css/UserDashboard.css">
           <img src="${pageContext.request.contextPath}/images/upload.png" alt="Upload Icon" class="card-icon" />
         </div>
       </div>
-      
-      
 
       <div class="visits-section">
         <h2>Total Visits</h2>
@@ -52,6 +50,9 @@ href="${pageContext.request.contextPath}/css/UserDashboard.css">
       </div>
     </main>
   </div>
-	
+
+  <!-- Footer -->
+  <jsp:include page="Footer.jsp"/>
+
 </body>
 </html>
