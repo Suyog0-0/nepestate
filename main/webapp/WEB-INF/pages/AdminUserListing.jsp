@@ -140,6 +140,8 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
             
           </div>
     </div>
+    <br>
+    <br>
     <jsp:include page="Footer.jsp" />
 </body>
 </html>
