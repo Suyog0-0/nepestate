@@ -61,6 +61,22 @@ public class PropertyModel {
         Property_DateAdded = property_DateAdded;
         Property_Photos = property_Photos;
     }
+    public PropertyModel(String property_Title, String property_Type, float property_Price,
+            float property_Area, String property_Address, String property_City, 
+             String property_Description,String property_Status, String property_Amentities,
+            Date property_DateAdded, String property_Photos) {
+        Property_Title = property_Title;
+        Property_Type = property_Type;
+        Property_Price = property_Price;
+        Property_Area = property_Area;
+        Property_Address = property_Address;
+        Property_City = property_City;
+        Property_Status = property_Status;
+        Property_Description = property_Description;
+        Property_Amentities = property_Amentities;
+        Property_DateAdded = property_DateAdded;
+        Property_Photos = property_Photos;
+    }
 
     public int getPropertyID() {
         return PropertyID;
