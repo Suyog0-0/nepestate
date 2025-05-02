@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -70,7 +69,6 @@ body {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 100%;
 }
 
 .menu-item {
@@ -82,45 +80,29 @@ body {
   border-radius: 12px;
   margin-bottom: 5px;
   transition: background-color 0.2s ease;
-  position: relative;
-  flex-direction: row;
 }
 
 .menu-item:hover {
   background: rgba(255, 255, 255, 0.1);
 }
 
-.icon {
-  width: 24px;
-  height: 24px;
-  vertical-align: middle;
-}
-
-.favorite-icon {
-  filter: invert(1);
-}
-
-/* Dropdown specific */
-.dropdown-toggle {
-  flex-direction: column;
+.dropdown-container {
+  position: relative;
 }
 
 .dropdown-header {
   display: flex;
   align-items: center;
-  gap: 15px;
-  width: 100%;
 }
 
 .submenu {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease-out;
-  width: 100%;
-  padding-left: 40px;
+  padding-left: 24px;
+  transition: max-height 0.3s ease;
 }
 
-.dropdown-toggle.open .submenu {
+.dropdown-container.open .submenu {
   max-height: 500px;
 }
 
@@ -128,22 +110,20 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-  padding: 12px 0;
-  color: #ddd;
+  padding: 12px;
+  margin: 5px 0;
+  border-radius: 8px;
   transition: all 0.2s ease;
 }
 
 .submenu-item:hover {
-  color: white;
+  background: rgba(255, 255, 255, 0.08);
   transform: translateX(5px);
 }
 
-.dropdown-icon {
-  transition: transform 0.3s ease;
-}
-
-.dropdown-toggle.open .dropdown-icon {
-  transform: rotate(180deg);
+.icon {
+  width: 24px;
+  height: 24px;
 }
 
 .logout {
@@ -151,7 +131,6 @@ body {
   color: #333;
   font-weight: 500;
   margin-top: 10px;
-  transition: background-color 0.2s ease;
 }
 
 .logout:hover {
@@ -159,5 +138,5 @@ body {
 }
 
 .logout .icon {
-  filter: invert(0.7);
+  filter: brightness(0.5);
 }

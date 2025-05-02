@@ -18,10 +18,10 @@
         My Profile
       </li>
 
-      <li class="menu-item dropdown-toggle">
-        <div class="dropdown-header">
-          <img src="${pageContext.request.contextPath}/images/down-icon.png" class="icon dropdown-icon">
-          <span>Dashboard</span>
+      <li class="dropdown-container">
+        <div class="menu-item dropdown-header">
+          <img src="${pageContext.request.contextPath}/images/down-icon.png" class="icon">
+          Dashboard
         </div>
         <ul class="submenu">
           <li class="submenu-item">
@@ -40,7 +40,7 @@
       </li>
 
       <li class="menu-item">
-        <img src="${pageContext.request.contextPath}/images/favourite.png" class="icon favorite-icon">
+        <img src="${pageContext.request.contextPath}/images/white_favourite.png" class="icon">
         Favourites
       </li>
 
@@ -54,9 +54,9 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const toggle = document.querySelector('.dropdown-toggle');
-  toggle.addEventListener('click', () => {
-    toggle.classList.toggle('open');
+  const dropdown = document.querySelector('.dropdown-header');
+  dropdown.addEventListener('click', () => {
+    dropdown.parentElement.classList.toggle('open');
   });
 });
 </script>
