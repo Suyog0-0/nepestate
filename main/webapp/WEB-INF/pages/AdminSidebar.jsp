@@ -21,7 +21,6 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
             </div>
             <div class="blue-line"></div>
         </div>
-
         <nav class="nav-menu">
             <a href="${pageContext.request.contextPath}/admindashboard" class="nav-link">
                 <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon">
