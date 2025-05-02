@@ -1,5 +1,11 @@
 @charset "UTF-8";
 
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Sidebar container */
 .sidebar {
     width: 350px;
     background: linear-gradient(180deg, #274B6C, #05111A);
@@ -11,43 +17,79 @@
     margin: 30px 15px 0px 30px;
     border-radius: 10px;
     height: 700px;
-  }
-  
-  .sidebar-top {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .profile-pic {
+    animation: sidebarEntrance 0.6s ease-out;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+@keyframes sidebarEntrance {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+/* Profile section */
+.profile-pic {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     margin-bottom: 15px;
     object-fit: cover;
-  }
-  
-  .user-info {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    animation: profileFloat 4s ease-in-out infinite;
+}
+
+@keyframes profileFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+.profile-pic:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 0 25px rgba(78, 168, 222, 0.4);
+}
+
+/* User info section */
+.user-info {
     text-align: center;
     margin-bottom: 20px;
-  }
-  
-  .user-info h3 {
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.user-info h3 {
     font-size: 20px;
     margin-bottom: 5px;
-  }
-  
-  .user-info p {
+    transition: color 0.3s ease;
+}
+
+.user-info p {
     font-size: 15px;
     color: #cfd8e3;
-  }
-  
-  .nav-menu {
+    transition: color 0.3s ease;
+}
+
+/* Navigation menu */
+.nav-menu {
     width: 100%;
     padding-top: 10px;
-  }
-  
-  .nav-link {
+}
+
+.nav-link {
     display: flex;
     align-items: center;
     padding: 12px 15px 10px 20px;
@@ -58,24 +100,50 @@
     text-decoration: none;
     font-size: 20px;
     border-radius: 12px;
-    transition: background 0.3s ease-in-out;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
-  }
-  
-  .nav-link img.icon {
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #4facfe);
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+}
+
+.nav-link:hover::after {
+    transform: translateX(0);
+}
+
+.nav-link img.nav-icon {
     width: 20px;
     height: 20px;
     margin-right: 10px;
-  }
-  
-  .nav-link:hover,
-  .nav-link.active {
+    filter: invert(1);
+    transition: transform 0.3s ease;
+}
+
+.nav-link:hover img.nav-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.nav-link:hover,
+.nav-link.active {
     background-color: rgba(255, 255, 255, 0.1);
     border: 1px solid #d9d9d9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
 
-  }
-  
-  .logout-btn {
+/* Logout button */
+.logout-btn {
     width: 100%;
     padding: 10px;
     font-weight: bold;
@@ -90,18 +158,62 @@
     border: none;
     cursor: pointer;
     margin-top: 20px;
-  }
-  
-  .logout-btn img {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.logout-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.4),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.logout-btn:hover::before {
+    left: 100%;
+}
+
+.logout-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.logout-btn img {
     width: 18px;
     height: 18px;
     object-fit: contain;
-  }
+    transition: transform 0.3s ease;
+}
 
-.roleName{
+.logout-btn:hover img {
+    transform: rotate(360deg);
+}
+
+/* Role name styling */
+.roleName {
     font-size: 20px;
     font-weight: 600;
     color: lightblue;
     margin-top: 10px;
+    animation: rolePulse 2s ease-in-out infinite;
+}
 
+@keyframes rolePulse {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(173, 216, 230, 0.5);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(173, 216, 230, 0.8);
+    }
 }
