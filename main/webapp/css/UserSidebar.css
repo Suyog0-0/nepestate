@@ -1,135 +1,163 @@
 @charset "UTF-8";
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: white;
 }
 
 .sidebar {
-  width: 350px;
-  height: 700px;
-  background: linear-gradient(to bottom, #2c3e50, #0f2027);
+  width: 320px;
+  background: linear-gradient(to bottom, #3a6186, #3a3b4c);
   color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 10px;
-  margin: 50px 0px 0px 125px;
-  padding: 40px 25px;
+  position: fixed;
+  top: 50px;
+  left: 80px;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .profile-section {
   text-align: center;
   margin-bottom: 30px;
-  padding-top: 30px;
 }
 
 .profile-img {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
+  transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
 }
 
 .role {
   font-style: italic;
-  font-size: 15px;
+  font-size: 16px;
   color: #ddd;
-  margin-top: 15px;
+  margin: 15px 0 5px;
 }
 
 .profile-section h2 {
-  margin: 10px 0 5px 0;
-  font-size: 20px;
+  margin: 5px 0;
+  font-size: 22px;
 }
 
 .phone, .email {
   font-size: 15px;
   color: #bbb;
+  margin: 5px 0;
 }
 
-/* Menu Styles */
+.blue-line {
+  height: 4px;
+  width: 150px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  margin: 20px auto;
+}
+
 .menu ul {
   list-style: none;
   padding: 0;
-  width: 100%;
   margin: 0;
+  width: 100%;
 }
 
-.menu li {
+.menu-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
   cursor: pointer;
-  transition: background 0.2s;
-  padding: 12px 0 12px 0px; /* Aligns main menu items */
-}
-.arrow {
-    font-size: 14px;
-    margin-left: -33px; /* Moves it outside the usual padding zone */
-    margin-right: 10px;
-  }
-
-  .arrow img
-  {
-    width: 17px;
-  }
-  
-.dashboard-images
-{
-    width: 25px;
+  padding: 15px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s ease;
+  position: relative;
 }
 
-.dashboard-toggle {
-  padding: 15px 0 15px 20px;
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  vertical-align: middle;
+}
+
+.favorite-icon {
+  filter: invert(1);
+}
+
+.dropdown-toggle {
+  flex-direction: column;
+  padding: 0 !important;
+}
+
+.dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 12px;
 }
 
 .submenu {
-  display: none;
-  flex-direction: column;
-  padding-left: 40px; /* Indent submenu items */
-}
-
-.submenu li {
-  padding: 10px 0 15px 30px;
-}
-
-.submenu.active {
-  display: flex;
-}
-
-/* Special spacing between last submenu item and logout */
-.submenu .contact {
-  margin-bottom: 30px;
-}
-
-.logout-btn {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
   width: 100%;
-  font-weight: bold;
-  font-size: 17px;
-  color: #0b2341;
-  background-color: #fff;
-  border-radius: 10px;
+  padding-left: 24px;
+}
+
+.dropdown-toggle.open .submenu {
+  max-height: 200px;
+}
+
+.submenu-item {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 8px;
-  border: none;
-  cursor: pointer;
-  margin-top: 20px;
+  gap: 15px;
+  padding: 12px 0;
+  color: #ddd;
+  transition: all 0.2s ease;
 }
 
-.logout-btn img {
-  width: 30px;
-  object-fit: contain;
+.submenu-item:hover {
+  color: white;
+  transform: translateX(5px);
 }
 
+.dropdown-icon {
+  transition: transform 0.3s ease;
+}
 
-/* Hover Effect */
-.menu li:hover {
-  background-color: #032648;
-  border: 1px solid white;
-  border-radius: 10px;
+.dropdown-toggle.open .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.logout {
+  background: white;
+  color: #333;
+  font-weight: 500;
+  margin-top: 10px;
+  transition: background-color 0.2s ease;
+}
+
+.logout:hover {
+  background: #f0f0f0;
+}
+
+.logout .icon {
+  filter: invert(0.7);
 }

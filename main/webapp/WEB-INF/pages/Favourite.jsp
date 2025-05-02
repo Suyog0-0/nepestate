@@ -21,7 +21,7 @@
   
         <div class="favouriteContainer">
             <div class="favouriteText">My Favourites</div>
-            <div class="favouriteUnderline"></div> <!-- Added underline -->
+            <div class="favouriteUnderline"></div> <!-- For underline -->
 
             <div class="firstFavourite">
                 <div class="imageaAndDetailsContainer">
