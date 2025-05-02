@@ -14,7 +14,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
 </head>
 <body>
 	<jsp:include page="Navbar.jsp" />
-	<div style="display: flex;">
+	<div style="display: flex; margin-top: 12px;">
         <div class="filter">
             <div>
                 <h2>Filter Properties</h2>
@@ -137,5 +137,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
         </div>
     </div>
 </body>
+<br>
+<br>
 <jsp:include page="Footer.jsp" />
 </html>
