@@ -18,7 +18,7 @@
     
     <div class="maindiv">
         <jsp:include page="UserSidebar.jsp" />
-   
+  
         <div class="favouriteContainer">
             <div class="favouriteText">My Favourites</div>
             <div class="favouriteUnderline"></div> <!-- Added underline -->
