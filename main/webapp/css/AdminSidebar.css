@@ -163,7 +163,6 @@ html {
     overflow: hidden;
 }
 
-
 .logout-btn::before {
     content: '';
     position: absolute;

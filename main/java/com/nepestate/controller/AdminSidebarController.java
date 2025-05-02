@@ -30,6 +30,7 @@ public class AdminSidebarController extends HttpServlet {
         String password = request.getParameter("password");
         String userType = request.getParameter("userType");
         LoginService loginObject = new LoginService();
+        
 
         if ("Administrator".equals(userType)) {
             AdminModel adminModel = new AdminModel(username, password);
