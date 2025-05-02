@@ -45,41 +45,28 @@ public class LoginController extends HttpServlet {
 		System.out.println(username);
 		String password = request.getParameter("password");
 		System.out.println(password);
-		String userType = request.getParameter("userType");
 		LoginService loginObject=new LoginService();
-		System.out.println(userType);
-		
-		if ("Administrator".equals(userType))
-		{
-			AdminModel adminModel = new AdminModel(username, password);
-			Boolean loginStatus = loginObject.loginAdmin(adminModel);
-			if (loginStatus != null && loginStatus) {
+		AdminModel adminModel = new AdminModel(username, password);
+		Boolean adminLoginStatus = loginObject.loginAdmin(adminModel);
+			
+			if (adminLoginStatus != null && adminLoginStatus) {
 				
-				System.out.println("Successfully Login");
+				System.out.println("Successfully Admin Login");
 				SessionUtil.setAttribute(request, "username", username);
 				CookieUtil.addCookie(response, "role", "admin", 5 * 30);
-				request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
-			}else {
-				SessionUtil.setAttribute(request, "username", username);
-				CookieUtil.addCookie(response, "role", "student", 5 * 1);
-				System.out.println("Error at Login Controller");
-				System.out.println(loginStatus);
-				handleLoginFailure(request, response, loginStatus);
+				request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
+				return;
 			}
-		}
-	else {
 		CustomerModel customerModel = new CustomerModel(username, password);
-		Boolean loginStatus = loginObject.loginUser(customerModel);
-		if (loginStatus != null && loginStatus) {
-			System.out.println("Successfully Login");
+		Boolean customerLoginStatus = loginObject.loginUser(customerModel);
+		if (customerLoginStatus != null && customerLoginStatus) {
+			System.out.println("Successfully User Login");
 			request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
-		}else {
-			System.out.println("Error at Login Controller");
-			System.out.println(loginStatus);
-			handleLoginFailure(request, response, loginStatus);
+			return;
 		}
+		handleLoginFailure(request, response, (adminLoginStatus != null || customerLoginStatus != null) ? false : null);
 	}
-}
+
 		
 	private void handleLoginFailure(HttpServletRequest request, HttpServletResponse response, Boolean loginStatus)
 			throws ServletException, IOException {
