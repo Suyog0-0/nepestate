@@ -21,7 +21,7 @@
       <li class="menu-item dropdown-toggle">
         <div class="dropdown-header">
           <img src="${pageContext.request.contextPath}/images/down-icon.png" class="icon dropdown-icon">
-          Dashboard
+          <span>Dashboard</span>
         </div>
         <ul class="submenu">
           <li class="submenu-item">
@@ -54,12 +54,9 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // Init dropdown
   const toggle = document.querySelector('.dropdown-toggle');
-  
   toggle.addEventListener('click', () => {
     toggle.classList.toggle('open');
-    toggle.classList.toggle('active');
   });
 });
 </script>
