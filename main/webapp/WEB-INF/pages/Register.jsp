@@ -94,7 +94,7 @@
                 </div>
                 
                 <div class="form-footer">
-                    <p>Already have an account? <a href="login.html" class="highlight-link">Login here</a></p>
+                    <p>Already have an account? <a href="${pageContext.request.contextPath}/LoginController" class="highlight-link">Login here</a></p>
                 </div>
             </form>
         </div>
