@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,39 +22,37 @@
             <!-- Product Container -->
             <div class="productContainer">
                 <div class="productContent">
-                    <c:forEach items="${properties}" var="property" varStatus="status">
-                        <c:if test="${status.index == 0}">
-                            <div class="price">Rs. ${property.propertyPrice}</div>
-                            <div class="location">${property.propertyAddress}, ${property.propertyCity}</div>
-                            
-                            <!-- Available/Not Available Section -->
-                            <div class="availabilitySection">
-                                <div class="availableOption">
-                                    <span class="availableText">${property.propertyStatus}</span>
-                                </div>
+                    <c:forEach items="${properties}" var="property">
+                        <div class="price">Rs. ${property.property_Price}</div>
+                        <div class="location">${property.property_Address}, ${property.property_City}</div>
+                        
+                        <!-- Available/Not Available Section -->
+                        <div class="availabilitySection">
+                            <div class="availableOption">
+                                <span class="availableText">${property.property_Status}</span>
                             </div>
-                            
-                            <!-- Image Gallery -->
-                            <div class="imageContainer">
-                                <img src="${pageContext.request.contextPath}/images/${property.propertyPhotos}" class="house1">
+                        </div>
+                        
+                        <!-- Image Gallery -->
+                        <div class="imageContainer">
+                            <img src="${pageContext.request.contextPath}/images/${property.property_Photos}" class="house1">
+                        </div>
+                        
+                        <!-- Property Details -->
+                        <div class="housingDetails">
+                            <div class="type">
+                                <div class="typeHeading">Type</div>
+                                <div class="typeText">${property.property_Type}</div>
                             </div>
-                            
-                            <!-- Property Details -->
-                            <div class="housingDetails">
-                                <div class="type">
-                                    <div class="typeHeading">Type</div>
-                                    <div class="typeText">${property.propertyType}</div>
-                                </div>
-                                <div class="area">
-                                    <div class="areaHeading">Area</div>
-                                    <div class="areaText">${property.propertyArea} sq.ft</div>
-                                </div>
-                                <div class="totalUnits">
-                                    <div class="totalUnitsHeading">Total Units</div>
-                                    <div class="totalUnitsText">${property.propertyWard}</div>
-                                </div>
+                            <div class="area">
+                                <div class="areaHeading">Area</div>
+                                <div class="areaText">${property.property_Area} sq.ft</div>
                             </div>
-                        </c:if>
+                            <div class="totalUnits">
+                                <div class="totalUnitsHeading">Total Units</div>
+                                <div class="totalUnitsText">${property.property_Ward}</div>
+                            </div>
+                        </div>
                     </c:forEach>
                 </div>
             </div>
@@ -92,10 +89,8 @@
             <div class="aboutContainer">
                 <div class="aboutHeading">About</div>
                 <div class="aboutText">
-                    <c:forEach items="${properties}" var="property" varStatus="status">
-                        <c:if test="${status.index == 0}">
-                            ${property.propertyDescription}
-                        </c:if>
+                    <c:forEach items="${properties}" var="property">
+                        ${property.property_Description}
                     </c:forEach>
                 </div>
             </div>

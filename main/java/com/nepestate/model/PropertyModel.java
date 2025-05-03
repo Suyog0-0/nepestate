@@ -1,3 +1,4 @@
+// src/com/nepestate/model/PropertyModel.java
 package com.nepestate.model;
 
 import java.util.Date;
@@ -17,176 +18,72 @@ public class PropertyModel {
     private String Property_Amentities;
     private Date Property_DateAdded;
     private String Property_Photos;
-    
+
     // Default constructor
     public PropertyModel() {}
-    
+
     // Full constructor
-    public PropertyModel(int propertyID, String property_Title, String property_Type, float property_Price,
-            float property_Area, String property_Address, String property_City, String property_Municipality,
-            int property_Ward, String property_Status, String property_Description, String property_Amentities,
-            Date property_DateAdded, String property_Photos) {
-        PropertyID = propertyID;
-        Property_Title = property_Title;
-        Property_Type = property_Type;
-        Property_Price = property_Price;
-        Property_Area = property_Area;
-        Property_Address = property_Address;
-        Property_City = property_City;
-        Property_Municipality = property_Municipality;
-        Property_Ward = property_Ward;
-        Property_Status = property_Status;
-        Property_Description = property_Description;
-        Property_Amentities = property_Amentities;
-        Property_DateAdded = property_DateAdded;
-        Property_Photos = property_Photos;
-    }
-    
-    // Constructor without ID (useful for insertion)
-    public PropertyModel(String property_Title, String property_Type, float property_Price,
-            float property_Area, String property_Address, String property_City, String property_Municipality,
-            int property_Ward, String property_Status, String property_Description, String property_Amentities,
-            Date property_DateAdded, String property_Photos) {
-        Property_Title = property_Title;
-        Property_Type = property_Type;
-        Property_Price = property_Price;
-        Property_Area = property_Area;
-        Property_Address = property_Address;
-        Property_City = property_City;
-        Property_Municipality = property_Municipality;
-        Property_Ward = property_Ward;
-        Property_Status = property_Status;
-        Property_Description = property_Description;
-        Property_Amentities = property_Amentities;
-        Property_DateAdded = property_DateAdded;
-        Property_Photos = property_Photos;
-    }
-    public PropertyModel(String property_Title, String property_Type, float property_Price,
-            float property_Area, String property_Address, String property_City, 
-             String property_Description,String property_Status, String property_Amentities,
-            Date property_DateAdded, String property_Photos) {
-        Property_Title = property_Title;
-        Property_Type = property_Type;
-        Property_Price = property_Price;
-        Property_Area = property_Area;
-        Property_Address = property_Address;
-        Property_City = property_City;
-        Property_Status = property_Status;
-        Property_Description = property_Description;
-        Property_Amentities = property_Amentities;
-        Property_DateAdded = property_DateAdded;
-        Property_Photos = property_Photos;
+    public PropertyModel(int PropertyID, String Property_Title, String Property_Type, float Property_Price,
+                         float Property_Area, String Property_Address, String Property_City,
+                         String Property_Municipality, int Property_Ward, String Property_Status,
+                         String Property_Description, String Property_Amentities, Date Property_DateAdded,
+                         String Property_Photos) {
+        this.PropertyID = PropertyID;
+        this.Property_Title = Property_Title;
+        this.Property_Type = Property_Type;
+        this.Property_Price = Property_Price;
+        this.Property_Area = Property_Area;
+        this.Property_Address = Property_Address;
+        this.Property_City = Property_City;
+        this.Property_Municipality = Property_Municipality;
+        this.Property_Ward = Property_Ward;
+        this.Property_Status = Property_Status;
+        this.Property_Description = Property_Description;
+        this.Property_Amentities = Property_Amentities;
+        this.Property_DateAdded = Property_DateAdded;
+        this.Property_Photos = Property_Photos;
     }
 
-    public int getPropertyID() {
-        return PropertyID;
-    }
+    // Getters and setters
+    public int getPropertyID() { return PropertyID; }
+    public void setPropertyID(int PropertyID) { this.PropertyID = PropertyID; }
 
-    public void setPropertyID(int propertyID) {
-        PropertyID = propertyID;
-    }
+    public String getProperty_Title() { return Property_Title; }
+    public void setProperty_Title(String Property_Title) { this.Property_Title = Property_Title; }
 
-    public String getProperty_Title() {
-        return Property_Title;
-    }
+    public String getProperty_Type() { return Property_Type; }
+    public void setProperty_Type(String Property_Type) { this.Property_Type = Property_Type; }
 
-    public void setProperty_Title(String property_Title) {
-        Property_Title = property_Title;
-    }
+    public float getProperty_Price() { return Property_Price; }
+    public void setProperty_Price(float Property_Price) { this.Property_Price = Property_Price; }
 
-    public String getProperty_Type() {
-        return Property_Type;
-    }
+    public float getProperty_Area() { return Property_Area; }
+    public void setProperty_Area(float Property_Area) { this.Property_Area = Property_Area; }
 
-    public void setProperty_Type(String property_Type) {
-        Property_Type = property_Type;
-    }
+    public String getProperty_Address() { return Property_Address; }
+    public void setProperty_Address(String Property_Address) { this.Property_Address = Property_Address; }
 
-    public float getProperty_Price() {
-        return Property_Price;
-    }
+    public String getProperty_City() { return Property_City; }
+    public void setProperty_City(String Property_City) { this.Property_City = Property_City; }
 
-    public void setProperty_Price(float property_Price) {
-        Property_Price = property_Price;
-    }
+    public String getProperty_Municipality() { return Property_Municipality; }
+    public void setProperty_Municipality(String Property_Municipality) { this.Property_Municipality = Property_Municipality; }
 
-    public float getProperty_Area() {
-        return Property_Area;
-    }
+    public int getProperty_Ward() { return Property_Ward; }
+    public void setProperty_Ward(int Property_Ward) { this.Property_Ward = Property_Ward; }
 
-    public void setProperty_Area(float property_Area) {
-        Property_Area = property_Area;
-    }
+    public String getProperty_Status() { return Property_Status; }
+    public void setProperty_Status(String Property_Status) { this.Property_Status = Property_Status; }
 
-    public String getProperty_Address() {
-        return Property_Address;
-    }
+    public String getProperty_Description() { return Property_Description; }
+    public void setProperty_Description(String Property_Description) { this.Property_Description = Property_Description; }
 
-    public void setProperty_Address(String property_Address) {
-        Property_Address = property_Address;
-    }
+    public String getProperty_Amentities() { return Property_Amentities; }
+    public void setProperty_Amentities(String Property_Amentities) { this.Property_Amentities = Property_Amentities; }
 
-    public String getProperty_City() {
-        return Property_City;
-    }
+    public Date getProperty_DateAdded() { return Property_DateAdded; }
+    public void setProperty_DateAdded(Date Property_DateAdded) { this.Property_DateAdded = Property_DateAdded; }
 
-    public void setProperty_City(String property_City) {
-        Property_City = property_City;
-    }
-
-    public String getProperty_Municipality() {
-        return Property_Municipality;
-    }
-
-    public void setProperty_Municipality(String property_Municipality) {
-        Property_Municipality = property_Municipality;
-    }
-
-    public int getProperty_Ward() {
-        return Property_Ward;
-    }
-
-    public void setProperty_Ward(int property_Ward) {
-        Property_Ward = property_Ward;
-    }
-
-    public String getProperty_Status() {
-        return Property_Status;
-    }
-
-    public void setProperty_Status(String property_Status) {
-        Property_Status = property_Status;
-    }
-
-    public String getProperty_Description() {
-        return Property_Description;
-    }
-
-    public void setProperty_Description(String property_Description) {
-        Property_Description = property_Description;
-    }
-
-    public String getProperty_Amentities() {
-        return Property_Amentities;
-    }
-
-    public void setProperty_Amentities(String property_Amentities) {
-        Property_Amentities = property_Amentities;
-    }
-
-    public Date getProperty_DateAdded() {
-        return Property_DateAdded;
-    }
-
-    public void setProperty_DateAdded(Date property_DateAdded) {
-        Property_DateAdded = property_DateAdded;
-    }
-
-    public String getProperty_Photos() {
-        return Property_Photos;
-    }
-
-    public void setProperty_Photos(String property_Photos) {
-        Property_Photos = property_Photos;
-    }
+    public String getProperty_Photos() { return Property_Photos; }
+    public void setProperty_Photos(String Property_Photos) { this.Property_Photos = Property_Photos; }
 }
