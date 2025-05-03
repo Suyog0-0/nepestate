@@ -6,16 +6,16 @@
 <meta charset="UTF-8">
 <title>Report Generation</title>
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/navbar.css">
+href="${pageContext.request.contextPath}/css/Navbar.css">
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/ReportGeneration.css">
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/footer.css">
+href="${pageContext.request.contextPath}/css/Footer.css">
 </head>
 <body>
 	<jsp:include page="Navbar.jsp" />
 	<div style="display:flex;">
-		<jsp:include page="AdminSidebar.jsp" />
+		<jsp:include page="adminSidebar.jsp" />
 		<div class="rightbox">
             <div style="margin-left: 7%;">
                 <div>

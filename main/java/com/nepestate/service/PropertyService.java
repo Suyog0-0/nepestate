@@ -141,8 +141,6 @@ public class PropertyService {
             stmt.setFloat(4, propertyModel.getProperty_Area());
             stmt.setString(5, propertyModel.getProperty_Address());
             stmt.setString(6, propertyModel.getProperty_City());
-            stmt.setString(7, propertyModel.getProperty_Municipality());
-            stmt.setInt(8, propertyModel.getProperty_Ward());
             stmt.setString(9, propertyModel.getProperty_Status());
             stmt.setString(10, propertyModel.getProperty_Description());
             stmt.setString(11, propertyModel.getProperty_Amentities());
@@ -199,7 +197,7 @@ public class PropertyService {
         }
 
         List<PropertyModel> properties = new ArrayList<>();
-        String query = "SELECT * FROM properties";
+        String query = "SELECT * FROM property";
         
         try (PreparedStatement stmt = dbConn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -232,8 +230,6 @@ public class PropertyService {
         property.setProperty_Area(rs.getFloat("Property_Area"));
         property.setProperty_Address(rs.getString("Property_Address"));
         property.setProperty_City(rs.getString("Property_City"));
-        property.setProperty_Municipality(rs.getString("Property_Municipality"));
-        property.setProperty_Ward(rs.getInt("Property_Ward"));
         property.setProperty_Status(rs.getString("Property_Status"));
         property.setProperty_Description(rs.getString("Property_Description"));
         property.setProperty_Amentities(rs.getString("Property_Amentities"));

@@ -10,8 +10,6 @@ public class PropertyModel {
     private float Property_Area;
     private String Property_Address;
     private String Property_City;
-    private String Property_Municipality;
-    private int Property_Ward;
     private String Property_Status;
     private String Property_Description;
     private String Property_Amentities;
@@ -33,8 +31,6 @@ public class PropertyModel {
         Property_Area = property_Area;
         Property_Address = property_Address;
         Property_City = property_City;
-        Property_Municipality = property_Municipality;
-        Property_Ward = property_Ward;
         Property_Status = property_Status;
         Property_Description = property_Description;
         Property_Amentities = property_Amentities;
@@ -53,8 +49,6 @@ public class PropertyModel {
         Property_Area = property_Area;
         Property_Address = property_Address;
         Property_City = property_City;
-        Property_Municipality = property_Municipality;
-        Property_Ward = property_Ward;
         Property_Status = property_Status;
         Property_Description = property_Description;
         Property_Amentities = property_Amentities;
@@ -134,21 +128,6 @@ public class PropertyModel {
         Property_City = property_City;
     }
 
-    public String getProperty_Municipality() {
-        return Property_Municipality;
-    }
-
-    public void setProperty_Municipality(String property_Municipality) {
-        Property_Municipality = property_Municipality;
-    }
-
-    public int getProperty_Ward() {
-        return Property_Ward;
-    }
-
-    public void setProperty_Ward(int property_Ward) {
-        Property_Ward = property_Ward;
-    }
 
     public String getProperty_Status() {
         return Property_Status;
