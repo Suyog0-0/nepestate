@@ -66,5 +66,7 @@ public class ValidationUtil {
         LocalDate today = LocalDate.now();
         return Period.between(dob, today).getYears() >= 16;
     }
-
+    public static boolean isValidPrice(Float price) {
+        return price != null && price > 0;
+    }
 }

@@ -36,10 +36,10 @@ public class PropertyService {
      * @param propertyModel The property details to be added
      * @return The ID of the newly added property, or -1 if an error occurred
      */
-    public int addProperty(PropertyModel propertyModel) {
+    public Boolean addProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
-            return -1;
+            return null;
         }
 
         String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, " +
@@ -65,26 +65,22 @@ public class PropertyService {
             stmt.setString(11, propertyModel.getProperty_Photos());
 
             int affectedRows = stmt.executeUpdate();
+            return affectedRows >0;
             
-            if (affectedRows == 0) {
-                System.out.println("Creating property failed, no rows affected.");
-                return -1;
-            }
-
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    int propertyId = generatedKeys.getInt(1);
-                    System.out.println("Property added successfully with ID: " + propertyId);
-                    return propertyId;
-                } else {
-                    System.out.println("Creating property failed, no ID obtained.");
-                    return -1;
-                }
-            }
+//            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+//                if (generatedKeys.next()) {
+//                    int propertyId = generatedKeys.getInt(1);
+//                    System.out.println("Property added successfully with ID: " + propertyId);
+//                    return propertyId;
+//                } else {
+//                    System.out.println("Creating property failed, no ID obtained.");
+//                    return -1;
+//                }
+//            }
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
-            return -1;
+            return null;
         }
     }
 
