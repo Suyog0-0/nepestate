@@ -22,7 +22,7 @@ body {
   flex: 1;
   padding: 30px;
   overflow-y: auto;
-  margin: 35px 30px 60px 20px; /* Added left margin for sidebar gap and more bottom margin */
+  margin: 50px 30px 60px 20px; /* Added left margin for sidebar gap and more bottom margin */
   background-color: white; /* Removed grey background */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); /* Subtle shadow for cards */
   border-radius: 10px;
