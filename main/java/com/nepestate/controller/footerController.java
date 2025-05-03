@@ -30,6 +30,7 @@ public class footerController extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/pages/footer.jsp").forward(request, response);
 	}
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
