@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"
+    %>
+    <%@
+    page import="com.nepestate.model.PropertyModel"
+    %>
+    <%@ page import="java.util.List"%>
+   <%
+   		List<PropertyModel> users = (List<PropertyModel>) request.getAttribute("propertyList");
+        %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,83 +71,24 @@ href="${pageContext.request.contextPath}/css/Footer.css">
             </div>
         </div>
         <div class="listing">
-            <a href="#">
-                <div class="card" >
-
-                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
-
-                    <div class="card-content">
-                      <h3>Rs.5,00,00,000</h3>
-                      <span class="tag">Home</span>
-                    <div class="location">Kamalpokhari, Kathmandu</div>
-                    <div class="description">🏠 Beautiful home for sale in a scenic and peaceful location!</div>
-                    <div class="status">✅ Available</div>
-                    </div>
-                </div>
-            </a>
-            
-            <a href="#">
-                <div class="card" >
-
-                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
-
-                    <div class="card-content">
-                      <h3>Rs.5,00,00,000</h3>
-                      <span class="tag">Home</span>
-                    <div class="location">Kamalpokhari, Kathmandu</div>
-                    <div class="description">🏠 Beautiful home for sale in a scenic and peaceful location!</div>
-                    <div class="status">✅ Available</div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="card" >
-
-                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
-
-                    <div class="card-content">
-                      <h3>Rs.5,00,00,000</h3>
-                      <span class="tag">Home</span>
-                    <div class="location">Kamalpokhari, Kathmandu</div>
-                    <div class="description">🏠 Beautiful home for sale in a scenic and peaceful location!</div>
-                    <div class="status">✅ Available</div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="card" >
-
-                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
-
-                    <div class="card-content">
-                      <h3>Rs.5,00,00,000</h3>
-                      <span class="tag">Home</span>
-                    <div class="location">Kamalpokhari, Kathmandu</div>
-                    <div class="description">🏠 Beautiful home for sale in a scenic and peaceful location!</div>
-                    <div class="status">✅ Available</div>
-                    </div>
-                </div>
-            </a>
-
-            <a href="#">
-                <div class="card" >
-
-                    <img src="${pageContext.request.contextPath}/images/house.jpeg">
-                    <div class="card-content">
-                      <h3>Rs.5,00,00,000</h3>
-                      <span class="tag">Home</span>
-                    <div class="location">Kamalpokhari,Kathmandu</div>
-                    <div class="description">🏠 Beautiful home for sale in a scenic and peaceful location!</div>
-                    <div class="status">✅ Available</div>
-                    </div>
-                </div>
-            </a>
-        </div>
+    		<c:forEach var="p" items="${propertyList}">
+        		<a href="#">
+           			<div class="card">
+                <%-- <img src="${pageContext.request.contextPath}/images/${p.image}" alt="Image"> --%>
+                		<div class="card-content">
+                    		<h3>Rs.${p.property_Price}</h3>
+                    <%-- <span class="tag">${p.}</span> --%>
+                    		<div class="location">${p.property_Address}</div>
+                    		<div class="description">${p.property_Description}</div>
+                    		<div class="status">${p.property_Status}</div>
+                		</div>
+            		</div>
+        		</a>
+    		</c:forEach>
+		</div>
     </div>
 </body>
 <br>
 <br>
-<jsp:include page="Footer.jsp" />
+<%-- <jsp:include page="Footer.jsp" /> --%>
 </html>

@@ -15,35 +15,35 @@
     <ul>
       <li class="menu-item">
         <img src="${pageContext.request.contextPath}/images/users.png" class="icon">
-        My Profile
+        <a href="${pageContext.request.contextPath}/UserProfileController" class="nav-link"> My profile </a>
       </li>
 
       <li class="dropdown-container">
         <div class="menu-item dropdown-header">
           <img src="${pageContext.request.contextPath}/images/down-icon.png" class="icon">
-          Dashboard
+          <a href="${pageContext.request.contextPath}/UserDashboardController" class="nav-link">Dashboard </a>
         </div>
         <ul class="submenu">
           <li class="submenu-item">
             <img src="${pageContext.request.contextPath}/images/properties.png" class="icon">
-            Properties
+            <a href="${pageContext.request.contextPath}/PropertyListingController" class="nav-link">Properties</a>
           </li>
           <li class="submenu-item">
             <img src="${pageContext.request.contextPath}/images/users.png" class="icon">
-            Users
+            <a href="${pageContext.request.contextPath}/ContactListingController" class="nav-link"> Contact</a>
           </li>
           <li class="submenu-item">
             <img src="${pageContext.request.contextPath}/images/report.png" class="icon">
-            Reports
+            <a href="${pageContext.request.contextPath}/ReportGenerationController" class="nav-link"> Reports</a>
           </li>
         </ul>
       </li>
-
+      
       <li class="menu-item">
         <img src="${pageContext.request.contextPath}/images/white_favourite.png" class="icon">
-        Favourites
+        <a href="${pageContext.request.contextPath}/FavouriteController" class="nav-link"> Favorites</a>
       </li>
-
+      
       <li class="menu-item logout">
         <img src="${pageContext.request.contextPath}/images/logout.png" class="icon">
         Log Out

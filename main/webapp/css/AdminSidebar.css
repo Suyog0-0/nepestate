@@ -1,18 +1,21 @@
 @charset "UTF-8";
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
 }
 
 .sidebar {
-  width: 320px;
-  background: linear-gradient(to bottom, #3a6186, #3a3b4c);
+  width: 100%;
+  max-width: 320px;
+  background: linear-gradient(to bottom, #356A95, #001B34);
   color: white;
-  position: fixed;
-  top: 50px;
-  left: 80px;
   border-radius: 20px;
   padding: 30px;
+  margin-right: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.5s ease;
 }
@@ -43,19 +46,19 @@ body {
 .role {
   font-style: italic;
   font-size: 16px;
-  color: white; /* Changed from #ddd */
+  color: white;
   margin: 15px 0 5px;
 }
 
 .user-info h3 {
   margin: 5px 0;
   font-size: 22px;
-  color: white; /* Explicitly set */
+  color: white;
 }
 
 .user-info p {
   font-size: 15px;
-  color: white; /* Changed from #bbb */
+  color: white;
   margin: 5px 0;
 }
 
@@ -76,7 +79,7 @@ body {
   display: flex;
   align-items: center;
   gap: 15px;
-  color: white; /* Explicitly set */
+  color: white;
   text-decoration: none;
   cursor: pointer;
   padding: 15px;
@@ -96,7 +99,7 @@ body {
 
 .logout-btn {
   background: white;
-  color: #333; /* Keep contrast with white background */
+  color: #333;
   font-weight: 500;
   margin-top: 10px;
   display: flex;

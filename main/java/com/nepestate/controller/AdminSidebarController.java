@@ -20,7 +20,7 @@ public class AdminSidebarController extends HttpServlet {
         super();
     }
     
-    
+   
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/pages/AdminSidebar.jsp").forward(request, response);

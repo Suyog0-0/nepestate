@@ -2,6 +2,7 @@ package com.nepestate.model;
 
 
 public class CustomerModel {
+	private int CustomerID;
 	private String Customer_FirstName;
 	private String Customer_LastName;
 	private String Customer_Username;
@@ -13,9 +14,10 @@ public class CustomerModel {
 	
 	public CustomerModel() {}
 	
-	public CustomerModel(String cust_FirstName, String cust_LastName, String cust_Username, String cust_EmailAddress,
+	public CustomerModel(int customerID, String cust_FirstName, String cust_LastName, String cust_Username, String cust_EmailAddress,
 			String cust_Password, String cust_ProfilePicture, String cust_DoB, String cust_PhoneNumber) {
 		super();
+		CustomerID = customerID;
 		Customer_FirstName = cust_FirstName;
 		Customer_LastName = cust_LastName;
 		Customer_Username = cust_Username;
@@ -26,6 +28,14 @@ public class CustomerModel {
 		Customer_PhoneNumber = cust_PhoneNumber;
 	}
 
+	public void setCustomerID(int customerID) {
+		CustomerID = customerID;
+	}
+	
+	public int getCustomerID() {
+		return CustomerID;
+	}
+	
 	public String getCustomer_FirstName() {
 		return Customer_FirstName;
 	}
