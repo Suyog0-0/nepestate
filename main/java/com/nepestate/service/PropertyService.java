@@ -1,3 +1,4 @@
+// src/com/nepestate/service/PropertyService.java
 package com.nepestate.service;
 
 import java.sql.Connection;
@@ -12,15 +13,14 @@ import java.util.Date;
 import com.nepestate.model.PropertyModel;
 import com.nepestate.config.DbConfig;
 
-@SuppressWarnings("unused")
 public class PropertyService {
 
     private Connection dbConn;
     private boolean isConnectionError = false;
 
     /**
-     * Constructor initializes the database connection. Sets the connection error
-     * flag if the connection fails.
+     * Constructor initializes the database connection.
+     * Sets the connection error flag if the connection fails.
      */
     public PropertyService() {
         try {
@@ -30,11 +30,12 @@ public class PropertyService {
             isConnectionError = true;
         }
     }
+
     /**
-     * Adds a new property to the database
-     * 
-     * @param propertyModel The property details to be added
-     * @return The ID of the newly added property, or -1 if an error occurred
+     * Adds a new property to the database.
+     *
+     * @param propertyModel The property details to be added.
+     * @return The ID of the newly added property, or -1 if an error occurred.
      */
     public int addProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
@@ -42,10 +43,7 @@ public class PropertyService {
             return -1;
         }
 
-        String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, " +
-                "Property_Area, Property_Address, Property_City, " +
-                "Property_Status, Property_Description, Property_Amentities, " +
-                "Property_DateAdded, Property_Photos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, Property_Area, Property_Address, Property_City, Property_Status, Property_Description, Property_Amentities, Property_DateAdded, Property_Photos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, propertyModel.getProperty_Title());
@@ -58,7 +56,6 @@ public class PropertyService {
             stmt.setString(8, propertyModel.getProperty_Description());
             stmt.setString(9, propertyModel.getProperty_Amentities());
             
-            // Convert Java util Date to SQL Date
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
             stmt.setDate(10, sqlDate);
             
@@ -89,10 +86,10 @@ public class PropertyService {
     }
 
     /**
-     * Retrieves a property by its ID
-     * 
-     * @param propertyId The ID of the property to retrieve
-     * @return The PropertyModel if found, null otherwise
+     * Retrieves a property by its ID.
+     *
+     * @param propertyId The ID of the property to retrieve.
+     * @return The PropertyModel if found, null otherwise.
      */
     public PropertyModel getPropertyById(int propertyId) {
         if (isConnectionError) {
@@ -100,7 +97,7 @@ public class PropertyService {
             return null;
         }
 
-        String query = "SELECT * FROM properties WHERE PropertyID = ?";
+        String query = "SELECT * FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
             ResultSet rs = stmt.executeQuery();
@@ -117,10 +114,10 @@ public class PropertyService {
     }
 
     /**
-     * Updates an existing property in the database
-     * 
-     * @param propertyModel The property details to be updated
-     * @return true if update was successful, false otherwise
+     * Updates an existing property in the database.
+     *
+     * @param propertyModel The property details to be updated.
+     * @return true if update was successful, false otherwise.
      */
     public boolean updateProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
@@ -128,11 +125,7 @@ public class PropertyService {
             return false;
         }
 
-        String query = "UPDATE properties SET Property_Title = ?, Property_Type = ?, " +
-                "Property_Price = ?, Property_Area = ?, Property_Address = ?, " +
-                "Property_City = ?, Property_Municipality = ?, Property_Ward = ?, " +
-                "Property_Status = ?, Property_Description = ?, Property_Amentities = ?, " +
-                "Property_DateAdded = ?, Property_Photos = ? WHERE PropertyID = ?";
+        String query = "UPDATE property SET Property_Title = ?, Property_Type = ?, Property_Price = ?, Property_Area = ?, Property_Address = ?, Property_City = ?, Property_Municipality = ?, Property_Ward = ?, Property_Status = ?, Property_Description = ?, Property_Amentities = ?, Property_DateAdded = ?, Property_Photos = ? WHERE PropertyID = ?";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setString(1, propertyModel.getProperty_Title());
@@ -147,7 +140,6 @@ public class PropertyService {
             stmt.setString(10, propertyModel.getProperty_Description());
             stmt.setString(11, propertyModel.getProperty_Amentities());
             
-            // Convert Java util Date to SQL Date
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
             stmt.setDate(12, sqlDate);
             
@@ -164,10 +156,10 @@ public class PropertyService {
     }
 
     /**
-     * Deletes a property from the database
-     * 
-     * @param propertyId The ID of the property to delete
-     * @return true if deletion was successful, false otherwise
+     * Deletes a property from the database.
+     *
+     * @param propertyId The ID of the property to delete.
+     * @return true if deletion was successful, false otherwise.
      */
     public boolean deleteProperty(int propertyId) {
         if (isConnectionError) {
@@ -175,7 +167,7 @@ public class PropertyService {
             return false;
         }
 
-        String query = "DELETE FROM properties WHERE PropertyID = ?";
+        String query = "DELETE FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
             int rowsAffected = stmt.executeUpdate();
@@ -188,9 +180,9 @@ public class PropertyService {
     }
 
     /**
-     * Gets all properties from the database
-     * 
-     * @return List of PropertyModel objects
+     * Gets all properties from the database.
+     *
+     * @return List of PropertyModel objects.
      */
     public List<PropertyModel> getAllProperties() {
         if (isConnectionError) {
@@ -199,7 +191,7 @@ public class PropertyService {
         }
 
         List<PropertyModel> properties = new ArrayList<>();
-        String query = "SELECT * FROM properties";
+        String query = "SELECT * FROM property";
         
         try (PreparedStatement stmt = dbConn.prepareStatement(query);
              ResultSet rs = stmt.executeQuery()) {
@@ -217,11 +209,11 @@ public class PropertyService {
     }
 
     /**
-     * Helper method to map a ResultSet to a PropertyModel
-     * 
-     * @param rs The ResultSet containing property data
-     * @return A PropertyModel object populated with data from the ResultSet
-     * @throws SQLException If a database access error occurs
+     * Helper method to map a ResultSet to a PropertyModel.
+     *
+     * @param rs The ResultSet containing property data.
+     * @return A PropertyModel object populated with data from the ResultSet.
+     * @throws SQLException If a database access error occurs.
      */
     private PropertyModel mapResultSetToPropertyModel(ResultSet rs) throws SQLException {
         PropertyModel property = new PropertyModel();
@@ -243,14 +235,14 @@ public class PropertyService {
     }
 
     /**
-     * Search properties based on various criteria
-     * 
-     * @param type Property type (optional)
-     * @param city Property city (optional)
-     * @param minPrice Minimum price (optional)
-     * @param maxPrice Maximum price (optional)
-     * @param status Property status (optional)
-     * @return List of properties matching the search criteria
+     * Search properties based on various criteria.
+     *
+     * @param type Property type (optional).
+     * @param city Property city (optional).
+     * @param minPrice Minimum price (optional).
+     * @param maxPrice Maximum price (optional).
+     * @param status Property status (optional).
+     * @return List of properties matching the search criteria.
      */
     public List<PropertyModel> searchProperties(String type, String city, Float minPrice, Float maxPrice, String status) {
         if (isConnectionError) {
@@ -259,7 +251,7 @@ public class PropertyService {
         }
 
         List<PropertyModel> properties = new ArrayList<>();
-        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM properties WHERE 1=1");
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM property WHERE 1=1");
         List<Object> params = new ArrayList<>();
 
         if (type != null && !type.isEmpty()) {

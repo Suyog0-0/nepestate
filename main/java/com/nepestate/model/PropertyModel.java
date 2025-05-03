@@ -19,10 +19,8 @@ public class PropertyModel {
     private Date Property_DateAdded;
     private String Property_Photos;
 
-    // Default constructor
     public PropertyModel() {}
 
-    // Full constructor
     public PropertyModel(int PropertyID, String Property_Title, String Property_Type, float Property_Price,
                          float Property_Area, String Property_Address, String Property_City,
                          String Property_Municipality, int Property_Ward, String Property_Status,
@@ -44,7 +42,6 @@ public class PropertyModel {
         this.Property_Photos = Property_Photos;
     }
 
-    // Getters and setters
     public int getPropertyID() { return PropertyID; }
     public void setPropertyID(int PropertyID) { this.PropertyID = PropertyID; }
 
