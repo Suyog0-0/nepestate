@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+  }
+  
+  .main-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .contact-list {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #f4f4f4;
+  }
+  
+  .contact-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #254066;
+    color: white;
+    padding: 20px 30px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom: solid white;
+  }
+  
+  .contact-header h1 {
+    font-size: 26px;
+    font-weight: bold;
+  }
+  
+  .contact-controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .search-bar {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+  }
+  
+  .new-btn {
+    padding: 8px 12px;
+    background-color: white;
+    color: #254066;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    color: black;
+  }
+  
+   .contact-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #3a5d87;
+  }
+  .contact-table th
+  {
+    padding: 16px;
+    text-align: left;
+    font-size: 19px;
+    border-bottom: 2px solid #3a5d87;
+  }
+  
+  .user-img {
+    width: 135px;
+    height: 135px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .actions img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+  
+  .entries-dropdown {
+    padding: 20px;
+    font-size: 14px;
+    color: white;
+    background-color: #254066;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  

@@ -16,7 +16,7 @@
   <div class="main-container">
     
     <jsp:include page="UserSidebar.jsp"/>
-   
+    
     <!-- Dashboard -->
     <main class="dashboard">
       <h1>Dashboard</h1>
@@ -50,7 +50,7 @@
       </div>
     </main>
   </div>
-
+  
   <!-- Footer -->
   <jsp:include page="Footer.jsp"/>
 
