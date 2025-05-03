@@ -44,7 +44,8 @@ public class PostPropertyController extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		try {
+		
+			try {
 			System.out.println("Received Title: " + request.getParameter("title"));
 			String validationMessage = validatePropertyForm(request);
 			
@@ -53,7 +54,7 @@ public class PostPropertyController extends HttpServlet {
 				handleError(request, response, validationMessage);
 				return;
 				}
-			else {
+				else {
 				PropertyModel property=createPropertyFromRequest(request);
 				PropertyService propertyService = new PropertyService();
 				Boolean result = propertyService.addProperty(property);
@@ -114,6 +115,9 @@ public class PostPropertyController extends HttpServlet {
 			return "Address must contain letters and no numeric digits.";
 		if (!ValidationUtil.isValidPrice(price)) {
 		    return "Price must be a number greater than 0.";
+		}
+		if (!ValidationUtil.isValidPrice(area)) {
+		    return "Area must be a number greater than 0.";
 		}
 
 		return null; // All validations passed

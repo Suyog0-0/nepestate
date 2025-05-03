@@ -96,7 +96,7 @@ public class PropertyService {
             return null;
         }
 
-        String query = "SELECT * FROM properties WHERE PropertyID = ?";
+        String query = "SELECT * FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
             ResultSet rs = stmt.executeQuery();
@@ -124,9 +124,9 @@ public class PropertyService {
             return false;
         }
 
-        String query = "UPDATE properties SET Property_Title = ?, Property_Type = ?, " +
+        String query = "UPDATE property SET Property_Title = ?, Property_Type = ?, " +
                 "Property_Price = ?, Property_Area = ?, Property_Address = ?, " +
-                "Property_City = ?, Property_Municipality = ?, Property_Ward = ?, " +
+                "Property_City = ?," +
                 "Property_Status = ?, Property_Description = ?, Property_Amentities = ?, " +
                 "Property_DateAdded = ?, Property_Photos = ? WHERE PropertyID = ?";
 
@@ -137,16 +137,15 @@ public class PropertyService {
             stmt.setFloat(4, propertyModel.getProperty_Area());
             stmt.setString(5, propertyModel.getProperty_Address());
             stmt.setString(6, propertyModel.getProperty_City());
-            stmt.setString(9, propertyModel.getProperty_Status());
-            stmt.setString(10, propertyModel.getProperty_Description());
-            stmt.setString(11, propertyModel.getProperty_Amentities());
-            
-            // Convert Java util Date to SQL Date
+            stmt.setString(7, propertyModel.getProperty_Status());
+            stmt.setString(8, propertyModel.getProperty_Description());
+            stmt.setString(9, propertyModel.getProperty_Amentities());
+   
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
-            stmt.setDate(12, sqlDate);
+            stmt.setDate(10, sqlDate);
             
-            stmt.setString(13, propertyModel.getProperty_Photos());
-            stmt.setInt(14, propertyModel.getPropertyID());
+            stmt.setString(11, propertyModel.getProperty_Photos());
+            stmt.setInt(12, propertyModel.getPropertyID());
 
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
