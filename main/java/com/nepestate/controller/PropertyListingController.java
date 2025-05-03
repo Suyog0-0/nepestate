@@ -1,11 +1,16 @@
 package com.nepestate.controller;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
+import com.nepestate.model.PropertyModel;
+import com.nepestate.service.PropertyService;
 
 /**
  * Servlet implementation class propertylisting
@@ -27,7 +32,11 @@ public class PropertyListingController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
+		PropertyService propertyListService = new PropertyService();
+        List<PropertyModel> propertyList = propertyListService.getAllProperties();
+        request.setAttribute("propertyList", propertyList);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page import="java.util.List" %>
+    <%@ page import="com.nepestate.model.PropertyModel" %>
+    <%
+   		List<PropertyModel> users = (List<PropertyModel>) request.getAttribute("propertyList");
+        %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +24,6 @@ href="${pageContext.request.contextPath}/css/PropertyListing.css">
     
     <!-- Sidebar -->
     <jsp:include page="AdminSidebar.jsp"/>
-
     <!-- Content -->
     <main class="property-list">
       <div class="property-header">
@@ -42,49 +47,25 @@ href="${pageContext.request.contextPath}/css/PropertyListing.css">
           </tr>
         </thead>
         <tbody>
+        	<c:forEach var="p" items="${propertyList}">
           <tr>
             <td><input type="checkbox" /></td>
-            <td><img src="${pageContext.request.contextPath}/images/house1.webp" class="property-img" /></td>
-            <td>Thamel</td>
-            <td>House</td>
-            <td>1 crore</td>
-            <td><span class="status available">✔ Available</span></td>
+            <%--  <td><img src="${pageContext.request.contextPath}/images/${p.image}" class="property-img" alt="Image"></td>--%>
+             <td><img src="${pageContext.request.contextPath}/images/house1.webp" class="property-img" /></td>
+            <td>${p.property_Address}</td>
+            <td>${p.property_Type}</td>
+            <td>Rs.${p.property_Price}</td>
+            <td class="status available">${p.property_Status}</td>
             <td class="actions">
               <img src="${pageContext.request.contextPath}/images/edit-246.png" />
               <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
               <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
             </td>
           </tr>
-          <tr>
-            <td><input type="checkbox" /></td>
-            <td><img src="${pageContext.request.contextPath}/images/house2.webp" class="property-img" /></td>
-            <td>Baneshwor</td>
-            <td>House</td>
-            <td>2 crore</td>
-            <td><span class="status not-available">✖ Not Available</span></td>
-            <td class="actions">
-              <img src="${pageContext.request.contextPath}/images/edit-246.png" />
-              <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
-              <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
-            </td>
-          </tr>
-          <tr>
-            <td><input type="checkbox" /></td>
-            <td><img src="${pageContext.request.contextPath}/images/house3.webp" class="property-img" /></td>
-            <td>Jamal</td>
-            <td>Apartment</td>
-            <td>3 crore</td>
-            <td><span class="status available">✔ Available</span></td>
-            <td class="actions">
-              <img src="${pageContext.request.contextPath}/images/edit-246.png" />
-              <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
-              <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
-            </td>
-          </tr>
- 
+           </c:forEach>
         </tbody>
       </table>
-
+      
       <div class="entries-dropdown">
         Show 
         <select>
