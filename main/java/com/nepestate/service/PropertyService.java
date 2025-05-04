@@ -1,4 +1,3 @@
-// src/com/nepestate/service/PropertyService.java
 package com.nepestate.service;
 
 import java.sql.Connection;
@@ -7,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Date;
+import java.util.List;
 
 import com.nepestate.model.PropertyModel;
 import com.nepestate.config.DbConfig;
@@ -19,8 +18,8 @@ public class PropertyService {
     private boolean isConnectionError = false;
 
     /**
-     * Constructor initializes the database connection.
-     * Sets the connection error flag if the connection fails.
+     * Constructor initializes the database connection. Sets the connection error
+     * flag if the connection fails.
      */
     public PropertyService() {
         try {
@@ -30,20 +29,24 @@ public class PropertyService {
             isConnectionError = true;
         }
     }
-
+    
     /**
-     * Adds a new property to the database.
-     *
-     * @param propertyModel The property details to be added.
-     * @return The ID of the newly added property, or -1 if an error occurred.
+     * Adds a new property to the database
+     * 
+     * @param propertyModel The property details to be added
+     * @return The ID of the newly added property, or -1 if an error occurred
      */
-    public int addProperty(PropertyModel propertyModel) {
+    public Boolean addProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
-            return -1;
+            return null;
         }
 
-        String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, Property_Area, Property_Address, Property_City, Property_Status, Property_Description, Property_Amentities, Property_DateAdded, Property_Photos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        // SQL query to insert a new property into the database
+        String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, " +
+                "Property_Area, Property_Address, Property_City, " +
+                "Property_Status, Property_Description, Property_Amentities, " +
+                "Property_DateAdded, Property_Photos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, propertyModel.getProperty_Title());
@@ -56,40 +59,27 @@ public class PropertyService {
             stmt.setString(8, propertyModel.getProperty_Description());
             stmt.setString(9, propertyModel.getProperty_Amentities());
             
+            // Convert Java util Date to SQL Date for database compatibility
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
             stmt.setDate(10, sqlDate);
             
             stmt.setString(11, propertyModel.getProperty_Photos());
 
             int affectedRows = stmt.executeUpdate();
+            return affectedRows > 0; // Return true if insertion was successful
             
-            if (affectedRows == 0) {
-                System.out.println("Creating property failed, no rows affected.");
-                return -1;
-            }
-
-            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
-                if (generatedKeys.next()) {
-                    int propertyId = generatedKeys.getInt(1);
-                    System.out.println("Property added successfully with ID: " + propertyId);
-                    return propertyId;
-                } else {
-                    System.out.println("Creating property failed, no ID obtained.");
-                    return -1;
-                }
-            }
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
-            return -1;
+            return null; // Return null if an error occurred
         }
     }
 
     /**
-     * Retrieves a property by its ID.
-     *
-     * @param propertyId The ID of the property to retrieve.
-     * @return The PropertyModel if found, null otherwise.
+     * Retrieves a property by its ID
+     * 
+     * @param propertyId The ID of the property to retrieve
+     * @return The PropertyModel if found, null otherwise
      */
     public PropertyModel getPropertyById(int propertyId) {
         if (isConnectionError) {
@@ -97,13 +87,14 @@ public class PropertyService {
             return null;
         }
 
+        // SQL query to select a property by its ID
         String query = "SELECT * FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return mapResultSetToPropertyModel(rs);
+                return mapResultSetToPropertyModel(rs); // Convert ResultSet to PropertyModel
             }
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
@@ -114,10 +105,10 @@ public class PropertyService {
     }
 
     /**
-     * Updates an existing property in the database.
-     *
-     * @param propertyModel The property details to be updated.
-     * @return true if update was successful, false otherwise.
+     * Updates an existing property in the database
+     * 
+     * @param propertyModel The property details to be updated
+     * @return true if update was successful, false otherwise
      */
     public boolean updateProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
@@ -125,7 +116,12 @@ public class PropertyService {
             return false;
         }
 
-        String query = "UPDATE property SET Property_Title = ?, Property_Type = ?, Property_Price = ?, Property_Area = ?, Property_Address = ?, Property_City = ?, Property_Municipality = ?, Property_Ward = ?, Property_Status = ?, Property_Description = ?, Property_Amentities = ?, Property_DateAdded = ?, Property_Photos = ? WHERE PropertyID = ?";
+        // SQL query to update an existing property
+        String query = "UPDATE property SET Property_Title = ?, Property_Type = ?, " +
+                "Property_Price = ?, Property_Area = ?, Property_Address = ?, " +
+                "Property_City = ?," +
+                "Property_Status = ?, Property_Description = ?, Property_Amentities = ?, " +
+                "Property_DateAdded = ?, Property_Photos = ? WHERE PropertyID = ?";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setString(1, propertyModel.getProperty_Title());
@@ -134,20 +130,18 @@ public class PropertyService {
             stmt.setFloat(4, propertyModel.getProperty_Area());
             stmt.setString(5, propertyModel.getProperty_Address());
             stmt.setString(6, propertyModel.getProperty_City());
-            stmt.setString(7, propertyModel.getProperty_Municipality());
-            stmt.setInt(8, propertyModel.getProperty_Ward());
-            stmt.setString(9, propertyModel.getProperty_Status());
-            stmt.setString(10, propertyModel.getProperty_Description());
-            stmt.setString(11, propertyModel.getProperty_Amentities());
-            
+            stmt.setString(7, propertyModel.getProperty_Status());
+            stmt.setString(8, propertyModel.getProperty_Description());
+            stmt.setString(9, propertyModel.getProperty_Amentities());
+   
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
-            stmt.setDate(12, sqlDate);
+            stmt.setDate(10, sqlDate);
             
-            stmt.setString(13, propertyModel.getProperty_Photos());
-            stmt.setInt(14, propertyModel.getPropertyID());
+            stmt.setString(11, propertyModel.getProperty_Photos());
+            stmt.setInt(12, propertyModel.getPropertyID());
 
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
+            return rowsAffected > 0; // Return true if update was successful
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
@@ -156,10 +150,10 @@ public class PropertyService {
     }
 
     /**
-     * Deletes a property from the database.
-     *
-     * @param propertyId The ID of the property to delete.
-     * @return true if deletion was successful, false otherwise.
+     * Deletes a property from the database
+     * 
+     * @param propertyId The ID of the property to delete
+     * @return true if deletion was successful, false otherwise
      */
     public boolean deleteProperty(int propertyId) {
         if (isConnectionError) {
@@ -167,6 +161,7 @@ public class PropertyService {
             return false;
         }
 
+        // SQL query to delete a property by its ID
         String query = "DELETE FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
@@ -180,9 +175,9 @@ public class PropertyService {
     }
 
     /**
-     * Gets all properties from the database.
-     *
-     * @return List of PropertyModel objects.
+     * Gets all properties from the database
+     * 
+     * @return List of PropertyModel objects
      */
     public List<PropertyModel> getAllProperties() {
         if (isConnectionError) {
@@ -209,11 +204,11 @@ public class PropertyService {
     }
 
     /**
-     * Helper method to map a ResultSet to a PropertyModel.
-     *
-     * @param rs The ResultSet containing property data.
-     * @return A PropertyModel object populated with data from the ResultSet.
-     * @throws SQLException If a database access error occurs.
+     * Helper method to map a ResultSet to a PropertyModel
+     * 
+     * @param rs The ResultSet containing property data
+     * @return A PropertyModel object populated with data from the ResultSet
+     * @throws SQLException If a database access error occurs
      */
     private PropertyModel mapResultSetToPropertyModel(ResultSet rs) throws SQLException {
         PropertyModel property = new PropertyModel();
@@ -224,8 +219,6 @@ public class PropertyService {
         property.setProperty_Area(rs.getFloat("Property_Area"));
         property.setProperty_Address(rs.getString("Property_Address"));
         property.setProperty_City(rs.getString("Property_City"));
-        property.setProperty_Municipality(rs.getString("Property_Municipality"));
-        property.setProperty_Ward(rs.getInt("Property_Ward"));
         property.setProperty_Status(rs.getString("Property_Status"));
         property.setProperty_Description(rs.getString("Property_Description"));
         property.setProperty_Amentities(rs.getString("Property_Amentities"));
@@ -235,14 +228,14 @@ public class PropertyService {
     }
 
     /**
-     * Search properties based on various criteria.
-     *
-     * @param type Property type (optional).
-     * @param city Property city (optional).
-     * @param minPrice Minimum price (optional).
-     * @param maxPrice Maximum price (optional).
-     * @param status Property status (optional).
-     * @return List of properties matching the search criteria.
+     * Search properties based on various criteria
+     * 
+     * @param type Property type (optional)
+     * @param city Property city (optional)
+     * @param minPrice Minimum price (optional)
+     * @param maxPrice Maximum price (optional)
+     * @param status Property status (optional)
+     * @return List of properties matching the search criteria
      */
     public List<PropertyModel> searchProperties(String type, String city, Float minPrice, Float maxPrice, String status) {
         if (isConnectionError) {
@@ -254,6 +247,7 @@ public class PropertyService {
         StringBuilder queryBuilder = new StringBuilder("SELECT * FROM property WHERE 1=1");
         List<Object> params = new ArrayList<>();
 
+        // Build dynamic query based on search parameters
         if (type != null && !type.isEmpty()) {
             queryBuilder.append(" AND Property_Type = ?");
             params.add(type);
