@@ -18,7 +18,7 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
 	<jsp:include page="Navbar.jsp" />
 
 	<div style="display: flex;">
-		<%-- <jsp:include page="adminSidebar.jsp" /> --%>
+		<jsp:include page="AdminSidebar.jsp" />
     
         	
           <div class="users"> 
@@ -142,6 +142,6 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
     </div>
     <br>
     <br>
-   <%--  <jsp:include page="Footer.jsp" /> --%>
+   <jsp:include page="Footer.jsp" />
 </body>
 </html>
