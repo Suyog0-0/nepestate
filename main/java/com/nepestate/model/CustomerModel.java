@@ -11,11 +11,12 @@ public class CustomerModel {
 	private String Customer_ProfilePicture;
 	private String Customer_DoB;
 	private String Customer_PhoneNumber;
+	private String Customer_Description;
 	
 	public CustomerModel() {}
 	
 	public CustomerModel(int customerID, String cust_FirstName, String cust_LastName, String cust_Username, String cust_EmailAddress,
-			String cust_Password, String cust_ProfilePicture, String cust_DoB, String cust_PhoneNumber) {
+			String cust_Password, String cust_ProfilePicture, String cust_DoB, String cust_PhoneNumber, String cust_Description) {
 		super();
 		CustomerID = customerID;
 		Customer_FirstName = cust_FirstName;
@@ -26,6 +27,7 @@ public class CustomerModel {
 		Customer_ProfilePicture = cust_ProfilePicture;
 		Customer_DoB = cust_DoB;
 		Customer_PhoneNumber = cust_PhoneNumber;
+		Customer_Description = cust_Description;
 	}
 
 	public void setCustomerID(int customerID) {
@@ -99,7 +101,13 @@ public class CustomerModel {
 	public void setCustomer_PhoneNumber(String cust_PhoneNumber) {
 		Customer_PhoneNumber = cust_PhoneNumber;
 	}
-	
+	public String getCustomer_Description() {
+		return Customer_Description;
+	}
+
+	public void setCustomer_Description(String cust_Description) {
+		Customer_Description = cust_Description;
+	}
 	
 	public CustomerModel(String username,String password) 
 	{

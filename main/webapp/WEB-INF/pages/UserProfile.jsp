@@ -42,51 +42,62 @@
 	<jsp:include page="UserSidebar.jsp"/>
 	
         <div class="mainBox" style="margin-top: 50px;">
-                <div class="contentBox">
+            <div class="contentBox">
+                <form action="${pageContext.request.contextPath}/UserProfileController" method="post">
                     <div> 
                         <div style="display: flex;flex-direction:column">
+                            <!-- Display error or success message if available -->
+                            <% if(request.getAttribute("error") != null) { %>
+                                <div class="error-message">${error}</div>
+                            <% } %>
+                            <% if(request.getAttribute("success") != null) { %>
+                                <div class="success-message">${success}</div>
+                            <% } %>
+                            
                             <div class="subRow">
                                 <div class="subColumn">
                                     <label class="form-label">Name</label>
-                                    <input type="text" class="underline-long">
+                                    <input type="text" name="name" class="underline-long" value="${username}">
                                 </div>
                             </div>
-                                    <div class="subRow">
-                                        <div class="subColumn">
-                                            <label class="form-label">Description</label>
-                                            <textarea name="user-description" class="user-description"> </textarea>
-                                        </div>
-                                    </div>
-                                    <div class="subRow">
-                                    <div class="subColumn">
-                                        <label class="form-label">Phone Number</label>
-                                    <Input type="text" class="underline-long">
-                                    </div>
+                            <div class="subRow">
+                                <div class="subColumn">
+                                    <label class="form-label">Description</label>
+                                    <textarea name="description" class="user-description">${description}</textarea>
                                 </div>
-                                <div class="subRow">
-                                        <div class="subColumn">
-                                            <label class="form-label">Email</label>
-                                            <input type="text" class="underline-long">
-                                        </div>
-                                    </div>
-                                <div class="subRow">
-                                    <div class="subColumn">
-                                        <label class="form-label">Date of Birth</label>
-                                        <input type="text" class="underline-long">
-                                    </div>
-                                </div>    
-                                <div class="subRow">
-                                    <div class="subColumn">
-                                        <label class="form-label">Location</label>
-                                        <input type="text" class="underline-long">
-                                    </div>
+                            </div>
+                            <div class="subRow">
+                                <div class="subColumn">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="text" name="phoneNumber" class="underline-long" value="${phoneNumber}">
                                 </div>
-                                <br>
-                                <div class="subRow">
-                                    <button class="update-button"> UPDATE PROFILE </button>
+                            </div>
+                            <div class="subRow">
+                                <div class="subColumn">
+                                    <label class="form-label">Email</label>
+                                    <input type="text" name="email" class="underline-long" value="${emailAddress}">
                                 </div>
+                            </div>
+                            <div class="subRow">
+                                <div class="subColumn">
+                                    <label class="form-label">Date of Birth</label>
+                                    <input type="text" name="dob" class="underline-long" value="${dob}">
+                                </div>
+                            </div>    
+                            <div class="subRow">
+                                <div class="subColumn">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" name="location" class="underline-long">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="subRow">
+                                <button type="submit" class="update-button">UPDATE PROFILE</button>
+                            </div>
                         </div>
-                    </div> 
+                    </div>
+                </form>
+               
                
                     <div style="margin-top:50px;">
                         <img src="${pageContext.request.contextPath}/images/updateIcon.png" alt="Property Image" />

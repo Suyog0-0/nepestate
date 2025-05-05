@@ -20,7 +20,6 @@ import java.io.IOException;
 @WebServlet(asyncSupported = true, urlPatterns = {"/RegisterController", "/"})
 public class RegisterController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private RegisterService registerService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -28,7 +27,7 @@ public class RegisterController extends HttpServlet {
     public RegisterController() {
         super();
         // TODO Auto-generated constructor stub
-        registerService = new RegisterService();
+        
     }
 
 	/**
@@ -52,6 +51,7 @@ public class RegisterController extends HttpServlet {
 				}
 			else {
 				CustomerModel customer = createCustomerFromRequest(req);
+				RegisterService registerService = new RegisterService();
 				Boolean result = registerService.addCustomer(customer);
 				
 				if (result != null && result) {

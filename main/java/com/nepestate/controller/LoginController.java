@@ -57,14 +57,22 @@ public class LoginController extends HttpServlet {
 				request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
 				return;
 			}
-		CustomerModel customerModel = new CustomerModel(username, password);
-		Boolean customerLoginStatus = loginObject.loginUser(customerModel);
-		if (customerLoginStatus != null && customerLoginStatus) {
-			System.out.println("Successfully User Login");
-			request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
-			return;
-		}
-		handleLoginFailure(request, response, (adminLoginStatus != null || customerLoginStatus != null) ? false : null);
+		 CustomerModel customerModel = new CustomerModel(username, password);
+		 CustomerModel loggedInCustomer = loginObject.loginCustomer(customerModel);
+		 if (loggedInCustomer != null) {
+	            System.out.println("Successfully User Login");
+	            
+	            // Store customer information in session
+	            SessionUtil.setAttribute(request, "username", username);
+	            SessionUtil.setAttribute(request, "customerId", loggedInCustomer.getCustomerID());
+	            CookieUtil.addCookie(response, "role", "customer", 5 * 30);
+	            
+	            System.out.println("Set customerId in session: " + loggedInCustomer.getCustomerID());
+	            
+	            response.sendRedirect(request.getContextPath() + "/UserProfileController");
+	            return;
+	        }
+	        handleLoginFailure(request, response, (adminLoginStatus != null || loggedInCustomer != null) ? false : null);
 	}
 
 		

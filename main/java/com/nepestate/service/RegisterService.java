@@ -11,6 +11,7 @@ import com.nepestate.config.DbConfig;
 
 public class RegisterService {
 	private Connection dbConn;
+	private boolean isConnectionError = false;
 
 	/**
 	 * Constructor initializes the database connection.
@@ -21,12 +22,13 @@ public class RegisterService {
 		} catch (SQLException | ClassNotFoundException ex) {
 			System.err.println("Database connection error: " + ex.getMessage());
 			ex.printStackTrace();
+			isConnectionError = true;
 		}
 	}
 	
 	public Boolean addCustomer(CustomerModel customerModel){
-		if (dbConn == null) {
-			System.err.println("Database connection is not available.");
+		if ( isConnectionError) {
+			System.err.println("Database connection is not available while adding customer.");
 			return null;
 		}
 		String insertQuery = "INSERT INTO customers (Customer_FirstName,Customer_LastName,Customer_ProfilePicture,Customer_DoB,Customer_Username,Customer_EmailAddress,Customer_Password,Customer_PhoneNumber) "
