@@ -19,19 +19,19 @@
     <div class="blue-line"></div>
   </div>
   <nav class="nav-menu">
-    <a href="${pageContext.request.contextPath}/admindashboard" class="nav-link">
+    <a href="${pageContext.request.contextPath}/AdminDashboardController" class="nav-link">
       <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon">
       Dashboard
     </a>
-    <a href="${pageContext.request.contextPath}/propertylisting" class="nav-link">
+    <a href="${pageContext.request.contextPath}/PropertyListingController" class="nav-link">
       <img src="${pageContext.request.contextPath}/images/properties.png" class="icon">
       Properties
     </a>
-    <a href="${pageContext.request.contextPath}/ProductAdmin" class="nav-link">
+    <a href="${pageContext.request.contextPath}/AdminUserListingController" class="nav-link">
       <img src="${pageContext.request.contextPath}/images/users.png" class="icon">
       Users
     </a>
-    <a href="${pageContext.request.contextPath}/ReportGeneration" class="nav-link">
+    <a href="${pageContext.request.contextPath}/ReportGenerationController" class="nav-link">
       <img src="${pageContext.request.contextPath}/images/report.png" class="icon">
       Report
     </a>
