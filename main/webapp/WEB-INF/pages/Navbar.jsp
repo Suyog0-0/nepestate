@@ -27,8 +27,11 @@
       <li class="divider">|</li>
       <li>
         <div class="navbar-register-container">
-          <button class="navbar-register-button">Register/SignUp
-            <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon" alt="Register">
+          <button class="navbar-register-button">           
+          <a href="${pageContext.request.contextPath}/RegisterController">
+          Register/SignUp          
+           </a>
+           		<img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon" alt="Register">
           </button>
         </div>
       </li>
