@@ -1,10 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@
+    page import="com.nepestate.model.CustomerModel"
+    %>
+    <%@ page import="java.util.List"%>
+   <%
+   		List<CustomerModel> users = (List<CustomerModel>) request.getAttribute("customerList");
+        %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Product Admin</title>
+<style></style>
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/Navbar.css">
 <link rel="stylesheet" type="text/css" 
@@ -35,105 +45,16 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
     </thead>
 
     <tbody>
-      <tr>
-        <td data-label="S.N">1</td>
-        <td data-label="Name">Sachhyam Nyachhyon</td>
-        <td data-label="Age">20</td>
-        <td data-label="Phone">9848682001</td>
-        <td data-label="Email">sachhyamnyachhyon@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-
-      <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
-      
-       <tr>
-        <td data-label="S.N">2</td>
-        <td data-label="Name">Sansraya Pradhanang</td>
-        <td data-label="Age">21</td>
-        <td data-label="Phone">9900909009</td>
-        <td data-label="Email">itsmizu@gmail.com</td>
-        <td data-label="Listings">2</td>
-      </tr>
+    	<c:forEach var="u" items="${customerList}">
+     		<tr>
+        		<td data-label="S.N">1</td>
+        		<td data-label="Name">${u.customer_Username}</td>
+        		<td data-label="Age">${u.customer_DoB}</td>
+        		<td data-label="Phone">${u.customer_PhoneNumber}</td>
+        		<td data-label="Email">${u.customer_EmailAddress}</td>
+        		<!-- td data-label="Listings">2</td> -->
+      		</tr>
+      		</c:forEach>
     </tbody>
   </table>
           
