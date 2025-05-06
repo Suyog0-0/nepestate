@@ -44,10 +44,10 @@ public class UpdatePropertyController extends HttpServlet {
 				PropertyModel property = propertyService.getPropertyById(propertyId);
 				
 				if (property != null) {
-					// Set property object as request attribute
+					
 					request.setAttribute("property", property);
 					
-					// Set individual property attributes as request attributes
+					
 					request.setAttribute("propertyId", property.getPropertyID());
 					request.setAttribute("title", property.getProperty_Title());
 					request.setAttribute("price", property.getProperty_Price());
@@ -57,7 +57,7 @@ public class UpdatePropertyController extends HttpServlet {
 					request.setAttribute("area", property.getProperty_Area());
 					request.setAttribute("description", property.getProperty_Description());
 					
-					// Handle amenities - convert comma-separated string to set for easy checking
+					
 					String amenitiesStr = property.getProperty_Amentities();
 					List<String> amenities = new ArrayList<>();
 					if (amenitiesStr != null && !amenitiesStr.isEmpty()) {
@@ -65,7 +65,7 @@ public class UpdatePropertyController extends HttpServlet {
 	                }
 					request.setAttribute("amenities", amenities);
 				} else {
-					// Property not found
+					
 					request.setAttribute("error", "Property not found!");
 				}
 			} catch (NumberFormatException e) {

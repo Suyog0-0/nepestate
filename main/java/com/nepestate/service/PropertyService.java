@@ -87,7 +87,7 @@ public class PropertyService {
             return null;
         }
 
-        // SQL query to select a property by its ID
+       
         String query = "SELECT * FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);

@@ -83,24 +83,26 @@ public class CustomerService {
 
 	        return null;
 	    }
+	 
 	 public boolean updateCustomer(CustomerModel customerModel) {
 	        if (isConnectionError) {
 	            System.out.println("Database connection error!");
 	            return false;
 	        }
 
-	        String query = "UPDATE Customers SET Customer_FirstName = ?, Customer_LastName = ?, " +
-	                "Customer_Username = ?, Customer_EmailAddress = ?, " +
-	                "Customer_DoB = ?, Customer_PhoneNumber = ? WHERE CustomerID = ?";
+	        String query = "UPDATE Customers SET Customer_Username = ?, Customer_EmailAddress = ?, " +
+	                "Customer_DoB = ?, Customer_PhoneNumber = ?, Customer_Description = ? WHERE CustomerID = ?";
+
 
 	        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
-	            stmt.setString(1, customerModel.getCustomer_FirstName());
-	            stmt.setString(2, customerModel.getCustomer_LastName());
-	            stmt.setString(3, customerModel.getCustomer_Username());
-	            stmt.setString(4, customerModel.getCustomer_EmailAddress());
-	            stmt.setString(5, customerModel.getCustomer_DoB());
-	            stmt.setString(6, customerModel.getCustomer_PhoneNumber());
-	            stmt.setInt(7, customerModel.getCustomerID());
+	        
+	        	stmt.setString(1, customerModel.getCustomer_Username());
+	        	stmt.setString(2, customerModel.getCustomer_EmailAddress());
+	        	stmt.setString(3, customerModel.getCustomer_DoB());
+	        	stmt.setString(4, customerModel.getCustomer_PhoneNumber());
+	        	stmt.setString(5, customerModel.getCustomer_Description());
+	        	stmt.setInt(6, customerModel.getCustomerID());
+
 
 	            int rowsAffected = stmt.executeUpdate();
 	            return rowsAffected > 0;

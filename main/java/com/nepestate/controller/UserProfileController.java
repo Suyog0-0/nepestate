@@ -55,22 +55,15 @@ public class UserProfileController extends HttpServlet {
 	        
 	        if (customer !=null){
 	        	  request.setAttribute("customer", customer);
-	        	  
 	        	  request.setAttribute("username", customer.getCustomer_Username());
 	        	  request.setAttribute("description", customer.getCustomer_Description());
 	        	  request.setAttribute("phoneNumber", customer.getCustomer_PhoneNumber());
 	        	  request.setAttribute("emailAddress", customer.getCustomer_EmailAddress());
 	        	  request.setAttribute("dob", customer.getCustomer_DoB());
 	        	  request.setAttribute("profilePicture", customer.getCustomer_ProfilePicture());
-	        	  
-	        	  
-	        
+	   
 	        }
-	        
-	       
-	      
-	        
-	        
+	
 	        request.getRequestDispatcher("/WEB-INF/pages/UserProfile.jsp").forward(request, response);
 
 	}
@@ -139,6 +132,7 @@ public class UserProfileController extends HttpServlet {
 		
 		return null; // All validations passed
 	}
+	
 	private void handleError(HttpServletRequest req, HttpServletResponse resp, String message)
 			throws ServletException, IOException {
 		req.setAttribute("error", message);
@@ -150,9 +144,11 @@ public class UserProfileController extends HttpServlet {
 		req.getRequestDispatcher("/WEB-INF/pages/UserProfile.jsp").forward(req, resp);
 	
 	}	
+	
 	private CustomerModel updateCustomerFromRequest(HttpServletRequest request) {
 		HttpSession session = request.getSession();
 	    Integer customerId = (Integer) session.getAttribute("customerId");
+	    System.out.println(customerId);
 		String username = request.getParameter("name");
         String description = request.getParameter("description");
         String phoneNumber = request.getParameter("phoneNumber");

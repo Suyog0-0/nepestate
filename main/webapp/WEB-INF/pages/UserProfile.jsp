@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,12 +48,14 @@
                     <div> 
                         <div style="display: flex;flex-direction:column">
                             <!-- Display error or success message if available -->
-                            <% if(request.getAttribute("error") != null) { %>
-                                <div class="error-message">${error}</div>
-                            <% } %>
-                            <% if(request.getAttribute("success") != null) { %>
-                                <div class="success-message">${success}</div>
-                            <% } %>
+                            <c:if test="${not empty error}">
+							 	<div class="error-message">${error}</div>
+							</c:if>
+
+                            <c:if test="${not empty success}">
+							 	<div class="error-message">${success}</div>
+							</c:if>
+
                             
                             <div class="subRow">
                                 <div class="subColumn">

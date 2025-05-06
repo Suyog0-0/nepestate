@@ -118,7 +118,7 @@
         <label class="form-label">Amenities</label>
         <div class="button-group">
 
-     <input type="checkbox" id="cctv" name="amenity_cctv" class="feature-checkbox" ${amenities.contains('cctv') ? 'checked' : ''}>
+       <input type="checkbox" id="cctv" name="amenity_cctv" class="feature-checkbox" ${amenities.contains('cctv') ? 'checked' : ''}>
           <label for="cctv" class="feature-label">CCTV</label>
           
           <input type="checkbox" id="parking" name="amenity_parking" class="feature-checkbox" ${amenities.contains('parking') ? 'checked' : ''}>
@@ -180,7 +180,7 @@
           
           <input type="checkbox" id="washing-machine" name="amenity_washing_machine" class="feature-checkbox" ${amenities.contains('washing-machine') ? 'checked' : ''}>
           <label for="washing-machine" class="feature-label">Washing Machine</label>
-  
+          
       </div>
     </div>
   </div>
