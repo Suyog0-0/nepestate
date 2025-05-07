@@ -197,6 +197,26 @@
 .navbar-register-button:hover .navbar-register-icon {
     animation: pulse 1.5s infinite;
 }
+.navbar-user-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.navbar-logout-button {
+    background-color: #f44336;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
 
 @keyframes pulse {
     0% {

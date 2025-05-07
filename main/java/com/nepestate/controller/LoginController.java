@@ -62,14 +62,14 @@ public class LoginController extends HttpServlet {
 		 if (loggedInCustomer != null) {
 	            System.out.println("Successfully User Login");
 	            
-	            // Store customer information in session
+	            
 	            SessionUtil.setAttribute(request, "username", username);
 	            SessionUtil.setAttribute(request, "customerId", loggedInCustomer.getCustomerID());
 	            CookieUtil.addCookie(response, "role", "customer", 5 * 30);
 	            
 	            System.out.println("Set customerId in session: " + loggedInCustomer.getCustomerID());
 	            
-	            response.sendRedirect(request.getContextPath() + "/UserProfileController");
+	            response.sendRedirect(request.getContextPath() + "/HomeController");
 	            return;
 	        }
 	        handleLoginFailure(request, response, (adminLoginStatus != null || loggedInCustomer != null) ? false : null);

@@ -59,7 +59,7 @@
 					PropertyService propertyService = new PropertyService();
 					Boolean result = propertyService.addProperty(property);
 					if (result != null && result) {
-	//					handleSuccess(request, response, "Your property is successfully created!", "/WEB-INF/pages/Login.jsp");
+	//			
 						request.setAttribute("success", "Property posting is successful!");
 		                request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
 					} else {
@@ -77,8 +77,7 @@
 					}
 			
 	        
-	//        PropertyService postPropertyService = new PropertyService();
-	//        postPropertyService.addProperty(propertyModel);
+	//        
 		private String validatePropertyForm(HttpServletRequest request) {
 			String title = request.getParameter("title");
 	        String Stringprice = request.getParameter("price");
@@ -92,7 +91,7 @@
 	        
 	        System.out.println("Validating Title: [" + title + "]");
 	        
-			// Check for null or empty fields first
+		
 			if (ValidationUtil.isNullOrEmpty(title))
 				return "Title is required.";
 			if (ValidationUtil.isNullOrEmpty(Stringprice))
@@ -122,11 +121,8 @@
 	
 			return null; // All validations passed
 		}
-		private void handleSuccess(HttpServletRequest req, HttpServletResponse resp, String message, String redirectPage)
-				throws ServletException, IOException {
-			req.setAttribute("success", message);
-			req.getRequestDispatcher(redirectPage).forward(req, resp);
-		}
+
+		
 			private void handleError(HttpServletRequest req, HttpServletResponse resp, String message)
 					throws ServletException, IOException {
 				req.setAttribute("error", message);
@@ -234,7 +230,7 @@
 		        
 		        return property;
 		        
-	//	        PropertyModel propertyModel = new PropertyModel(title,propertyType,price,area,address,city,description,"Available",amenitiesForDB,date,"");
+
 			
 			}
 	}

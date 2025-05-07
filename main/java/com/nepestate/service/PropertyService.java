@@ -42,7 +42,7 @@ public class PropertyService {
             return null;
         }
 
-        // SQL query to insert a new property into the database
+     
         String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, " +
                 "Property_Area, Property_Address, Property_City, " +
                 "Property_Status, Property_Description, Property_Amentities, " +
@@ -59,19 +59,19 @@ public class PropertyService {
             stmt.setString(8, propertyModel.getProperty_Description());
             stmt.setString(9, propertyModel.getProperty_Amentities());
             
-            // Convert Java util Date to SQL Date for database compatibility
+          
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
             stmt.setDate(10, sqlDate);
             
             stmt.setString(11, propertyModel.getProperty_Photos());
 
             int affectedRows = stmt.executeUpdate();
-            return affectedRows > 0; // Return true if insertion was successful
+            return affectedRows > 0; 
             
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
-            return null; // Return null if an error occurred
+            return null; 
         }
     }
 
@@ -116,7 +116,7 @@ public class PropertyService {
             return false;
         }
 
-        // SQL query to update an existing property
+        
         String query = "UPDATE property SET Property_Title = ?, Property_Type = ?, " +
                 "Property_Price = ?, Property_Area = ?, Property_Address = ?, " +
                 "Property_City = ?," +
@@ -161,7 +161,7 @@ public class PropertyService {
             return false;
         }
 
-        // SQL query to delete a property by its ID
+        
         String query = "DELETE FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);

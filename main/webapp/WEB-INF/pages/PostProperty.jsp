@@ -5,7 +5,7 @@
 	<html>
 	<head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>Post Property</title>
 	</head>
 		<link rel="stylesheet" type="text/css"
 		href="${pageContext.request.contextPath}/css/Navbar.css" />

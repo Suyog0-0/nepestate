@@ -34,7 +34,7 @@ public class RegisterService {
 		String insertQuery = "INSERT INTO customers (Customer_FirstName,Customer_LastName,Customer_ProfilePicture,Customer_DoB,Customer_Username,Customer_EmailAddress,Customer_Password,Customer_PhoneNumber) "
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		try (PreparedStatement insertStmt = dbConn.prepareStatement(insertQuery)) {
-            // Insert student details
+            
             insertStmt.setString(1, customerModel.getCustomer_FirstName());
             insertStmt.setString(2,  customerModel.getCustomer_LastName());
             insertStmt.setString(3,  customerModel.getCustomer_ProfilePicture());

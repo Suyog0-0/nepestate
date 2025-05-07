@@ -58,6 +58,7 @@ public class CustomerService {
         customer.setCustomer_ProfilePicture(rs.getString("Customer_ProfilePicture"));
         customer.setCustomer_DoB(rs.getString("Customer_DoB"));
         customer.setCustomer_PhoneNumber(rs.getString("Customer_PhoneNumber"));
+        customer.setCustomer_Description(rs.getString("Customer_Description"));
         
 
         return customer;

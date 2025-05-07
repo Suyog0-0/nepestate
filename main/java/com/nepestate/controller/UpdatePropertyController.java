@@ -98,7 +98,7 @@ public class UpdatePropertyController extends HttpServlet {
 				PropertyService propertyService = new PropertyService();
 				Boolean result = propertyService.updateProperty(property);
 				if (result != null && result) {
-//					handleSuccess(request, response, "Your property is successfully created!", "/WEB-INF/pages/Login.jsp");
+
 					request.setAttribute("success", "The property was successfully updated!");
 	                request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
 				} else {
@@ -130,7 +130,7 @@ public class UpdatePropertyController extends HttpServlet {
 		        
 		        System.out.println("Validating Title: [" + title + "]");
 		        
-				// Check for null or empty fields first
+				
 				if (ValidationUtil.isNullOrEmpty(title))
 					return "Title is required.";
 				if (ValidationUtil.isNullOrEmpty(Stringprice))
@@ -296,7 +296,7 @@ public class UpdatePropertyController extends HttpServlet {
 		        
 		        return property;
 		        
-//		        PropertyModel propertyModel = new PropertyModel(title,propertyType,price,area,address,city,description,"Available",amenitiesForDB,date,"");
+
 			
 			}
 	}

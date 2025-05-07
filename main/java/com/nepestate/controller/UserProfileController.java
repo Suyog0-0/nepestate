@@ -37,17 +37,17 @@ public class UserProfileController extends HttpServlet {
 		HttpSession session = request.getSession();
 		Integer customerId = (Integer) session.getAttribute("customerId");
 		 if (customerId == null) {
-	            // User not logged in, redirect to login page
+	         
 	            response.sendRedirect(request.getContextPath() + "/LoginController");
 	            return;
 	        }
 	        
-	        // Get customer details from database
-		 CustomerService customerService=new CustomerService();
+	       
+		 	CustomerService customerService=new CustomerService();
 	        CustomerModel customer = customerService.getCustomerById(customerId);
 	        
 	        if (customer == null) {
-	            // Customer not found, redirect to login page
+	            
 	            session.invalidate();
 	            response.sendRedirect(request.getContextPath() + "/LoginController");
 	            return;
@@ -85,7 +85,12 @@ public class UserProfileController extends HttpServlet {
 			CustomerService customerService =new CustomerService();
 			Boolean result =customerService.updateCustomer(customer);
 			if (result != null && result) {
-//				handleSuccess(request, response, "Your property is successfully created!", "/WEB-INF/pages/Login.jsp");
+				request.setAttribute("customer", customer);
+			    request.setAttribute("username", customer.getCustomer_Username());
+			    request.setAttribute("description", customer.getCustomer_Description());
+			    request.setAttribute("phoneNumber", customer.getCustomer_PhoneNumber());
+			    request.setAttribute("emailAddress", customer.getCustomer_EmailAddress());
+			    request.setAttribute("dob", customer.getCustomer_DoB());
 				request.setAttribute("success", "The profile was successfully updated!");
                 request.getRequestDispatcher("/WEB-INF/pages/UserProfile.jsp").forward(request, response);
 			} else {
@@ -113,7 +118,7 @@ public class UserProfileController extends HttpServlet {
         
         System.out.println("Validating Username: [" + username+ "]");
         
-		// Check for null or empty fields first
+
 		if (ValidationUtil.isNullOrEmpty(username))
 			return "Username is required.";
 		if (ValidationUtil.isNullOrEmpty(description))
