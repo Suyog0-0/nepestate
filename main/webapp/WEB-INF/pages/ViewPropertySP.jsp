@@ -86,7 +86,7 @@
     <div class="bottomSectionWrapper">
         <div class="bottomSection">
             <!-- About Container -->
-            <div class="aboutContainer">
+       z     <div class="aboutContainer">
                 <div class="aboutHeading">About</div>
                 <div class="aboutText">
                     <c:forEach items="${properties}" var="property">
