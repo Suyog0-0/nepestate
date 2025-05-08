@@ -121,6 +121,18 @@
   font-weight: 300;
 }
 
+/* Favourite Icon */
+.navbar-favourite-icon {
+  width: 1px;
+  height: 1px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.navbar-favourite-icon:hover {
+  transform: scale(1.2);
+}
+
 /* Register/Login button */
 .navbar-register-button {
   display: flex;
@@ -212,7 +224,6 @@
   display: inline-block;
   vertical-align: middle;
 }
-
 
 /* Responsive */
 @media (max-width: 1024px) {

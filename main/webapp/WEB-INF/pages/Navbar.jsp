@@ -1,18 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.nepestate.service.CustomerService" %>
+<%@ page import="com.nepestate.model.CustomerModel" %>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Navbar.css">
 
 <%
+// Get session attributes
 String username = (String) session.getAttribute("username");
-String profilePic = (String) session.getAttribute("profilePic");
+Integer customerId = (Integer) session.getAttribute("customerId");
 
-// Improved handling of default profile picture
-String profilePicPath;
-if (profilePic == null || profilePic.trim().isEmpty()) {
-    // Use the full path to default profile picture
-    profilePicPath = "${pageContext.request.contextPath}/images/defaultpfp.jpg";
-} else {
-    // Use the profiles directory for user-specific pictures
-    profilePicPath = "${pageContext.request.contextPath}/images/profiles/" + profilePic;
+// Initialize profile path
+String profilePicPath = "${pageContext.request.contextPath}/images/defaultpfp.jpg";
+
+// Check database for current profile picture
+if (username != null && customerId != null) {
+    try {
+        // Database fetch
+        CustomerService customerService = new CustomerService();
+        CustomerModel customer = customerService.getCustomerById(customerId);
+        
+        if (customer != null) {
+            String dbProfilePic = customer.getCustomer_ProfilePicture();
+            
+            // Validate picture
+            if (dbProfilePic != null && !dbProfilePic.trim().isEmpty()) {
+                profilePicPath = "${pageContext.request.contextPath}/images/profiles/" + dbProfilePic;
+            }
+        }
+    } catch (Exception e) {
+        // Error logging
+        System.err.println("Error fetching profile picture: " + e.getMessage());
+        // Keep default picture on error
+    }
 }
 %>
 

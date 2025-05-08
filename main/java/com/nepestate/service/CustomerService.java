@@ -133,5 +133,32 @@ public class CustomerService {
 	            return false;
 	        }
 	    }
-}
+	 
+	 /**
+	  * Updates profile picture for a customer
+	  * 
+	  * @param customerId ID of customer to update
+	  * @param profilePictureName Name of the profile picture file
+	  * @return true if update successful, false otherwise
+	  */
+	 public boolean updateProfilePicture(int customerId, String profilePictureName) {
+	        if (isConnectionError) {  // Connection check
+	            System.out.println("Database connection error!");
+	            return false;
+	        }
 
+	        String query = "UPDATE Customers SET Customer_ProfilePicture = ? WHERE CustomerID = ?";
+	        
+	        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {  // Prepared statement
+	            stmt.setString(1, profilePictureName);
+	            stmt.setInt(2, customerId);
+
+	            int rowsAffected = stmt.executeUpdate();  // Execute update
+	            return rowsAffected > 0;  // Success check
+	        } catch (SQLException e) {
+	            System.out.println("SQL Exception updating profile picture: " + e.getMessage());
+	            e.printStackTrace();
+	            return false;
+	        }
+	    }
+}
