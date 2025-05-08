@@ -1,6 +1,4 @@
-@charset "UTF-8";
-
-/* Reset */
+/* Reset styles */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +7,7 @@
     font-family: Arial, sans-serif;
 }
 
-/* Navbar Main Container */
+/* Navbar container */
 .navbar-container {
     padding: 0 15px 10px 15px;
     height: 80px;
@@ -24,11 +22,12 @@
     background-color: #ffffff;
 }
 
+/* Hover effect */
 .navbar-container:hover {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Left Section */
+/* Logo style */
 .navbar-left .navbar-logo-image {
     margin-top: 10px;
     width: 145px;
@@ -37,11 +36,12 @@
     transition: transform 0.3s ease;
 }
 
+/* Logo hover */
 .navbar-left .navbar-logo-image:hover {
     transform: scale(1.05);
 }
 
-/* Center Section */
+/* Center area */
 .navbar-center {
     flex: 2;
     display: flex;
@@ -49,12 +49,14 @@
     margin: 0 10px;
 }
 
+/* Search container */
 .navbar-search-container {
     position: relative;
     width: 100%;
     max-width: 700px;
 }
 
+/* Icon style */
 .navbar-search-icon {
     position: absolute;
     top: 50%;
@@ -67,6 +69,7 @@
     opacity: 0.8;
 }
 
+/* Input style */
 .navbar-search-bar {
     margin-top: 10px;
     width: 100%;
@@ -80,25 +83,28 @@
     color: #555;
     background-color: #f8f9fa;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05), 0 0 0 1px #e2e2e2;
-	transition: all 0.15 ease-in;
+    transition: all 0.15s ease-in;
 }
 
+/* Placeholder style */
 .navbar-search-bar::placeholder {
     color: #aaa;
 }
 
+/* Focus style */
 .navbar-search-bar:focus {
     outline: 2px solid #0086FF;
     box-shadow: 0 0 5px rgba(0, 134, 255, 0.3);
     background-color: #fff;
 }
 
+/* Icon focus */
 .navbar-search-bar:focus + .navbar-search-icon {
     transform: translateY(-50%) scale(1.1);
     opacity: 1;
 }
 
-/* Right Section */
+/* Nav items */
 .navbar-items {
     display: flex;
     gap: 15px;
@@ -106,6 +112,7 @@
     align-items: center;
 }
 
+/* Register button */
 .navbar-register-button {
     font-weight: bold;
     letter-spacing: 0.5px;
@@ -126,23 +133,26 @@
     box-shadow: 0 2px 8px rgba(0, 134, 255, 0.2);
 }
 
-
+/* Link style */
 .navbar-register-button a {
     color: white;
     text-decoration: none;
 }
 
+/* Register hover */
 .navbar-register-button:hover {
     transform: translateY(-0.5px);
     box-shadow: 0 5px 15px rgba(0, 134, 255, 0.3);
     background: linear-gradient(90deg, #1c5083, #0074e0);
 }
 
+/* Active state */
 .navbar-register-button:active {
     transform: translateY(0);
     box-shadow: 0 2px 5px rgba(0, 134, 255, 0.3);
 }
 
+/* Icon positioning */
 .navbar-register-icon {
     position: absolute;
     top: 50%;
@@ -152,9 +162,10 @@
     height: 60px;
     pointer-events: none;
     transition: transform 0.3s ease;
-    filter: brightness(0) invert(1); /*Hopefully This will make the icon white */
+    filter: brightness(0) invert(1);
 }
 
+/* Item link */
 .navbar-items li a {
     font-size: 17px;
     font-weight: 500;
@@ -164,14 +175,12 @@
     position: relative;
 }
 
-.NavbarItemsLeft a{
-	text-decoration: none;
-	color: black;
-}
+/* Link hover */
 .navbar-items li a:hover {
     color: #0086FF;
 }
 
+/* Underline hover */
 .navbar-items li a::after {
     content: '';
     position: absolute;
@@ -182,51 +191,77 @@
     background-color: #0086FF;
     transition: all 0.3s ease;
 }
-
 .navbar-items li a:hover::after {
     width: 100%;
     left: 0;
 }
 
+/* Divider style */
 .navbar-items li.divider {
     color: #ddd;
     font-weight: 300;
 }
 
+/* Container relative */
 .navbar-register-container {
     position: relative;
     display: inline-block;
 }
 
-.NavbarItemsRightWhite{
-	color:white;
+/* Right link */
+.NavbarItemsRightWhite {
+    color: white;
 }
 
-
+/* Pulse effect */
 .navbar-register-button:hover .navbar-register-icon {
     animation: pulse 1.5s infinite;
 }
+
+/* User button */
 .navbar-user-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 16px;
+    background-color: transparent;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
-    margin-right: 10px;
+    padding: 5px 10px;
 }
 
-.navbar-logout-button {
-    background-color: #f44336;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
+/* User link */
+.navbar-user-button .navbar-user-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
 }
 
+/* Icon style */
+.navbar-user-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+}
+
+/* Username text */
+.navbar-username {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Icon hover */
+.navbar-user-button:hover .navbar-user-icon {
+    transform: scale(1.05);
+}
+
+/* Text hover */
+.navbar-user-button:hover .navbar-username {
+    text-decoration: underline;
+}
+
+/* Pulse keyframes */
 @keyframes pulse {
     0% {
         transform: translateY(-50%) scale(1);
@@ -239,32 +274,29 @@
     }
 }
 
-/* Responsive adjustments */
+/* Large breakpoint */
 @media (max-width: 1024px) {
     .navbar-items {
         gap: 10px;
     }
-    
     .navbar-items li a {
         font-size: 16px;
         padding: 8px;
     }
-    
     .navbar-register-button {
         padding: 10px 70px 10px 25px;
         height: 60px;
     }
-    
     .navbar-search-bar {
         height: 45px;
     }
 }
 
+/* Medium breakpoint */
 @media (max-width: 768px) {
     .navbar-center {
         flex: 1.5;
     }
-    
     .navbar-left .navbar-logo-image {
         width: 130px;
         height: 60px;

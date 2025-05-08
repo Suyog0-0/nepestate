@@ -27,20 +27,33 @@
             <li class="divider">|</li>
             <li>
             
-                <div class="navbar-register-container">
-                    <% if (session.getAttribute("username") == null) { %>
-                        <button class="navbar-register-button">
-                            <a href="${pageContext.request.contextPath}/RegisterController" class="NavbarItemsRightWhite">
-                                Register/SignUp
-                            </a>         
-                            <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon" alt="Register">
-                        </button>
-                    <% } else { %>
-                        <button class="navbar-user-button">
-                             <a href="${pageContext.request.contextPath}/UserProfileController"><span>Welcome, <%= session.getAttribute("username") %></span> </a>
-                        </button>
-                    <% } %>
-                </div>
+<div class="navbar-register-container">
+    <% 
+       String username = (String) session.getAttribute("username");
+       String profilePic = (String) session.getAttribute("profilePic");
+       if (username == null) { 
+    %>
+        <button class="navbar-register-button">
+            <a href="${pageContext.request.contextPath}/RegisterController" class="NavbarItemsRightWhite">
+                Register/SignUp
+            </a>
+            <img src="${pageContext.request.contextPath}/images/register.png" 
+                 class="navbar-register-icon" alt="Register">
+        </button>
+    <% } else { %>
+        <button class="navbar-user-button">
+            <a href="${pageContext.request.contextPath}/UserProfileController" class="navbar-user-link">
+                <!-- profile picture -->
+                <img src="${pageContext.request.contextPath}/images/profiles/<%= profilePic %>" 
+                     alt="Profile for <%= username %>" 
+                     class="navbar-user-icon" />
+                <!-- user’s name -->
+                <span class="navbar-username">Welcome, <%= username %></span>
+            </a>
+        </button>
+    <% } %>
+</div>
+
             </li>
         </ul>
     </div>
