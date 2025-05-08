@@ -106,8 +106,56 @@
     align-items: center;
 }
 
+.navbar-register-button {
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    padding: 10px 80px 10px 30px;
+    color: white;
+    background: linear-gradient(90deg, #275E8B, #0086FF);
+    border-radius: 35px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0, 134, 255, 0.2);
+}
+
+
+.navbar-register-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-register-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 134, 255, 0.3);
+    background: linear-gradient(90deg, #1c5083, #0074e0);
+}
+
+.navbar-register-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 134, 255, 0.3);
+}
+
+.navbar-register-icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 60px;
+    height: 60px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    filter: brightness(0) invert(1); /* This will make the icon white */
+}
+
 .navbar-items li a {
-    color: #333;
     font-size: 17px;
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -116,6 +164,10 @@
     position: relative;
 }
 
+.NavbarItemsLeft a{
+	text-decoration: none;
+	color: black;
+}
 .navbar-items li a:hover {
     color: #0086FF;
 }
@@ -146,53 +198,10 @@
     display: inline-block;
 }
 
-.navbar-register-button {
-    font-weight: bold;
-    letter-spacing: 0.5px;
-    padding: 10px 80px 10px 30px;
-    color: white;
-    background: linear-gradient(90deg, #275E8B, #0086FF);
-    border-radius: 35px;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-    height: 65px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 2px 8px rgba(0, 134, 255, 0.2);
+.NavbarItemsRightWhite{
+	color:white;
 }
 
-.navbar-register-button a {
-    color: white;
-    text-decoration: none;
-}
-
-.navbar-register-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 134, 255, 0.3);
-    background: linear-gradient(90deg, #1c5083, #0074e0);
-}
-
-.navbar-register-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 5px rgba(0, 134, 255, 0.3);
-}
-
-.navbar-register-icon {
-    position: absolute;
-    top: 50%;
-    right: 15px;
-    transform: translateY(-50%);
-    width: 60px;
-    height: 60px;
-    pointer-events: none;
-    transition: transform 0.3s ease;
-    filter: brightness(0) invert(1); /* This will make the icon white */
-}
 
 .navbar-register-button:hover .navbar-register-icon {
     animation: pulse 1.5s infinite;

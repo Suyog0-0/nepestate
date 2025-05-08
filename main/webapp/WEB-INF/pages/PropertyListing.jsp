@@ -30,7 +30,7 @@ href="${pageContext.request.contextPath}/css/PropertyListing.css">
         <h1>Property List</h1>
         <div class="property-controls">
           <input type="text" placeholder="Search" class="search-bar" />
-          <button class="new-btn">+ New Product</button>
+          <button class="new-btn">+ New Property</button>
         </div>
       </div>
 
@@ -57,11 +57,12 @@ href="${pageContext.request.contextPath}/css/PropertyListing.css">
             <td>Rs.${p.property_Price}</td>
             <td class="status available">${p.property_Status}</td>
             <td class="actions">
-              <img src="${pageContext.request.contextPath}/images/edit-246.png" />
-              <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
-              <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
+              <a href="${pageContext.request.contextPath}/UpdateProperty><img src="${pageContext.request.contextPath}/images/edit-246.png" /></a>
+              <a><img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" /></a>
+              <a><img src="${pageContext.request.contextPath}/images/delete-icon.png" /></a>
             </td>
           </tr>
+          
            </c:forEach>
         </tbody>
       </table>
