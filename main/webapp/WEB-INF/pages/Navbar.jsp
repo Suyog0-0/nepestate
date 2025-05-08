@@ -1,60 +1,78 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/Navbar.css">
 
 <div class="navbar-container">
-    <div class="navbar-left">
-        <div class="navbar-logo">
-            <a href="${pageContext.request.contextPath}/HomeController">
-                <img src="${pageContext.request.contextPath}/images/logo.png" class="navbar-logo-image" alt="Logo">
-            </a>
-        </div>
+  <div class="navbar-left">
+    <div class="navbar-logo">
+      <a href="${pageContext.request.contextPath}/HomeController">
+        <img src="${pageContext.request.contextPath}/images/logo.png"
+             class="navbar-logo-image"
+             alt="Logo">
+      </a>
     </div>
+  </div>
 
-    <div class="navbar-center">
-        <div class="navbar-search-container">
-            <img src="${pageContext.request.contextPath}/images/searchIcon.png" class="navbar-search-icon" alt="Search">
-            <input type="text" class="navbar-search-bar" placeholder="What are you looking for?">
-        </div>
+  <div class="navbar-center">
+    <div class="navbar-search-container">
+      <img src="${pageContext.request.contextPath}/images/searchIcon.png"
+           class="navbar-search-icon"
+           alt="Search">
+      <input type="text"
+             class="navbar-search-bar"
+             placeholder="What are you looking for?">
     </div>
+  </div>
     
-    <div class="navbar-right">
-        <ul class="navbar-items">
-            <li class="NavbarItemsLeft"><a href="${pageContext.request.contextPath}/HomeController">Home</a></li>
-            <li class="NavbarItemsLeft"><a href="${pageContext.request.contextPath}/ViewPropertyController">Properties</a></li>
-            <li class="NavbarItemsLeft"><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
-            <li class="NavbarItemsLeft"><a href="${pageContext.request.contextPath}/AboutUsController">About Us</a></li>
-            <li class="divider">|</li>
-            <li>
-            
-<div class="navbar-register-container">
-    <% 
-       String username = (String) session.getAttribute("username");
-       String profilePic = (String) session.getAttribute("profilePic");
-       if (username == null) { 
-    %>
-        <button class="navbar-register-button">
-            <a href="${pageContext.request.contextPath}/RegisterController" class="NavbarItemsRightWhite">
-                Register/SignUp
-            </a>
-            <img src="${pageContext.request.contextPath}/images/register.png" 
-                 class="navbar-register-icon" alt="Register">
-        </button>
-    <% } else { %>
-        <button class="navbar-user-button">
-            <a href="${pageContext.request.contextPath}/UserProfileController" class="navbar-user-link">
-                <!-- profile picture -->
-                <img src="${pageContext.request.contextPath}/images/profiles/<%= profilePic %>" 
-                     alt="Profile for <%= username %>" 
-                     class="navbar-user-icon" />
-                <!-- user’s name -->
-                <span class="navbar-username">Welcome, <%= username %></span>
-            </a>
-        </button>
-    <% } %>
-</div>
+  <div class="navbar-right">
+    <ul class="navbar-items">
+      <li class="NavbarItemsLeft">
+        <a href="${pageContext.request.contextPath}/HomeController">Home</a>
+      </li>
+      <li class="NavbarItemsLeft">
+        <a href="${pageContext.request.contextPath}/ViewPropertyController">Properties</a>
+      </li>
+      <li class="NavbarItemsLeft">
+        <a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a>
+      </li>
+      <li class="NavbarItemsLeft">
+        <a href="${pageContext.request.contextPath}/AboutUsController">About Us</a>
+      </li>
+      <li class="divider">|</li>
+      <li>
+        <div class="navbar-register-container">
+          <% 
+            String username   = (String) session.getAttribute("username");
+            String profilePic = (String) session.getAttribute("profilePic");
+            if (username == null) { 
+          %>
+            <!-- logged out -->
+            <button class="navbar-register-button">
+              <!-- login label -->
+              <a href="${pageContext.request.contextPath}/LoginController"
+                 class="NavbarItemsRightWhite">
+                Login / Sign Up
+              </a>
+              <img src="${pageContext.request.contextPath}/images/register.png"
+                   class="navbar-register-icon"
+                   alt="Login">
+            </button>
+<% } else { %>
+  <!-- logged in -->
+  <button class="navbar-user-button">
+    <a href="${pageContext.request.contextPath}/UserProfileController"
+       class="navbar-user-link">
+      <span class="navbar-username">Welcome, <%= username %></span>
+      <img  src="${pageContext.request.contextPath}/images/profiles/<%= profilePic %>"
+            class="navbar-user-icon"
+            alt="Profile for <%= username %>" />
+      <!-- dropdown arrow -->
+      <span class="navbar-dropdown-icon">&#9662;</span>
+    </a>
+  </button>
+<% } %>
 
-            </li>
-        </ul>
-    </div>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
