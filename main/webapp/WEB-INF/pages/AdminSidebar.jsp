@@ -2,45 +2,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Admin Sidebar</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/AdminSidebar.css">
+  <meta charset="UTF-8">
+  <title>Admin Sidebar</title>
+  <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/AdminSidebar.css">
 </head>
 <body>
-<div class="sidebar">
-  <div class="profile-section">
-    <img src="${pageContext.request.contextPath}/images/profilepicture.jpg" alt="Profile" class="profile-pic">
-    <div class="user-info">
-      <p class="role">(Admin)</p>
-      <h3>Durgesh Thapa</h3>
-      <p class="phone">+977 9841222694</p>
-      <p class="email">durgeshthapa@gmail.com</p>
+  <div class="sidebar">
+    <div class="profile-section">
+      <img src="${pageContext.request.contextPath}/images/profilepicture.jpg" alt="Profile" class="profile-pic">
+      <div class="user-info">
+        <p class="role">(Admin)</p>
+        <h3>Durgesh Thapa</h3>
+        <p class="phone">+977 9841222694</p>
+        <p class="email">durgeshthapa@gmail.com</p>
+      </div>
+      <div class="blue-line"></div>
     </div>
-    <div class="blue-line"></div>
-  </div>
-  <nav class="nav-menu">
-    <a href="${pageContext.request.contextPath}/AdminDashboardController" class="nav-link">
-      <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon">
-      Dashboard
-    </a>
-    <a href="${pageContext.request.contextPath}/PropertyListingController" class="nav-link">
-      <img src="${pageContext.request.contextPath}/images/properties.png" class="icon">
-      Properties
-    </a>
-    <a href="${pageContext.request.contextPath}/AdminUserListingController" class="nav-link">
-      <img src="${pageContext.request.contextPath}/images/users.png" class="icon">
-      Users
-    </a>
-    <a href="${pageContext.request.contextPath}/ReportGenerationController" class="nav-link">
-      <img src="${pageContext.request.contextPath}/images/report.png" class="icon">
-      Report
-    </a>
-  </nav>
+    <nav class="nav-menu">
+      <a href="${pageContext.request.contextPath}/AdminDashboardController" class="nav-link">
+        <img src="${pageContext.request.contextPath}/images/dashboard.png" class="icon">
+        Dashboard
+      </a>
+      <a href="${pageContext.request.contextPath}/PropertyListingController" class="nav-link">
+        <img src="${pageContext.request.contextPath}/images/properties.png" class="icon">
+        Properties
+      </a>
+      <a href="${pageContext.request.contextPath}/AdminUserListingController" class="nav-link">
+        <img src="${pageContext.request.contextPath}/images/users.png" class="icon">
+        Users
+      </a>
+      <a href="${pageContext.request.contextPath}/ReportGenerationController" class="nav-link">
+        <img src="${pageContext.request.contextPath}/images/report.png" class="icon">
+        Report
+      </a>
+    </nav>
 
-  <button class="logout-btn">
-    <img src="${pageContext.request.contextPath}/images/logout.png" class="icon">
-    Log Out
-  </button>
-</div>
+    <!-- Log Out now routes to /logout -->
+    <button class="logout-btn"
+            onclick="location='${pageContext.request.contextPath}/Logout'">
+      <img src="${pageContext.request.contextPath}/images/logout.png" class="icon">
+      Log Out
+    </button>
+  </div>
 </body>
 </html>

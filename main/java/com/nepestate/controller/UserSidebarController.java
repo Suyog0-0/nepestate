@@ -10,7 +10,7 @@ import java.io.IOException;
 /**
  * Servlet implementation class usersidebar
  */
-@WebServlet("/usersidebar")
+@WebServlet("/UserSidebarController")
 public class UserSidebarController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

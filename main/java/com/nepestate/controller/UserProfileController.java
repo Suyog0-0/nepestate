@@ -124,7 +124,7 @@ public class UserProfileController extends HttpServlet {
 		if (ValidationUtil.isNullOrEmpty(description))
 			return "Description is required.";
 		if (ValidationUtil.isNullOrEmpty(phoneNumber))
-			return "Phone Number is required.";
+			return "Phone Number is requiredlogin.";
 		if (ValidationUtil.isNullOrEmpty(email))
 			return "Email is required.";
 		if (ValidationUtil.isNullOrEmpty(dob))

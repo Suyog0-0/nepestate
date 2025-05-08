@@ -13,61 +13,50 @@ import com.nepestate.service.LoginService;
 import com.nepestate.util.CookieUtil;
 import com.nepestate.util.SessionUtil;
 
-/**
- * Servlet implementation class LoginController
- */
 @WebServlet("/LoginController")
 public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+        throws ServletException, IOException {
+        
         String username = request.getParameter("username");
-        System.out.println(username);
         String password = request.getParameter("password");
-        System.out.println(password);
         LoginService loginObject = new LoginService();
+
+        // Admin login handling
         AdminModel adminModel = new AdminModel(username, password);
         Boolean adminLoginStatus = loginObject.loginAdmin(adminModel);
             
         if (adminLoginStatus != null && adminLoginStatus) {
-            System.out.println("Successfully Admin Login");
+            System.out.println("Successfully Admin Login: " + username);
+            
             SessionUtil.setAttribute(request, "username", username);
+            SessionUtil.setAttribute(request, "userEmail", username); // Using username as identifier
             CookieUtil.addCookie(response, "role", "admin", 5 * 30);
+            
             request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
             return;
         }
         
+        // Customer login handling
         CustomerModel customerModel = new CustomerModel(username, password);
         CustomerModel loggedInCustomer = loginObject.loginCustomer(customerModel);
         
         if (loggedInCustomer != null) {
-            System.out.println("Successfully User Login");
+            System.out.println("Successfully User Login: " + username);
             
+            // Store username in both 'username' and 'userEmail' session attributes
             SessionUtil.setAttribute(request, "username", username);
+            SessionUtil.setAttribute(request, "userEmail", username); // CHANGED: Using username instead of email
             SessionUtil.setAttribute(request, "customerId", loggedInCustomer.getCustomerID());
-            CookieUtil.addCookie(response, "role", "customer", 5 * 30);
             
-            System.out.println("Set customerId in session: " + loggedInCustomer.getCustomerID());
+            CookieUtil.addCookie(response, "role", "customer", 5 * 30);
             
             response.sendRedirect(request.getContextPath() + "/HomeController");
             return;
@@ -77,13 +66,12 @@ public class LoginController extends HttpServlet {
     }
 
     private void handleLoginFailure(HttpServletRequest request, HttpServletResponse response, Boolean loginStatus)
-            throws ServletException, IOException {
-        String errorMessage;
-        if (loginStatus == null) {
-            errorMessage = "Our server is under maintenance. Please try again later!";
-        } else {
-            errorMessage = "User credential mismatch. Please try again!";
-        }
+        throws ServletException, IOException {
+        
+        String errorMessage = loginStatus == null ? 
+            "Our server is under maintenance. Please try again later!" :
+            "User credential mismatch. Please try again!";
+            
         request.setAttribute("error", errorMessage);
         request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
     }
