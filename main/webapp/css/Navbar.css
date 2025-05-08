@@ -122,16 +122,23 @@
 }
 
 /* Favourite Icon */
+.navbar-favourite-icon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
 .navbar-favourite-icon {
-  width: 1px;
-  height: 1px;
-  cursor: pointer;
-  transition: transform 0.3s ease;
+    width: 24px;
+    height: 24px;
+    transition: transform 0.3s ease;
 }
 
 .navbar-favourite-icon:hover {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
+
 
 /* Register/Login button */
 .navbar-register-button {
