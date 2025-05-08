@@ -24,7 +24,7 @@
 
                 // Validate picture
                 if (dbProfilePic != null && !dbProfilePic.trim().isEmpty()) {
-                    profilePicPath = "${pageContext.request.contextPath}/images/profiles/" + dbProfilePic;
+                    profilePicPath = "${pageContext.request.contextPath}/images/" + dbProfilePic;
                 }
             }
         } catch (Exception e) {
@@ -68,10 +68,10 @@
             <li>
                 <div class="navbar-register-container">
                     <% if (username == null) { %>
-                        <button class="navbar-register-button">
-                            <a href="${pageContext.request.contextPath}/LoginController" class="NavbarItemsRightWhite">Login / Sign Up</a>
-                            <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon">
-                        </button>
+<button class="navbar-register-button">
+<a href="${pageContext.request.contextPath}/LoginController" class="navbar-items-right-white">Login / Sign Up</a>
+    <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon">
+</button>
                     <% } else { %>
                         <a href="${pageContext.request.contextPath}/UserProfileController" class="navbar-user-link">
                             <div class="navbar-user-button">
