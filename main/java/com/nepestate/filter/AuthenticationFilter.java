@@ -15,6 +15,8 @@ public class AuthenticationFilter implements Filter {
     private static final String LOGOUT               = "/Logout";
     private static final String HOME                 = "/";
     private static final String HOME_CONTROLLER      = "/HomeController";
+    private static final String CONTACTUS 			 = "/ContactUsController"; 
+    private static final String ABOUTUS 			 = "/AboutUsController";
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -27,6 +29,7 @@ public class AuthenticationFilter implements Filter {
     private static final String USER_PROFILE         = "/UserProfileController";
     private static final String CONTACT_LIST         = "/ContactListingController";
     private static final String FAVOURITE            = "/FavouriteController";
+    
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -65,7 +68,7 @@ public class AuthenticationFilter implements Filter {
         // 3) CHECK ROLES in session
         boolean isAdmin = "admin".equals(sessionRole) && "admin".equals(cookieRole);
         boolean isUser = "customer".equals(sessionRole) && "customer".equals(cookieRole);
-
+        
         // 4a) ADMIN flow
         if (isAdmin) {
             // If they hit login, bounce to admin dashboard
@@ -80,6 +83,9 @@ public class AuthenticationFilter implements Filter {
                 path.equals(ADMIN_USER_LIST) ||
                 path.equals(REPORT_GEN)      ||
                 path.equals(HOME)            ||
+                path.equals(CONTACTUS)       ||
+                path.equals(ABOUTUS)         ||
+                
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
@@ -104,6 +110,8 @@ public class AuthenticationFilter implements Filter {
                 path.equals(PROPERTY_LIST)    ||
                 path.equals(CONTACT_LIST)     ||
                 path.equals(REPORT_GEN)       ||
+                path.equals(CONTACTUS)        ||
+                path.equals(ABOUTUS)          ||
                 path.equals(FAVOURITE)) {
                 chain.doFilter(request, response);
             } else {
@@ -117,7 +125,10 @@ public class AuthenticationFilter implements Filter {
         // Allow only public pages: login controller and home
         if (path.equals(LOGIN_CONTROLLER) ||
             path.equals(HOME)             ||
-            path.equals(HOME_CONTROLLER)) {
+            path.equals(HOME_CONTROLLER)  ||
+            path.equals(CONTACTUS)        ||  // Add this
+            path.equals(ABOUTUS)          ||  // Add this
+            path.equals(PROPERTY_LIST)){
             chain.doFilter(request, response);
         } else {
             res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
