@@ -17,6 +17,7 @@ public class AuthenticationFilter implements Filter {
     private static final String HOME_CONTROLLER      = "/HomeController";
     private static final String CONTACTUS 			 = "/ContactUsController"; 
     private static final String ABOUTUS 			 = "/AboutUsController";
+    private static final String VIEWPROPERTY        = "/ViewPropertyController";
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -85,6 +86,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(HOME)            ||
                 path.equals(CONTACTUS)       ||
                 path.equals(ABOUTUS)         ||
+                path.equals(VIEWPROPERTY)         ||
                 
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
@@ -112,6 +114,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(REPORT_GEN)       ||
                 path.equals(CONTACTUS)        ||
                 path.equals(ABOUTUS)          ||
+                path.equals(VIEWPROPERTY)         ||
                 path.equals(FAVOURITE)) {
                 chain.doFilter(request, response);
             } else {
@@ -128,7 +131,7 @@ public class AuthenticationFilter implements Filter {
             path.equals(HOME_CONTROLLER)  ||
             path.equals(CONTACTUS)        ||  // Add this
             path.equals(ABOUTUS)          ||  // Add this
-            path.equals(PROPERTY_LIST)){
+            path.equals(VIEWPROPERTY)){
             chain.doFilter(request, response);
         } else {
             res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
