@@ -53,12 +53,16 @@ public class LoginController extends HttpServlet {
         if (loggedInCustomer != null) {
             System.out.println("Successfully User Login: " + username);
 
+
             // Set required session attributes
             SessionUtil.setAttribute(request, "username", username);
             SessionUtil.setAttribute(request, "userEmail", username);
             SessionUtil.setAttribute(request, "customerId", loggedInCustomer.getCustomerID());
+            
+            // Saves full customer model to session
+            SessionUtil.setAttribute(request, "loggedInCustomer", loggedInCustomer);
 
-            // ✅ Save profile picture from DB into session
+            // Saves profile picture from DB into session
             String profilePic = loggedInCustomer.getCustomer_ProfilePicture();
             SessionUtil.setAttribute(request, "profilePic", profilePic);
 

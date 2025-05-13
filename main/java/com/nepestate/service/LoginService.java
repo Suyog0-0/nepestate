@@ -66,38 +66,62 @@ public class LoginService {
 
     public CustomerModel loginCustomer(CustomerModel customerModel) {
         if (isConnectionError) {
+            System.out.println("Database connection error.");
             return null;
         }
-        String query = "SELECT CustomerID, Customer_Username, Customer_Password FROM customers WHERE Customer_Username = ?";
+
+        String query = "SELECT * FROM customers WHERE Customer_Username = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setString(1, customerModel.getCustomer_Username());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 String dbUsername = rs.getString("Customer_Username");
                 String dbPassword = rs.getString("Customer_Password");
+
                 boolean authSuccess = false;
+
                 try {
                     String decrypted = PasswordUtil.decrypt(dbPassword, dbUsername);
-                    if (Objects.equals(decrypted, customerModel.getCustomer_Password())) {
-                        authSuccess = true;
-                    }
-                } catch (RuntimeException ex) {
-                    if (Objects.equals(dbPassword, customerModel.getCustomer_Password())) {
-                        authSuccess = true;
-                    }
+                    authSuccess = Objects.equals(decrypted, customerModel.getCustomer_Password());
+                } catch (Exception ex) {
+                    // Fallback: compare plain text
+                    System.out.println("Password decrypt failed. Trying plain text match.");
+                    authSuccess = Objects.equals(dbPassword, customerModel.getCustomer_Password());
                 }
+
                 if (authSuccess) {
                     CustomerModel logged = new CustomerModel();
                     logged.setCustomerID(rs.getInt("CustomerID"));
+                    logged.setCustomer_FirstName(rs.getString("Customer_FirstName"));
+                    logged.setCustomer_LastName(rs.getString("Customer_LastName"));
                     logged.setCustomer_Username(dbUsername);
+                    logged.setCustomer_EmailAddress(rs.getString("Customer_EmailAddress"));
+                    logged.setCustomer_Password(dbPassword);
+                    logged.setCustomer_ProfilePicture(rs.getString("Customer_ProfilePicture"));
+                    logged.setCustomer_DoB(rs.getString("Customer_DoB"));
+                    logged.setCustomer_PhoneNumber(rs.getString("Customer_PhoneNumber"));
+                    logged.setCustomer_Description(rs.getString("Customer_Description"));
+
+                    System.out.println("Login successful for: " + dbUsername);
                     return logged;
+                } else {
+                    System.out.println("Password mismatch for user: " + dbUsername);
                 }
+            } else {
+                System.out.println("User not found: " + customerModel.getCustomer_Username());
             }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception during login: " + e.getMessage());
+            e.printStackTrace();
         } catch (Exception e) {
+            System.out.println("General Exception during login: " + e.getMessage());
             e.printStackTrace();
         }
+
         return null;
     }
+
+    
 
     private boolean validatePasswordForCustomer(ResultSet rs, CustomerModel m) throws SQLException {
         String dbUser = rs.getString("Customer_Username");

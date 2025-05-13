@@ -1,124 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.nepestate.service.CustomerService" %>
 <%@ page import="com.nepestate.model.CustomerModel" %>
+<%
+    CustomerModel customer = (CustomerModel) session.getAttribute("loggedInCustomer");
+%>
 
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/UserSidebar.css">
 
-<%
-// Get session attributes
-String username = (String) session.getAttribute("username");
-String userEmail = (String) session.getAttribute("userEmail");
-Integer customerId = (Integer) session.getAttribute("customerId");
-
-// Initialize variables
-String profilePicPath = "${pageContext.request.contextPath}/images/defaultpfp.jpg";
-String firstName = "";
-String lastName = "";
-String phoneNumber = "";
-
-// Check database for user details
-if (username != null && customerId != null) {
-    try {
-        // Database fetch
-        CustomerService customerService = new CustomerService();
-        CustomerModel customer = customerService.getCustomerById(customerId);
-        
-        if (customer != null) {
-            // Get profile picture
-            String dbProfilePic = customer.getCustomer_ProfilePicture();
-            if (dbProfilePic != null && !dbProfilePic.trim().isEmpty()) {
-                profilePicPath = "${pageContext.request.contextPath}/images/profiles/" + dbProfilePic;
-            }
-            
-            // Get user details
-            firstName = customer.getCustomer_FirstName();
-            lastName = customer.getCustomer_LastName();
-            phoneNumber = customer.getCustomer_PhoneNumber();
-            
-            // Use email from DB if session email is empty
-            if (userEmail == null || userEmail.trim().isEmpty()) {
-                userEmail = customer.getCustomer_EmailAddress();
-            }
-        }
-    } catch (Exception e) {
-        // Error logging
-        System.err.println("Error fetching user details: " + e.getMessage());
-    }
-}
-%>
-
-<div class="sidebar">
+ 
+<body>
+  <div class="sidebar">
     <div class="profile-section">
-        <img src="<%= profilePicPath %>" alt="Profile" class="profile-img" 
-             onerror="this.src='${pageContext.request.contextPath}/images/defaultpfp.jpg'"/>
-        <p class="role">(User)</p>
-        <h2><%= firstName + " " + lastName %></h2>
-        <p class="phone"><%= phoneNumber %></p>
-        <!-- Dynamic email -->
-        <p class="email"><%= userEmail %></p>
-        <div class="blue-line"></div>
+    <% if (customer == null) { %>
+    <img src="${pageContext.request.contextPath}/images/profilepicture.png" alt="Profile" class="profile-img"/>
+      <p class="role">( User )</p>
+      <h2>Name</h2>
+      <p class="phone">Phone Number</p>
+      <p class="username">Username</p>
+                    <% } else { %>
+                     <img src="<%= customer.getCustomer_ProfilePicture() %>" class="profile-img" alt="Profile" 
+         onerror="this.src='${pageContext.request.contextPath}/images/defaultpfp.jpg'" />
+				      <p class="role">( User )</p>
+				      <h2><%= customer.getCustomer_FirstName() + " " + customer.getCustomer_LastName() %></h2>
+				      <p class="phone"><%= customer.getCustomer_PhoneNumber() %></p>
+				      <p class="username"><%= customer.getCustomer_Username() %></p>
+                    <% } %>
     </div>
-
+    
     <nav class="menu">
-        <ul>
-            <li class="menu-item">
-                <img src="${pageContext.request.contextPath}/images/users.png" class="icon"/>
-                <a href="${pageContext.request.contextPath}/UserProfileController" class="nav-link">
-                    My profile
-                </a>
-            </li>
-
-            <li class="dropdown-container">
-                <div class="menu-item dropdown-header">
-                    <img src="${pageContext.request.contextPath}/images/down-icon.png" class="icon"/>
-                    <a href="${pageContext.request.contextPath}/UserDashboardController" class="nav-link">
-                        Dashboard
-                    </a>
-                </div>
-                <ul class="submenu">
-                    <li class="submenu-item">
-                        <img src="${pageContext.request.contextPath}/images/properties.png" class="icon"/>
-                        <a href="${pageContext.request.contextPath}/PropertyListingController" class="nav-link">
-                            Properties
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <img src="${pageContext.request.contextPath}/images/users.png" class="icon"/>
-                        <a href="${pageContext.request.contextPath}/ContactListingController" class="nav-link">
-                            Contact
-                        </a>
-                    </li>
-                    <li class="submenu-item">
-                        <img src="${pageContext.request.contextPath}/images/report.png" class="icon"/>
-                        <a href="${pageContext.request.contextPath}/ReportGenerationController" class="nav-link">
-                            Reports
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-            <li class="menu-item">
-                <img src="${pageContext.request.contextPath}/images/white_favourite.png" class="icon"/>
-                <a href="${pageContext.request.contextPath}/FavouriteController" class="nav-link">
-                    Favorites
-                </a>
-            </li>
-
-            <li class="menu-item logout">
-                <img src="${pageContext.request.contextPath}/images/logout.png" class="icon"/>
-                <a href="${pageContext.request.contextPath}/Logout" class="nav-link-logout">
-                    Log Out
-                </a>
-            </li>
+      <ul>
+        <li><img src="${pageContext.request.contextPath}/images/users.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/UserProfileController">My profile</a></li>
+        <li class="dashboard-toggle">
+            <span class="arrow">
+            	<img src="${pageContext.request.contextPath}/images/down-icon.png">
+            </span>
+            <img src="${pageContext.request.contextPath}/images/dashboard.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/UserDashboardController">Dashboard </a>
+        </li>
+        <ul class="submenu">
+          <li><img src="${pageContext.request.contextPath}/images/properties.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/PropertyListingController">Property</a></li>
+          <li><img src="${pageContext.request.contextPath}/images/report.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/ReportGenerationController">Reports</a></li>
+          <li><img src="${pageContext.request.contextPath}/images/contact.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/ContactListingController">Contact</a></li>
         </ul>
+        <li><img src="${pageContext.request.contextPath}/images/favorites.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/FavouriteController">Favorites</a></li>
+        <button class="logout-btn">
+          <img src="${pageContext.request.contextPath}/images/logout.webp" class="icon" />
+          Logout
+        </button>
+      </ul>
     </nav>
-</div>
+  </div>
+  <script>
+    const toggle = document.querySelector('.dashboard-toggle');
+    const submenu = document.querySelector('.submenu');
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const dropdown = document.querySelector('.dropdown-header');
-    dropdown.addEventListener('click', () => {
-        dropdown.parentElement.classList.toggle('open');
+    toggle.addEventListener('click', () => {
+      submenu.classList.toggle('active');
     });
-});
-</script>
+  </script>
+</body>

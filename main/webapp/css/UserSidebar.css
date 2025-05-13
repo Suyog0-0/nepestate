@@ -1,126 +1,141 @@
 @charset "UTF-8";
-/* Base styles */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
+  background-color: white;
 }
 
 .sidebar {
-  width: 320px;
-  background: linear-gradient(to bottom, #356A95, #001B34);
+  width: 350px;
+  height: 750px;
+  background: linear-gradient(to bottom, #3a6186, #3a3b4c); 
   color: white;
-  margin-top: 50px;
-  margin-left: 50px;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  margin: 25px 0px 0px 25px;
+  padding: 40px 25px;
 }
 
 .profile-section {
   text-align: center;
   margin-bottom: 30px;
+  padding-top: 30px;
 }
 
 .profile-img {
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid white;
-  transition: transform 0.3s ease;
-}
-
-.profile-img:hover {
-  transform: scale(1.05);
 }
 
 .role {
   font-style: italic;
-  font-size: 16px;
+  font-size: 15px;
   color: #ddd;
-  margin: 15px 0 5px;
+  margin-top: 15px;
 }
 
 .profile-section h2 {
-  margin: 5px 0;
-  font-size: 22px;
+  margin: 10px 0 5px 0;
+  font-size: 20px;
 }
 
-.phone, .email {
+.phone, .username {
   font-size: 15px;
   color: #bbb;
-  margin: 5px 0;
+  padding-top: 1
 }
 
-.nav-link {
-  text-decoration: none;
-  color: white;
-}
-
-/* Logout link override */
-.nav-link-logout {
-  text-decoration: none;
-  color: black;     /* Ensure black */
-}
-
-.blue-line {
-  height: 4px;
-  width: 150px;
-  background: linear-gradient(90deg, #4facfe, #00f2fe);
-  margin: 20px auto;
-}
-
+/* Menu Styles */
 .menu ul {
   list-style: none;
   padding: 0;
+  width: 100%;
   margin: 0;
 }
 
-.menu-item {
+.menu li {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
   cursor: pointer;
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 5px;
-  transition: background-color 0.2s ease;
+  transition: background 0.2s;
+  padding: 12px 0px 0px 0px; /* Aligns main menu items */
+}
+.arrow {
+    font-size: 14px;
+    margin-left: -33px; /* Moves it outside the usual padding zone */
+    margin-right: 10px;
+  }
+
+  .arrow img
+  {
+    width: 17px;
+  }
+  
+.dashboard-images
+{
+    width: 25px;
 }
 
-.menu-item:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.dropdown-container {
-  position: relative;
-}
-
-.dropdown-header {
-  display: flex;
-  align-items: center;
+.dashboard-toggle {
+  padding: 15px 0 15px 20px;
 }
 
 .submenu {
-  max-height: 0;
-  overflow: hidden;
-  padding-left: 24px;
-  transition: max-height 0.3s ease;
+  display: none;
+  flex-direction: column;
+  padding-left: 30px; /* Indent submenu items */
 }
 
-.dropdown-container.open .submenu {
-  max-height: 500px;
+.submenu li {
+  padding: 10px 0 15px 30px;
 }
 
-.submenu-item {
+.submenu.active {
   display: flex;
+}
+
+/* Special spacing between last submenu item and logout */
+.submenu .contact {
+  margin-bottom: 30px;
+}
+
+.logout-btn {
+  width: 100%;
+  font-weight: bold;
+  font-size: 17px;
+  color: #0b2341;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 15px;
-  padding: 12px;
-  margin-left: 30
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.logout-btn img {
+  width: 30px;
+  object-fit: contain;
+}
+
+
+/* Hover Effect */
+.menu li:hover {
+  background-color: #032648;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+.menu a
+{
+  text-decoration: none;
+  color: white;
 }
