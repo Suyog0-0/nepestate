@@ -8,14 +8,14 @@ body {
 
 .sidebar {
   width: 350px;
-  height: 750px;
+  height: 700px;
   background: linear-gradient(to bottom, #3a6186, #3a3b4c); 
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
-  margin: 25px 0px 0px 25px;
+  margin: 70px 0px 0px 25px;
   padding: 40px 25px;
 }
 
@@ -65,7 +65,7 @@ body {
   gap: 10px;
   cursor: pointer;
   transition: background 0.2s;
-  padding: 12px 0px 0px 0px; /* Aligns main menu items */
+  padding: 12px 0px 10px 0px; /* Aligns main menu items */
 }
 .arrow {
     font-size: 14px;
