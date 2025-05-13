@@ -8,11 +8,13 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import com.nepestate.model.CustomerModel;
 import com.nepestate.model.PropertyModel;
 import com.nepestate.service.CustomerService;
+import com.nepestate.service.PropertyService;
 import com.nepestate.util.ValidationUtil;
 
 /**
@@ -45,7 +47,19 @@ public class UserProfileController extends HttpServlet {
 	       
 		 	CustomerService customerService=new CustomerService();
 	        CustomerModel customer = customerService.getCustomerById(customerId);
-	        
+	        List<PropertyModel> properties = null;
+	        PropertyService ps = new PropertyService();
+	        try {
+				properties = ps.getPropertyByCustomer(customerId);
+				System.out.print(properties);
+				request.setAttribute("properties", properties);
+			    request.setAttribute("propertiesCount", properties != null ? properties.size() : 0);
+			    System.out.println("Loaded " + properties.size() + " properties for customer ID: " + customerId);
+			} catch (SQLException e) {
+				System.out.println("Error loading properties: " + e.getMessage());
+	            e.printStackTrace();
+	            request.setAttribute("error", "Error loading properties. Please try again.");
+			}
 	        if (customer == null) {
 	            
 	            session.invalidate();
@@ -63,6 +77,8 @@ public class UserProfileController extends HttpServlet {
 	        	  request.setAttribute("profilePicture", customer.getCustomer_ProfilePicture());
 	   
 	        }
+	        
+	        
 	
 	        request.getRequestDispatcher("/WEB-INF/pages/UserProfile.jsp").forward(request, response);
 
@@ -124,7 +140,7 @@ public class UserProfileController extends HttpServlet {
 		if (ValidationUtil.isNullOrEmpty(description))
 			return "Description is required.";
 		if (ValidationUtil.isNullOrEmpty(phoneNumber))
-			return "Phone Number is requiredlogin.";
+			return "Phone Number is required.";
 		if (ValidationUtil.isNullOrEmpty(email))
 			return "Email is required.";
 		if (ValidationUtil.isNullOrEmpty(dob))

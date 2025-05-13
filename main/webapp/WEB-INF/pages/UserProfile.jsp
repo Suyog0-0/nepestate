@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
      <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page import="java.util.List" %>
+<%@ page import="com.nepestate.model.PropertyModel" %>
+<%
+    @SuppressWarnings("unchecked")
+    List<PropertyModel> properties = (List<PropertyModel>) request.getAttribute("properties");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,46 +117,26 @@
  	</div>
 
     <div style="font-family:Arial,sans-serif;font-size:40px;margin-left:125px;margin-top:50px;display:block;">
-            Listed Properties (12)
+             Listed Properties (${propertiesCount})
         </div>
     <div style="display:flex;gap:60px;margin-top:50px;margin-left:120px;">
-        <div class="productBox">
-            <img src="${pageContext.request.contextPath}/images/ListedProperty.png"> 
-            <div style="direction:flex;margin-left:12px;max-width:300px;margin-top:10px;">
-                <div class="tag"> Home </div>
-                <h3 style="margin-bottom:10px;"> Rs 12,00,000 </h3>
-                <div style="font-size:12px;color:#666"> 🌄 Beautiful home for sale in a scenic and peaceful location!</div>
-                <div style="text-align:center;font-size:10px;color:#666;margin-top:12px"> Kamalpokhari, Kathmandu</div>
-            </div> 
-        </div>
+    <c:forEach var="property" items="${properties}">
         <div class="productBox">
             <img src="${pageContext.request.contextPath}/images/ListedProperty1.png"> 
             <div style="direction:flex;margin-left:12px;max-width:300px;margin-top:10px;">
-                <div class="tag"> Home </div>
-                <h3 style="margin-bottom:10px;"> Rs 50,00,000</h3>
-                <div style="font-size:12px;color:#666"> ✨ A charming vintage home with timeless architecture and rustic appeal.</div>
-                <div style="text-align:center;font-size:10px;color:#666;margin-top:12px"> New Road, Kathmandu</div>
+                <div class="tag"> ${property.property_Type} </div>
+                <h3 style="margin-bottom:10px;">${property.property_Price}</h3>
+                <div style="font-size:12px;color:#666"> ${property.property_Description}</div>
+                <div style="text-align:center;font-size:10px;color:#666;margin-top:12px"> ${property.property_Address}</div>
             </div> 
         </div>
-        <div class="productBox">
-            <img src="${pageContext.request.contextPath}/images/ListedProperty2.png"> 
-            <div style="direction:flex;margin-left:12px;max-width:300px;margin-top:10px">
-                <div class="tag"> Colony </div>
-                <h3 style="margin-bottom:10px;"> Rs 1,75,00,000</h3>
-                <div style="font-size:12px;color:#666"> 🏡 A well-planned residential colony with modern homes and serene surroundings</div>
-                <div style="text-align:center;font-size:10px;color:#666;margin-top:12px"> Jorpati, Kathmandu</div>
-            </div> 
+       </c:forEach>
         </div>
-        <div class="productBox">
-            <img src="${pageContext.request.contextPath}/images/ListedProperty4.png"> 
-            <div style="direction:flex;margin-left:12px;max-width:300px;margin-top:10px;">
-                <div class="tag"> Apartment </div>
-                <h3 style="margin-bottom:10px;"> Rs 3,20,00,000</h3>
-                <div style="font-size:12px;color:#666"> 🌄; Beautiful home for sale in a scenic and peaceful location!</div>
-                <div style="text-align:center;font-size:10px;color:#666;margin-top:12px"> Bhaisepati, Lalitpur </div>
-            </div> 
-        </div>
-    </div>
+     <c:if test="${empty properties}">
+            <div style="text-align:center;width:100%;padding:30px;color:#666;font-family:Arial,sans-serif;">
+                No properties found for this customer.
+            </div>
+        </c:if> 
     <br>
     <br>
     <jsp:include page="Footer.jsp"/>
