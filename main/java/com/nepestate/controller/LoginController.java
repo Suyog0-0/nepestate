@@ -5,6 +5,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
@@ -20,7 +21,22 @@ public class LoginController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
         throws ServletException, IOException {
-        request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
+    	String role = CookieUtil.getCookie(request, "role") != null 
+                ? CookieUtil.getCookie(request, "role").getValue() 
+                : null;
+    
+    if ("admin".equals(role)) {
+        // Admin already logged in, redirect to admin dashboard
+        response.sendRedirect(request.getContextPath() + "/AdminDashboardController");
+        return;
+    } else if ("customer".equals(role)) {
+        // Customer already logged in, redirect to home page
+        response.sendRedirect(request.getContextPath() + "/HomeController");
+        return;
+    }
+    
+    // Not logged in, show login page
+    request.getRequestDispatcher("/WEB-INF/pages/Login.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -36,10 +52,11 @@ public class LoginController extends HttpServlet {
         Boolean adminLoginStatus = loginObject.loginAdmin(adminModel);
 
         if (adminLoginStatus != null && adminLoginStatus) {
-            System.out.println("Successfully Admin Login: " + username);
-
+        	System.out.println("Successfully Admin Login: " + username);
+            // Set both session attributes and cookies consistently
             SessionUtil.setAttribute(request, "username", username);
             SessionUtil.setAttribute(request, "userEmail", username);
+            SessionUtil.setAttribute(request, "role", "admin"); // Add role to session too
             CookieUtil.addCookie(response, "role", "admin", 5 * 30);
 
             request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
@@ -58,6 +75,7 @@ public class LoginController extends HttpServlet {
             SessionUtil.setAttribute(request, "username", username);
             SessionUtil.setAttribute(request, "userEmail", username);
             SessionUtil.setAttribute(request, "customerId", loggedInCustomer.getCustomerID());
+            SessionUtil.setAttribute(request, "role", "customer");
             
             // Saves full customer model to session
             SessionUtil.setAttribute(request, "loggedInCustomer", loggedInCustomer);

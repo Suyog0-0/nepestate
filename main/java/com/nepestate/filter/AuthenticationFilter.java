@@ -58,16 +58,13 @@ public class AuthenticationFilter implements Filter {
             chain.doFilter(request, response);
             return;
         }
-
+        String sessionRole = (String) SessionUtil.getAttribute(req, "role");
+        String cookieRole = CookieUtil.getCookie(req, "role") != null
+                          ? CookieUtil.getCookie(req, "role").getValue()
+                          : null;
         // 3) CHECK ROLES in session
-        boolean isAdmin = SessionUtil.getAttribute(req, "username") != null
-                       && "admin".equals(CookieUtil.getCookie(req, "role") != null
-                                        ? CookieUtil.getCookie(req, "role").getValue()
-                                        : null);
-        boolean isUser  = SessionUtil.getAttribute(req, "username") != null
-                       && "customer".equals(CookieUtil.getCookie(req, "role") != null
-                                           ? CookieUtil.getCookie(req, "role").getValue()
-                                           : null);
+        boolean isAdmin = "admin".equals(sessionRole) && "admin".equals(cookieRole);
+        boolean isUser = "customer".equals(sessionRole) && "customer".equals(cookieRole);
 
         // 4a) ADMIN flow
         if (isAdmin) {
@@ -77,7 +74,8 @@ public class AuthenticationFilter implements Filter {
                 return;
             }
             // Allow admin‐only URLs
-            if (path.equals(ADMIN_DASH)      ||
+            if (
+            	path.equals(ADMIN_DASH)      ||
                 path.equals(PROPERTY_LIST)   ||
                 path.equals(ADMIN_USER_LIST) ||
                 path.equals(REPORT_GEN)      ||
