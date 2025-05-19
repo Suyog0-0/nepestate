@@ -1,11 +1,14 @@
 	package com.nepestate.controller;
 	
 	import jakarta.servlet.ServletException;
-	import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.annotation.WebServlet;
 	import jakarta.servlet.http.HttpServlet;
 	import jakarta.servlet.http.HttpServletRequest;
 	import jakarta.servlet.http.HttpServletResponse;
-	import java.io.IOException;
+import jakarta.servlet.http.Part;
+
+import java.io.IOException;
 	import java.time.LocalTime;
 	import java.util.ArrayList;
 	import java.util.Date;
@@ -13,15 +16,18 @@
 	
 	import com.nepestate.model.PropertyModel;
 	import com.nepestate.service.PropertyService;
-	import com.nepestate.util.ValidationUtil;
+import com.nepestate.util.ImageUtil;
+import com.nepestate.util.ValidationUtil;
 	
 	/**
 	 * Servlet implementation class PostProductController
 	 */
 	@WebServlet("/PostPropertyController")
+	@MultipartConfig
+
 	public class PostPropertyController extends HttpServlet {
 		private static final long serialVersionUID = 1L;
-	       
+		private final ImageUtil imageUtil = new ImageUtil();
 	    /**
 	     * @see HttpServlet#HttpServlet()
 	     */
@@ -55,6 +61,8 @@
 					return;
 					}
 					else {
+					
+						
 					PropertyModel property=createPropertyFromRequest(request);
 					PropertyService propertyService = new PropertyService();
 					Boolean result = propertyService.addProperty(property);
@@ -138,7 +146,7 @@
 			}
 			
 			private PropertyModel createPropertyFromRequest(HttpServletRequest request) {
-				
+				try {
 				Date date = new Date(); 
 				String title = request.getParameter("title");
 		        float price = Float.parseFloat(request.getParameter("price"));
@@ -147,7 +155,27 @@
 		        float area = Float.parseFloat(request.getParameter("area"));
 		        String description = request.getParameter("description");
 		        String propertyType = request.getParameter("propertyType");
-		        
+		        Part image = request.getPart("image");
+	            String imagePath = null;
+	            if (image != null && image.getSize() > 0) {
+	                String folder = "property"; // Changed from "profile" to "property" for clarity
+	                String savePath = request.getServletContext().getRealPath("/images/" + folder);
+	                System.out.println("Attempting to save image to: " + savePath);
+	                
+	                boolean uploaded = imageUtil.uploadImage(image, savePath);
+	                
+	                if (uploaded) {
+	                    String imageName = imageUtil.getImageNameFromPart(image);
+	                    imagePath = "/images/" + folder + "/" + imageName;
+	                    System.out.println("Image uploaded successfully. Path: " + imagePath);
+	                } else {
+	                    System.out.println("Image upload failed, using default image");
+	                }
+	            } else {
+	                System.out.println("No image provided or empty image, using default image");
+	            }
+	            
+		      
 		        // Handle multiple amenities
 		        List<String> selectedAmenities = new ArrayList<>();
 		        if (request.getParameter("amenity_cctv") != null) {
@@ -226,11 +254,18 @@
 		        property.setProperty_Status("Available");
 		        property.setProperty_Amentities(amenitiesForDB);
 		        property.setProperty_DateAdded(date);
-		        property.setProperty_Photos("");
+//		        property.setProperty_Photos("");
+		        property.setProperty_Photos(imagePath);
 		        
 		        return property;
 		        
 
 			
+			
+			  }catch (Exception e) {
+		            e.printStackTrace();
+		            System.out.println("Exception in createPropertyFromRequest: " + e.getMessage());
+		        }
+				return null;
 			}
 	}

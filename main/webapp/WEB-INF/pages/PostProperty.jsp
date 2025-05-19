@@ -30,7 +30,7 @@
 	<body>
 	<jsp:include page="Navbar.jsp"/>
 	<div class="mainSquare mainSquareHeight">
-	<form action="${pageContext.request.contextPath}/PostPropertyController" method="post">
+	<form action="${pageContext.request.contextPath}/PostPropertyController" method="post"  enctype="multipart/form-data">
 	    <div class="subRow">
 	      <span style="font-family: Arial, sans-serif; font-size: 30px; font-weight:700;">POST PROPERTY</span>
 	    </div>
@@ -93,7 +93,7 @@
 	        <div style=" display: flex; margin-top: 50px; gap: 19.5%;">
 	          <div class="subColumn">
 	            <label class="form-label">Upload Thumbnail</label>
-	            <input type="file" name="thumbnail" id="thumbnail" style="display:none;">
+	            <input type="file" name="image" id="image" >
 	            <label for="thumbnail">
 	              <img src="${pageContext.request.contextPath}/images/uploadImage.png" style="max-width:36.48px;margin-left:28px;padding:20px;cursor:pointer;" alt="Upload Thumbnail">
 	            </label>
