@@ -27,7 +27,7 @@ public class FavouriteController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/Favourite.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/pages/Favourite.jsp").forward(request, response);
 	}
 
 	/**
@@ -36,6 +36,6 @@ public class FavouriteController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		
 	}
+
 }
