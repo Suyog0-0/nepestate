@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
     margin: 0;
     padding: 0;
@@ -44,21 +46,16 @@
     align-items: center;
   }
   
-  .search-bar {
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: none;
-    outline: none;
-  }
-  
   .new-btn {
     padding: 8px 12px;
     background-color: white;
-    color: #254066;
     border: none;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
+  }
+  .new-btn a{
+  	 color: #254066;
   }
   
   .property-table {

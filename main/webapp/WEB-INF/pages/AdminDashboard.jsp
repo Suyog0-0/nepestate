@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.nepestate.service.DashboardService" %> 
+<%
+    DashboardService dashboardService = new DashboardService();
+    int totalRevenue = dashboardService.getTotalRevenue();
+    int totalUsers = dashboardService.getTotalUsers();
+    int totalBuyers = dashboardService.getTotalBuyers();
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +25,6 @@
     </div>
 
 <!-- ---------------------------------------------------------------------------------------------------------------------------------------------------------------- -->
-
   <!-- Main Layout -->
   <div class="main-container">
     <!-- Sidebar -->
@@ -30,22 +36,24 @@
       <div class="dashboard-cards">
         <div class="card">
           <div class="card-content">
-            <h2>$100</h2>
+            <h2>Rs.<%= totalRevenue %></h2>
             <p>Revenue</p>
           </div>
+          
           <img src="${pageContext.request.contextPath}/images/moneyicon.png" alt="Revenue Icon" class="card-icon" />
         </div>
         <div class="card">
           <div class="card-content">
-            <h2>20</h2>
+            <h2><%= totalUsers %></h2>
             <p>Users</p>
           </div>
           <img src="${pageContext.request.contextPath}/images/user.png" alt="Users Icon" class="card-icon" />
         </div>
+        
         <div class="card">
           <div class="card-content">
-            <h2>5</h2>
-            <p>Visitors</p>
+            <h2><%= totalBuyers %></h2>
+            <p>Buyers</p>
           </div>
           <img src="${pageContext.request.contextPath}/images/page-visitors-icon-style-free-vector-removebg-preview.png" alt="Visitors Icon" class="card-icon" />
         </div>
@@ -54,11 +62,11 @@
       <div class="data-section">
         <div class="chart-box">
           <h3><img src="${pageContext.request.contextPath}/images/signupchart.png" class="section-icon" /> Sign-Ups</h3>
-          <img src="${pageContext.request.contextPath}/images/linedrawing.jpg" alt="Sign-Ups Chart" class="data-img-signup" />
+          <img src="${pageContext.request.contextPath}/images/sign_ups.png" alt="Sign-Ups Chart" class="data-img-signup" />
         </div>
         <div class="chart-box">
           <h3><img src="${pageContext.request.contextPath}/images/growthicon.png" class="section-icon" /> Growth</h3>
-          <img src="${pageContext.request.contextPath}/images/growthchart.png" alt="Growth Chart" class="data-img-chart" />
+          <img src="${pageContext.request.contextPath}/images/ProgressCircle.webp" alt="Growth Chart" class="data-img-chart" />
         </div>
       </div>
     </main>

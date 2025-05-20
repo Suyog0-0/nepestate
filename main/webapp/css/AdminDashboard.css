@@ -20,13 +20,12 @@
     flex: 1;
     padding: 30px;
     overflow-y: auto;
-    background-color: #f4f1f1;
+    background-color: #f5f5f5;
     border-radius: 10px;
     border: black;
     border-style: solid;
     border-width: 2px;
     margin: 30px 30px 30px 30px;
-    background-color: #f4f1f1;
   }
   
   .dashboard h1 {
@@ -102,7 +101,7 @@
     border-radius: 10px;
   }
   .data-img-chart {
-    width: 65%;
+    width: 50%;
     margin-left: 100px;
     height: 310px;
     border-radius: 10px;

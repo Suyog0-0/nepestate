@@ -45,23 +45,24 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        LoginService loginObject = new LoginService();
-
-        // Admin login section
+        LoginService loginObject = new LoginService();      
         AdminModel adminModel = new AdminModel(username, password);
-        Boolean adminLoginStatus = loginObject.loginAdmin(adminModel);
+        AdminModel loggedInAdmin = loginObject.loginAdmin(adminModel);
 
-        if (adminLoginStatus != null && adminLoginStatus) {
-        	System.out.println("Successfully Admin Login: " + username);
-            // Set both session attributes and cookies consistently
-            SessionUtil.setAttribute(request, "username", username);
-            SessionUtil.setAttribute(request, "userEmail", username);
-            SessionUtil.setAttribute(request, "role", "admin"); // Add role to session too
-            CookieUtil.addCookie(response, "role", "admin", 5 * 30);
+		if (loggedInAdmin != null) {
+		    System.out.println("Successfully Admin Login: " + username);
+		
+		    SessionUtil.setAttribute(request, "username", username);
+		    SessionUtil.setAttribute(request, "userEmail", username);
+		    SessionUtil.setAttribute(request, "role", "admin");
+		    SessionUtil.setAttribute(request, "loggedInAdmin", loggedInAdmin);
+		
+		    CookieUtil.addCookie(response, "role", "admin", 5 * 30);
+		    request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
+		    return;
+		}
 
-            request.getRequestDispatcher("/WEB-INF/pages/AdminDashboard.jsp").forward(request, response);
-            return;
-        }
+
 
         // Customer login section
         CustomerModel customerModel = new CustomerModel(username, password);
@@ -91,7 +92,7 @@ public class LoginController extends HttpServlet {
         }
 
         // Handle login failure
-        handleLoginFailure(request, response, (adminLoginStatus != null || loggedInCustomer != null) ? false : null);
+        handleLoginFailure(request, response, (loggedInAdmin != null || loggedInCustomer != null) ? false : null);
     }
 
     private void handleLoginFailure(HttpServletRequest request, HttpServletResponse response, Boolean loginStatus)

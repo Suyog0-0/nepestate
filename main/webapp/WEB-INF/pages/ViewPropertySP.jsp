@@ -75,7 +75,10 @@
                 </div>
                 
                 <div class="profileButtonContainer">
-                    <button class="buyNowButton">Buy Now</button>
+                    <form action="BuyNowController" method="post">
+					    <input type="hidden" name="propertyId" value="${property.property_ID}" />
+					    <button type="submit" class="buyNowButton">Buy Now</button>
+					</form>
                     <button class="bookmarkButton">Bookmark</button>
                 </div>
             </div>

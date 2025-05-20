@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 import com.nepestate.model.CustomerModel;
 import com.nepestate.model.AdminModel;
@@ -23,8 +25,20 @@ public class AdminSidebarController extends HttpServlet {
    
     protected void doGet(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
+    	HttpSession session = request.getSession(false);
+        if (session != null) {
+            AdminModel loggedInAdmin = (AdminModel) session.getAttribute("loggedInAdmin");
+
+            if (loggedInAdmin != null) {
+                request.setAttribute("adminName", loggedInAdmin.getAdmin_FirstName());
+                request.setAttribute("adminEmail", loggedInAdmin.getAdmin_EmailAddress());
+                request.setAttribute("adminPhone", loggedInAdmin.getAdmin_PhoneNumber());
+                request.setAttribute("adminUsername", loggedInAdmin.getAdmin_Username());
+                request.setAttribute("adminProfilePic", loggedInAdmin.getAdmin_ProfilePicture()); // Optional
+            }
         request.getRequestDispatcher("/WEB-INF/pages/AdminSidebar.jsp").forward(request, response);
     }
+ }
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
         throws ServletException, IOException {
         String username = request.getParameter("username");
@@ -35,16 +49,16 @@ public class AdminSidebarController extends HttpServlet {
 
         if ("Administrator".equals(userType)) {
             AdminModel adminModel = new AdminModel(username, password);
-            Boolean loginStatus = loginObject.loginAdmin(adminModel);
+            AdminModel loggedInAdmin = loginObject.loginAdmin(adminModel);
             
-            if (loginStatus != null && loginStatus) {
+            if (loggedInAdmin!=null) {
                 SessionUtil.setAttribute(request, "username", username);
+                SessionUtil.setAttribute(request, "role", "admin");
                 CookieUtil.addCookie(response, "role", "admin", 5 * 30);
-                request.getRequestDispatcher("/WEB-INF/pages/Home.jsp").forward(request, response);
+                SessionUtil.setAttribute(request, "loggedInAdmin", loggedInAdmin);
+                response.sendRedirect(request.getContextPath() + "/AdminDashboardController");
             } else {
-                SessionUtil.setAttribute(request, "username", username);
-                CookieUtil.addCookie(response, "role", "student", 5 * 1);
-                handleLoginFailure(request, response, loginStatus);
+                handleLoginFailure(request, response, false);
             }
         } else {
             CustomerModel customerModel = new CustomerModel(username, password);

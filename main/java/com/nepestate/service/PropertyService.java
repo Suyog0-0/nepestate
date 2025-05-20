@@ -141,7 +141,7 @@ public class PropertyService {
             stmt.setInt(12, propertyModel.getPropertyID());
 
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0; // Return true if update was successful
+            return rowsAffected > 0; 
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
@@ -295,45 +295,108 @@ public class PropertyService {
 
         return properties;
     }
+    
     public List<PropertyModel> getPropertyByCustomer(int customerId) throws SQLException {
-		List<PropertyModel> properties = new ArrayList<>();
+        List<PropertyModel> properties = new ArrayList<>();
 
-		String roleType = null;
+        String roleType = null;
 
-		String customerRoleQuery = "SELECT r.RoleType " + "FROM role_Customer rc "
-				+ "JOIN roles r ON rc.RoleID = r.RoleID " + "JOIN Customers c ON rc.CustomerID = c.CustomerID "
-				+ "WHERE c.CustomerID = ?";
+        String customerRoleQuery = "SELECT r.RoleType " + "FROM role_Customer rc "
+                + "JOIN roles r ON rc.RoleID = r.RoleID " + "JOIN Customers c ON rc.CustomerID = c.CustomerID "
+                + "WHERE c.CustomerID = ?";
 
-		try (PreparedStatement stmt = dbConn.prepareStatement(customerRoleQuery)) {
-			stmt.setInt(1, customerId);
-			try (ResultSet rs = stmt.executeQuery()) {
-				if (rs.next()) {
-					roleType = rs.getString("RoleType");
-				}
-			}
-		}
+        try (PreparedStatement stmt = dbConn.prepareStatement(customerRoleQuery)) {
+            stmt.setInt(1, customerId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    roleType = rs.getString("RoleType");
+                }
+            }
+        }
 
-		if (roleType != null) {
-			String propertyQuery = "SELECT p.* " + "FROM property p "
-					+ "JOIN role_property rp ON p.propertyid = rp.propertyid " + "JOIN roles r ON rp.roleid = r.roleid "
-					+ "WHERE r.roletype = ?";
+        if (roleType != null) {
+            String propertyQuery = "SELECT p.* " + "FROM property p "
+                    + "JOIN role_property rp ON p.propertyid = rp.propertyid " + "JOIN roles r ON rp.roleid = r.roleid "
+                    + "WHERE r.roletype = ?";
 
-			try (PreparedStatement stmt = dbConn.prepareStatement(propertyQuery)) {
-				stmt.setString(1, roleType);
-				try (ResultSet rs = stmt.executeQuery()) {
-					while (rs.next()) {
-						PropertyModel property = mapResultSetToPropertyModel(rs);
-						properties.add(property);
-					}
-				}
-			} catch (SQLException e) {
-				System.out.println("SQL Exception occurred while fetching properties: " + e.getMessage());
-				e.printStackTrace();
-			}
-		} else {
-			System.out.println("No role type found for customer ID: " + customerId);
-		}
+            try (PreparedStatement stmt = dbConn.prepareStatement(propertyQuery)) {
+                stmt.setString(1, roleType);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        PropertyModel property = mapResultSetToPropertyModel(rs);
+                        properties.add(property);
+                    }
+                }
+            } catch (SQLException e) {
+                System.out.println("SQL Exception occurred while fetching properties: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No role type found for customer ID: " + customerId);
+        }
 
-		return properties;
-	}
+        return properties;
+    }
+
+    /**
+     * Retrieves featured properties from the database
+     * 
+     * @param limit The maximum number of properties to retrieve
+     * @return List of PropertyModel objects
+     */
+    public List<PropertyModel> getFeaturedProperties(int limit) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+
+        List<PropertyModel> properties = new ArrayList<>();
+        String query = "SELECT * FROM property LIMIT ?";
+
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setInt(1, limit);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    properties.add(mapResultSetToPropertyModel(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return properties;
+    }
+
+    /**
+     * Retrieves additional properties for the explore section
+     * 
+     * @param offset The starting point for the results
+     * @param limit The maximum number of properties to retrieve
+     * @return List of PropertyModel objects
+     */
+    public List<PropertyModel> getMoreProperties(int offset, int limit) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+
+        List<PropertyModel> properties = new ArrayList<>();
+        String query = "SELECT * FROM property LIMIT ?, ?";
+
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setInt(1, offset);
+            stmt.setInt(2, limit);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    properties.add(mapResultSetToPropertyModel(rs));
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return properties;
+    }
 }
