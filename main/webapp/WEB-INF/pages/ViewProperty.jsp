@@ -6,7 +6,10 @@
     %>
     <%@ page import="java.util.List"%>
    <%
-   		List<PropertyModel> users = (List<PropertyModel>) request.getAttribute("propertyList");
+   		List<PropertyModel> property = (List<PropertyModel>) request.getAttribute("propertyList");
+   		List<PropertyModel> location = (List<PropertyModel>) request.getAttribute("locationList");
+   		List<PropertyModel> propertyForFilter = (List<PropertyModel>) request.getAttribute("propertyListForFIlter");
+   		List<PropertyModel> locationForFIlter = (List<PropertyModel>) request.getAttribute("locationListForFilter");
         %>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -18,14 +21,15 @@
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/Navbar.css">
 <link rel="stylesheet" type="text/css" 
-href="${pageContext.request.contextPath}/css/ViewProperty.css">
+href="${pageContext.request.contextPath}/css/ViewProperty.css?v=2">
 <link rel="stylesheet" type="text/css" 
 href="${pageContext.request.contextPath}/css/Footer.css">
+
 </head>
 <body>
 	<jsp:include page="Navbar.jsp" />
-	<div style="display: flex; margin-top: 12px;">
-        <div class="filter">
+	<%-- <div style="display: flex; margin-top: 12px;">
+       <div class="filter">
             <div>
                 <h2>Filter Properties</h2>
                     <div class="filter_button">
@@ -41,15 +45,15 @@ href="${pageContext.request.contextPath}/css/Footer.css">
                 <h2 style="margin-top: 25px;">Location</h2>
                 <div>
                     <label for="location"></label>
-                    <div>
-                        <input list="location-options" id="locations" name="locations" class="combobox">
-                        <datalist id="location-options">
-                            <option value="Kathmandu">
-                            <option value="Lalitpur">
-                            <option value="Bhaktapur">
-                        </datalist>
-                    </div>
-                    
+						<div>
+						  <input list="location-options" id="locations" name="locations" class="combobox">
+						  <datalist id="location-options">
+						    <option value="">All locations</option>
+						    <c:forEach var="l" items="${locationList}">
+						      <option value="${l.property_City}">${l.property_City}</option>
+						    </c:forEach>
+						  </datalist>
+					</div>
                 </div>
             </div>
     
@@ -69,7 +73,87 @@ href="${pageContext.request.contextPath}/css/Footer.css">
                     <button>High-Low</button>
                 </div>
             </div>
+             	<div style="margin-top: 25px; padding:15px">
+			    	<button id="apply-filters" class="apply-btn" style="margin-left:25px;">Apply Filters</button>
+			    	<button id="reset-filters" class="reset-btn">Reset</button>
+			  </div>
+        </div> --%>
+        <div style="display: flex; margin-top: 12px;">
+        <!-- Filter Section -->
+        <div class="filter">
+            <form action="${pageContext.request.contextPath}/ViewPropertyController" method="get">
+                <div>
+                    <h2>Filter Properties</h2>
+                    <div class="filter_button">
+                        <div>
+                            <h4 style="margin-bottom: 10px;">Properties By</h4>
+                            <div class="sourceStyling">
+                                <input type="radio" id="nepestate" name="source" value="Nepestate" class="feature-checkbox" 
+                                    <c:if test="${selectedSource == 'Nepestate'}">checked</c:if>>
+                                <label for="nepestate" class="feature-label">By Nepestate</label>
+                                
+                                <input type="radio" id="owners" name="source" value="Owners" class="feature-checkbox"
+                                    <c:if test="${selectedSource == 'Owners'}">checked</c:if>>
+                                <label for="owners" class="feature-label">By Owners</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 style="margin-top: 25px;">Location</h2>
+                    <div>
+                        <div>
+                            <select name="location" id="locations" class="combobox">
+                                <option value="">All locations</option>
+                                <c:forEach var="l" items="${locationList}">
+                                    <option value="${l.property_City}" 
+                                        <c:if test="${selectedLocation == l.property_City}">selected</c:if>>${l.property_City}</option>
+                                </c:forEach>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 style="margin-top: 25px;">Category</h2>
+                    <div>
+                        <input type="radio" id="housing" name="category" value="Housing" class="feature-checkbox"
+                            <c:if test="${selectedCategory == 'Housing'}">checked</c:if>>
+                        <label for="housing" class="feature-label">Housing</label>
+                        
+                        <input type="radio" id="apartment" name="category" value="Appartment" class="feature-checkbox"
+                            <c:if test="${selectedCategory == 'Appartment'}">checked</c:if>>
+                        <label for="apartment" class="feature-label">Appartment</label>
+                        
+                        <input type="radio" id="house" name="category" value="House" class="feature-checkbox"
+                            <c:if test="${selectedCategory == 'House'}">checked</c:if>>
+                        <label for="house" class="feature-label" style="margin-top: 5px;">House</label>
+                    </div>
+                </div>
+                
+                <div>
+                    <h2 style="margin-top: 25px;">Filter by Price</h2>
+                    <div>
+                        <input type="radio" id="low-high" name="priceSort" value="Low-High" class="feature-checkbox"
+                            <c:if test="${selectedPriceSort == 'Low-High'}">checked</c:if>>
+                        <label for="low-high" class="feature-label">Low-High</label>
+                        
+                        <input type="radio" id="high-low" name="priceSort" value="High-Low" class="feature-checkbox"
+                            <c:if test="${selectedPriceSort == 'High-Low'}">checked</c:if>>
+                        <label for="high-low" class="feature-label">High-Low</label>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 25px; padding:15px">
+                   <!--  <input type="submit" value="Apply" class="apply-button" style="margin-left:20px;">
+                    <input type="submit" name="reset" value="true" class="reset-button" onclick="resetForm(this.form); return true;"> -->
+                    <button type="submit" class="apply-button">Apply Filters</button>
+            <button type="submit" name="reset" value="true" class="reset-button">Reset</button>
+                </div>
+            </form>
         </div>
+        
         <div class="listing">
     		<c:forEach var="p" items="${propertyList}">
         		<a href="#">
@@ -86,6 +170,12 @@ href="${pageContext.request.contextPath}/css/Footer.css">
         		</a>
     		</c:forEach>
 		</div>
+		<c:if test="${empty propertyList}">
+                <div class="no-results">
+                    <h3>No properties found matching your criteria</h3>
+                    <p>Try adjusting your filters or <a href="${contextPath}/ViewPropertyController">view all properties</a>.</p>
+                </div>
+            </c:if>
     </div>
 </body>
 <br>
