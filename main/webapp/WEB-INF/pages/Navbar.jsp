@@ -35,6 +35,7 @@
     }
 %>
 
+
 <div class="navbar-container">
     <div class="navbar-left">
         <a href="${pageContext.request.contextPath}/HomeController" class="navbar-logo">
@@ -52,30 +53,42 @@
     <div class="navbar-right">
         <ul class="navbar-items">
 
-
             <li><a href="${pageContext.request.contextPath}/HomeController">Home</a></li>
-            <li><a href="${pageContext.request.contextPath}/ViewPropertyController">Properties <span class="dropdown-icon">▾</span></a></li>
+            <li><a href="${pageContext.request.contextPath}/ViewPropertyController">Properties</a></li>
             <li><a href="${pageContext.request.contextPath}/ContactUsController">Contact Us</a></li>
             <li><a href="${pageContext.request.contextPath}/AboutUsController">About Us</a></li>
+            
             <!-- Favourite Icon before the divider -->
             <li>
                 <a href="${pageContext.request.contextPath}/FavouriteController" class="navbar-favourite-icon-link">
                     <img src="${pageContext.request.contextPath}/images/favourite.png" class="navbar-favourite-icon">
                 </a>
             </li>
+
+            <!-- Post Property button with its own CSS -->
+<li>
+    <a href="${pageContext.request.contextPath}/PostPropertyController" class="navbar-post-button navbar-post-link">
+        Post Property
+    </a>
+</li>
+
+            
             <li class="divider">|</li>
             
             <li>
                 <div class="navbar-register-container">
                     <% if (username == null) { %>
-<button class="navbar-register-button">
-<a href="${pageContext.request.contextPath}/LoginController" class="navbar-items-right-white">Login / Sign Up</a>
-    <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon">
-</button>
+                        <button class="navbar-register-button">
+                            <a href="${pageContext.request.contextPath}/LoginController" class="navbar-items-right-white">
+                                Login / Sign Up
+                            </a>
+                            <img src="${pageContext.request.contextPath}/images/register.png" class="navbar-register-icon">
+                        </button>
                     <% } else { %>
                         <a href="${pageContext.request.contextPath}/UserProfileController" class="navbar-user-link">
                             <div class="navbar-user-button">
-                                <img src="<%= profilePicPath %>" class="navbar-user-icon" alt="Profile Image" onerror="this.src='${pageContext.request.contextPath}/images/defaultpfp.jpg'">
+                                <img src="<%= profilePicPath %>" class="navbar-user-icon" alt="Profile Image"
+                                     onerror="this.src='${pageContext.request.contextPath}/images/defaultpfp.jpg'">
                                 <span class="navbar-username">Welcome, <%= username %></span>
                                 <span class="dropdown-icon">▾</span>
                             </div>
