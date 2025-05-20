@@ -115,28 +115,36 @@
             </div>  
         </div>
  	</div>
-
+<div>
     <div style="font-family:Arial,sans-serif;font-size:40px;margin-left:125px;margin-top:50px;display:block;">
              Listed Properties (${propertiesCount})
         </div>
-    <div style="display:flex;gap:60px;margin-top:50px;margin-left:120px;">
-    <c:forEach var="property" items="${properties}">
-        <div class="productBox">
-            <img src="${pageContext.request.contextPath}/images/ListedProperty1.png"> 
-            <div style="direction:flex;margin-left:12px;max-width:300px;margin-top:10px;">
-                <div class="tag"> ${property.property_Type} </div>
-                <h3 style="margin-bottom:10px;">${property.property_Price}</h3>
-                <div style="font-size:12px;color:#666"> ${property.property_Description}</div>
-                <div style="text-align:center;font-size:10px;color:#666;margin-top:12px"> ${property.property_Address}</div>
-            </div> 
-        </div>
-       </c:forEach>
-        </div>
+	    <div style="display:flex;gap:60px;margin-top:50px;margin-left:120px;flex-wrap:wrap;">
+	    <c:forEach var="property" items="${properties}">
+	        <div class="productBox">
+	            <img src="${pageContext.request.contextPath}/images/ListedProperty1.png" style="width:100%;object-fit:cover;border-radius:10px;">
+	            <div style="width:100%;">
+	                <div class="tag">${property.property_Type}</div>
+	                <h3 style="margin-bottom: 10px;">${property.property_Price}</h3>
+	                <div style="font-size: 12px; color: #666;">${property.property_Description}</div>
+	                <div style="text-align: center; font-size: 10px; color: #666; margin-top: 12px;">${property.property_Address}</div>
+					
+				
+				<a href="${pageContext.request.contextPath}/UpdatePropertyController?id=${property.propertyID}" class="update-link">
+				    <button type="button">Update</button>
+				</a>
+	            </div>	
+	            	               
+	        </div>
+	    </c:forEach>
+     
      <c:if test="${empty properties}">
             <div style="text-align:center;width:100%;padding:30px;color:#666;font-family:Arial,sans-serif;">
                 No properties found for this customer.
             </div>
         </c:if> 
+        </div>
+   </div>
     <br>
     <br>
     <jsp:include page="Footer.jsp"/>

@@ -120,7 +120,7 @@ public class UpdatePropertyController extends HttpServlet {
 			private String validatePropertyForm(HttpServletRequest request) {
 				String title = request.getParameter("title");
 		        String Stringprice = request.getParameter("price");
-		        float price = Float.parseFloat(request.getParameter("price"));
+		        int price = Integer.parseInt(request.getParameter("price"));
 		        String propertyType = request.getParameter("propertyType");
 		        String address = request.getParameter("address");
 		        String city = request.getParameter("city");
@@ -206,7 +206,7 @@ public class UpdatePropertyController extends HttpServlet {
 				int propertyId= Integer.parseInt(request.getParameter("propertyId"));
 				Date date = new Date(); 
 				String title = request.getParameter("title");
-		        float price = Float.parseFloat(request.getParameter("price"));
+				int price = Integer.parseInt(request.getParameter("price"));
 		        String address = request.getParameter("address");
 		        String city = request.getParameter("city");
 		        float area = Float.parseFloat(request.getParameter("area"));

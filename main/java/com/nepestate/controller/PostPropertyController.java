@@ -89,7 +89,7 @@ import com.nepestate.util.ValidationUtil;
 		private String validatePropertyForm(HttpServletRequest request) {
 			String title = request.getParameter("title");
 	        String Stringprice = request.getParameter("price");
-	        float price = Float.parseFloat(request.getParameter("price"));
+	        int price = Integer.parseInt(request.getParameter("price"));
 	        String propertyType = request.getParameter("propertyType");
 	        String address = request.getParameter("address");
 	        String city = request.getParameter("city");
@@ -149,7 +149,7 @@ import com.nepestate.util.ValidationUtil;
 				try {
 				Date date = new Date(); 
 				String title = request.getParameter("title");
-		        float price = Float.parseFloat(request.getParameter("price"));
+				int price = Integer.parseInt(request.getParameter("price"));
 		        String address = request.getParameter("address");
 		        String city = request.getParameter("city");
 		        float area = Float.parseFloat(request.getParameter("area"));

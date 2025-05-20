@@ -31,6 +31,7 @@ public class AuthenticationFilter implements Filter {
     private static final String CONTACT_LIST         = "/ContactListingController";
     private static final String FAVOURITE            = "/FavouriteController";
     private static final String POST_PROPERTY            = "/PostPropertyController";
+    private static final String UPDATE_PROPERTY            = "/UpdatePropertyController";
     
 
     @Override
@@ -118,6 +119,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(ABOUTUS)          ||
                 path.equals(VIEWPROPERTY)         ||
                 path.equals(POST_PROPERTY)         ||
+                path.equals(UPDATE_PROPERTY)         ||
                 path.equals(FAVOURITE)) {
                 chain.doFilter(request, response);
             } else {
