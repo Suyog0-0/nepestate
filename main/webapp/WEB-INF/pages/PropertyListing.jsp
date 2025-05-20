@@ -28,8 +28,7 @@
             <div class="property-header">
                 <h1>Property List</h1>
                 <div class="property-controls">
-                    <input type="text" placeholder="Search" class="search-bar" />
-                    <button class="new-btn">+ New Property</button>
+                    <button class="new-btn"><a href="${pageContext.request.contextPath}/PostPropertyController">+ New Property</a></button>
                 </div>
             </div>
 
@@ -56,11 +55,11 @@
                             <td>Rs.${p.property_Price}</td>
                             <td class="status available">${p.property_Status}</td>
                             <td class="actions">
-                                <a href="${pageContext.request.contextPath}/UpdateProperty">
+                                <a href="${pageContext.request.contextPath}/UpdatePropertyController">
                                     <img src="${pageContext.request.contextPath}/images/edit-246.png" />
                                 </a>
-                                <a href="#">
-                                    <img src="${pageContext.request.contextPath}/images/view-icon-614x460.png" />
+                                <a href="${pageContext.request.contextPath}/ViewPropertySPController">
+                                    <img src="${pageContext.request.contextPath}/images/view icon.png" />
                                 </a>
                                 <a href="#">
                                     <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
@@ -72,20 +71,6 @@
             </table>
             
             <div class="entries-dropdown">
-                Show 
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3" selected>3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select> 
-                entries
             </div>
         </main>
     </div>

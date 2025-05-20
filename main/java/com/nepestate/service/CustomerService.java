@@ -161,4 +161,78 @@ public class CustomerService {
 	            return false;
 	        }
 	    }
+	 public boolean saveInterestedCustomer(CustomerModel customer, int propertyId) {
+		    if (isConnectionError || dbConn == null) {
+		        System.out.println("Database connection error!");
+		        return false;
+		    }
+
+
+		    String query = "INSERT INTO customers_buyers (CustomerID, Customer_FirstName, Customer_Username, Customer_PhoneNumber, Customer_ProfilePicture, PropertyID) " +
+		                   "VALUES (?, ?, ?, ?, ?, ?)";
+
+		    try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+		        stmt.setInt(1, customer.getCustomerID());
+		        stmt.setString(2, customer.getCustomer_FirstName());
+		        stmt.setString(3, customer.getCustomer_Username());
+		        stmt.setString(4, customer.getCustomer_PhoneNumber());
+		        stmt.setString(5, customer.getCustomer_ProfilePicture());
+		        stmt.setInt(6, propertyId);
+
+		        int rowsInserted = stmt.executeUpdate();
+		        return rowsInserted > 0;
+		    } catch (SQLException e) {
+		        System.out.println("SQL Exception saving interested customer: " + e.getMessage());
+		        e.printStackTrace();
+		        return false;
+		    }
+		}
+
+		public List<CustomerModel> getAllInterestedCustomers() {
+		    if (isConnectionError || dbConn == null) {
+		        System.out.println("Database connection error!");
+		        return new ArrayList<>();
+		    }
+
+		    String query = "SELECT * FROM customers_buyers";
+		    List<CustomerModel> interestedCustomers = new ArrayList<>();
+
+		    try (PreparedStatement stmt = dbConn.prepareStatement(query);
+		         ResultSet rs = stmt.executeQuery()) {
+
+		        while (rs.next()) {
+		            CustomerModel customer = new CustomerModel();
+		            customer.setCustomerID(rs.getInt("CustomerID"));
+		            customer.setCustomer_FirstName(rs.getString("Customer_FirstName"));
+		            customer.setCustomer_Username(rs.getString("Customer_Username"));
+		            customer.setCustomer_PhoneNumber(rs.getString("Customer_PhoneNumber"));
+		            customer.setCustomer_ProfilePicture(rs.getString("Customer_ProfilePicture"));
+		            interestedCustomers.add(customer);
+		        }
+		    } catch (SQLException e) {
+		        System.out.println("SQL Exception retrieving interested customers: " + e.getMessage());
+		        e.printStackTrace();
+		    }
+
+		    return interestedCustomers;
+		}
+		
+		public boolean deleteInterestedCustomer(int customerId) {
+		    if (isConnectionError || dbConn == null) {
+		        System.out.println("Database connection error!");
+		        return false;
+		    }
+
+		    String query = "DELETE FROM customers_buyers WHERE CustomerID = ?";
+		    try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+		        stmt.setInt(1, customerId);
+		        int rowsDeleted = stmt.executeUpdate();
+		        return rowsDeleted > 0;
+		    } catch (SQLException e) {
+		        System.out.println("SQL Exception deleting interested customer: " + e.getMessage());
+		        e.printStackTrace();
+		        return false;
+		    }
+		}
+
 }

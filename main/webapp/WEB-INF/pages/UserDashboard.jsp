@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.nepestate.model.CustomerModel" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,21 +25,21 @@
       <div class="dashboard-cards">
         <div class="card">
           <div class="card-content">
-            <h2>$100</h2>
+            <h2>Rs. <%= request.getAttribute("totalRevenue") %></h2>
             <p>Revenue</p>
           </div>
           <img src="${pageContext.request.contextPath}/images/moneyicon.png" alt="Revenue Icon" class="card-icon" />
         </div>
         <div class="card">
           <div class="card-content">
-            <h2>2</h2>
-            <p>Sold Properties</p>
+            <h2><%= request.getAttribute("totalBought") %></h2>
+            <p>Bought Properties</p>
           </div>
-          <img src="${pageContext.request.contextPath}/images/sold-hanging-board-or-signboard-for-property-vector-55161838-removebg-preview.png" alt="Sold Properties Icon" class="card-icon" />
+          <img src="${pageContext.request.contextPath}/images/buyicon.jpg" alt="Bought Properties Icon" class="card-icon" />
         </div>
         <div class="card">
           <div class="card-content">
-            <h2>5</h2>
+            <h2><%= request.getAttribute("totalUploads") %></h2>
             <p>Total Uploads</p>
           </div>
           <img src="${pageContext.request.contextPath}/images/upload.png" alt="Upload Icon" class="card-icon" />
