@@ -399,4 +399,185 @@ public class PropertyService {
 
         return properties;
     }
+    public List<PropertyModel> getAllLocations() {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+
+        List<PropertyModel> locations = new ArrayList<>();
+        String query = "SELECT DISTINCT Property_City FROM property";
+
+        try (PreparedStatement stmt = dbConn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                PropertyModel location = new PropertyModel();
+                location.setProperty_City(rs.getString("Property_City"));
+                locations.add(location);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+        System.out.println(locations);
+        return locations;
+    }
+
+    public List<PropertyModel> getPropertiesBySource(String source) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+        
+        // Assuming there is a column in the database that identifies the source
+        // If not, you might need to join with another table
+        List<PropertyModel> properties = new ArrayList<>();
+        String query = "SELECT * FROM property WHERE Property_Source = ?";
+        
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setString(1, source);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                PropertyModel property = mapResultSetToPropertyModel(rs);
+                properties.add(property);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        return properties;
+    }
+    
+    /**
+     * Get properties filtered by category/type
+     * 
+     * @param category The category of properties ("Housing", "Appartment", "House")
+     * @return List of properties of the specified category
+     */
+    public List<PropertyModel> getPropertiesByCategory(String category) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+        
+        List<PropertyModel> properties = new ArrayList<>();
+        String query = "SELECT * FROM property WHERE Property_Type = ?";
+        
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setString(1, category);
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                PropertyModel property = mapResultSetToPropertyModel(rs);
+                properties.add(property);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return properties;
+    }
+    
+    /**
+     * Get properties sorted by price (ascending or descending)
+     * 
+     * @param sortOrder The sort order for price ("asc" for low to high, "desc" for high to low)
+     * @return List of properties sorted by price
+     */
+    public List<PropertyModel> getPropertiesSortedByPrice(String sortOrder) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+        
+        List<PropertyModel> properties = new ArrayList<>();
+        
+        // Validate sortOrder parameter
+        if (!sortOrder.equals("asc") && !sortOrder.equals("desc")) {
+            sortOrder = "asc"; // Default to ascending order
+        }
+        
+        String query = "SELECT * FROM property ORDER BY Property_Price " + sortOrder;
+        
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            ResultSet rs = stmt.executeQuery();
+            
+            while (rs.next()) {
+                PropertyModel property = mapResultSetToPropertyModel(rs);
+                properties.add(property);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        return properties;
+    }
+    
+    /**
+     * Advanced search with multiple filter criteria combined
+     * 
+     * @param source The source of properties (optional)
+     * @param location The location/city (optional)
+     * @param category The property type/category (optional)
+     * @param priceSort Sort order for price (optional, "asc" or "desc")
+     * @return List of properties matching all specified criteria
+     */
+    public List<PropertyModel> advancedSearch(String source, String location, String category, String priceSort) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+        
+        List<PropertyModel> properties = new ArrayList<>();
+        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM property WHERE 1=1");
+        List<Object> params = new ArrayList<>();
+        
+        // Add filter conditions based on provided parameters
+        if (source != null && !source.isEmpty()) {
+            queryBuilder.append(" AND Property_Source = ?");
+            params.add(source);
+        }
+        
+        if (location != null && !location.isEmpty()) {
+            queryBuilder.append(" AND Property_City = ?");
+            params.add(location);
+        }
+        
+        if (category != null && !category.isEmpty()) {
+            queryBuilder.append(" AND Property_Type = ?");
+            params.add(category);
+        }
+        
+        // Add sorting by price if specified
+        if (priceSort != null && !priceSort.isEmpty()) {
+            if (priceSort.equals("Low-High")) {
+                queryBuilder.append(" ORDER BY Property_Price ASC");
+            } else if (priceSort.equals("High-Low")) {
+                queryBuilder.append(" ORDER BY Property_Price DESC");
+            }
+        }
+        
+        try (PreparedStatement stmt = dbConn.prepareStatement(queryBuilder.toString())) {
+            // Set parameters
+            for (int i = 0; i < params.size(); i++) {
+                stmt.setObject(i + 1, params.get(i));
+            }
+            
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                PropertyModel property = mapResultSetToPropertyModel(rs);
+                properties.add(property);
+            }
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+        }
+        
+        return properties;
+    }
 }
