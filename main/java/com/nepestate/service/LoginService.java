@@ -26,23 +26,38 @@ public class LoginService {
         }
     }
 
-    public Boolean loginAdmin(AdminModel adminModel) {
+    public AdminModel loginAdmin(AdminModel adminModel) {
         if (isConnectionError) {
             System.out.println("Connection Error!");
             return null;
         }
-        String query = "SELECT Admin_Username, Admin_Password FROM admins WHERE Admin_Username = ?";
+        String query = "SELECT * FROM admins WHERE Admin_Username = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setString(1, adminModel.getAdmin_Username());
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
-                return validatePasswordForAdmin(rs, adminModel);
+                String dbUser = rs.getString("Admin_Username");
+                String dbPass = rs.getString("Admin_Password");
+
+                if (Objects.equals(dbUser, adminModel.getAdmin_Username()) &&
+                        Objects.equals(dbPass, adminModel.getAdmin_Password())) {
+
+                    AdminModel fullAdmin = new AdminModel();
+                    fullAdmin.setAdmin_FirstName(rs.getString("Admin_FirstName"));
+                    fullAdmin.setAdmin_LastName(rs.getString("Admin_LastName"));
+                    fullAdmin.setAdmin_Username(dbUser);
+                    fullAdmin.setAdmin_EmailAddress(rs.getString("Admin_EmailAddress"));
+                    fullAdmin.setAdmin_PhoneNumber(rs.getString("Admin_PhoneNumber"));
+                    fullAdmin.setAdmin_ProfilePicture(rs.getString("Admin_ProfilePicture"));
+                    fullAdmin.setAdmin_Password(dbPass);
+                    return fullAdmin;
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
-        return false;
+        return null;
     }
 
     public Boolean loginUser(CustomerModel customerModel) {

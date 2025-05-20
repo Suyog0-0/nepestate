@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%
+    com.nepestate.model.AdminModel loggedInAdmin = (com.nepestate.model.AdminModel) session.getAttribute("loggedInAdmin");
+    String adminFName = loggedInAdmin != null ? loggedInAdmin.getAdmin_FirstName() : "Admin";
+    String adminLName = loggedInAdmin != null ? loggedInAdmin.getAdmin_LastName() : "Name";
+    String adminUsername = loggedInAdmin != null ? loggedInAdmin.getAdmin_Username() : "";
+    String adminPhone = loggedInAdmin != null ? loggedInAdmin.getAdmin_PhoneNumber() : "";
+    String adminProfilePic = loggedInAdmin != null ? loggedInAdmin.getAdmin_ProfilePicture() : "default-profile.png";
+%>
 <html>
 <head>
   <meta charset="UTF-8">
@@ -9,12 +17,12 @@
 <body>
   <div class="sidebar">
     <div class="profile-section">
-      <img src="${pageContext.request.contextPath}/images/profilepicture.jpg" alt="Profile" class="profile-pic">
+      <img src="${pageContext.request.contextPath}/images/<%= adminProfilePic %>" alt="Profile" class="profile-pic">
       <div class="user-info">
         <p class="role">(Admin)</p>
-        <h3>Durgesh Thapa</h3>
-        <p class="phone">+977 9841222694</p>
-        <p class="email">durgeshthapa@gmail.com</p>
+        <h3><%= adminFName %> <%= adminLName %></h3>
+        <p class="phone"><%= adminPhone %></p>
+        <p class="username"><%= adminUsername %></p>
       </div>
       <div class="blue-line"></div>
     </div>
@@ -36,7 +44,6 @@
         Report
       </a>
     </nav>
-
     <!-- Log Out now routes to /logout -->
     <button class="logout-btn"
             onclick="location='${pageContext.request.contextPath}/Logout'">
