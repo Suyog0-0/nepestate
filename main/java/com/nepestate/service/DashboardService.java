@@ -53,10 +53,14 @@ public class DashboardService {
             return 0;
         }
 
-        String query = "SELECT SUM(CAST(p.Property_Price AS UNSIGNED)) AS TotalRevenue " +
-                "FROM customers c " +
-                "JOIN property p ON c.PropertyID = p.PropertyID " +
-                "WHERE c.CustomerID = ?";
+        String query =  "SELECT SUM(p.Property_Price) AS TotalRevenue " +
+                "FROM property p " +
+                "WHERE p.PropertyID IN ( " +
+                "  SELECT DISTINCT rp.PropertyID " +
+                "  FROM role_customer rc " +
+                "  JOIN role_property rp ON rc.RoleID = rp.RoleID " +
+                "  WHERE rc.CustomerID = ? " +
+                ")";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, customerId);

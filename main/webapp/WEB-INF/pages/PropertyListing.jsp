@@ -15,6 +15,18 @@ String userType = (String) request.getAttribute("userType");
 </head>
 <body>
 
+	<c:if test="${not empty successMessage}">
+	    <div style="background-color: #d4edda; color: #155724; padding: 15px; text-align: center; margin: 10px; border: 1px solid #c3e6cb;">
+	        ${successMessage}
+	    </div>
+	</c:if>
+	<c:if test="${not empty errorMessage}">
+	    <div style="background-color: #d4edda; color: #155724; padding: 15px; text-align: center; margin: 10px; border: 1px solid #c3e6cb;">
+	        ${errorMessage}
+	    </div>
+	</c:if>
+		
+
     <!-- Taskbar -->
     <jsp:include page="Navbar.jsp"/>
 
@@ -70,15 +82,15 @@ String userType = (String) request.getAttribute("userType");
                             <td>Rs.${p.property_Price}</td>
                             <td class="status available">${p.property_Status}</td>
                             <td class="actions">
-                                <a href="${pageContext.request.contextPath}/UpdatePropertyController">
-                                    <img src="${pageContext.request.contextPath}/images/edit-246.png" />
-                                </a>
-                                <a href="${pageContext.request.contextPath}/ViewPropertySPController">
-                                    <img src="${pageContext.request.contextPath}/images/view icon.png" />
-                                </a>
-                                <a href="#">
-                                    <img src="${pageContext.request.contextPath}/images/delete-icon.png" />
-                                </a>
+                                <a href="${pageContext.request.contextPath}/UpdatePropertyController?id=${p.propertyID}" title="Edit">
+							        <img src="${pageContext.request.contextPath}/images/edit-246.png" alt="Edit" />
+							    </a>
+								<a href="${pageContext.request.contextPath}/ViewPropertySPController?propertyId=${p.propertyID}" title="View">
+								   <img src="${pageContext.request.contextPath}/images/view icon.png" alt="View" />
+								</a>
+								<a href="${pageContext.request.contextPath}/DeletePropertyController?propertyId=${p.propertyID}" title="Delete">
+        							<img src="${pageContext.request.contextPath}/images/delete-icon.png" alt="Delete" />
+    							</a>
                             </td>
                         </tr>
                     </c:forEach>

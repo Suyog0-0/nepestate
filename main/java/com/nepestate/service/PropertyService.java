@@ -137,6 +137,26 @@ public class PropertyService {
             return false;
         }
     }
+    
+    
+    public boolean deletePropertybyId(int propertyId) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return false;
+        }
+
+        
+        String query = "DELETE FROM role_property WHERE PropertyID = ?";
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setInt(1, propertyId);
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 
     // Gets all properties
     public List<PropertyModel> getAllProperties() {

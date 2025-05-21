@@ -119,6 +119,16 @@ public class PropertyListingController extends HttpServlet {
 	            request.setAttribute("technicalDetails", e.toString());
 	            request.setAttribute("userType", userType);
 	            
+	            if (session.getAttribute("successMessage") != null) {
+	                request.setAttribute("successMessage", session.getAttribute("successMessage"));
+	                session.removeAttribute("successMessage");
+	            }
+	            if (session.getAttribute("errorMessage") != null) {
+	                request.setAttribute("errorMessage", session.getAttribute("errorMessage"));
+	                session.removeAttribute("errorMessage");
+	            }
+	            
+	            
 	            // Forward to error page
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/ErrorPage.jsp");
 	            if (dispatcher != null) {

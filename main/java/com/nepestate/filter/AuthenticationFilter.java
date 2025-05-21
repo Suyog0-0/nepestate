@@ -19,6 +19,7 @@ public class AuthenticationFilter implements Filter {
     private static final String ABOUTUS 			 = "/AboutUsController";
     private static final String VIEWPROPERTY         = "/ViewPropertyController";
     private static final String VIEWPROPERTYSP       = "/ViewPropertySPController";
+    private static final String DELETEPROPERTY		= "/DeletePropertyController";	
     private static final String SEARCH_CONTROLLER    = "/SearchController";
     private static final String FAVOURITE_CONTROLLER = "/FavouriteController";
     private static final String SUCCESS_CONTROLLER   = "/SuccessController"; // Add Success Controller
@@ -93,7 +94,8 @@ public class AuthenticationFilter implements Filter {
                 path.equals(ABOUTUS)         ||
                 path.equals(VIEWPROPERTY)    ||
                 path.equals(VIEWPROPERTYSP)  ||
-                path.equals(SEARCH_CONTROLLER) || 
+                path.equals(DELETEPROPERTY)	 ||
+                path.equals(SEARCH_CONTROLLER)|| 
                 path.equals(POST_PROPERTY)   ||
                 path.equals(FAVOURITE_CONTROLLER) ||
                 path.equals(SUCCESS_CONTROLLER) ||
@@ -126,6 +128,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(ABOUTUS)          ||
                 path.equals(VIEWPROPERTY)     ||
                 path.equals(VIEWPROPERTYSP)   ||
+                path.equals(DELETEPROPERTY)	  ||
                 path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)    ||
                 path.equals(UPDATE_PROPERTY)  ||
