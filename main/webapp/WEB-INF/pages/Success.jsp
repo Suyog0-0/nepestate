@@ -4,15 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error</title>
-    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Error.css">
+    <title>Success</title>
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Success.css">
 </head>
 <body>
-    <div class="error-container">
-        <div class="error-content">
-            <div class="error-icon">⚠️</div>
-            <h1>Oops! Something went wrong</h1>
-            <p>${sessionScope.error}</p>
+    <div class="success-container">
+        <div class="success-content">
+            <div class="success-icon">✔️</div>
+            <h1>Operation Successful!</h1>
+            <p>${sessionScope.success}</p>
             <a href="${pageContext.request.contextPath}/HomeController" class="back-button">Back to Home</a>
         </div>
     </div>

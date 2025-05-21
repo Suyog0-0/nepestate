@@ -21,6 +21,8 @@ public class AuthenticationFilter implements Filter {
     private static final String VIEWPROPERTYSP       = "/ViewPropertySPController";
     private static final String SEARCH_CONTROLLER    = "/SearchController";
     private static final String FAVOURITE_CONTROLLER = "/FavouriteController";
+    private static final String SUCCESS_CONTROLLER   = "/SuccessController"; // Add Success Controller
+    private static final String ERROR_CONTROLLER     = "/ErrorController";   // Add Error Controller
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -80,7 +82,7 @@ public class AuthenticationFilter implements Filter {
                 res.sendRedirect(req.getContextPath() + ADMIN_DASH);
                 return;
             }
-            // Allow admin‐only URLs
+            // Allow admin‐only URLs + Success/Error controllers
             if (
             	path.equals(ADMIN_DASH)      ||
                 path.equals(PROPERTY_LIST)   ||
@@ -94,6 +96,8 @@ public class AuthenticationFilter implements Filter {
                 path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)   ||
                 path.equals(FAVOURITE_CONTROLLER) ||
+                path.equals(SUCCESS_CONTROLLER) ||
+                path.equals(ERROR_CONTROLLER) ||
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
@@ -110,7 +114,7 @@ public class AuthenticationFilter implements Filter {
                 res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
                 return;
             }
-            // Allow user URLs
+            // Allow user URLs + Success/Error controllers
             if (path.equals(HOME)             ||
                 path.equals(HOME_CONTROLLER)  ||
                 path.equals(USER_DASH)        ||
@@ -125,7 +129,9 @@ public class AuthenticationFilter implements Filter {
                 path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)    ||
                 path.equals(UPDATE_PROPERTY)  ||
-                path.equals(FAVOURITE_CONTROLLER)) {
+                path.equals(FAVOURITE_CONTROLLER) ||
+                path.equals(SUCCESS_CONTROLLER) ||
+                path.equals(ERROR_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
                 // Any other URL → back to home
@@ -134,22 +140,26 @@ public class AuthenticationFilter implements Filter {
             return;
         }
 
-        // 4c) NOT LOGGED IN
-        // Allow only public pages: login controller and home
-        if (path.equals(LOGIN_CONTROLLER) ||
-            path.equals(HOME)             ||
-            path.equals(HOME_CONTROLLER)  ||
-            path.equals(CONTACTUS)        ||
-            path.equals(ABOUTUS)          ||
-            path.equals(VIEWPROPERTY)     ||
-            path.equals(VIEWPROPERTYSP)   ||
-            path.equals(SEARCH_CONTROLLER) || 
-            path.equals(POST_PROPERTY)    ||
-            path.equals(FAVOURITE_CONTROLLER)) {
-            chain.doFilter(request, response);
-        } else {
-            res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
-        }
+     // 4c) NOT LOGGED IN
+     // Allow only public pages: login controller, home, and success/error pages
+     if (path.equals(LOGIN_CONTROLLER) ||
+         path.equals(HOME)             ||
+         path.equals(HOME_CONTROLLER)  ||
+         path.equals(CONTACTUS)        ||
+         path.equals(ABOUTUS)          ||
+         path.equals(VIEWPROPERTY)     ||
+         path.equals(VIEWPROPERTYSP)   ||
+         path.equals(SEARCH_CONTROLLER) || 
+         path.equals(POST_PROPERTY)    ||
+         path.equals(FAVOURITE_CONTROLLER) ||
+         path.equals(SUCCESS_CONTROLLER) || 
+         path.equals(ERROR_CONTROLLER) ||
+         path.equals("/Success.jsp")   ||  // Allow direct access to Success.jsp
+         path.equals("/Error.jsp")) {      // Allow direct access to Error.jsp
+         chain.doFilter(request, response);
+     } else {
+         res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
+     }
     }
 
     

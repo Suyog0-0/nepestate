@@ -1,15 +1,6 @@
 @charset "UTF-8";
 
-@media (max-width: 576px) {
-    .profileButtonContainer {
-        flex-direction: column;
-    }
-}.phoneIcon {
-    width: 16px;
-    height: 16px;
-    margin-right: 10px;
-}
-
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -24,7 +15,39 @@ body {
     background-color: #f8f9fa;
 }
 
-/* Center Section Wrapper */
+/* Error and Success Messages */
+.error-message {
+    background-color: #ffe6e6;
+    color: #d9534f;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #d9534f;
+}
+
+.success-message {
+    background-color: #e6ffe6;
+    color: #4CAF50;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #4CAF50;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 576px) {
+    .profileButtonContainer {
+        flex-direction: column;
+    }
+}
+
+.phoneIcon {
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+/* Center Section Styles */
 .centerSectionWrapper {
     width: 95%;
     max-width: 1800px;
@@ -65,7 +88,7 @@ body {
     margin-bottom: 15px;
 }
 
-/* Available/Not Available Options */
+/* Availability Section Styles */
 .availabilitySection {
     display: flex;
     gap: 15px;
@@ -152,7 +175,7 @@ body {
     cursor: pointer;
 }
 
-/* Housing Details Section */
+/* Housing Details Section Styles */
 .housingDetails {
     display: flex;
     justify-content: space-between;
@@ -283,15 +306,14 @@ body {
     gap: 20px;
 }
 
-.aboutContainer {
-    width: 75%;
+.aboutContainer, .amenitiesContainer {
     padding: 25px;
     box-shadow: 0 0 15px rgba(208, 208, 208, 0.8);
     background-color: white;
     border-radius: 10px;
 }
 
-.aboutHeading {
+.aboutHeading, .amenitiesHeading {
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 15px;
@@ -305,41 +327,28 @@ body {
     margin-bottom: 15px;
 }
 
-.featureContainer {
-    width: 25%;
-    padding: 25px;
-    box-shadow: 0 0 15px rgba(208, 208, 208, 0.8);
-    background-color: white;
-    border-radius: 10px;
-}
-
-.featureHeading {
-    font-size: 20px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.featureImages {
+.amenitiesList {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.featureItem {
+.amenityItem {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
+    margin: 10px;
 }
 
-.featureImage1, .featureImage2, .featureImage3 {
+.amenityImage {
     width: 60px;
     height: 60px;
     object-fit: contain;
     margin-bottom: 10px;
 }
 
-.featureName {
+.amenityName {
     font-size: 14px;
     color: #333;
 }
@@ -356,7 +365,7 @@ body {
         flex-direction: column;
     }
     
-    .productContainer, .profileContainer, .aboutContainer, .featureContainer {
+    .productContainer, .profileContainer, .aboutContainer, .amenitiesContainer {
         width: 100%;
     }
     

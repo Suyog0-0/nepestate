@@ -242,4 +242,31 @@ public class CustomerService {
             return false;
         }
     }
+    public boolean saveInterestedCustomer(int customerId, int propertyId) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = DbConfig.getDbConnection();
+
+            String sql = "INSERT INTO customers_buyers (Customer_ID, Property_ID, Purchase_Date) VALUES (?, ?, NOW())";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, customerId);
+            ps.setInt(2, propertyId);
+
+            int rowsAffected = ps.executeUpdate();
+            return rowsAffected > 0;
+
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            try {
+                if (ps != null) ps.close();
+                if (conn != null) conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 }

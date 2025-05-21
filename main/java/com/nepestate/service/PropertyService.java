@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.nepestate.model.CustomerModel;
 import com.nepestate.model.PropertyModel;
 import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import com.nepestate.config.DbConfig;
@@ -29,6 +30,8 @@ public class PropertyService {
             ex.printStackTrace();
             isConnectionError = true;
         }
+        
+        
     }
     
     /**
@@ -799,4 +802,41 @@ public class PropertyService {
         
         return propertyList;
     }
+    
+    
+    // Ensure CustomerService has getCustomerById method:
+    public CustomerModel getCustomerById(int customerId) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        CustomerModel customer = null;
+        
+        try {
+            conn = DbConfig.getDbConnection();
+            
+            String sql = "SELECT * FROM customers WHERE Customer_ID = ?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, customerId);
+            
+            rs = ps.executeQuery();
+            
+            if (rs.next()) {
+                customer = new CustomerModel();
+                customer.setCustomerID(rs.getInt("Customer_ID"));
+                customer.setCustomer_FirstName(rs.getString("Customer_FirstName"));
+                customer.setCustomer_LastName(rs.getString("Customer_LastName"));
+                customer.setCustomer_EmailAddress(rs.getString("Customer_EmailAddress"));
+                customer.setCustomer_PhoneNumber(rs.getString("Customer_PhoneNumber"));
+                customer.setCustomer_ProfilePicture(rs.getString("Customer_ProfilePicture"));
+            }
+            
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+
+        }
+        
+        return customer;
+    }
+
 }

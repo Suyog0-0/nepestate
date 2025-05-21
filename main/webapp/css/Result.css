@@ -1,0 +1,29 @@
+.result-container {
+    text-align: center;
+    padding: 50px;
+    margin: 50px auto;
+    max-width: 600px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 0 15px rgba(208, 208, 208, 0.8);
+}
+
+.result-container h1 {
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.result-container a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4B86B4;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.result-container a:hover {
+    background-color: #3A76A8;
+}

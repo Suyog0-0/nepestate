@@ -139,6 +139,7 @@ public class PropertyModel {
         this.Property_Amentities = Property_Amentities;
     }
 
+
     public Date getProperty_DateAdded() {
         return Property_DateAdded;
     }

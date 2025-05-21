@@ -22,10 +22,15 @@
             <!-- Product Container -->
             <div class="productContainer">
                 <div class="productContent">
-                    <c:if test="${not empty error}">
-                        <div class="error-message">${error}</div>
+                    <c:if test="${not empty sessionScope.error}">
+                        <div class="error-message">${sessionScope.error}</div>
+                        <% session.removeAttribute("error"); %>
                     </c:if>
-                    <c:if test="${empty error}">
+                    <c:if test="${not empty sessionScope.message}">
+                        <div class="success-message">${sessionScope.message}</div>
+                        <% session.removeAttribute("message"); %>
+                    </c:if>
+                    <c:if test="${empty sessionScope.error}">
                         <div class="price">Rs. ${property.property_Price}</div>
                         <div class="location">${property.property_Address}, ${property.property_City}</div>
                         
@@ -38,7 +43,14 @@
                         
                         <!-- Image Gallery -->
                         <div class="imageContainer">
-                            <img src="${pageContext.request.contextPath}/images/${property.property_Photos}" class="house1">
+                            <c:choose>
+                                <c:when test="${not empty property.property_Photos}">
+                                    <img src="${pageContext.request.contextPath}/images/${property.property_Photos}" class="house1" alt="Property Image">
+                                </c:when>
+                                <c:otherwise>
+                                    <img src="${pageContext.request.contextPath}/images/default_property.jpg" class="house1" alt="Default Property Image">
+                                </c:otherwise>
+                            </c:choose>
                         </div>
                         
                         <!-- Property Details -->
@@ -72,16 +84,16 @@
                         </c:if>
                     </c:if>
                     
-                    <img src="${profilePicPath}" class="profileImage">
+                    <img src="${profilePicPath}" class="profileImage" alt="Profile Picture">
                     
                     <div class="profileName">${customer.Customer_FirstName} ${customer.Customer_LastName}</div>
                     <div class="profileContact">
                         <div class="profileNumber">
-                            <img src="${pageContext.request.contextPath}/images/phone.png" class="phoneIcon">
+                            <img src="${pageContext.request.contextPath}/images/phone.png" class="phoneIcon" alt="Phone Icon">
                             ${customer.Customer_PhoneNumber}
                         </div>
                         <div class="profileEmail">
-                            <img src="${pageContext.request.contextPath}/images/mail.png" class="mailIcon">
+                            <img src="${pageContext.request.contextPath}/images/mail.png" class="mailIcon" alt="Mail Icon">
                             ${customer.Customer_EmailAddress}
                         </div>
                     </div>
@@ -89,10 +101,14 @@
                 
                 <div class="profileButtonContainer">
                     <form action="BuyNowController" method="post">
-					    <input type="hidden" name="propertyId" value="${property.propertyID}" />
-					    <button type="submit" class="buyNowButton">Buy Now</button>
-					</form>
-                    <button class="bookmarkButton">Bookmark</button>
+                        <input type="hidden" name="propertyId" value="${property.propertyID}" />
+                        <button type="submit" class="buyNowButton">Buy Now</button>
+                    </form>
+                    
+                    <form action="AddToFavoritesController" method="post">
+                        <input type="hidden" name="propertyId" value="${property.propertyID}" />
+                        <button type="submit" class="bookmarkButton">Bookmark</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -109,22 +125,16 @@
                 </div>
             </div>
             
-            <!-- Features Container -->
-            <div class="featureContainer">
-                <div class="featureHeading">Features</div>
-                <div class="featureImages">
-                    <div class="featureItem">
-                        <img src="${pageContext.request.contextPath}/images/feature1.png" class="featureImage1">
-                        <div class="featureName">Swimming</div>
-                    </div>
-                    <div class="featureItem">
-                        <img src="${pageContext.request.contextPath}/images/feature2.png" class="featureImage2">
-                        <div class="featureName">Gym</div>
-                    </div>
-                    <div class="featureItem">
-                        <img src="${pageContext.request.contextPath}/images/feature3.png" class="featureImage3">
-                        <div class="featureName">Parking</div>
-                    </div>
+            <!-- Amenities Container -->
+            <div class="amenitiesContainer">
+                <div class="amenitiesHeading">Amenities</div>
+                <div class="amenitiesList">
+                    <c:forTokens items="${property.property_Amentities}" delims="," var="amenity">
+                        <div class="amenityItem">
+                            <img src="${pageContext.request.contextPath}/images/${amenity}.png" class="amenityImage" alt="${amenity}">
+                            <div class="amenityName">${amenity}</div>
+                        </div>
+                    </c:forTokens>
                 </div>
             </div>
         </div>
