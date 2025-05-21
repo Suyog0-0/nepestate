@@ -224,4 +224,22 @@ public class CustomerService {
             return false;
         }
     }
+    
+    public boolean deleteCustomer(int customerId) {
+        if (isConnectionError || dbConn == null) {
+            System.out.println("Database connection error!");
+            return false;
+        }
+
+        String query = "DELETE FROM customers WHERE CustomerID = ?";
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setInt(1, customerId);
+            int rowsDeleted = stmt.executeUpdate();
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            System.out.println("SQL Exception deleting customer: " + e.getMessage());
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

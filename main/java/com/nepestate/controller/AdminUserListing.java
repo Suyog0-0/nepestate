@@ -34,19 +34,37 @@ public class AdminUserListing extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		CustomerService customerListService = new CustomerService();
+		// TODO Auto-generated method stub
+        CustomerService customerListService = new CustomerService();
         List<CustomerModel> customerList = customerListService.getAllCustomers();
         request.setAttribute("customerList", customerList);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/AdminUserListing.jsp");
-		dispatcher.forward(request, response);
+        dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		 // Handle delete user action
+        String customerID = request.getParameter("customerID");
+        String username = request.getParameter("username");
+        if (customerID != null && !customerID.isEmpty()) {
+            try {
+                int id = Integer.parseInt(customerID);
+                CustomerService customerService = new CustomerService();
+                boolean deleted = customerService.deleteCustomer(id);
+                if (deleted) {
+                    request.setAttribute("successMessage", "User '" + username + "' deleted successfully");
+                } else {
+                    request.setAttribute("errorMessage", "Failed to delete user '" + username + "'");
+                }
+            } catch (NumberFormatException e) {
+                request.setAttribute("errorMessage", "Invalid customer ID");
+            }
+        }
+        // Redirect back to the admin user listing page
+        doGet(request, response);
 	}
 
 }
