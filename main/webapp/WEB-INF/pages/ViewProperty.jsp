@@ -62,7 +62,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
                         
                         <input type="radio" id="apartment" name="category" value="Appartment" class="feature-checkbox"
                             <c:if test="${selectedCategory == 'Appartment'}">checked</c:if>>
-                        <label for="apartment" class="feature-label">Appartment</label>
+                        <label for="apartment" class="feature-label">Apartment</label>
                         
                         <input type="radio" id="house" name="category" value="House" class="feature-checkbox"
                             <c:if test="${selectedCategory == 'House'}">checked</c:if>>
