@@ -152,6 +152,7 @@ public class AuthenticationFilter implements Filter {
         }
     }
 
+    
     @Override
     public void destroy() {
         // Cleanup logic if needed
