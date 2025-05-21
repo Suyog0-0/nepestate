@@ -8,8 +8,8 @@ body {
 
 .sidebar {
   width: 350px;
-  height: 700px;
-  background: linear-gradient(to bottom, #3a6186, #3a3b4c); 
+  height: 750px;
+ background: linear-gradient(to bottom, #356A95, #001B34);
   color: white;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,12 @@ body {
   border-radius: 10px;
   margin: 70px 0px 0px 25px;
   padding: 40px 25px;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 .profile-section {
@@ -51,12 +57,19 @@ body {
   padding-top: 1
 }
 
+.blue-line {
+  height: 4px;
+  width: 150px;
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  margin: 20px auto;
+}
+
 /* Menu Styles */
 .menu ul {
   list-style: none;
   padding: 0;
   width: 100%;
-  margin: 0;
+  margin-left: -30px;
 }
 
 .menu li {
@@ -99,6 +112,7 @@ body {
 
 .submenu.active {
   display: flex;
+  margin-left: 10px;
 }
 
 /* Special spacing between last submenu item and logout */
@@ -120,6 +134,7 @@ body {
   border: none;
   cursor: pointer;
   margin-top: 20px;
+  padding: 10px;
 }
 
 .logout-btn img {
@@ -130,9 +145,8 @@ body {
 
 /* Hover Effect */
 .menu li:hover {
-  background-color: #032648;
-  border: 1px solid white;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px;
 }
 .menu a
 {

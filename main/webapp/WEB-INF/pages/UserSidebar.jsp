@@ -27,6 +27,7 @@
                     <% } %>
     </div>
     
+    <div class="blue-line"></div>
     <nav class="menu">
       <ul>
         <li><img src="${pageContext.request.contextPath}/images/users.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/UserProfileController">My profile</a></li>
@@ -42,10 +43,15 @@
           <li><img src="${pageContext.request.contextPath}/images/contact.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/ContactListingController">Contact</a></li>
         </ul>
         <li><img src="${pageContext.request.contextPath}/images/favorites.png" class="dashboard-images"><a href="${pageContext.request.contextPath}/FavouriteController">Favorites</a></li>
-        <button class="logout-btn">
-          <img src="${pageContext.request.contextPath}/images/logout.webp" class="icon" />
-          Logout
-        </button>
+        <li>
+		    <form action="${pageContext.request.contextPath}/Logout" method="post" style="display:inline;">
+		        <input type="hidden" name="loggedOut" value="true" />
+		        <button type="submit" class="logout-btn">
+		            <img src="${pageContext.request.contextPath}/images/logout.png" class="icon" />
+		            Log Out
+		        </button>
+		    </form>
+		</li>
       </ul>
     </nav>
     

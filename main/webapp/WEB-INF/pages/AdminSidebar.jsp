@@ -45,11 +45,15 @@
       </a>
     </nav>
     <!-- Log Out now routes to /logout -->
-    <button class="logout-btn"
-            onclick="location='${pageContext.request.contextPath}/Logout'">
-      <img src="${pageContext.request.contextPath}/images/logout.png" class="icon">
-      Log Out
-    </button>
+		<li>
+		    <form action="${pageContext.request.contextPath}/Logout" method="post" style="display:inline;">
+		        <input type="hidden" name="loggedOut" value="true" />
+		        <button type="submit" class="logout-btn">
+		            <img src="${pageContext.request.contextPath}/images/logout.png" class="icon" />
+		            Log Out
+		        </button>
+		    </form>
+		</li>    
   </div>
 </body>
 </html>

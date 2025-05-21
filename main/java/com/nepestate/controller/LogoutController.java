@@ -28,11 +28,12 @@ public class LogoutController extends HttpServlet {
     // Common logout logic
     private void performLogout(HttpServletRequest request, HttpServletResponse response)
             throws IOException {
-        // Invalidate the HTTP session
+    	 // Invalidate the HTTP session
         SessionUtil.invalidateSession(request);
         // Remove the “rememberMe” cookie if you’re using it
         CookieUtil.deleteCookie(response, "rememberMe");
-        // Redirect back to the login page
-        response.sendRedirect(request.getContextPath() + "/login.jsp");
+
+        // Redirect to HomeController to display the message
+        response.sendRedirect(request.getContextPath() + "/HomeController");
     }
 }
