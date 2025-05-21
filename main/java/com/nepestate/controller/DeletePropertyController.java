@@ -46,23 +46,5 @@ public class DeletePropertyController extends HttpServlet {
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
-        
-       /*  String PropertyID = request.getParameter("PropertyID");
-        if (PropertyID != null && !PropertyID.isEmpty()) {
-            try {
-                int id = Integer.parseInt(PropertyID);
-                PropertyService propertyService = new PropertyService();
-                boolean deleted = propertyService.deleteProperty(id);
-                if (deleted) {
-                    request.setAttribute("successMessage", "Property deleted successfully. ");
-                } else {
-                    request.setAttribute("errorMessage", "Failed to delete property. ");
-                }
-            } catch (NumberFormatException e) {
-                request.setAttribute("errorMessage", "Invalid Property ID. ");
-            }
-        }
-        // Redirect back to the admin user listing page
-        doGet(request, response); */
     }
 }
