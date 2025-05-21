@@ -317,6 +317,7 @@ select:focus {
     animation: pulseGlow 2s infinite;
 }
 
+
 @keyframes pulseGlow {
     0% { text-shadow: 0 0 5px rgba(128, 255, 170, 0.5); }
     50% { text-shadow: 0 0 15px rgba(128, 255, 170, 0.8); }

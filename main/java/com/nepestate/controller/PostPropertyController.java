@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebServlet;
 	import jakarta.servlet.http.HttpServlet;
 	import jakarta.servlet.http.HttpServletRequest;
 	import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
 
 import java.io.IOException;
@@ -13,8 +14,10 @@ import java.io.IOException;
 	import java.util.ArrayList;
 	import java.util.Date;
 	import java.util.List;
-	
-	import com.nepestate.model.PropertyModel;
+
+import com.nepestate.model.AdminModel;
+import com.nepestate.model.CustomerModel;
+import com.nepestate.model.PropertyModel;
 	import com.nepestate.service.PropertyService;
 import com.nepestate.util.ImageUtil;
 import com.nepestate.util.ValidationUtil;
@@ -52,36 +55,67 @@ import com.nepestate.util.ValidationUtil;
 			// TODO Auto-generated method stub
 			
 				try {
-				System.out.println("Received Title: " + request.getParameter("title"));
-				String validationMessage = validatePropertyForm(request);
-				
-				if (validationMessage != null) {
-					System.out.println(validationMessage);
-					handleError(request, response, validationMessage);
-					return;
-					}
-					else {
+					System.out.println("Received Title: " + request.getParameter("title"));
+					String validationMessage = validatePropertyForm(request);
 					
-						
-					PropertyModel property=createPropertyFromRequest(request);
-					PropertyService propertyService = new PropertyService();
-					Boolean result = propertyService.addProperty(property);
-					if (result != null && result) {
-	//			
-						request.setAttribute("success", "Property posting is successful!");
-		                request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
+					if (validationMessage != null) {
+						System.out.println(validationMessage);
+						handleError(request, response, validationMessage);
+						return;
 					} else {
-						handleError(request, response, "Failed to post property. Please try again.");
+						HttpSession session = request.getSession();
+						// Check user type from session
+						AdminModel admin = (AdminModel) session.getAttribute("loggedInAdmin");
+						CustomerModel customer = (CustomerModel) session.getAttribute("loggedInCustomer");
+						
+						PropertyModel property = createPropertyFromRequest(request);
+						PropertyService propertyService = new PropertyService();
+						int propertyId = propertyService.addPropertyAndGetId(property);
+						
+						if (propertyId > 0) {
+							// Now create the role_property association
+							RolePropertyService rolePropertyService = new RolePropertyService();
+							int roleId = -1;
+							
+							if (admin != null) {
+								// Use admin role ID (assuming it's stored in admin model or a constant)
+								roleId = 2; // Using '2' as seen in your database screenshot for admin
+								boolean rolePropertyResult = rolePropertyService.addRoleProperty(roleId, propertyId);
+								
+								if (rolePropertyResult) {
+									request.setAttribute("success", "Property posting is successful from Admin!");
+									request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
+								} else {
+									handleError(request, response, "Failed to associate property with admin role. Please try again.");
+								}
+							} else if (customer != null) {
+								// Use customer role ID
+								roleId = 3; // Using '3' as seen in your database screenshot for customer
+								boolean rolePropertyResult = rolePropertyService.addRoleProperty(roleId, propertyId);
+								
+								if (rolePropertyResult) {
+									request.setAttribute("success", "Property posting is successful from User!");
+									request.getRequestDispatcher("/WEB-INF/pages/PropertyListing.jsp").forward(request, response);
+								} else {
+									handleError(request, response, "Failed to associate property with customer role. Please try again.");
+								}
+							} else {
+								System.out.println("No valid user session found - redirecting to login");
+								response.sendRedirect(request.getContextPath() + "/Login.jsp");
+								return;
+							}
+						} else {
+							handleError(request, response, "Failed to post property. Please try again.");
+						}
 					}
+				} catch (NumberFormatException e) {
+					System.err.println("Invalid number format: " + e.getMessage());
+					handleError(request, response, "Please enter valid numbers for price and area.");
+				} catch (Exception e) {
+					System.err.println("Unexpected error in posting property: " + e.getMessage());
+					e.printStackTrace();
+					handleError(request, response, "An unexpected error occurred: " + e.getMessage());
 				}
-			}catch (NumberFormatException e) {
-	            System.err.println("Invalid number format: " + e.getMessage());
-	            handleError(request, response, "Please enter valid numbers for price and area.");
-	        } catch (Exception e) {
-	            System.err.println("Unexpected error in posting property: " + e.getMessage());
-	            e.printStackTrace();
-	            handleError(request, response, "An unexpected error occurred: " + e.getMessage());
-	        }
 					}
 			
 	        

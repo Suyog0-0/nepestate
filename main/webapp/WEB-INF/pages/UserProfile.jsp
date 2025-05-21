@@ -32,6 +32,7 @@
         border:none;
         border-bottom: 1.5px solid #7C7C7C;      
     }
+    
 </style>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/css/Navbar.css" />
@@ -124,15 +125,24 @@
 	        <div class="productBox">
 	            <img src="${pageContext.request.contextPath}/images/ListedProperty1.png" style="width:100%;object-fit:cover;border-radius:10px;">
 	            <div style="width:100%;">
-	                <div class="tag">${property.property_Type}</div>
+	            	<div style="display:flex;">
+	               	 <div class="tag">${property.property_Type}</div>
+	               	   <div style="display:flex;margin-top:10px;margin-left:160px;gap:20px;">
+					<a href="${pageContext.request.contextPath}/UpdatePropertyController?id=${property.propertyID}" >
+					  <img src="${pageContext.request.contextPath}/images/updateProductIcon.png" alt="Edit" class="iconButton" />
+					</a>
+
+                        <a href="${pageContext.request.contextPath}/DeletePropertyController?propertyId=${property.propertyID}"  onclick="return confirm('Are you sure you want to delete this property?');" >
+                            <img src="${pageContext.request.contextPath}/images/deleteIcon.png" alt="Edit" class="iconButton deleteButton" />
+                        </a>
+                        </div>
+	               	 </div>
 	                <h3 style="margin-bottom: 10px;">${property.property_Price}</h3>
 	                <div style="font-size: 12px; color: #666;">${property.property_Description}</div>
 	                <div style="text-align: center; font-size: 10px; color: #666; margin-top: 12px;">${property.property_Address}</div>
 					
 				
-				<a href="${pageContext.request.contextPath}/UpdatePropertyController?id=${property.propertyID}" class="update-link">
-				    <button type="button">Update</button>
-				</a>
+				   
 	            </div>	
 	            	               
 	        </div>

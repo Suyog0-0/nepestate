@@ -692,4 +692,42 @@ public class PropertyService {
         
         return propertyList;
     }
+    public int addPropertyAndGetId(PropertyModel property) {
+    	 
+        try  {
+            String query = "INSERT INTO property (property_Title, property_Type, property_Price, property_Area, "
+                    + "property_Address, property_City, property_Description, property_Status, property_Amentities, "
+                    + "property_DateAdded, property_Photos) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            
+            PreparedStatement pstmt = dbConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            pstmt.setString(1, property.getProperty_Title());
+            pstmt.setString(2, property.getProperty_Type());
+            pstmt.setFloat(3, property.getProperty_Price());
+            pstmt.setFloat(4, property.getProperty_Area());
+            pstmt.setString(5, property.getProperty_Address());
+            pstmt.setString(6, property.getProperty_City());
+            pstmt.setString(7, property.getProperty_Description());
+            pstmt.setString(8, property.getProperty_Status());
+            pstmt.setString(9, property.getProperty_Amentities());
+            pstmt.setDate(10, new java.sql.Date(property.getProperty_DateAdded().getTime()));
+            pstmt.setString(11, property.getProperty_Photos());
+            
+            int affectedRows = pstmt.executeUpdate();
+            
+            if (affectedRows > 0) {
+                // Get the generated ID
+                ResultSet generatedKeys = pstmt.getGeneratedKeys();
+                if (generatedKeys.next()) {
+                    return generatedKeys.getInt(1);
+                }
+            }
+            
+            return -1; // Error occurred
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    
 }

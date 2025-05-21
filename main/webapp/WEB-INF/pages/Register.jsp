@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Create Account</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Register.css" />
+
+
 </head>
 <body>
 <div class="container">
@@ -18,13 +20,17 @@
             </div>	
 	
 		<c:if test="${not empty error}">
-			<p class="error-message">${error}</p>
+		    <div class="error-message">
+		        ${error}
+		    </div>
 		</c:if>
-		
+				
 		<c:if test="${not empty success}">
-			<p class="success-message">${success}</p>
+		    <div class="success-message">
+		        ${success}
+		    </div>
 		</c:if>
-            <form action="${pageContext.request.contextPath}/RegisterController" method='post'>
+		            <form action="${pageContext.request.contextPath}/RegisterController" method='post'>
                 <div class="name-row">
                     <div class="form-group half">
                         <label for="firstName">First Name<span class="required">*</span></label>

@@ -37,6 +37,7 @@ public class AuthenticationFilter implements Filter {
     private static final String CONTACT_LIST         = "/ContactListingController";
     private static final String POST_PROPERTY        = "/PostPropertyController";
     private static final String UPDATE_PROPERTY      = "/UpdatePropertyController";
+    private static final String REGISTER      = "/RegisterController";
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -153,8 +154,9 @@ public class AuthenticationFilter implements Filter {
          path.equals(VIEWPROPERTY)     ||
          path.equals(VIEWPROPERTYSP)   ||
          path.equals(SEARCH_CONTROLLER) || 
-         path.equals(POST_PROPERTY)    ||
-         path.equals(FAVOURITE_CONTROLLER) ||
+         path.equals(REGISTER) || 
+//         path.equals(POST_PROPERTY)    ||
+//         path.equals(FAVOURITE_CONTROLLER) ||
          path.equals(SUCCESS_CONTROLLER) || 
          path.equals(ERROR_CONTROLLER) ||
          path.equals("/Success.jsp")   ||  // Allow direct access to Success.jsp
