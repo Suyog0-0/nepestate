@@ -231,7 +231,7 @@ public class CustomerService {
             return false;
         }
 
-        String query = "DELETE FROM customers WHERE CustomerID = ?";
+        String query = "DELETE FROM role_customer WHERE CustomerID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, customerId);
             int rowsDeleted = stmt.executeUpdate();
