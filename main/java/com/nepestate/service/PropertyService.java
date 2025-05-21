@@ -602,7 +602,7 @@ public class PropertyService {
      * @param priceSort Sort order for price (optional, "asc" or "desc")
      * @return List of properties matching all specified criteria
      */
-    public List<PropertyModel> advancedSearch(String source, String location, String category, String priceSort) {
+    public List<PropertyModel> advancedSearch(String location, String category, String priceSort) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
             return new ArrayList<>();
@@ -613,12 +613,6 @@ public class PropertyService {
         List<Object> params = new ArrayList<>();
         
         // Add filter conditions
-        if (source != null && !source.isEmpty()) {
-            // Note: You might need to adjust this based on your actual schema
-            // If there's no Property_Source column, you should remove this condition
-            sql.append(" AND Property_Source = ?");
-            params.add(source);
-        }
         
         if (location != null && !location.isEmpty()) {
             sql.append(" AND LOWER(Property_City) LIKE ?");
