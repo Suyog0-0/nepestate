@@ -44,12 +44,16 @@
     </div>
     
 
-    <div class="navbar-center">
-        <div class="navbar-search-container">
+<div class="navbar-center">
+    <div class="navbar-search-container">
+        <form action="${pageContext.request.contextPath}/SearchController" method="GET">
             <img src="${pageContext.request.contextPath}/images/searchIcon.png" class="navbar-search-icon">
-            <input type="text" class="navbar-search-bar" placeholder="What are you looking for?">
-        </div>
+            <input type="text" name="query" class="navbar-search-bar" placeholder="What are you looking for?">
+            <!-- Hidden submit button that will be triggered when Enter is pressed -->
+            <input type="submit" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1">
+        </form>
     </div>
+</div>
 
     <div class="navbar-right">
         <ul class="navbar-items">

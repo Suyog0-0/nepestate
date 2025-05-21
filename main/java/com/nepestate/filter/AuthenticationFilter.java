@@ -17,8 +17,9 @@ public class AuthenticationFilter implements Filter {
     private static final String HOME_CONTROLLER      = "/HomeController";
     private static final String CONTACTUS 			 = "/ContactUsController"; 
     private static final String ABOUTUS 			 = "/AboutUsController";
-    private static final String VIEWPROPERTY        = "/ViewPropertyController";
-    private static final String VIEWPROPERTYSP      = "/ViewPropertySPController"; // Add this line
+    private static final String VIEWPROPERTY         = "/ViewPropertyController";
+    private static final String VIEWPROPERTYSP       = "/ViewPropertySPController";
+    private static final String SEARCH_CONTROLLER    = "/SearchController"; // Add SearchController constant
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -31,8 +32,8 @@ public class AuthenticationFilter implements Filter {
     private static final String USER_PROFILE         = "/UserProfileController";
     private static final String CONTACT_LIST         = "/ContactListingController";
     private static final String FAVOURITE            = "/FavouriteController";
-    private static final String POST_PROPERTY            = "/PostPropertyController";
-    private static final String UPDATE_PROPERTY            = "/UpdatePropertyController";
+    private static final String POST_PROPERTY        = "/PostPropertyController";
+    private static final String UPDATE_PROPERTY      = "/UpdatePropertyController";
     
 
     @Override
@@ -90,7 +91,8 @@ public class AuthenticationFilter implements Filter {
                 path.equals(CONTACTUS)       ||
                 path.equals(ABOUTUS)         ||
                 path.equals(VIEWPROPERTY)    ||
-                path.equals(VIEWPROPERTYSP)  || // Add this line
+                path.equals(VIEWPROPERTYSP)  ||
+                path.equals(SEARCH_CONTROLLER) || // Add SearchController
                 path.equals(POST_PROPERTY)   ||
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
@@ -119,7 +121,8 @@ public class AuthenticationFilter implements Filter {
                 path.equals(CONTACTUS)        ||
                 path.equals(ABOUTUS)          ||
                 path.equals(VIEWPROPERTY)     ||
-                path.equals(VIEWPROPERTYSP)   || // Add this line
+                path.equals(VIEWPROPERTYSP)   ||
+                path.equals(SEARCH_CONTROLLER) || // Add SearchController
                 path.equals(POST_PROPERTY)    ||
                 path.equals(UPDATE_PROPERTY)  ||
                 path.equals(FAVOURITE)) {
@@ -139,7 +142,8 @@ public class AuthenticationFilter implements Filter {
             path.equals(CONTACTUS)        ||
             path.equals(ABOUTUS)          ||
             path.equals(VIEWPROPERTY)     ||
-            path.equals(VIEWPROPERTYSP)   || // Add this line
+            path.equals(VIEWPROPERTYSP)   ||
+            path.equals(SEARCH_CONTROLLER) || // Add SearchController
             path.equals(POST_PROPERTY)) {
             chain.doFilter(request, response);
         } else {

@@ -73,6 +73,21 @@ public class ViewPropertyController extends HttpServlet {
             }
         }
         
+        // Check if there's a search parameter
+        String searchQuery = request.getParameter("search");
+        
+        List<PropertyModel> properties;
+        
+        if (searchQuery != null && !searchQuery.trim().isEmpty()) {
+            // If there's a search query, filter properties based on the search term
+            properties = propertyService.searchProperties(searchQuery);
+            // Pass the search query back to the JSP to display it in the search results
+            request.setAttribute("searchQuery", searchQuery);
+        } else {
+            // Otherwise, get all properties
+            properties = propertyService.getAllProperties();
+        }
+        
         // Set attributes and forward to the JSP
         request.setAttribute("propertyList", propertyList);
         request.setAttribute("locationList", locationList);
@@ -88,6 +103,10 @@ public class ViewPropertyController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
+	
+	
+	
+	
 
 }
 

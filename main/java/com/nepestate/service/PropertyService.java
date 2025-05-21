@@ -208,28 +208,87 @@ public class PropertyService {
      * 
      * @return List of PropertyModel objects
      */
+    // Method to get all properties
     public List<PropertyModel> getAllProperties() {
-        if (isConnectionError) {
-            System.out.println("Database connection error!");
-            return new ArrayList<>();
-        }
-
         List<PropertyModel> properties = new ArrayList<>();
-        String query = "SELECT * FROM property";
-        
-        try (PreparedStatement stmt = dbConn.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-            
-            while (rs.next()) {
-                PropertyModel property = mapResultSetToPropertyModel(rs);
-                properties.add(property);
+        try {
+            String sql = "SELECT * FROM property";
+            try (PreparedStatement ps = dbConn.prepareStatement(sql);
+                 ResultSet rs = ps.executeQuery()) {
+                
+                while (rs.next()) {
+                    PropertyModel property = mapPropertyFromResultSet(rs);
+                    properties.add(property);
+                }
             }
         } catch (SQLException e) {
-            System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
         }
-
         return properties;
+    }
+
+    // Method to search properties based on query
+    public List<PropertyModel> searchProperties(String searchQuery) {
+        List<PropertyModel> properties = new ArrayList<>();
+        try {
+            String sql = "SELECT * FROM property WHERE " +
+                         "property_title LIKE ? OR " +
+                         "property_description LIKE ? OR " +
+                         "property_address LIKE ? OR " +
+                         "property_city LIKE ? OR " +
+                         "property_state LIKE ? OR " +
+                         "property_type LIKE ?";
+            
+            try (PreparedStatement ps = dbConn.prepareStatement(sql)) {
+                String likeParam = "%" + searchQuery + "%";
+                for (int i = 1; i <= 6; i++) {
+                    ps.setString(i, likeParam);
+                }
+                
+                try (ResultSet rs = ps.executeQuery()) {
+                    while (rs.next()) {
+                        PropertyModel property = mapPropertyFromResultSet(rs);
+                        properties.add(property);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
+    
+    // Helper method to map a ResultSet row to a PropertyModel object
+    private PropertyModel mapPropertyFromResultSet(ResultSet rs) throws SQLException {
+        PropertyModel property = new PropertyModel();
+        
+        // Set all properties from the result set
+        property.setPropertyID(rs.getInt("PropertyID"));
+        property.setProperty_Title(rs.getString("Property_Title"));
+        property.setProperty_Type(rs.getString("Property_Type"));
+        property.setProperty_Price(rs.getInt("Property_Price"));
+        property.setProperty_Area(rs.getFloat("Property_Area"));
+        property.setProperty_Address(rs.getString("Property_Address"));
+        property.setProperty_City(rs.getString("Property_City"));
+        property.setProperty_Status(rs.getString("Property_Status"));
+        property.setProperty_Description(rs.getString("Property_Description"));
+        property.setProperty_Amentities(rs.getString("Property_Amentities"));
+        property.setProperty_DateAdded(rs.getDate("Property_DateAdded"));
+        property.setProperty_Photos(rs.getString("Property_Photos"));
+        // Add any other fields your PropertyModel has
+        
+        return property;
+    }
+    
+    // Helper method to close database resources
+    private void closeResources(Connection conn, PreparedStatement ps, ResultSet rs) {
+        try {
+            if (rs != null) rs.close();
+            if (ps != null) ps.close();
+            if (conn != null) conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
