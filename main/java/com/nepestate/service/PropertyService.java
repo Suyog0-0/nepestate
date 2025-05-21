@@ -226,7 +226,7 @@ public class PropertyService {
         property.setProperty_Photos(rs.getString("Property_Photos"));
         return property;
     }
-
+    
     /**
      * Search properties based on various criteria
      * 
@@ -399,6 +399,10 @@ public class PropertyService {
 
         return properties;
     }
+
+
+
+
     public List<PropertyModel> getAllLocations() {
         if (isConnectionError) {
             System.out.println("Database connection error!");

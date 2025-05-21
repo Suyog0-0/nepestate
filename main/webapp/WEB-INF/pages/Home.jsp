@@ -130,7 +130,7 @@
                 
                 <div class="contactGrid">
                     <div class="contactCard">
-                        <img src="${pageContext.request.contextPath}/images/mail.png" alt="Email" class="contactIcon">
+                        <img src="${pageContext.request.contextPath}/images/emailIcon.png" alt="Email" class="contactIcon">
                         <h3 class="contactTitle">Email Us</h3>
                         <p class="contactInfo">
                             For general inquiries:<br>
@@ -141,7 +141,7 @@
                     </div>
                     
                     <div class="contactCard">
-                        <img src="${pageContext.request.contextPath}/images/phone.png" alt="Phone" class="contactIcon">
+                        <img src="${pageContext.request.contextPath}/images/phoneIcon.png" alt="Phone" class="contactIcon">
                         <h3 class="contactTitle">Call Us</h3>
                         <p class="contactInfo">
                             Customer Support:<br>

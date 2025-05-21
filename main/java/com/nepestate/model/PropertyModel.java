@@ -1,4 +1,3 @@
-// src/com/nepestate/model/PropertyModel.java
 package com.nepestate.model;
 
 import java.util.Date;
@@ -7,7 +6,8 @@ public class PropertyModel {
     private int PropertyID;
     private String Property_Title;
     private String Property_Type;
-    private int Property_Price;
+    // Changed to float to accommodate decimal values for property prices
+    private float Property_Price; // Use float if prices can have decimal values
     private float Property_Area;
     private String Property_Address;
     private String Property_City;
@@ -21,7 +21,7 @@ public class PropertyModel {
 
     public PropertyModel() {}
 
-    public PropertyModel(int PropertyID, String Property_Title, String Property_Type, int Property_Price,
+    public PropertyModel(int PropertyID, String Property_Title, String Property_Type, float Property_Price, // Changed to float
                          float Property_Area, String Property_Address, String Property_City,
                          String Property_Municipality, int Property_Ward, String Property_Status,
                          String Property_Description, String Property_Amentities, Date Property_DateAdded,
@@ -52,7 +52,8 @@ public class PropertyModel {
     public void setProperty_Type(String Property_Type) { this.Property_Type = Property_Type; }
 
     public float getProperty_Price() { return Property_Price; }
-    public void setProperty_Price(int Property_Price) { this.Property_Price = Property_Price; }
+    // Changed parameter type to float
+    public void setProperty_Price(float Property_Price) { this.Property_Price = Property_Price; }
 
     public float getProperty_Area() { return Property_Area; }
     public void setProperty_Area(float Property_Area) { this.Property_Area = Property_Area; }
