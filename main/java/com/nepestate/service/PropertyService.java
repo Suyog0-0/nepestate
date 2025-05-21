@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.nepestate.model.PropertyModel;
+import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import com.nepestate.config.DbConfig;
 
 public class PropertyService {
@@ -87,23 +88,51 @@ public class PropertyService {
             return null;
         }
 
-       
         String query = "SELECT * FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
+            
+            System.out.println("Executing query: " + query + " with propertyId = " + propertyId);
+            
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                return mapResultSetToPropertyModel(rs); // Convert ResultSet to PropertyModel
+                PropertyModel property = new PropertyModel();
+                property.setPropertyID(rs.getInt("PropertyID"));
+                property.setProperty_Title(rs.getString("Property_Title"));
+                property.setProperty_Type(rs.getString("Property_Type"));
+                property.setProperty_Price(rs.getFloat("Property_Price"));
+                property.setProperty_Area(rs.getFloat("Property_Area"));
+                property.setProperty_Address(rs.getString("Property_Address"));
+                property.setProperty_City(rs.getString("Property_City"));
+                property.setProperty_Status(rs.getString("Property_Status"));
+                property.setProperty_Description(rs.getString("Property_Description"));
+                property.setProperty_Amentities(rs.getString("Property_Amentities"));
+                property.setProperty_DateAdded(rs.getDate("Property_DateAdded"));
+                property.setProperty_Photos(rs.getString("Property_Photos"));
+                
+                // Check if CustomerID column exists in the result set
+                try {
+                    int customerId = rs.getInt("CustomerID");
+                    property.setCustomerID(customerId);
+                    System.out.println("CustomerID found in result set: " + customerId);
+                } catch (SQLException e) {
+                    System.out.println("CustomerID column not found in property table: " + e.getMessage());
+                    // Set a default customerID or handle the issue accordingly
+                    property.setCustomerID(0); // Default value
+                }
+                
+                return property;
+            } else {
+                System.out.println("No property found with ID: " + propertyId);
             }
         } catch (SQLException e) {
-            System.out.println("SQL Exception occurred: " + e.getMessage());
+            System.out.println("SQL Exception occurred in getPropertyById: " + e.getMessage());
             e.printStackTrace();
         }
 
         return null;
     }
-
     /**
      * Updates an existing property in the database
      * 
@@ -224,7 +253,25 @@ public class PropertyService {
         property.setProperty_Amentities(rs.getString("Property_Amentities"));
         property.setProperty_DateAdded(rs.getDate("Property_DateAdded"));
         property.setProperty_Photos(rs.getString("Property_Photos"));
+        
+        // Adding this line to set the CustomerID if it exists in the ResultSet
+        if (hasColumn(rs, "CustomerID")) {
+            property.setCustomerID(rs.getInt("CustomerID"));
+        }
+        
         return property;
+    }
+    
+ // Helper method to check if a column exists in the ResultSet
+    private boolean hasColumn(ResultSet rs, String columnName) throws SQLException {
+        ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
+        int columns = rsmd.getColumnCount();
+        for (int i = 1; i <= columns; i++) {
+            if (columnName.equalsIgnoreCase(rsmd.getColumnName(i))) {
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
@@ -337,6 +384,59 @@ public class PropertyService {
 
         return properties;
     }
+    
+    /**
+     * Retrieves all properties posted by a specific user
+     * 
+     * @param userId The ID of the user
+     * @return List of PropertyModel objects posted by the user
+     */
+    public List<PropertyModel> getPropertiesByUserId(int userId) throws SQLException {
+        List<PropertyModel> properties = new ArrayList<>();
+
+        String roleType = null;
+
+        String customerRoleQuery = "SELECT r.RoleType " + 
+            "FROM role_Customer rc " +
+            "JOIN roles r ON rc.RoleID = r.RoleID " + 
+            "JOIN Customers c ON rc.CustomerID = c.CustomerID " +
+            "WHERE c.CustomerID = ?";
+
+        try (PreparedStatement stmt = dbConn.prepareStatement(customerRoleQuery)) {
+            stmt.setInt(1, userId);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    roleType = rs.getString("RoleType");
+                }
+            }
+        }
+
+        if (roleType != null) {
+            String propertyQuery = "SELECT p.* " + 
+                "FROM property p " +
+                "JOIN role_property rp ON p.propertyid = rp.propertyid " + 
+                "JOIN roles r ON rp.roleid = r.roleid " +
+                "WHERE r.roletype = ?";
+
+            try (PreparedStatement stmt = dbConn.prepareStatement(propertyQuery)) {
+                stmt.setString(1, roleType);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    while (rs.next()) {
+                        PropertyModel property = mapResultSetToPropertyModel(rs);
+                        properties.add(property);
+                    }
+                }
+            } catch (SQLException e) {
+                System.out.println("SQL Exception occurred while fetching properties: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("No role type found for customer ID: " + userId);
+        }
+
+        return properties;
+    }
+    
 
     /**
      * Retrieves featured properties from the database

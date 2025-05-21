@@ -88,7 +88,7 @@
                 </div>
                 
                 <div style="text-align: center; margin-top: 40px;">
-                    <a href="${pageContext.request.contextPath}/FavouriteController" class="ctaButton">View Properties</a>
+                    <a href="${pageContext.request.contextPath}/ViewPropertySPController" class="ctaButton">View Properties</a>
                 </div>
             </div>
         </div>

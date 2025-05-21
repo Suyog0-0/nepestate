@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Product</title>
+    <title>View Property</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/ViewPropertySP.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Navbar.css">
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/Footer.css">
@@ -22,7 +22,10 @@
             <!-- Product Container -->
             <div class="productContainer">
                 <div class="productContent">
-                    <c:forEach items="${properties}" var="property">
+                    <c:if test="${not empty error}">
+                        <div class="error-message">${error}</div>
+                    </c:if>
+                    <c:if test="${empty error}">
                         <div class="price">Rs. ${property.property_Price}</div>
                         <div class="location">${property.property_Address}, ${property.property_City}</div>
                         
@@ -53,30 +56,40 @@
                                 <div class="totalUnitsText">${property.property_Ward}</div>
                             </div>
                         </div>
-                    </c:forEach>
+                    </c:if>
                 </div>
             </div>
             
             <!-- Profile Container -->
             <div class="profileContainer">
                 <div class="profileDetailsContainer">
-                    <img src="${pageContext.request.contextPath}/images/profile.png" class="profileImage">
-                    <div class="profileName">Durgesh Thapa</div>
+                    <!-- Profile Picture -->
+                    <c:set var="profilePicPath" value="${pageContext.request.contextPath}/images/defaultpfp.jpg" />
+                    <c:if test="${customer != null}">
+                        <c:set var="dbProfilePic" value="${customer.Customer_ProfilePicture}" />
+                        <c:if test="${not empty dbProfilePic}">
+                            <c:set var="profilePicPath" value="${pageContext.request.contextPath}/images/${dbProfilePic}" />
+                        </c:if>
+                    </c:if>
+                    
+                    <img src="${profilePicPath}" class="profileImage">
+                    
+                    <div class="profileName">${customer.Customer_FirstName} ${customer.Customer_LastName}</div>
                     <div class="profileContact">
                         <div class="profileNumber">
                             <img src="${pageContext.request.contextPath}/images/phone.png" class="phoneIcon">
-                            +977 9812222284
+                            ${customer.Customer_PhoneNumber}
                         </div>
                         <div class="profileEmail">
                             <img src="${pageContext.request.contextPath}/images/mail.png" class="mailIcon">
-                            durgesh45@gmail.com
+                            ${customer.Customer_EmailAddress}
                         </div>
                     </div>
                 </div>
                 
                 <div class="profileButtonContainer">
                     <form action="BuyNowController" method="post">
-					    <input type="hidden" name="propertyId" value="${property.property_ID}" />
+					    <input type="hidden" name="propertyId" value="${property.propertyID}" />
 					    <button type="submit" class="buyNowButton">Buy Now</button>
 					</form>
                     <button class="bookmarkButton">Bookmark</button>
@@ -89,12 +102,10 @@
     <div class="bottomSectionWrapper">
         <div class="bottomSection">
             <!-- About Container -->
-       z     <div class="aboutContainer">
+            <div class="aboutContainer">
                 <div class="aboutHeading">About</div>
                 <div class="aboutText">
-                    <c:forEach items="${properties}" var="property">
-                        ${property.property_Description}
-                    </c:forEach>
+                    ${property.property_Description}
                 </div>
             </div>
             

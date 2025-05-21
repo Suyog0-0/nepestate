@@ -42,6 +42,7 @@
             <img src="${pageContext.request.contextPath}/images/logo.png" class="navbar-logo-image">
         </a>
     </div>
+    
 
     <div class="navbar-center">
         <div class="navbar-search-container">

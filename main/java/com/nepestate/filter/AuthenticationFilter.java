@@ -18,6 +18,7 @@ public class AuthenticationFilter implements Filter {
     private static final String CONTACTUS 			 = "/ContactUsController"; 
     private static final String ABOUTUS 			 = "/AboutUsController";
     private static final String VIEWPROPERTY        = "/ViewPropertyController";
+    private static final String VIEWPROPERTYSP      = "/ViewPropertySPController"; // Add this line
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -88,9 +89,9 @@ public class AuthenticationFilter implements Filter {
                 path.equals(HOME)            ||
                 path.equals(CONTACTUS)       ||
                 path.equals(ABOUTUS)         ||
-                path.equals(VIEWPROPERTY)         ||
-                path.equals(POST_PROPERTY)         ||
-                
+                path.equals(VIEWPROPERTY)    ||
+                path.equals(VIEWPROPERTYSP)  || // Add this line
+                path.equals(POST_PROPERTY)   ||
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
@@ -117,9 +118,10 @@ public class AuthenticationFilter implements Filter {
                 path.equals(REPORT_GEN)       ||
                 path.equals(CONTACTUS)        ||
                 path.equals(ABOUTUS)          ||
-                path.equals(VIEWPROPERTY)         ||
-                path.equals(POST_PROPERTY)         ||
-                path.equals(UPDATE_PROPERTY)         ||
+                path.equals(VIEWPROPERTY)     ||
+                path.equals(VIEWPROPERTYSP)   || // Add this line
+                path.equals(POST_PROPERTY)    ||
+                path.equals(UPDATE_PROPERTY)  ||
                 path.equals(FAVOURITE)) {
                 chain.doFilter(request, response);
             } else {
@@ -134,9 +136,11 @@ public class AuthenticationFilter implements Filter {
         if (path.equals(LOGIN_CONTROLLER) ||
             path.equals(HOME)             ||
             path.equals(HOME_CONTROLLER)  ||
-            path.equals(CONTACTUS)        ||  // Add this
-            path.equals(ABOUTUS)          ||  // Add this
-            path.equals(VIEWPROPERTY)){
+            path.equals(CONTACTUS)        ||
+            path.equals(ABOUTUS)          ||
+            path.equals(VIEWPROPERTY)     ||
+            path.equals(VIEWPROPERTYSP)   || // Add this line
+            path.equals(POST_PROPERTY)) {
             chain.doFilter(request, response);
         } else {
             res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
