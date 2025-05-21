@@ -158,7 +158,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
     		<c:forEach var="p" items="${propertyList}">
         		<a href="#">
            			<div class="card">
-                		<%-- <img src="${p.Property_image" alt="Image"> --%>
+                <%-- <img src="${pageContext.request.contextPath}/images/${p.image}" alt="Image"> --%>
                 		<div class="card-content">
                     		<h3>Rs.${p.property_Price}</h3>
                     <%-- <span class="tag">${p.}</span> --%>
