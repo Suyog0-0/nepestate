@@ -46,7 +46,6 @@
                         <th>Age</th>
                         <th>Phone Number</th>
                         <th>Email</th>
-                        <th>Total Listings</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -59,7 +58,6 @@
                             <td data-label="Age">${u.customer_DoB}</td>
                             <td data-label="Phone">${u.customer_PhoneNumber}</td>
                             <td data-label="Email">${u.customer_EmailAddress}</td>
-                            <td data-label="No. of listing"></td>
                             <td>
                                 <form action="${contextPath}/AdminUserListingController" method="post" style="margin:0" 
                                       onsubmit="return confirm('Are you sure you want to delete user ${u.customer_Username}?');">
