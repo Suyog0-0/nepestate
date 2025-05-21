@@ -43,18 +43,18 @@ href="${pageContext.request.contextPath}/css/AdminSidebar.css">
         <th>Total Listings</th>
       </tr>
     </thead>
-
+	
     <tbody>
-    	<c:forEach var="u" items="${customerList}">
+    	<c:forEach var="u" items="${customerList}" varStatus="status">
      		<tr>
-        		<td data-label="S.N">1</td>
+        		<td data-label="S.N">${status.count}</td>
         		<td data-label="Name">${u.customer_Username}</td>
         		<td data-label="Age">${u.customer_DoB}</td>
         		<td data-label="Phone">${u.customer_PhoneNumber}</td>
         		<td data-label="Email">${u.customer_EmailAddress}</td>
-        		<!-- td data-label="Listings">2</td> -->
       		</tr>
       		</c:forEach>
+      		
     </tbody>
   </table>
           
