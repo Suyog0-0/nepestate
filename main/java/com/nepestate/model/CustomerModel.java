@@ -3,6 +3,7 @@ package com.nepestate.model;
 
 public class CustomerModel {
 	private int CustomerID;
+	  private int roleID;
 	private String Customer_FirstName;
 	private String Customer_LastName;
 	private String Customer_Username;
@@ -14,6 +15,10 @@ public class CustomerModel {
 	private String Customer_Description;
 	
 	public CustomerModel() {}
+	public CustomerModel(int roleID, int customerID) {
+        this.roleID=roleID;
+        this.CustomerID = customerID;
+    }
 	
 	public CustomerModel(int customerID, String cust_FirstName, String cust_LastName, String cust_Username, String cust_EmailAddress,
 			String cust_Password, String cust_ProfilePicture, String cust_DoB, String cust_PhoneNumber, String cust_Description) {
@@ -113,6 +118,12 @@ public class CustomerModel {
 	{
 		this.Customer_Username=username;
 		this.Customer_Password=password;
+	}
+	public int getRoleID() {
+		return roleID;
+	}
+	public void setRoleID(int roleID) {
+		this.roleID = roleID;
 	}
 	
 }

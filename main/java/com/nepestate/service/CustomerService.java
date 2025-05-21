@@ -14,6 +14,7 @@ public class CustomerService {
 
     private Connection dbConn;
     private boolean isConnectionError = false;
+    private String errorMessage = null;
 
     public CustomerService() {
         try {
@@ -269,4 +270,146 @@ public class CustomerService {
             }
         }
     }
+    public boolean assignRoleToCustomer(int customerId, int roleId) {
+        if (isConnectionError || dbConn == null) {
+            System.err.println("Database connection error!");
+            return false;
+        }
+        
+        try {
+            String query = "INSERT INTO role_customer (RoleID, CustomerID) VALUES (?, ?)";
+            
+            PreparedStatement pstmt = dbConn.prepareStatement(query);
+            pstmt.setInt(1, roleId);
+            pstmt.setInt(2, customerId);
+            
+            int affectedRows = pstmt.executeUpdate();
+            
+            return affectedRows > 0;
+        } catch (SQLException e) {
+            System.err.println("SQL Exception assigning role to customer: " + e.getMessage());
+            e.printStackTrace();
+            errorMessage = "Failed to assign role to customer: " + e.getMessage();
+            return false;
+        }
+    }
+    /**
+     * Assigns a role to a customer
+     * 
+     * @param customerId the ID of the customer
+     * @param roleId the ID of the role to assign
+     * @return true if the role was successfully assigned, false otherwise
+     */
+    
+    
+    /**
+     * Gets the last inserted customer ID
+     * 
+     * @return the last inserted customer ID, or -1 if an error occurs
+     */
+    public int getLastInsertedCustomerId() {
+        if (isConnectionError || dbConn == null) {
+            System.err.println("Database connection error!");
+            return -1;
+        }
+        
+        try {
+            String query = "SELECT MAX(CustomerID) as LastID FROM customers";
+            
+            PreparedStatement pstmt = dbConn.prepareStatement(query);
+            ResultSet rs = pstmt.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt("LastID");
+            }
+            
+            return -1;
+        } catch (SQLException e) {
+            System.err.println("SQL Exception getting last customer ID: " + e.getMessage());
+            e.printStackTrace();
+            errorMessage = "Failed to get last customer ID: " + e.getMessage();
+            return -1;
+        }
+    }
+    /**
+     * Gets the role ID for a specific customer
+     * 
+     * @param customerId the ID of the customer
+     * @return the role ID associated with the customer, or -1 if not found
+     */
+    public int getRoleIdByCustomerId(int customerId) {
+        if (isConnectionError || dbConn == null) {
+            System.out.println("Database connection error!");
+            return -1;
+        }
+        
+        try {
+            String query = "SELECT RoleID FROM role_customer WHERE CustomerID = ?";
+            
+            PreparedStatement pstmt = dbConn.prepareStatement(query);
+            pstmt.setInt(1, customerId);
+            
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int roleId = rs.getInt("RoleID");
+                System.out.println("Found role ID " + roleId + " for customer ID " + customerId);
+                return roleId;
+            } else {
+                System.out.println("No role found for customer ID: " + customerId);
+                return -1;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("SQL Exception getting role ID by customer ID: " + e.getMessage());
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    public int getRoleIdByAdminId(int adminId) {
+        if (isConnectionError || dbConn == null) {
+            System.out.println("Database connection error!");
+            return -1;
+        }
+        
+        try {
+            // Option 1: If you have a role_admin table
+            String query = "SELECT RoleID FROM role_admin WHERE AdminID = ?";
+            
+            PreparedStatement pstmt = dbConn.prepareStatement(query);
+            pstmt.setInt(1, adminId);
+            
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int roleId = rs.getInt("RoleID");
+                System.out.println("Found role ID " + roleId + " for admin ID " + adminId);
+                return roleId;
+            } else {
+                System.out.println("No role found for admin ID: " + adminId);
+                return -1;
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("SQL Exception getting role ID by admin ID: " + e.getMessage());
+            e.printStackTrace();
+            
+            // Option 2: If there's no role_admin table, you might want to return a default admin role ID
+            // You could query the roles table to get the admin role ID by role type
+            try {
+                String fallbackQuery = "SELECT RoleID FROM roles WHERE RoleType = 'Admin' LIMIT 1";
+                PreparedStatement fallbackStmt = dbConn.prepareStatement(fallbackQuery);
+                ResultSet fallbackRs = fallbackStmt.executeQuery();
+                
+                if (fallbackRs.next()) {
+                    int roleId = fallbackRs.getInt("RoleID");
+                    System.out.println("Using default admin role ID: " + roleId);
+                    return roleId;
+                }
+            } catch (SQLException ex) {
+                System.out.println("Fallback query also failed: " + ex.getMessage());
+            }
+            
+            return -1;
+        }
+    }
+    
 }

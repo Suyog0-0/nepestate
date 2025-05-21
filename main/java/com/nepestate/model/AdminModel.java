@@ -1,6 +1,7 @@
 package com.nepestate.model;
 
 public class AdminModel {
+	private int AdminID;
 	private String Admin_FirstName;
 	private String Admin_LastName;
 	private String Admin_Username;
@@ -9,11 +10,13 @@ public class AdminModel {
 	private String Admin_ProfilePicture;
 	private String Admin_PhoneNumber;
 	
+	
 	public AdminModel() {}
 	
 	public AdminModel(String admin_FirstName, String admin_LastName, String admin_Username,
 			String admin_EmailAddress, String admin_Password, String admin_ProfilePicture, String admin_PhoneNumber) {
 		super();
+		
 		Admin_FirstName = admin_FirstName;
 		Admin_LastName = admin_LastName;
 		Admin_Username = admin_Username;
@@ -68,5 +71,13 @@ public class AdminModel {
 	public AdminModel(String username, String password) {
 		this.Admin_Username = username;
 		this.Admin_Password = password;
+	}
+
+	public int getAdminID() {
+		return AdminID;
+	}
+
+	public void setAdminID(int adminID) {
+		AdminID = adminID;
 	}
 }

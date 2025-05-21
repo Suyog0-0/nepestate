@@ -39,6 +39,7 @@ public class AuthenticationFilter implements Filter {
     private static final String POST_PROPERTY        = "/PostPropertyController";
     private static final String UPDATE_PROPERTY      = "/UpdatePropertyController";
     private static final String REGISTER      = "/RegisterController";
+    
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

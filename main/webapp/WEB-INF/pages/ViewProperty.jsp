@@ -156,7 +156,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
         
         <div class="listing">
     		<c:forEach var="p" items="${propertyList}">
-        		<a href="#">
+        		<a href="${pageContext.request.contextPath}/ViewPropertySPController?propertyId=${p.propertyID}" >
            			<div class="card">
                 <%-- <img src="${pageContext.request.contextPath}/images/${p.image}" alt="Image"> --%>
                 		<div class="card-content">
