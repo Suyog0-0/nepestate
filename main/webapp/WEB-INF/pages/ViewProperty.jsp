@@ -28,76 +28,14 @@ href="${pageContext.request.contextPath}/css/Footer.css">
 </head>
 <body>
 	<jsp:include page="Navbar.jsp" />
-	<%-- <div style="display: flex; margin-top: 12px;">
-       <div class="filter">
-            <div>
-                <h2>Filter Properties</h2>
-                    <div class="filter_button">
-                        <div>
-                            <h4 style="margin-bottom: 10px;">Properties By</h4>
-                            <button>By Nepestate</button>
-                            <button>By Owners</button>
-                        </div>
-                    </div>
-            </div>
-            
-            <div>
-                <h2 style="margin-top: 25px;">Location</h2>
-                <div>
-                    <label for="location"></label>
-						<div>
-						  <input list="location-options" id="locations" name="locations" class="combobox">
-						  <datalist id="location-options">
-						    <option value="">All locations</option>
-						    <c:forEach var="l" items="${locationList}">
-						      <option value="${l.property_City}">${l.property_City}</option>
-						    </c:forEach>
-						  </datalist>
-					</div>
-                </div>
-            </div>
-    
-            <div>
-                <h2 style="margin-top: 25px;">Category</h2>
-                <div>
-                    <button>Housing</button>
-                    <button>Appartment</button>
-                    <button style="margin-top: 10px; margin-left:70px">House</button>
-                </div>
-            </div>
-    
-            <div>
-                <h2 style="margin-top: 25px;">Filter by Price</h2>
-                <div>
-                    <button>Low-High</button>
-                    <button>High-Low</button>
-                </div>
-            </div>
-             	<div style="margin-top: 25px; padding:15px">
-			    	<button id="apply-filters" class="apply-btn" style="margin-left:25px;">Apply Filters</button>
-			    	<button id="reset-filters" class="reset-btn">Reset</button>
-			  </div>
-        </div> --%>
+	
         <div style="display: flex; margin-top: 12px;">
         <!-- Filter Section -->
         <div class="filter">
             <form action="${pageContext.request.contextPath}/ViewPropertyController" method="get">
                 <div>
                     <h2>Filter Properties</h2>
-                    <div class="filter_button">
-                        <div>
-                            <h4 style="margin-bottom: 10px;">Properties By</h4>
-                            <div class="sourceStyling">
-                                <input type="radio" id="nepestate" name="source" value="Nepestate" class="feature-checkbox" 
-                                    <c:if test="${selectedSource == 'Nepestate'}">checked</c:if>>
-                                <label for="nepestate" class="feature-label">By Nepestate</label>
-                                
-                                <input type="radio" id="owners" name="source" value="Owners" class="feature-checkbox"
-                                    <c:if test="${selectedSource == 'Owners'}">checked</c:if>>
-                                <label for="owners" class="feature-label">By Owners</label>
-                            </div>
-                        </div>
-                    </div>
+               
                 </div>
                 
                 <div>
@@ -158,7 +96,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
     		<c:forEach var="p" items="${propertyList}">
         		<a href="${pageContext.request.contextPath}/ViewPropertySPController?propertyId=${p.propertyID}" >
            			<div class="card">
-                <%-- <img src="${pageContext.request.contextPath}/images/${p.image}" alt="Image"> --%>
+                 <img src="${pageContext.request.contextPath}${p.property_Photos}" alt="Image"> 
                 		<div class="card-content">
                     		<h3>Rs.${p.property_Price}</h3>
                     <%-- <span class="tag">${p.}</span> --%>

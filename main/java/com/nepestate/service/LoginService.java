@@ -43,6 +43,7 @@ public class LoginService {
                         Objects.equals(dbPass, adminModel.getAdmin_Password())) {
 
                     AdminModel fullAdmin = new AdminModel();
+                    fullAdmin.setAdminID(rs.getInt("AdminID"));
                     fullAdmin.setAdmin_FirstName(rs.getString("Admin_FirstName"));
                     fullAdmin.setAdmin_LastName(rs.getString("Admin_LastName"));
                     fullAdmin.setAdmin_Username(dbUser);

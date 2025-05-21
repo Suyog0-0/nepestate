@@ -1,6 +1,10 @@
 	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	    pageEncoding="UTF-8"%>
 	    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	    <%
+	    String successMessage = (String) request.getAttribute("successMessage");
+	    String errorMessage = (String) request.getAttribute("errorMessage");
+	    %>
 	<!DOCTYPE html>
 	<html>
 	<head>
@@ -25,16 +29,37 @@
 	      flex-direction: column;
 	      gap: 5px;
 	  }
+	  .message {
+	padding: 10px;
+    margin: 10px 0;
+	border-radius: 5px
+	}
+	.success {
+		background-color: #d4edda;
+		color: #155724;
+		border: 1px solid #c3e6cb;
+	}
+	.error {
+		background-color: #f8d7da;
+		color: #721c24;
+		border: 1px solid #f5c6cb;
+	}
 	  </style>
 	
 	<body>
 	<jsp:include page="Navbar.jsp"/>
+	 <c:if test="${not empty successMessage}">
+                <div class="message success">${successMessage}</div>
+            </c:if>
+            <c:if test="${not empty errorMessage}">
+                <div class="message error">${errorMessage}</div>
+            </c:if>	
 	<div class="mainSquare mainSquareHeight">
 	<form action="${pageContext.request.contextPath}/PostPropertyController" method="post"  enctype="multipart/form-data">
 	    <div class="subRow">
 	      <span style="font-family: Arial, sans-serif; font-size: 30px; font-weight:700;">POST PROPERTY</span>
 	    </div>
-	
+		
 	    <div class="subRowFirst">
 	      <span style="font-family: Arial, sans-serif; font-size: 24px;">Basic Details</span>
 	    </div>
