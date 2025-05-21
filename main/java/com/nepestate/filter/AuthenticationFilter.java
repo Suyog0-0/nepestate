@@ -12,6 +12,7 @@ public class AuthenticationFilter implements Filter {
 
     // Constants for various routes
     private static final String LOGIN_CONTROLLER     = "/LoginController";
+    private static final String REGISTER_CONTROLLER     = "/RegisterController";
     private static final String LOGOUT               = "/Logout";
     private static final String HOME                 = "/";
     private static final String HOME_CONTROLLER      = "/HomeController";
@@ -147,6 +148,7 @@ public class AuthenticationFilter implements Filter {
      // 4c) NOT LOGGED IN
      // Allow only public pages: login controller, home, and success/error pages
      if (path.equals(LOGIN_CONTROLLER) ||
+    	 path.equals(REGISTER_CONTROLLER) ||
          path.equals(HOME)             ||
          path.equals(HOME_CONTROLLER)  ||
          path.equals(CONTACTUS)        ||
