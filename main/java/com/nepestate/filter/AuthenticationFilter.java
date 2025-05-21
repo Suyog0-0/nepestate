@@ -20,6 +20,7 @@ public class AuthenticationFilter implements Filter {
     private static final String VIEWPROPERTY         = "/ViewPropertyController";
     private static final String VIEWPROPERTYSP       = "/ViewPropertySPController";
     private static final String SEARCH_CONTROLLER    = "/SearchController"; // Add SearchController constant
+    private static final String FAVOURITE_CONTROLLER = "/FavouriteController"; // Add FavouriteController constant
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -31,10 +32,8 @@ public class AuthenticationFilter implements Filter {
     private static final String USER_DASH            = "/UserDashboardController";
     private static final String USER_PROFILE         = "/UserProfileController";
     private static final String CONTACT_LIST         = "/ContactListingController";
-    private static final String FAVOURITE            = "/FavouriteController";
     private static final String POST_PROPERTY        = "/PostPropertyController";
     private static final String UPDATE_PROPERTY      = "/UpdatePropertyController";
-    
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -92,8 +91,9 @@ public class AuthenticationFilter implements Filter {
                 path.equals(ABOUTUS)         ||
                 path.equals(VIEWPROPERTY)    ||
                 path.equals(VIEWPROPERTYSP)  ||
-                path.equals(SEARCH_CONTROLLER) || // Add SearchController
+                path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)   ||
+                path.equals(FAVOURITE_CONTROLLER) || // Add FavouriteController
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
@@ -122,10 +122,10 @@ public class AuthenticationFilter implements Filter {
                 path.equals(ABOUTUS)          ||
                 path.equals(VIEWPROPERTY)     ||
                 path.equals(VIEWPROPERTYSP)   ||
-                path.equals(SEARCH_CONTROLLER) || // Add SearchController
+                path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)    ||
                 path.equals(UPDATE_PROPERTY)  ||
-                path.equals(FAVOURITE)) {
+                path.equals(FAVOURITE_CONTROLLER)) { // Add FavouriteController
                 chain.doFilter(request, response);
             } else {
                 // Any other URL → back to home
@@ -143,8 +143,9 @@ public class AuthenticationFilter implements Filter {
             path.equals(ABOUTUS)          ||
             path.equals(VIEWPROPERTY)     ||
             path.equals(VIEWPROPERTYSP)   ||
-            path.equals(SEARCH_CONTROLLER) || // Add SearchController
-            path.equals(POST_PROPERTY)) {
+            path.equals(SEARCH_CONTROLLER) || 
+            path.equals(POST_PROPERTY)    ||
+            path.equals(FAVOURITE_CONTROLLER)) { // Add FavouriteController
             chain.doFilter(request, response);
         } else {
             res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
