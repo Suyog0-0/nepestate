@@ -3,8 +3,9 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.nepestate.model.PropertyModel" %>
 <%
-    List<PropertyModel> users = (List<PropertyModel>) request.getAttribute("propertyList");
-%>
+List<PropertyModel> propertyList = (List<PropertyModel>) request.getAttribute("propertyList");
+String userType = (String) request.getAttribute("userType");
+   %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,22 +21,34 @@
     <!-- Main Layout -->
     <div class="main-container">
         
-        <!-- Sidebar -->
-        <jsp:include page="AdminSidebar.jsp"/>
+	  <c:choose>
+	    <c:when test="${userType == 'admin'}">
+	        <jsp:include page="AdminSidebar.jsp"/>
+	    </c:when>
+	    <c:when test="${userType == 'customer'}">
+	        <jsp:include page="UserSidebar.jsp"/>
+	    </c:when>
+	</c:choose>
         
         <!-- Content -->
         <main class="property-list">
             <div class="property-header">
                 <h1>Property List</h1>
+             <c:if test="${userType == 'admin' || userType == 'customer'}">
                 <div class="property-controls">
                     <button class="new-btn"><a href="${pageContext.request.contextPath}/PostPropertyController">+ New Property</a></button>
                 </div>
+             </c:if>
             </div>
 
+	<c:choose>
+    	<c:when test="${propertyList != null && not empty propertyList}">
             <table class="property-table">
                 <thead>
                     <tr>
+                     <c:if test="${userType == 'admin'}">
                         <th><input type="checkbox"></th>
+                      </c:if>
                         <th>Property Image</th>
                         <th>Address</th>
                         <th>Type</th>
@@ -47,7 +60,9 @@
                 <tbody>
                     <c:forEach var="p" items="${propertyList}">
                         <tr>
+                        <c:if test="${userType == 'admin'}">
                             <td><input type="checkbox" /></td>
+                         </c:if>
                             <%-- <td><img src="${pageContext.request.contextPath}/images/${p.image}" class="property-img" alt="Image"></td> --%>
                             <td><img src="${pageContext.request.contextPath}/images/house1.webp" class="property-img" /></td>
                             <td>${p.property_Address}</td>
@@ -69,7 +84,14 @@
                     </c:forEach>
                 </tbody>
             </table>
-            
+         </c:when>
+        <c:otherwise>
+        <!-- No properties found message -->
+        <div class="no-properties">
+            <h3>No Properties Found</h3>
+            </div>
+         </c:otherwise>
+       </c:choose>
             <div class="entries-dropdown">
             </div>
         </main>

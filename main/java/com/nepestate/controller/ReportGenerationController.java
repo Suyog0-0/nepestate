@@ -5,6 +5,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+
 import java.io.IOException;
 
 /**
@@ -27,7 +29,17 @@ public class ReportGenerationController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.getRequestDispatcher("/WEB-INF/pages/ReportGeneration.jsp").forward(request, response);
+		 HttpSession session = request.getSession(false);
+
+		    if (session != null) {
+		        if (session.getAttribute("loggedInAdmin") != null) {
+		            request.setAttribute("userType", "admin");
+		        } else if (session.getAttribute("loggedInCustomer") != null) {
+		            request.setAttribute("userType", "customer");
+		        }
+		    }
+
+		    request.getRequestDispatcher("/WEB-INF/pages/ReportGeneration.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+String userType = (String) request.getAttribute("userType");
+   %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +19,16 @@ href="${pageContext.request.contextPath}/css/Footer.css">
 <body>
 	<jsp:include page="Navbar.jsp" />
 	<div style="display:flex;">
-		<jsp:include page="AdminSidebar.jsp" />
+	        
+	<c:choose>
+    <c:when test="${userType == 'admin'}">
+        <jsp:include page="AdminSidebar.jsp"/>
+    </c:when>
+    <c:when test="${userType == 'customer'}">
+        <jsp:include page="UserSidebar.jsp"/>
+    </c:when>
+</c:choose>
+        
 		<div class="rightbox">
             <div style="margin-left: 7%;">
                 <div>

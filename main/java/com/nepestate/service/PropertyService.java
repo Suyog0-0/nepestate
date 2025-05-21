@@ -500,6 +500,46 @@ public class PropertyService {
         return properties;
     }
     
+    
+    public List<PropertyModel> getPropertyByCustomerId(int customerId) {
+        if (isConnectionError) {
+            System.out.println("Database connection error!");
+            return new ArrayList<>();
+        }
+
+        List<PropertyModel> properties = new ArrayList<>();
+        
+        System.out.println("Fetching properties for customer ID: " + customerId);
+
+        // Modified query to get properties based on role associations
+        String query = """
+            SELECT DISTINCT p.* 
+            FROM property p 
+            INNER JOIN role_property rp ON p.PropertyID = rp.PropertyID 
+            INNER JOIN role_customer rc ON rp.RoleID = rc.RoleID 
+            WHERE rc.CustomerID = ? 
+            ORDER BY p.Property_DateAdded DESC
+        """;
+
+        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
+            stmt.setInt(1, customerId);
+            
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    PropertyModel property = mapResultSetToPropertyModel(rs);
+                    properties.add(property);
+                }
+                System.out.println("Customer " + customerId + ": Fetched " + properties.size() + " properties");
+            }
+            
+        } catch (SQLException e) {
+            System.out.println("SQL Exception occurred while fetching customer properties: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return properties;
+    }
+    
 
     /**
      * Retrieves featured properties from the database
