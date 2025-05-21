@@ -128,10 +128,10 @@ public class DashboardService {
             return 0;
         }
 
-        String query = "SELECT COUNT(DISTINCT c.PropertyID) AS PropertiesUploaded" +
-                "FROM customers c " +
-                "JOIN property p ON c.PropertyID = p.PropertyID " +
-                "WHERE c.CustomerID = ?";
+        String query = "SELECT COUNT(DISTINCT rp.PropertyID) AS UploadCount " +
+                "FROM role_customer rc " +
+                "JOIN role_property rp ON rc.RoleID = rp.RoleID " +
+                "WHERE rc.CustomerID = ?";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, customerId);
