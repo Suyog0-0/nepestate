@@ -226,24 +226,28 @@ public class PropertyService {
         }
         return properties;
     }
-
-    // Method to search properties based on query
-    public List<PropertyModel> searchProperties(String searchQuery) {
+ // Method to search properties based on query from search bar
+    public List<PropertyModel> searchBarProperties(String searchQuery) {
         List<PropertyModel> properties = new ArrayList<>();
         try {
+            // Removed 'Property_State' from the query since it doesn't appear to be in your model
             String sql = "SELECT * FROM property WHERE " +
-                         "property_title LIKE ? OR " +
-                         "property_description LIKE ? OR " +
-                         "property_address LIKE ? OR " +
-                         "property_city LIKE ? OR " +
-                         "property_state LIKE ? OR " +
-                         "property_type LIKE ?";
+                         "LOWER(Property_Title) LIKE ? OR " +
+                         "LOWER(Property_Description) LIKE ? OR " +
+                         "LOWER(Property_Address) LIKE ? OR " +
+                         "LOWER(Property_City) LIKE ? OR " +
+                         "LOWER(Property_Type) LIKE ?";
             
             try (PreparedStatement ps = dbConn.prepareStatement(sql)) {
-                String likeParam = "%" + searchQuery + "%";
-                for (int i = 1; i <= 6; i++) {
+                String likeParam = "%" + searchQuery.toLowerCase().trim() + "%";
+                // Adjusted to match the number of parameters in the SQL query
+                for (int i = 1; i <= 5; i++) {
                     ps.setString(i, likeParam);
                 }
+                
+                // Debug the SQL query and parameters
+                System.out.println("Search SQL: " + sql);
+                System.out.println("Search Parameter: " + likeParam);
                 
                 try (ResultSet rs = ps.executeQuery()) {
                     while (rs.next()) {
@@ -696,51 +700,63 @@ public class PropertyService {
             return new ArrayList<>();
         }
         
-        List<PropertyModel> properties = new ArrayList<>();
-        StringBuilder queryBuilder = new StringBuilder("SELECT * FROM property WHERE 1=1");
+        List<PropertyModel> propertyList = new ArrayList<>();
+        StringBuilder sql = new StringBuilder("SELECT * FROM property WHERE 1=1");
         List<Object> params = new ArrayList<>();
         
-        // Add filter conditions based on provided parameters
+        // Add filter conditions
         if (source != null && !source.isEmpty()) {
-            queryBuilder.append(" AND Property_Source = ?");
+            // Note: You might need to adjust this based on your actual schema
+            // If there's no Property_Source column, you should remove this condition
+            sql.append(" AND Property_Source = ?");
             params.add(source);
         }
         
         if (location != null && !location.isEmpty()) {
-            queryBuilder.append(" AND Property_City = ?");
-            params.add(location);
+            sql.append(" AND LOWER(Property_City) LIKE ?");
+            params.add("%" + location.toLowerCase() + "%");
         }
         
         if (category != null && !category.isEmpty()) {
-            queryBuilder.append(" AND Property_Type = ?");
+            sql.append(" AND Property_Type = ?");
             params.add(category);
         }
         
-        // Add sorting by price if specified
+        // Add sorting
         if (priceSort != null && !priceSort.isEmpty()) {
-            if (priceSort.equals("Low-High")) {
-                queryBuilder.append(" ORDER BY Property_Price ASC");
-            } else if (priceSort.equals("High-Low")) {
-                queryBuilder.append(" ORDER BY Property_Price DESC");
+            if (priceSort.equalsIgnoreCase("asc")) {
+                sql.append(" ORDER BY Property_Price ASC");
+            } else if (priceSort.equalsIgnoreCase("desc")) {
+                sql.append(" ORDER BY Property_Price DESC");
             }
         }
         
-        try (PreparedStatement stmt = dbConn.prepareStatement(queryBuilder.toString())) {
+        System.out.println("Advanced search SQL: " + sql.toString());
+        System.out.println("Parameters: " + params);
+        
+        try (PreparedStatement stmt = dbConn.prepareStatement(sql.toString())) {
             // Set parameters
             for (int i = 0; i < params.size(); i++) {
-                stmt.setObject(i + 1, params.get(i));
+                Object param = params.get(i);
+                if (param instanceof String) {
+                    stmt.setString(i + 1, (String) param);
+                } else if (param instanceof Float) {
+                    stmt.setFloat(i + 1, (Float) param);
+                }
             }
             
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                PropertyModel property = mapResultSetToPropertyModel(rs);
-                properties.add(property);
+            // Execute query
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    PropertyModel property = mapResultSetToPropertyModel(rs);
+                    propertyList.add(property);
+                }
             }
         } catch (SQLException e) {
-            System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
+            System.err.println("SQL Error in advancedSearch: " + e.getMessage());
         }
         
-        return properties;
+        return propertyList;
     }
 }

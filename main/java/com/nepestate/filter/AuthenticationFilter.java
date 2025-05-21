@@ -19,8 +19,8 @@ public class AuthenticationFilter implements Filter {
     private static final String ABOUTUS 			 = "/AboutUsController";
     private static final String VIEWPROPERTY         = "/ViewPropertyController";
     private static final String VIEWPROPERTYSP       = "/ViewPropertySPController";
-    private static final String SEARCH_CONTROLLER    = "/SearchController"; // Add SearchController constant
-    private static final String FAVOURITE_CONTROLLER = "/FavouriteController"; // Add FavouriteController constant
+    private static final String SEARCH_CONTROLLER    = "/SearchController";
+    private static final String FAVOURITE_CONTROLLER = "/FavouriteController";
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -93,7 +93,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(VIEWPROPERTYSP)  ||
                 path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)   ||
-                path.equals(FAVOURITE_CONTROLLER) || // Add FavouriteController
+                path.equals(FAVOURITE_CONTROLLER) ||
                 path.equals(HOME_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
@@ -125,7 +125,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(SEARCH_CONTROLLER) || 
                 path.equals(POST_PROPERTY)    ||
                 path.equals(UPDATE_PROPERTY)  ||
-                path.equals(FAVOURITE_CONTROLLER)) { // Add FavouriteController
+                path.equals(FAVOURITE_CONTROLLER)) {
                 chain.doFilter(request, response);
             } else {
                 // Any other URL → back to home
@@ -145,7 +145,7 @@ public class AuthenticationFilter implements Filter {
             path.equals(VIEWPROPERTYSP)   ||
             path.equals(SEARCH_CONTROLLER) || 
             path.equals(POST_PROPERTY)    ||
-            path.equals(FAVOURITE_CONTROLLER)) { // Add FavouriteController
+            path.equals(FAVOURITE_CONTROLLER)) {
             chain.doFilter(request, response);
         } else {
             res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);

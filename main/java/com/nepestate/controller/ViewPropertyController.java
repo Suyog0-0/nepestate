@@ -30,71 +30,57 @@ public class ViewPropertyController extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		PropertyService propertyListService = new PropertyService();
-//        List<PropertyModel> propertyList = propertyListService.getAllProperties();
-//        request.setAttribute("propertyList", propertyList);
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/ViewProperty.jsp");
-//        dispatcher.forward(request, response);
-//        request.getRequestDispatcher("/WEB-INF/pages/ViewProperty.jsp").forward(request, response);
-		PropertyService propertyService = new PropertyService();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        PropertyService propertyService = new PropertyService();
         List<PropertyModel> propertyList;
         List<PropertyModel> locationList = propertyService.getAllLocations();
-        
+
+        // Get search parameter first
+        String searchQuery = request.getParameter("search");
+
+        // Get filter parameters
+        String source = request.getParameter("source");
+        String location = request.getParameter("location");
+        String category = request.getParameter("category");
+        String priceSort = request.getParameter("priceSort");
+
         // Check if reset was requested
         String reset = request.getParameter("reset");
+
+        // Debug output - check filter parameters
+        System.out.println("Filter parameters - Source: " + source + ", Location: " + location + 
+                          ", Category: " + category + ", PriceSort: " + priceSort);
+
         if (reset != null && reset.equals("true")) {
             // Reset filters - get all properties
             propertyList = propertyService.getAllProperties();
-        } else {
-            // Get filter parameters
-            String source = request.getParameter("source");
-            String location = request.getParameter("location");
-            String category = request.getParameter("category");
-            String priceSort = request.getParameter("priceSort");
-            
-            // Store selected filter values to repopulate form
-            request.setAttribute("selectedSource", source);
-            request.setAttribute("selectedLocation", location);
-            request.setAttribute("selectedCategory", category);
-            request.setAttribute("selectedPriceSort", priceSort);
-            
-            // If any filter is set, get filtered results
-            if ((source != null && !source.isEmpty()) || 
-                (location != null && !location.isEmpty()) || 
-                (category != null && !category.isEmpty()) || 
-                (priceSort != null && !priceSort.isEmpty())) {
-                
-                propertyList = propertyService.advancedSearch(source, location, category, priceSort);
-            } else {
-                // No filters set, get all properties
-                propertyList = propertyService.getAllProperties();
-            }
-        }
-        
-        // Check if there's a search parameter
-        String searchQuery = request.getParameter("search");
-        
-        List<PropertyModel> properties;
-        
-        if (searchQuery != null && !searchQuery.trim().isEmpty()) {
-            // If there's a search query, filter properties based on the search term
-            properties = propertyService.searchProperties(searchQuery);
-            // Pass the search query back to the JSP to display it in the search results
+            System.out.println("Filters reset - All properties count: " + 
+                              (propertyList != null ? propertyList.size() : "null"));
+        } else if (source != null || location != null || category != null || priceSort != null) {
+            // Apply filters if any filter parameter is present
+            propertyList = propertyService.advancedSearch(source, location, category, priceSort);
+            System.out.println("Filters applied - Results count: " + 
+                              (propertyList != null ? propertyList.size() : "null"));
+        } else if (searchQuery != null && !searchQuery.trim().isEmpty()) {
+            // Apply search if search query is present
+            propertyList = propertyService.searchBarProperties(searchQuery);
             request.setAttribute("searchQuery", searchQuery);
+            System.out.println("Search applied - Query: " + searchQuery + ", Results count: " + 
+                              (propertyList != null ? propertyList.size() : "null"));
         } else {
-            // Otherwise, get all properties
-            properties = propertyService.getAllProperties();
+            // Default to all properties if no filters or search query
+            propertyList = propertyService.getAllProperties();
+            System.out.println("No filters - All properties count: " + 
+                              (propertyList != null ? propertyList.size() : "null"));
         }
-        
+
         // Set attributes and forward to the JSP
         request.setAttribute("propertyList", propertyList);
         request.setAttribute("locationList", locationList);
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/pages/ViewProperty.jsp");
         dispatcher.forward(request, response);
-	}
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
@@ -103,10 +89,4 @@ public class ViewPropertyController extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	
-	
-	
-
 }
-
