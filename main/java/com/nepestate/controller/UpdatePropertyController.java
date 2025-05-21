@@ -174,7 +174,7 @@ public class UpdatePropertyController extends HttpServlet {
 				List<String> selectedAmenities = getSelectedAmenitiesFromRequest(req);
 			    req.setAttribute("amenities", selectedAmenities);
 				req.getRequestDispatcher("/WEB-INF/pages/UpdateProperty.jsp").forward(req, resp);
-			
+
 			}
 			private List<String> getSelectedAmenitiesFromRequest(HttpServletRequest request) {
 			    List<String> selectedAmenities = new ArrayList<>();
@@ -201,6 +201,7 @@ public class UpdatePropertyController extends HttpServlet {
 			    if (request.getParameter("amenity_washing_machine") != null) selectedAmenities.add("washing-machine");
 			    return selectedAmenities;
 			}
+			
 			private PropertyModel updatePropertyFromRequest(HttpServletRequest request) {
 				
 				int propertyId= Integer.parseInt(request.getParameter("propertyId"));

@@ -1,28 +1,16 @@
 package com.nepestate.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import com.nepestate.model.CustomerModel;
 import com.nepestate.model.PropertyModel;
-import com.mysql.cj.jdbc.result.ResultSetMetaData;
 import com.nepestate.config.DbConfig;
 
 public class PropertyService {
-
     private Connection dbConn;
     private boolean isConnectionError = false;
 
-    /**
-     * Constructor initializes the database connection. Sets the connection error
-     * flag if the connection fails.
-     */
     public PropertyService() {
         try {
             dbConn = DbConfig.getDbConnection();
@@ -30,28 +18,18 @@ public class PropertyService {
             ex.printStackTrace();
             isConnectionError = true;
         }
-        
-        
     }
-    
-    /**
-     * Adds a new property to the database
-     * 
-     * @param propertyModel The property details to be added
-     * @return The ID of the newly added property, or -1 if an error occurred
-     */
-    public Boolean addProperty(PropertyModel propertyModel) {
+
+    // Adds a new property to the database
+    public boolean addProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
-            return null;
+            return false;
         }
-
-     
         String query = "INSERT INTO property (Property_Title, Property_Type, Property_Price, " +
                 "Property_Area, Property_Address, Property_City, " +
                 "Property_Status, Property_Description, Property_Amentities, " +
                 "Property_DateAdded, Property_Photos) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
         try (PreparedStatement stmt = dbConn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, propertyModel.getProperty_Title());
             stmt.setString(2, propertyModel.getProperty_Type());
@@ -62,43 +40,27 @@ public class PropertyService {
             stmt.setString(7, propertyModel.getProperty_Status());
             stmt.setString(8, propertyModel.getProperty_Description());
             stmt.setString(9, propertyModel.getProperty_Amentities());
-            
-          
             java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
             stmt.setDate(10, sqlDate);
-            
             stmt.setString(11, propertyModel.getProperty_Photos());
-
-            int affectedRows = stmt.executeUpdate();
-            return affectedRows > 0; 
-            
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
-            return null; 
+            return false;
         }
     }
 
-    /**
-     * Retrieves a property by its ID
-     * 
-     * @param propertyId The ID of the property to retrieve
-     * @return The PropertyModel if found, null otherwise
-     */
+    // Retrieves a property by its ID
     public PropertyModel getPropertyById(int propertyId) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
             return null;
         }
-
         String query = "SELECT * FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
-            
-            System.out.println("Executing query: " + query + " with propertyId = " + propertyId);
-            
             ResultSet rs = stmt.executeQuery();
-
             if (rs.next()) {
                 PropertyModel property = new PropertyModel();
                 property.setPropertyID(rs.getInt("PropertyID"));
@@ -113,48 +75,31 @@ public class PropertyService {
                 property.setProperty_Amentities(rs.getString("Property_Amentities"));
                 property.setProperty_DateAdded(rs.getDate("Property_DateAdded"));
                 property.setProperty_Photos(rs.getString("Property_Photos"));
-                
-                // Check if CustomerID column exists in the result set
                 try {
-                    int customerId = rs.getInt("CustomerID");
-                    property.setCustomerID(customerId);
-                    System.out.println("CustomerID found in result set: " + customerId);
+                    property.setCustomerID(rs.getInt("CustomerID"));
                 } catch (SQLException e) {
-                    System.out.println("CustomerID column not found in property table: " + e.getMessage());
-                    // Set a default customerID or handle the issue accordingly
-                    property.setCustomerID(0); // Default value
+                    property.setCustomerID(0);
                 }
-                
                 return property;
-            } else {
-                System.out.println("No property found with ID: " + propertyId);
             }
         } catch (SQLException e) {
-            System.out.println("SQL Exception occurred in getPropertyById: " + e.getMessage());
+            System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
         }
-
         return null;
     }
-    /**
-     * Updates an existing property in the database
-     * 
-     * @param propertyModel The property details to be updated
-     * @return true if update was successful, false otherwise
-     */
+
+    // Updates an existing property
     public boolean updateProperty(PropertyModel propertyModel) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
             return false;
         }
-
-        
         String query = "UPDATE property SET Property_Title = ?, Property_Type = ?, " +
                 "Property_Price = ?, Property_Area = ?, Property_Address = ?, " +
-                "Property_City = ?," +
-                "Property_Status = ?, Property_Description = ?, Property_Amentities = ?, " +
-                "Property_DateAdded = ?, Property_Photos = ? WHERE PropertyID = ?";
-
+                "Property_City = ?, Property_Status = ?, Property_Description = ?, " +
+                "Property_Amentities = ?, Property_DateAdded = ?, Property_Photos = ? " +
+                "WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setString(1, propertyModel.getProperty_Title());
             stmt.setString(2, propertyModel.getProperty_Type());
@@ -165,15 +110,10 @@ public class PropertyService {
             stmt.setString(7, propertyModel.getProperty_Status());
             stmt.setString(8, propertyModel.getProperty_Description());
             stmt.setString(9, propertyModel.getProperty_Amentities());
-   
-            java.sql.Date sqlDate = new java.sql.Date(propertyModel.getProperty_DateAdded().getTime());
-            stmt.setDate(10, sqlDate);
-            
+            stmt.setDate(10, new java.sql.Date(propertyModel.getProperty_DateAdded().getTime()));
             stmt.setString(11, propertyModel.getProperty_Photos());
             stmt.setInt(12, propertyModel.getPropertyID());
-
-            int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0; 
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
@@ -181,24 +121,16 @@ public class PropertyService {
         }
     }
 
-    /**
-     * Deletes a property from the database
-     * 
-     * @param propertyId The ID of the property to delete
-     * @return true if deletion was successful, false otherwise
-     */
+    // Deletes a property
     public boolean deleteProperty(int propertyId) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
             return false;
         }
-
-        
         String query = "DELETE FROM property WHERE PropertyID = ?";
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setInt(1, propertyId);
-            int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
+            return stmt.executeUpdate() > 0;
         } catch (SQLException e) {
             System.out.println("SQL Exception occurred: " + e.getMessage());
             e.printStackTrace();
@@ -206,111 +138,53 @@ public class PropertyService {
         }
     }
 
-    /**
-     * Gets all properties from the database
-     * 
-     * @return List of PropertyModel objects
-     */
-    // Method to get all properties
+    // Gets all properties
     public List<PropertyModel> getAllProperties() {
         List<PropertyModel> properties = new ArrayList<>();
-        try {
-            String sql = "SELECT * FROM property";
-            try (PreparedStatement ps = dbConn.prepareStatement(sql);
-                 ResultSet rs = ps.executeQuery()) {
-                
-                while (rs.next()) {
-                    PropertyModel property = mapPropertyFromResultSet(rs);
-                    properties.add(property);
-                }
+        String sql = "SELECT * FROM property";
+        try (PreparedStatement ps = dbConn.prepareStatement(sql);
+             ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                properties.add(mapResultSetToPropertyModel(rs));
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return properties;
-    }
- // Method to search properties based on query from search bar
-    public List<PropertyModel> searchBarProperties(String searchQuery) {
-        List<PropertyModel> properties = new ArrayList<>();
-        try {
-            // Removed 'Property_State' from the query since it doesn't appear to be in your model
-            String sql = "SELECT * FROM property WHERE " +
-                         "LOWER(Property_Title) LIKE ? OR " +
-                         "LOWER(Property_Description) LIKE ? OR " +
-                         "LOWER(Property_Address) LIKE ? OR " +
-                         "LOWER(Property_City) LIKE ? OR " +
-                         "LOWER(Property_Type) LIKE ?";
-            
-            try (PreparedStatement ps = dbConn.prepareStatement(sql)) {
-                String likeParam = "%" + searchQuery.toLowerCase().trim() + "%";
-                // Adjusted to match the number of parameters in the SQL query
-                for (int i = 1; i <= 5; i++) {
-                    ps.setString(i, likeParam);
-                }
-                
-                // Debug the SQL query and parameters
-                System.out.println("Search SQL: " + sql);
-                System.out.println("Search Parameter: " + likeParam);
-                
-                try (ResultSet rs = ps.executeQuery()) {
-                    while (rs.next()) {
-                        PropertyModel property = mapPropertyFromResultSet(rs);
-                        properties.add(property);
-                    }
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return properties;
-    }
-    
-    // Helper method to map a ResultSet row to a PropertyModel object
-    private PropertyModel mapPropertyFromResultSet(ResultSet rs) throws SQLException {
-        PropertyModel property = new PropertyModel();
-        
-        // Set all properties from the result set
-        property.setPropertyID(rs.getInt("PropertyID"));
-        property.setProperty_Title(rs.getString("Property_Title"));
-        property.setProperty_Type(rs.getString("Property_Type"));
-        property.setProperty_Price(rs.getInt("Property_Price"));
-        property.setProperty_Area(rs.getFloat("Property_Area"));
-        property.setProperty_Address(rs.getString("Property_Address"));
-        property.setProperty_City(rs.getString("Property_City"));
-        property.setProperty_Status(rs.getString("Property_Status"));
-        property.setProperty_Description(rs.getString("Property_Description"));
-        property.setProperty_Amentities(rs.getString("Property_Amentities"));
-        property.setProperty_DateAdded(rs.getDate("Property_DateAdded"));
-        property.setProperty_Photos(rs.getString("Property_Photos"));
-        // Add any other fields your PropertyModel has
-        
-        return property;
-    }
-    
-    // Helper method to close database resources
-    private void closeResources(Connection conn, PreparedStatement ps, ResultSet rs) {
-        try {
-            if (rs != null) rs.close();
-            if (ps != null) ps.close();
-            if (conn != null) conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
-    /**
-     * Helper method to map a ResultSet to a PropertyModel
-     * 
-     * @param rs The ResultSet containing property data
-     * @return A PropertyModel object populated with data from the ResultSet
-     * @throws SQLException If a database access error occurs
-     */
+    // Search bar properties
+    public List<PropertyModel> searchBarProperties(String searchQuery) {
+        List<PropertyModel> properties = new ArrayList<>();
+        String sql = "SELECT * FROM property WHERE " +
+                "LOWER(Property_Title) LIKE ? OR " +
+                "LOWER(Property_Description) LIKE ? OR " +
+                "LOWER(Property_Address) LIKE ? OR " +
+                "LOWER(Property_City) LIKE ? OR " +
+                "LOWER(Property_Type) LIKE ?";
+        try (PreparedStatement ps = dbConn.prepareStatement(sql)) {
+            String likeParam = "%" + searchQuery.toLowerCase().trim() + "%";
+            for (int i = 1; i <= 5; i++) {
+                ps.setString(i, likeParam);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    properties.add(mapResultSetToPropertyModel(rs));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return properties;
+    }
+
+    // Helper method to map ResultSet to PropertyModel
     private PropertyModel mapResultSetToPropertyModel(ResultSet rs) throws SQLException {
         PropertyModel property = new PropertyModel();
         property.setPropertyID(rs.getInt("PropertyID"));
         property.setProperty_Title(rs.getString("Property_Title"));
         property.setProperty_Type(rs.getString("Property_Type"));
-        property.setProperty_Price(rs.getInt("Property_Price"));
+        property.setProperty_Price(rs.getFloat("Property_Price"));
         property.setProperty_Area(rs.getFloat("Property_Area"));
         property.setProperty_Address(rs.getString("Property_Address"));
         property.setProperty_City(rs.getString("Property_City"));
@@ -319,27 +193,23 @@ public class PropertyService {
         property.setProperty_Amentities(rs.getString("Property_Amentities"));
         property.setProperty_DateAdded(rs.getDate("Property_DateAdded"));
         property.setProperty_Photos(rs.getString("Property_Photos"));
-        
-        // Adding this line to set the CustomerID if it exists in the ResultSet
         if (hasColumn(rs, "CustomerID")) {
             property.setCustomerID(rs.getInt("CustomerID"));
         }
-        
         return property;
     }
-    
- // Helper method to check if a column exists in the ResultSet
+
+    // Check if a column exists in ResultSet
     private boolean hasColumn(ResultSet rs, String columnName) throws SQLException {
-        ResultSetMetaData rsmd = (ResultSetMetaData) rs.getMetaData();
-        int columns = rsmd.getColumnCount();
-        for (int i = 1; i <= columns; i++) {
+        ResultSetMetaData rsmd = rs.getMetaData();
+        for (int i = 1; i <= rsmd.getColumnCount(); i++) {
             if (columnName.equalsIgnoreCase(rsmd.getColumnName(i))) {
                 return true;
             }
         }
         return false;
     }
-    
+
     /**
      * Search properties based on various criteria
      * 
@@ -802,41 +672,4 @@ public class PropertyService {
         
         return propertyList;
     }
-    
-    
-    // Ensure CustomerService has getCustomerById method:
-    public CustomerModel getCustomerById(int customerId) {
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        CustomerModel customer = null;
-        
-        try {
-            conn = DbConfig.getDbConnection();
-            
-            String sql = "SELECT * FROM customers WHERE Customer_ID = ?";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, customerId);
-            
-            rs = ps.executeQuery();
-            
-            if (rs.next()) {
-                customer = new CustomerModel();
-                customer.setCustomerID(rs.getInt("Customer_ID"));
-                customer.setCustomer_FirstName(rs.getString("Customer_FirstName"));
-                customer.setCustomer_LastName(rs.getString("Customer_LastName"));
-                customer.setCustomer_EmailAddress(rs.getString("Customer_EmailAddress"));
-                customer.setCustomer_PhoneNumber(rs.getString("Customer_PhoneNumber"));
-                customer.setCustomer_ProfilePicture(rs.getString("Customer_ProfilePicture"));
-            }
-            
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-
-        }
-        
-        return customer;
-    }
-
 }
