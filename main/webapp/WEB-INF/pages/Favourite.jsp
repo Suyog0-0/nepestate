@@ -27,10 +27,22 @@
             <div class="favouriteText">My Favourites</div>
             <div class="favouriteUnderline"></div> <!-- For underline -->
 
+            <!-- Display success/error messages -->
+            <c:if test="${not empty sessionScope.message}">
+                <div class="success-message">${sessionScope.message}</div>
+                <% session.removeAttribute("message"); %>
+            </c:if>
+            
+            <c:if test="${not empty sessionScope.error}">
+                <div class="error-message">${sessionScope.error}</div>
+                <% session.removeAttribute("error"); %>
+            </c:if>
+
             <!-- Display message if no favourite properties -->
             <c:if test="${empty favouriteProperties}">
                 <div class="no-properties">
                     <p>No favourite properties found.</p>
+                    <p><a href="${contextPath}/ViewPropertyController">Browse Properties</a> to add some to your favorites!</p>
                 </div>
             </c:if>
 
@@ -38,23 +50,31 @@
             <c:forEach var="property" items="${favouriteProperties}">
                 <div class="property-item">
                     <div class="imageOfAndDetailsContainer">
-                        <img src="${contextPath}/images/${property.image}" class="propertyImage">
+                        <img src="${contextPath}${property.property_Photos}" class="propertyImage" alt="Property Image">
                         <div class="priceandlocation">
-                            <div class="price">Rs.${property.price}</div>
-                            <div class="location">${property.location}</div>
+                            <div class="price">Rs.${property.property_Price}</div>
+                            <div class="location">${property.property_Address}, ${property.property_City}</div>
                             <div class="statusContainer">
                                 <div class="status">
                                     <img src="${contextPath}/images/greentick.png" class="tickIcon">
-                                    <h1 class="statusText">${property.status}</h1>
+                                    <h1 class="statusText">${property.property_Status}</h1>
                                 </div>
                                 <div class="profileButtonContainer">
-                                    <button class="buyNowButton">Buy Now</button>
-                                    <button class="bookmarkButton">About</button>
+                                    <form action="${contextPath}/BuyNowController" method="post" style="display: inline;">
+                                        <input type="hidden" name="propertyId" value="${property.propertyID}" />
+                                        <button type="submit" class="buyNowButton">Buy Now</button>
+                                    </form>
+                                    <a href="${contextPath}/ViewPropertySPController?propertyId=${property.propertyID}" class="bookmarkButton">About</a>
                                 </div>
                             </div>
                         </div>
                         <div class="removeIconContainer">
-                            <img src="${contextPath}/images/removeIcon.png" class="removeIcon">
+                            <form action="${contextPath}/AddToFavoritesController" method="post" style="display: inline;">
+                                <input type="hidden" name="propertyId" value="${property.propertyID}" />
+                                <button type="submit" class="remove-button" title="Remove from favorites">
+                                    <img src="${contextPath}/images/removeIcon.png" class="removeIcon">
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -66,5 +86,47 @@
     <div class="footerSection">
         <jsp:include page="Footer.jsp" />
     </div>
+    
+    <style>
+        .remove-button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .no-properties {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .no-properties a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .no-properties a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </body>
 </html>

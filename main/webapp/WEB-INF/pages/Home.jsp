@@ -45,7 +45,7 @@
             <c:forEach var="property" items="${featuredProperties}">
                 <div class="propertyCard">
                     <div class="propertyImageContainer">
-                        <img src="${pageContext.request.contextPath}/images/${property.property_Photos}" 
+                        <img src="${pageContext.request.contextPath}${property.property_Photos}" 
                              alt="${property.property_Type} for sale" class="propertyImage">
                         <div class="saleTag">SALE!</div>
                     </div>
@@ -72,7 +72,7 @@
                     <c:forEach var="property" items="${moreProperties}">
                         <div class="propertyCardExpanded">
                             <div class="propertyImageWrapper">
-                                <img src="${pageContext.request.contextPath}/images/${property.property_Photos}" alt="Property">
+                                <img src="${pageContext.request.contextPath}${property.property_Photos}" alt="Property">
                                 <div class="propertyBadge">NEW</div>
                             </div>
                             <div class="propertyCardContent">

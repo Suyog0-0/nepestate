@@ -30,7 +30,7 @@
                         <div class="success-message">${sessionScope.message}</div>
                         <% session.removeAttribute("message"); %>
                     </c:if>
-                    <c:if test="${empty sessionScope.error}">
+                    <c:if test="${empty sessionScope.error && not empty property}">
                         <div class="price">Rs. ${property.property_Price}</div>
                         <div class="location">${property.property_Address}, ${property.property_City}</div>
                         
@@ -45,7 +45,7 @@
                         <div class="imageContainer">
                             <c:choose>
                                 <c:when test="${not empty property.property_Photos}">
-                                    <img src="${pageContext.request.contextPath}/images/${property.property_Photos}" class="house1" alt="Property Image">
+                                    <img src="${pageContext.request.contextPath}${property.property_Photos}" class="house1" alt="Property Image">
                                 </c:when>
                                 <c:otherwise>
                                     <img src="${pageContext.request.contextPath}/images/default_property.jpg" class="house1" alt="Default Property Image">
@@ -78,7 +78,7 @@
                     <!-- Profile Picture -->
                     <c:set var="profilePicPath" value="${pageContext.request.contextPath}/images/defaultpfp.jpg" />
                     <c:if test="${customer != null}">
-                        <c:set var="dbProfilePic" value="${customer.Customer_ProfilePicture}" />
+                        <c:set var="dbProfilePic" value="${customer.customer_ProfilePicture}" />
                         <c:if test="${not empty dbProfilePic}">
                             <c:set var="profilePicPath" value="${pageContext.request.contextPath}/images/${dbProfilePic}" />
                         </c:if>
@@ -86,29 +86,48 @@
                     
                     <img src="${profilePicPath}" class="profileImage" alt="Profile Picture">
                     
-                    <div class="profileName">${customer.Customer_FirstName} ${customer.Customer_LastName}</div>
+                    <div class="profileName">${customer.customer_FirstName} ${customer.customer_LastName}</div>
                     <div class="profileContact">
                         <div class="profileNumber">
                             <img src="${pageContext.request.contextPath}/images/phone.png" class="phoneIcon" alt="Phone Icon">
-                            ${customer.Customer_PhoneNumber}
+                            ${customer.customer_PhoneNumber}
                         </div>
                         <div class="profileEmail">
                             <img src="${pageContext.request.contextPath}/images/mail.png" class="mailIcon" alt="Mail Icon">
-                            ${customer.Customer_EmailAddress}
+                            ${customer.customer_EmailAddress}
                         </div>
                     </div>
                 </div>
                 
                 <div class="profileButtonContainer">
-                    <form action="BuyNowController" method="post">
-                        <input type="hidden" name="propertyId" value="${property.propertyID}" />
-                        <button type="submit" class="buyNowButton">Buy Now</button>
-                    </form>
+                    <!-- FIXED: Changed from customer_id to username for authentication check -->
+                    <c:if test="${sessionScope.username != null}">
+                        <form action="BuyNowController" method="post">
+                            <input type="hidden" name="propertyId" value="${property.propertyID}" />
+                            <button type="submit" class="buyNowButton">Buy Now</button>
+                        </form>
+                        
+                        <form action="AddToFavoritesController" method="post">
+                            <input type="hidden" name="propertyId" value="${property.propertyID}" />
+                            <button type="submit" class="bookmarkButton">
+                                <c:choose>
+                                    <c:when test="${isBookmarked}">
+                                        ❤️ Remove from Favorites
+                                    </c:when>
+                                    <c:otherwise>
+                                        🤍 Add to Favorites
+                                    </c:otherwise>
+                                </c:choose>
+                            </button>
+                        </form>
+                    </c:if>
                     
-                    <form action="AddToFavoritesController" method="post">
-                        <input type="hidden" name="propertyId" value="${property.propertyID}" />
-                        <button type="submit" class="bookmarkButton">Bookmark</button>
-                    </form>
+                    <!-- FIXED: Changed from customer_id to username for authentication check -->
+                    <c:if test="${sessionScope.username == null}">
+                        <div class="login-prompt">
+                            <p>Please <a href="${pageContext.request.contextPath}/LoginController">login</a> to buy or bookmark this property.</p>
+                        </div>
+                    </c:if>
                 </div>
             </div>
         </div>
@@ -144,5 +163,42 @@
     <div class="footerSection">
         <jsp:include page="Footer.jsp" />
     </div>
+    
+    <style>
+        .success-message {
+            background-color: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .error-message {
+            background-color: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        
+        .login-prompt {
+            text-align: center;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+        
+        .login-prompt a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .login-prompt a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </body>
 </html>

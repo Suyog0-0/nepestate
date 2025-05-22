@@ -23,8 +23,9 @@ public class AuthenticationFilter implements Filter {
     private static final String DELETEPROPERTY		= "/DeletePropertyController";	
     private static final String SEARCH_CONTROLLER    = "/SearchController";
     private static final String FAVOURITE_CONTROLLER = "/FavouriteController";
-    private static final String SUCCESS_CONTROLLER   = "/SuccessController"; // Add Success Controller
-    private static final String ERROR_CONTROLLER     = "/ErrorController";   // Add Error Controller
+    private static final String ADD_TO_FAVORITES     = "/AddToFavoritesController"; // ADDED
+    private static final String SUCCESS_CONTROLLER   = "/SuccessController";
+    private static final String ERROR_CONTROLLER     = "/ErrorController";
 
     // Admin URLs
     private static final String ADMIN_DASH           = "/AdminDashboardController";
@@ -45,7 +46,7 @@ public class AuthenticationFilter implements Filter {
     public void init(FilterConfig filterConfig) throws ServletException {
         // Initialization logic if needed
     }
-
+    
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
             throws IOException, ServletException {
@@ -86,7 +87,7 @@ public class AuthenticationFilter implements Filter {
                 res.sendRedirect(req.getContextPath() + ADMIN_DASH);
                 return;
             }
-            // Allow admin‐only URLs + Success/Error controllers
+            // Allow admin‐only URLs + Success/Error controllers + FAVOURITE_CONTROLLER + ADD_TO_FAVORITES
             if (
             	path.equals(ADMIN_DASH)      ||
                 path.equals(PROPERTY_LIST)   ||
@@ -101,6 +102,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(SEARCH_CONTROLLER)|| 
                 path.equals(POST_PROPERTY)   ||
                 path.equals(FAVOURITE_CONTROLLER) ||
+                path.equals(ADD_TO_FAVORITES) ||  // ADDED
                 path.equals(SUCCESS_CONTROLLER) ||
                 path.equals(ERROR_CONTROLLER) ||
                 path.equals(HOME_CONTROLLER)) {
@@ -119,7 +121,7 @@ public class AuthenticationFilter implements Filter {
                 res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
                 return;
             }
-            // Allow user URLs + Success/Error controllers
+            // Allow user URLs + Success/Error controllers + ADD_TO_FAVORITES
             if (path.equals(HOME)             ||
                 path.equals(HOME_CONTROLLER)  ||
                 path.equals(USER_DASH)        ||
@@ -136,6 +138,7 @@ public class AuthenticationFilter implements Filter {
                 path.equals(POST_PROPERTY)    ||
                 path.equals(UPDATE_PROPERTY)  ||
                 path.equals(FAVOURITE_CONTROLLER) ||
+                path.equals(ADD_TO_FAVORITES) ||  // ADDED
                 path.equals(SUCCESS_CONTROLLER) ||
                 path.equals(ERROR_CONTROLLER)) {
                 chain.doFilter(request, response);
@@ -148,6 +151,7 @@ public class AuthenticationFilter implements Filter {
 
      // 4c) NOT LOGGED IN
      // Allow only public pages: login controller, home, and success/error pages
+     // NOTE: FavouriteController and AddToFavoritesController require login, so they're not included here
      if (path.equals(LOGIN_CONTROLLER) ||
     	 path.equals(REGISTER_CONTROLLER) ||
          path.equals(HOME)             ||
@@ -158,15 +162,18 @@ public class AuthenticationFilter implements Filter {
          path.equals(VIEWPROPERTYSP)   ||
          path.equals(SEARCH_CONTROLLER) || 
          path.equals(REGISTER) || 
-//         path.equals(POST_PROPERTY)    ||
-//         path.equals(FAVOURITE_CONTROLLER) ||
          path.equals(SUCCESS_CONTROLLER) || 
          path.equals(ERROR_CONTROLLER) ||
-         path.equals("/Success.jsp")   ||  // Allow direct access to Success.jsp
-         path.equals("/Error.jsp")) {      // Allow direct access to Error.jsp
+         path.equals("/Success.jsp")   ||
+         path.equals("/Error.jsp")) {
          chain.doFilter(request, response);
      } else {
-         res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
+         // For non-logged-in users trying to access protected resources
+         if (path.equals(FAVOURITE_CONTROLLER) || path.equals(ADD_TO_FAVORITES)) {
+             res.sendRedirect(req.getContextPath() + LOGIN_CONTROLLER);
+         } else {
+             res.sendRedirect(req.getContextPath() + HOME_CONTROLLER);
+         }
      }
     }
 
