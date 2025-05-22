@@ -17,46 +17,68 @@ import com.nepestate.service.CustomerService;
  */
 @WebServlet("/BuyNowController")
 public class BuyNowController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public BuyNowController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // Redirect GET requests to POST for consistency
+        doPost(request, response);
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
         CustomerModel customer = (CustomerModel) session.getAttribute("loggedInCustomer");
-     // Retrieve property ID from the request (e.g., from a hidden input or query string)
+        
+        // Retrieve property ID from the request
         String propertyIdStr = request.getParameter("propertyId");
 
-        if (customer != null && propertyIdStr != null) {
-                int propertyId = Integer.parseInt(propertyIdStr);
+        // Check if customer is logged in
+        if (customer == null) {
+            session.setAttribute("error", "Please log in to express interest in this property.");
+            response.sendRedirect("Login.jsp");
+            return;
+        }
 
-                CustomerService customerService = new CustomerService();
-                boolean saved = customerService.saveInterestedCustomer(customer, propertyId);
+        // Check if property ID is provided
+        if (propertyIdStr == null || propertyIdStr.trim().isEmpty()) {
+            session.setAttribute("error", "Invalid property selection.");
+            response.sendRedirect("PropertyListController"); // Redirect to property list
+            return;
+        }
+
+        try {
+            int propertyId = Integer.parseInt(propertyIdStr);
+            
+            CustomerService customerService = new CustomerService();
+            boolean saved = customerService.saveInterestedCustomer(customer, propertyId);
 
             if (saved) {
+                session.setAttribute("message", "Your interest has been registered successfully! You can now view your contact listing.");
                 response.sendRedirect("ContactListingController");
-            } 
-            else {
-            response.sendRedirect("Login.jsp");
+            } else {
+                session.setAttribute("error", "Unable to register your interest at this time. Please try again.");
+                // Redirect back to the property view page
+                response.sendRedirect("ViewPropertyController?propertyId=" + propertyId);
+            }
+        } catch (NumberFormatException e) {
+            session.setAttribute("error", "Invalid property ID format.");
+            response.sendRedirect("PropertyListController");
+        } catch (Exception e) {
+            session.setAttribute("error", "An unexpected error occurred. Please try again.");
+            response.sendRedirect("PropertyListController");
+            e.printStackTrace();
         }
     }
-   }
 }
-

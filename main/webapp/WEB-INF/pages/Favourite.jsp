@@ -60,10 +60,7 @@
                                     <h1 class="statusText">${property.property_Status}</h1>
                                 </div>
                                 <div class="profileButtonContainer">
-                                    <form action="${contextPath}/BuyNowController" method="post" style="display: inline;">
-                                        <input type="hidden" name="propertyId" value="${property.propertyID}" />
-                                        <button type="submit" class="buyNowButton">Buy Now</button>
-                                    </form>
+                                  
                                     <a href="${contextPath}/ViewPropertySPController?propertyId=${property.propertyID}" class="bookmarkButton">About</a>
                                 </div>
                             </div>

@@ -102,10 +102,7 @@
                 <div class="profileButtonContainer">
                     <!-- FIXED: Changed from customer_id to username for authentication check -->
                     <c:if test="${sessionScope.username != null}">
-                        <form action="BuyNowController" method="post">
-                            <input type="hidden" name="propertyId" value="${property.propertyID}" />
-                            <button type="submit" class="buyNowButton">Buy Now</button>
-                        </form>
+                        
                         
                         <form action="AddToFavoritesController" method="post">
                             <input type="hidden" name="propertyId" value="${property.propertyID}" />
