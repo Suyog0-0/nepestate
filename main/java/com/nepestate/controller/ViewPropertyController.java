@@ -46,19 +46,16 @@ public class ViewPropertyController extends HttpServlet {
                 propertyList = propertyService.getAllProperties();
             } else {
                 // Your existing filter handling logic
-                String source = request.getParameter("source");
                 String location = request.getParameter("location");
                 String category = request.getParameter("category");
                 String priceSort = request.getParameter("priceSort");
 
                 // Store selected filter values
-                request.setAttribute("selectedSource", source);
                 request.setAttribute("selectedLocation", location);
                 request.setAttribute("selectedCategory", category);
                 request.setAttribute("selectedPriceSort", priceSort);
 
-                if ((source != null && !source.isEmpty()) || 
-                    (location != null && !location.isEmpty()) || 
+                if ((location != null && !location.isEmpty()) || 
                     (category != null && !category.isEmpty()) || 
                     (priceSort != null && !priceSort.isEmpty())) {
                     
@@ -67,7 +64,7 @@ public class ViewPropertyController extends HttpServlet {
                         sortOrder = priceSort.equals("Low-High") ? "asc" : "desc";
                     }
                     
-                    propertyList = propertyService.advancedSearch(source, location, category, sortOrder);
+                    propertyList = propertyService.advancedSearch(location, category, sortOrder);
                 } else {
                     propertyList = propertyService.getAllProperties();
                 }

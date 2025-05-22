@@ -524,37 +524,12 @@ public class PropertyService {
         return locations;
     }
 
-    public List<PropertyModel> getPropertiesBySource(String source) {
-        if (isConnectionError) {
-            System.out.println("Database connection error!");
-            return new ArrayList<>();
-        }
-        
-        // Assuming there is a column in the database that identifies the source
-        // If not, you might need to join with another table
-        List<PropertyModel> properties = new ArrayList<>();
-        String query = "SELECT * FROM property WHERE Property_Source = ?";
-        
-        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
-            stmt.setString(1, source);
-            ResultSet rs = stmt.executeQuery();
-            
-            while (rs.next()) {
-                PropertyModel property = mapResultSetToPropertyModel(rs);
-                properties.add(property);
-            }
-        } catch (SQLException e) {
-            System.out.println("SQL Exception occurred: " + e.getMessage());
-            e.printStackTrace();
-        }
-        
-        return properties;
-    }
+
     
     /**
      * Get properties filtered by category/type
      * 
-     * @param category The category of properties ("Housing", "Appartment", "House")
+     * @param category The category of properties ("Housing", "Apartment", "House")
      * @return List of properties of the specified category
      */
     public List<PropertyModel> getPropertiesByCategory(String category) {
@@ -627,7 +602,7 @@ public class PropertyService {
      * @param priceSort Sort order for price (optional, "asc" or "desc")
      * @return List of properties matching all specified criteria
      */
-    public List<PropertyModel> advancedSearch(String source, String location, String category, String priceSort) {
+    public List<PropertyModel> advancedSearch(String location, String category, String priceSort) {
         if (isConnectionError) {
             System.out.println("Database connection error!");
             return new ArrayList<>();
@@ -638,12 +613,6 @@ public class PropertyService {
         List<Object> params = new ArrayList<>();
         
         // Add filter conditions
-        if (source != null && !source.isEmpty()) {
-            // Note: You might need to adjust this based on your actual schema
-            // If there's no Property_Source column, you should remove this condition
-            sql.append(" AND Property_Source = ?");
-            params.add(source);
-        }
         
         if (location != null && !location.isEmpty()) {
             sql.append(" AND LOWER(Property_City) LIKE ?");
