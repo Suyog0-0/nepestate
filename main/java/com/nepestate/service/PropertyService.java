@@ -66,7 +66,7 @@ public class PropertyService {
                 property.setPropertyID(rs.getInt("PropertyID"));
                 property.setProperty_Title(rs.getString("Property_Title"));
                 property.setProperty_Type(rs.getString("Property_Type"));
-                property.setProperty_Price(rs.getFloat("Property_Price"));
+                property.setProperty_Price(rs.getInt("Property_Price"));
                 property.setProperty_Area(rs.getFloat("Property_Area"));
                 property.setProperty_Address(rs.getString("Property_Address"));
                 property.setProperty_City(rs.getString("Property_City"));
@@ -204,7 +204,7 @@ public class PropertyService {
         property.setPropertyID(rs.getInt("PropertyID"));
         property.setProperty_Title(rs.getString("Property_Title"));
         property.setProperty_Type(rs.getString("Property_Type"));
-        property.setProperty_Price(rs.getFloat("Property_Price"));
+        property.setProperty_Price(rs.getInt("Property_Price"));
         property.setProperty_Area(rs.getFloat("Property_Area"));
         property.setProperty_Address(rs.getString("Property_Address"));
         property.setProperty_City(rs.getString("Property_City"));

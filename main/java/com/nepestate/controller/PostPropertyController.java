@@ -101,6 +101,7 @@ public class PostPropertyController extends HttpServlet {
                             
                             if (rolePropertyResult) {
                                 request.setAttribute("successMessage", "Property posting is successful from User!");
+                                request.getRequestDispatcher("/WEB-INF/pages/PostProperty.jsp").forward(request, response);
                                
                             } else {
                                 handleError(request, response, "Failed to associate property with customer role. Please try again.");

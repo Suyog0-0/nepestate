@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.nepestate.model.PropertyModel" %>
 
@@ -43,7 +44,7 @@
         <h2 class="sectionTitle">Featured Listings</h2>
         <div class="propertyContainer">
             <c:forEach var="property" items="${featuredProperties}">
-                <div class="propertyCard">
+                <a href="${pageContext.request.contextPath}/ViewPropertySPController?propertyId=${property.propertyID}" class="propertyCard">
                     <div class="propertyImageContainer">
                         <img src="${pageContext.request.contextPath}${property.property_Photos}" 
                              alt="${property.property_Type} for sale" class="propertyImage">
@@ -51,13 +52,13 @@
                     </div>
                     <div class="propertyDetails">
                         <div class="propertyType">${property.property_Type}</div>
-                        <div class="propertyPrice">Rs.${property.property_Price}</div>
+                        <div class="propertyPrice">Rs.<fmt:formatNumber value="${property.property_Price}" pattern="#,##0" /></div>
                         <div class="propertyDescription">
                             <p>${property.property_Description}</p>
                         </div>
                         <div class="propertyLocation">${property.property_Address}</div>
                     </div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>
@@ -70,7 +71,7 @@
                 
                 <div class="exploreGrid">
                     <c:forEach var="property" items="${moreProperties}">
-                        <div class="propertyCardExpanded">
+                        <a href="${pageContext.request.contextPath}/ViewPropertySPController?propertyId=${property.propertyID}" class="propertyCardExpanded">
                             <div class="propertyImageWrapper">
                                 <img src="${pageContext.request.contextPath}${property.property_Photos}" alt="Property">
                                 <div class="propertyBadge">NEW</div>
@@ -78,12 +79,12 @@
                             <div class="propertyCardContent">
                                 <div class="propertyCategory">${property.property_Type}</div>
                                 <h3 class="propertyTitle">${property.property_Title}</h3>
-                                <div class="propertyPrice">Rs.${property.property_Price}</div>
+                                <div class="propertyPrice">Rs.<fmt:formatNumber value="${property.property_Price}" pattern="#,##0" /></div>
                                 <p class="propertyDesc">${property.property_Description}</p>
                                 <div class="propertyFeatures">
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </c:forEach>
                 </div>
                 

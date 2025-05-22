@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         
-                        <!-- Profile Image Section - Now on the right side -->
+                      
                         <div class="profile-image-container">
 						    <input type="file" name="image" id="image" style="display:none;">
 						    <label for="image" style="cursor:pointer;">
@@ -153,7 +153,7 @@
 	    <div style="display:flex;gap:60px;margin-top:50px;margin-left:120px;flex-wrap:wrap;">
 	    <c:forEach var="property" items="${properties}">
 	        <div class="productBox">
-	            <img src="${pageContext.request.contextPath}/images/ListedProperty1.png" style="width:100%;object-fit:cover;border-radius:10px;">
+	            <img src="${pageContext.request.contextPath}${property.property_Photos}" style="width:100%;object-fit:cover;border-radius:10px;">
 	            <div style="width:100%;">
 	            	<div style="display:flex;">
 	               	 <div class="tag">${property.property_Type}</div>

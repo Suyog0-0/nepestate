@@ -51,7 +51,7 @@ public class BuyNowController extends HttpServlet {
                 boolean saved = customerService.saveInterestedCustomer(customer, propertyId);
 
             if (saved) {
-                response.sendRedirect("contactlisting.jsp");
+                response.sendRedirect("ContactListingController");
             } 
             else {
             response.sendRedirect("Login.jsp");

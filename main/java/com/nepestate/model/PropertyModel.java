@@ -6,7 +6,7 @@ public class PropertyModel {
     private int PropertyID;
     private String Property_Title;
     private String Property_Type;
-    private float Property_Price;
+    private int Property_Price;
     private float Property_Area;
     private String Property_Address;
     private String Property_City;
@@ -21,7 +21,7 @@ public class PropertyModel {
 
     public PropertyModel() {}
 
-    public PropertyModel(int PropertyID, String Property_Title, String Property_Type, float Property_Price,
+    public PropertyModel(int PropertyID, String Property_Title, String Property_Type, int Property_Price,
                          float Property_Area, String Property_Address, String Property_City,
                          String Property_Municipality, int Property_Ward, String Property_Status,
                          String Property_Description, String Property_Amentities, Date Property_DateAdded,
@@ -71,7 +71,7 @@ public class PropertyModel {
         return Property_Price;
     }
 
-    public void setProperty_Price(float Property_Price) {
+    public void setProperty_Price(int Property_Price) {
         this.Property_Price = Property_Price;
     }
 
