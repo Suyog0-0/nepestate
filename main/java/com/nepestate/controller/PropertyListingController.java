@@ -80,10 +80,9 @@ public class PropertyListingController extends HttpServlet {
 	                // If no properties found, log this information
 	                if (propertyList.isEmpty()) {
 	                    System.out.println("No properties found for customer ID: " + customer.getCustomerID());
-	                    System.out.println("This could mean:");
-	                    System.out.println("1. Customer has no role assigned in role_customer table");
-	                    System.out.println("2. Customer's role has no properties assigned in role_property table");
-	                    System.out.println("3. Database connection issue");
+	                    System.out.println("Customer has no role assigned in role_customer table");
+	                    System.out.println("Customer's role has no properties assigned in role_property table");
+	                    System.out.println("Database connection issue");
 	                }
 	                
 	            } else {

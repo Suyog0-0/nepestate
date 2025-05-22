@@ -76,7 +76,7 @@ String userType = (String) request.getAttribute("userType");
                             <td><input type="checkbox" /></td>
                          </c:if>
                             <%-- <td><img src="${pageContext.request.contextPath}/images/${p.image}" class="property-img" alt="Image"></td> --%>
-                            <td><img src="${pageContext.request.contextPath}/images/house1.webp" class="property-img" /></td>
+                            <td><img src="${pageContext.request.contextPath}${p.property_Photos}" class="property-img" /></td>
                             <td>${p.property_Address}</td>
                             <td>${p.property_Type}</td>
                             <td>Rs.${p.property_Price}</td>

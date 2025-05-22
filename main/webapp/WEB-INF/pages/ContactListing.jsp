@@ -59,7 +59,7 @@
         %>
           <tr>
             <td><input type="checkbox" /></td>
-            <td><img src="uploads/<%= customer.getCustomer_ProfilePicture() %>" class="user-img" /></td>
+            <td><img src="${pageContext.request.contextPath}/<%= customer.getCustomer_ProfilePicture() %>" class="user-img" /></td>
             <td><%= customer.getCustomerID() %></td>
             <td><%= customer.getCustomer_FirstName() %></td>
             <td><%= customer.getCustomer_Username() %></td>

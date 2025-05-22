@@ -8,7 +8,7 @@ body {
 
 .sidebar {
   width: 350px;
-  height: 750px;
+  height: 800px;
  background: linear-gradient(to bottom, #356A95, #001B34);
   color: white;
   display: flex;
@@ -17,12 +17,6 @@ body {
   border-radius: 10px;
   margin: 70px 0px 0px 25px;
   padding: 40px 25px;
-  animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 .profile-section {
@@ -69,7 +63,7 @@ body {
   list-style: none;
   padding: 0;
   width: 100%;
-  margin-left: -30px;
+  margin: 0;
 }
 
 .menu li {
@@ -78,7 +72,7 @@ body {
   gap: 10px;
   cursor: pointer;
   transition: background 0.2s;
-  padding: 12px 0px 10px 0px; /* Aligns main menu items */
+ padding: 12px 0px 10px 0px; /* Aligns main menu items */
 }
 .arrow {
     font-size: 14px;
@@ -112,7 +106,6 @@ body {
 
 .submenu.active {
   display: flex;
-  margin-left: 10px;
 }
 
 /* Special spacing between last submenu item and logout */
@@ -121,7 +114,7 @@ body {
 }
 
 .logout-btn {
-  width: 100%;
+  width: 150px;
   font-weight: bold;
   font-size: 17px;
   color: #0b2341;
@@ -146,7 +139,7 @@ body {
 /* Hover Effect */
 .menu li:hover {
   background: rgba(255, 255, 255, 0.1);
-  padding: 5px;
+  border-radius: 10px;
 }
 .menu a
 {
