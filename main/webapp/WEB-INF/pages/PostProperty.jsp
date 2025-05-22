@@ -117,19 +117,13 @@
 	
 	        <div style="display: flex; margin-top: 50px; gap: 19.5%;">
     <div class="subColumn">
-        <label class="form-label">Upload Thumbnail</label>
+        <label class="form-label">Upload Photos</label>
         <input type="file" name="image" id="image" style="display:none;">
         <label for="image" style="max-width:36.48px;margin-left:28px;padding:20px;cursor:pointer;">
             <img src="${pageContext.request.contextPath}/images/uploadImage.png"  alt="Upload Thumbnail">
         </label>
     </div>
-    <div class="subColumn">
-        <label class="form-label">Upload Photos</label>
-        <input type="file" name="photos" id="photos" multiple style="display:none;">
-        <label for="photos" style="max-width:36.48px;margin-left:24px;padding:20px;cursor:pointer;" >
-            <img src="${pageContext.request.contextPath}/images/uploadImage.png"  alt="Upload Photos">
-        </label>
-    </div>
+   
 </div>
 	
 	

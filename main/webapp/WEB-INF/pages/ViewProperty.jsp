@@ -100,7 +100,7 @@ href="${pageContext.request.contextPath}/css/Footer.css">
                 		<div class="card-content">
                     		<h3>Rs.${p.property_Price}</h3>
                     <%-- <span class="tag">${p.}</span> --%>
-                    		<div class="location">${p.property_Address}</div>
+                    		<div class="location">${p.p	roperty_Address}</div>
                     		<div class="description">${p.property_Description}</div>
                     		<div class="status">${p.property_Status}</div>
                 		</div>

@@ -92,7 +92,7 @@ public class CustomerService {
         }
 
         String query = "UPDATE Customers SET Customer_Username = ?, Customer_EmailAddress = ?, " +
-                "Customer_DoB = ?, Customer_PhoneNumber = ?, Customer_Description = ? WHERE CustomerID = ?";
+                "Customer_DoB = ?, Customer_PhoneNumber = ?, Customer_Description = ? ,Customer_ProfilePicture=? WHERE CustomerID = ?";
 
         try (PreparedStatement stmt = dbConn.prepareStatement(query)) {
             stmt.setString(1, customerModel.getCustomer_Username());
@@ -100,7 +100,8 @@ public class CustomerService {
             stmt.setString(3, customerModel.getCustomer_DoB());
             stmt.setString(4, customerModel.getCustomer_PhoneNumber());
             stmt.setString(5, customerModel.getCustomer_Description());
-            stmt.setInt(6, customerModel.getCustomerID());
+            stmt.setString(6, customerModel.getCustomer_ProfilePicture());
+            stmt.setInt(7, customerModel.getCustomerID());
 
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
@@ -132,26 +133,26 @@ public class CustomerService {
         }
     }
     
-    public boolean updateProfilePicture(int customerId, String profilePictureName) {
-        if (isConnectionError) {  
-            System.out.println("Database connection error!");
-            return false;
-        }
-
-        String query = "UPDATE Customers SET Customer_ProfilePicture = ? WHERE CustomerID = ?";
-        
-        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {  
-            stmt.setString(1, profilePictureName);
-            stmt.setInt(2, customerId);
-
-            int rowsAffected = stmt.executeUpdate();  
-            return rowsAffected > 0;  
-        } catch (SQLException e) {
-            System.out.println("SQL Exception updating profile picture: " + e.getMessage());
-            e.printStackTrace();
-            return false;
-        }
-    }
+//    public boolean updateProfilePicture(int customerId, String profilePictureName) {
+//        if (isConnectionError) {  
+//            System.out.println("Database connection error!");
+//            return false;
+//        }
+//
+//        String query = "UPDATE Customers SET Customer_ProfilePicture = ? WHERE CustomerID = ?";
+//        
+//        try (PreparedStatement stmt = dbConn.prepareStatement(query)) {  
+//            stmt.setString(1, profilePictureName);
+//            stmt.setInt(2, customerId);
+//
+//            int rowsAffected = stmt.executeUpdate();  
+//            return rowsAffected > 0;  
+//        } catch (SQLException e) {
+//            System.out.println("SQL Exception updating profile picture: " + e.getMessage());
+//            e.printStackTrace();
+//            return false;
+//        }
+//    }
     
     public boolean saveInterestedCustomer(CustomerModel customer, int propertyId) {
         if (isConnectionError || dbConn == null) {
